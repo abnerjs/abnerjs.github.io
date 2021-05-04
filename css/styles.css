@@ -1,0 +1,264 @@
+body, html {
+    width: 100%;
+    height: 100%;
+    background-color: #303e52;
+}
+
+body, p {
+    color: #9399A1;
+    font: 400 0.875rem/1.375rem "Montserrat", sans-serif;
+}
+
+.p-large {
+    font: 400 1rem/1.5rem "Montserrat", sans-serif;
+}
+
+h1 {
+    color: #fff;
+    font: 700 3rem/3.5rem "Montserrat", sans-serif;
+}
+
+h1 span {
+    font-size: 1rem;
+}
+
+a {
+    color: #626262;
+    text-decoration: underline;
+}
+
+.turquoise {
+    color: #00bfd8;
+}
+
+.btn-solid-lg {
+    display: inline-block;
+    padding: 1.375rem 2.625rem 1.375rem 2.625rem;
+    border: 0.125rem solid #00bfd8;
+    border-radius: 2rem;
+    background-color: #00bfd8;
+    color: #fff;
+    font: 700 0.75rem/0 "Raleway", sans-serif;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btn-solid-lg:hover {
+    background-color: transparent;
+    color: #00bfd8;
+    text-decoration: none;
+}
+
+.spinner-wrapper {
+    position: fixed;
+    z-index: 999999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #202833;
+}
+
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3.75rem;
+    height: 1.25rem;
+    margin: -0.625rem 0 0 -1.875rem;
+    text-align: center;
+}
+
+.spinner > div {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 100%;
+    background-color: #00bfd8;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+.navbar-custom {
+    background-color: #202833;
+    box-shadow: 0 0.0625rem 0.375rem 0 rgba(0, 0, 0, 0.1);
+    font: 600 0.875rem/0.875rem "Montserrat", sans-serif;
+    transition: all 0.2s;
+}
+
+.navbar-custom .navbar-brand.logo-text {
+    font: 600 2rem/1.5rem "Montserrat", sans-serif;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.navbar-custom .navbar-brand.logo-text span {
+	color: #626262;
+	font-weight: lighter;
+}
+
+.navbar-custom .navbar-nav {
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.navbar-custom .nav-item .nav-link {
+    padding: 0.625rem 0.75rem 0.625rem 0.75rem;
+    color: #FFF;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.navbar-custom .nav-item .nav-link:hover, .navbar-custom .nav-item .nav-link.active {
+    color: #00bfd8;
+}
+
+.navbar-custom .navbar-toggler {
+    border: none;
+    color: #FFF;
+    font-size: 2rem;
+}
+
+.header {
+    background-color: #202833;
+}
+
+.header .header-content {
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+    text-align: center;
+	background: #303e52;
+	background: -moz-radial-gradient(circle, rgba(48,62,82,1) 0%, rgba(32,40,51,1) 100%);
+	background: -webkit-radial-gradient(circle, rgba(48,62,82,1) 0%, rgba(32,40,51,1) 100%);
+	background: radial-gradient(circle, rgba(48,62,82,1) 0%, rgba(32,40,51,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#303e52",endColorstr="#202833",GradientType=1);
+}
+
+.header .text-container {
+    margin-bottom: 4rem;
+}
+
+.header h1 {
+    margin-bottom: 1.125rem;
+    font-size: 2.5rem;
+    line-height: 3.125rem;
+}
+
+.header .p-large {
+    margin-bottom: 1.875rem;
+}
+
+a.back-to-top {
+    position: fixed;
+    z-index: 999;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    display: none;
+    width: 2.625rem;
+    height: 2.625rem;
+    border-radius: 1.875rem;
+    background: #00bfd8 url("../images/up-arrow.png") no-repeat center 47%;
+    background-size: 1.125rem 1.125rem;
+    text-indent: -9999px;
+}
+
+.card img{
+    display: block;
+	width: 200px;
+    margin-right: auto;
+    margin-left: auto;
+	padding: 5px;
+    border: 3px solid #00bfd8;
+    border-radius: 50%;
+}
+
+@media (min-width: 768px) {
+	.header .header-content {
+        padding-top: 6.5rem;
+    }
+
+    .header h1 {
+        font-size: 3rem;
+        line-height: 2rem;
+    }
+}
+
+@media (min-width: 992px) {
+	.navbar-custom {
+        padding: 2.125rem 1.5rem 2.125rem 2rem;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    .navbar-custom .navbar-nav {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .navbar-custom .nav-item .nav-link {
+        padding: 0.25rem 0.75rem 0.25rem 0.75rem;
+        color: #9399A1;
+        opacity: 0.8;
+    }
+
+    .navbar-custom .nav-item .nav-link:hover, .navbar-custom .nav-item .nav-link.active {
+        color: #00bfd8;
+        opacity: 1;
+    }
+
+    .navbar-custom.top-nav-collapse {
+        padding: 0.5rem 1.5rem 0.5rem 2rem;
+        box-shadow: 0 0.0625rem 0.375rem 0 rgba(0, 0, 0, 0.1);
+        background-color: #202833;
+    }
+
+    .navbar-custom.top-nav-collapse .nav-item .nav-link {
+        color: #9399A1;
+        opacity: 1;
+    }
+
+    .navbar-custom.top-nav-collapse .nav-item .nav-link:hover, .navbar-custom.top-nav-collapse .nav-item .nav-link.active {
+        color: #00bfd8;
+    }
+
+    .header .header-content {
+        text-align: left;
+    }
+
+    .header .text-container {
+        margin-top: 3rem;
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 1200px) {
+	.navbar-custom {
+        padding: 2.125rem 5rem 2.125rem 5rem;
+    }
+
+    .navbar-custom.top-nav-collapse {
+        padding: 0.5rem 5rem 0.5rem 5rem;
+    }
+
+    .header .text-container {
+        margin-top: 5.375rem;
+        margin-left: 1rem;
+        margin-right: 2rem;
+    }
+
+    .header .image-container {
+        margin-left: 2rem;
+        margin-right: 1rem;
+		margin-top: 0rem;
+    }
+}
