@@ -4,7 +4,7 @@ body, html {
     background-color: #303e52;
 }
 
-body, p {
+p {
     color: #9399A1;
     font: 400 0.875rem/1.375rem "Montserrat", sans-serif;
 }
@@ -221,25 +221,23 @@ a.back-to-top {
 }
 
 .profile-image {
-	transition: 0.5s;
     display: block;
-	width: 200px;
-	height: 200px;
+	width: 180px;
+	height: 180px;
     margin-right: auto;
     margin-left: auto;
-	padding: 8px;
     border-radius: 50%;
 	overflow: hidden;
 }
 
 .profile-image img {
+	transition: 0.5s;
 	width: 100%;
     border-radius: 50%;
 }
 
 .profile-image img:hover {
 	transform: scale(1.3);
-    border-radius: 50%;
 	transition: 0.5s;
 }
 
@@ -247,6 +245,16 @@ a.back-to-top {
 	margin: auto;
 	margin-top: 15px;
 	width: 200px;
+}
+
+.paragraph-title {
+	font-size: 1.4rem !important;
+	color: #FFF;
+	margin-bottom: 20px;
+}
+
+.paragraph-title i {
+	color: #00bfd8;
 }
 
 @media (min-width: 768px) {
