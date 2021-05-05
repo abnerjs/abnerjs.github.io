@@ -227,13 +227,6 @@ a.back-to-top {
 	position: relative;
 }
 
-.profile-content {
-	position: absolute;
-	top:50%;
-	transform: translateY(-50%);
-	right: 25%;
-}
-
 .paragraph p {
 	color: #ccc;
 }
