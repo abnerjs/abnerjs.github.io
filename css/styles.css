@@ -214,12 +214,19 @@ a.back-to-top {
     background-color: #303e52;
 }
 
+.about-content .paragraph-title {
+	text-align: left;
+}
+
 .about-content .container {
-	margin-bottom: 80px;
+	padding-bottom: 80px;
+}
+
+.paragraph-title {
+	text-align: center;
 }
 
 .profile {
-	text-align: center;
 	color: #fff;
 	font-weight: 300;
 	font-size: 1.5rem;
@@ -275,7 +282,9 @@ a.back-to-top {
 	font-size: 1rem;
 }
 
-
+.profile-content {
+	text-align: center;
+}
 
 .social-media a{
 	color: #00bfd8;
@@ -287,9 +296,9 @@ a.back-to-top {
 	opacity: 1;
 	transition: 0.3s;
 }
-
 .skills-content {
 	background-color: #202833;
+	padding-bottom: 100px;
 }
 
 .skills-content .waves {
@@ -336,6 +345,60 @@ a.back-to-top {
 .percentage {
 	height: 5px;
 }
+
+.right {
+	text-align: right;
+}
+
+.left {
+	text-align: left;
+}
+
+.paragraph-title-right {
+	text-align: right;
+	font-size: 1.4rem !important;
+	color: #FFF;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.paragraph-title-right i {
+	color: #00bfd8;
+	font-size: 1rem;
+}
+
+.paragraph-title-left {
+	text-align: left;
+	font-size: 1.4rem !important;
+	color: #FFF;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.paragraph-title-left i {
+	color: #00bfd8;
+	font-size: 1rem;
+}
+
+.image-portfolio {
+	width: 100%;
+}
+
+.portfolio-content .content {
+	margin-top: 80px !important;
+}
+
+.portfolio-content .content .text-side {
+	position: relative;
+	margin: auto 0 auto 0;
+}
+
+.portfolio-content .row {
+	margin-bottom: 50px;
+}
+
+
+
 
 
 
