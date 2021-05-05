@@ -299,6 +299,50 @@ a.back-to-top {
 	transform: rotate(180deg);
 }
 
+.skills-content .paragraph-title {
+	text-align: center;
+	margin-top: 80px;
+	margin-bottom: 40px;
+}
+
+.skills {
+	color: #ccc;
+	text-align: center;
+}
+
+.top-label {
+	margin-bottom: 10px;
+}
+
+.skills-image {
+	height: 100px;
+	width: 100px;
+	margin: auto;
+	margin-bottom: 20px;
+}
+
+.skills img {
+	max-width: 99px;
+	max-height: 99px;
+	border-radius: 15px;
+}
+
+.skills .progress-bar {
+	background-color: #181c22;
+	width: 150px;
+	height: 5px;
+	margin: auto;
+	
+	margin-bottom: 50px;
+}
+
+.percentage {
+	height: 5px;
+}
+
+
+
+
 @media (min-width: 768px) {
 
 	.waves {
