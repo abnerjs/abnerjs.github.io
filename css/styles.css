@@ -397,6 +397,29 @@ a.back-to-top {
 	margin-bottom: 50px;
 }
 
+.this-site {
+	text-align: center;
+	font-size: 7rem;
+	color: #E9F0F8;
+	text-shadow: 5px 4px 8px rgba(0,0,0,.2);
+	text-shadow: -1px -2px 8px rgba(255,255,255,.2);
+	mix-blend-mode: overlay;
+	margin-bottom: 50px;
+}
+
+.this-site h2 {
+	font-weight: bold;
+}
+
+.this-site i {
+	font-weight: lighter;
+}
+
+.paragraph-title {
+	font-weight: bolder;
+}
+
+
 
 
 
