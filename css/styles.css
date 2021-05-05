@@ -227,6 +227,10 @@ a.back-to-top {
 	position: relative;
 }
 
+.profile-content {
+	margin: 50px;
+}
+
 .paragraph p {
 	color: #ccc;
 }
