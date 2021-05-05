@@ -354,6 +354,10 @@ a.back-to-top {
 	text-align: left;
 }
 
+.center {
+	text-align: center;
+}
+
 .paragraph-title-right {
 	text-align: right;
 	font-size: 1.4rem !important;
@@ -419,7 +423,56 @@ a.back-to-top {
 	font-weight: bolder;
 }
 
+.contact-items, .contact-items div div div a  {
+	color: #9399A1;
+	text-decoration: none;
+}
 
+.contact-items {
+	margin-top: 60px;
+}
+
+.contact-items i {
+	color: #00bfd8;
+	margin-right: 10px;
+}
+
+.contact-items div div div {
+	padding: 10px;
+	margin: 10px;
+}
+
+.contact-items div div div:hover, .contact-items div div div a:hover  {
+	color: #fff;
+}
+
+.contact-items .right {
+	padding-right: 100px;
+}
+
+
+.contact-items .left {
+	padding-left: 100px;
+}
+
+footer {
+	background-color: #181c22;
+	margin-top: 80px;
+	color: #666B72;
+}
+
+footer .container {
+	padding: 40px;
+}
+
+footer span {
+	color: #22828f;
+}
+
+.line-footer {
+	background-color: #00bfd8;
+	height: 3px;
+}
 
 
 
