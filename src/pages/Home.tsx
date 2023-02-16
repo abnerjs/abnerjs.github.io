@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Avatar, Button } from '@mui/material';
 import React from 'react';
 import Navbar from 'src/components/Navbar/Navbar';
 import './home.css';
@@ -10,7 +10,6 @@ const Home = () => {
             <Navbar />
 
             <div className="landing">
-                BLABLA
 
                 <div id="waves">
                     <svg className="waves" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -54,6 +53,76 @@ const Home = () => {
                     <Button variant='contained' disableElevation>
                         Sobre mim
                     </Button>
+                </div>
+            </div>
+
+            <div className="works">
+                <div className="title">Principais trabalhos</div>
+                <hr />
+                <div className="content">
+                    <div className="text">Portal de Relatórios</div>
+                    <div className="info">
+                        <div className="type">React</div>
+                        <div className="dev">Design & Desenvolvimento</div>
+                    </div>
+                </div>
+                <hr />
+                <div className="content">
+                    <div className="text">iWorkOff</div>
+                    <div className="info">
+                        <div className="type">React</div>
+                        <div className="dev">Design & Desenvolvimento</div>
+                    </div>
+                </div>
+                <hr />
+                <div className="content">
+                    <div className="text">Sistema de Ponto</div>
+                    <div className="info">
+                        <div className="type">Figma</div>
+                        <div className="dev">Design & Interação</div>
+                    </div>
+                </div>
+                <hr />
+                <div className="content">
+                    <div className="text">Portal de Relatórios</div>
+                    <div className="info">
+                        <div className="type">React</div>
+                        <div className="dev">Design & Desenvolvimento</div>
+                    </div>
+                </div>
+                <hr />
+                <div className="more-work">
+                    <Button variant='outlined' className='moreWork' endIcon={<Icon icon="fluent:arrow-right-48-regular" />}>
+                        Mais trabalhos
+                    </Button>
+                </div>
+
+
+            </div>
+            <div className="works-grid">
+                <div className="row">
+                    <div className="work"></div>
+                    <div className="work"></div>
+                    <div className="work"></div>
+                    <div className="work"></div>
+                </div>
+                <div className="row">
+                    <div className="work"></div>
+                    <div className="work"></div>
+                    <div className="work"></div>
+                    <div className="work"></div>
+                </div>
+            </div>
+
+            <div className="contact">
+                <div className="title">
+                    <h2>
+                        <span>
+                            <Avatar alt="Abner Silva" src="../assets/images/imgLanding.png" />
+                            Vamos trabalhar
+                        </span>
+                        <span>juntos!</span>
+                    </h2>
                 </div>
             </div>
         </div>

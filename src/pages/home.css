@@ -2,6 +2,9 @@
   width: 100vw;
   height: calc(100vh + 71.68px);
   background-color: darkgrey;
+  background-image: url(../assets/images/imgLanding.png);
+  background-repeat: no-repeat;
+  background-position: center top;
 }
 
 .curriculum {
@@ -41,7 +44,7 @@
   position: absolute;
   white-space: nowrap;
   will-change: transform;
-  animation: marquee 16s linear infinite;
+  animation: marquee 32s linear infinite;
 }
 
 .home .marquee .content {
@@ -139,4 +142,91 @@
   h1 {
     font-size: 24px;
   }
+}
+
+.home .works {
+  text-align: left;
+  padding: 0 10% 0 10%;
+  font-weight: 600;
+}
+
+.home .works .title {
+  color: #555;
+  padding: 50px;
+}
+
+.home .works hr {
+  opacity: 0.5;
+  margin: 0;
+}
+
+.home .works .content {
+  padding: 100px 50px 100px 50px;
+  color: #555;
+  font-size: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: padding ease-out 0.8s;
+}
+
+.home .works .content .info {
+  text-align: right;
+  font-size: 16px;
+}
+
+.home .works .content:hover {
+  padding: 100px 10px 100px 10px;
+  transition: padding ease-out 0.4s;
+}
+
+.home .works .content .dev {
+  color: #AAA;
+  font-size: 14px;
+}
+
+.home .works .more-work {
+  display: flex;
+  justify-content: center;
+  padding: 100px 0 280px 0;
+}
+
+.home .works .more-work .moreWork {
+  width: 230px;
+  height: 100px;
+  border-radius: 50px;
+  color: black;
+  font-weight: 600;
+  border-color: #aaa;
+}
+
+.home .works .more-work .moreWork:hover {
+  background-color: #F8F8F8;
+}
+
+.home .works-grid {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 200px;
+}
+
+.home .works-grid .row {
+  width: 125%;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+
+.home .works-grid .row .work {
+  width: 100%;
+  background-color: #eee;
+  height: 330px;
+  margin: 0 25px;
+}
+
+.home .contact {
+  background-color: #333;
+  height: calc(100vh - 10px);
+  width: 100%;
+  padding: 0 10%;
 }
