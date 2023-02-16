@@ -1,0 +1,89 @@
+.home .landing {
+  width: 100vw;
+  height: 100vh;
+}
+
+.curriculum {
+  position: absolute;
+  top: 40%;
+}
+
+.curriculum .MuiButtonBase-root {
+  width: 300px;
+  height: 100px;
+  border-radius: 0 50px 50px 0 !important;
+  font-size: 20px;
+  text-align: left;
+  justify-content: flex-start;
+  padding-left: 30px;
+  background-color: black;
+}
+
+.curriculum .MuiButtonBase-root .MuiButton-endIcon svg {
+  font-size: 42px !important;
+  margin-left: 56px;
+}
+
+.curriculum .MuiButtonBase-root:hover {
+  background-color: #333;
+}
+
+.marquee {
+  position: absolute;
+  width: 100vw;
+  bottom: 20px;
+  max-width: 100%;
+  height: 300px;
+  overflow-x: hidden;
+}
+.marquee .track {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 16s linear infinite;
+}
+
+.home .marquee .content {
+  font-size: 250px;
+  color: white;
+  font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.about {
+  background-color: white;
+  padding: 200px 0 200px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about .paragraph {
+  font-size: 24px;
+  text-align: left;
+  max-width: 800px;
+}
+
+.home .about .about-btn {
+  width: 280px;
+}
+
+.home .about .about-btn .text {
+  margin-bottom: 40px;
+}
+
+.home .about .MuiButtonBase-root {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  font-size: 24px;
+  background-color: black;
+}
+
+.home .about .MuiButtonBase-root:hover {
+  background-color: #333;
+}

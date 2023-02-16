@@ -1,0 +1,27 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    margin: 24px 72px;
+    position: absolute;
+    width: calc(100% - 144px);
+    color: white;
+}
+
+.navbar .title {
+    font-family: "Montserrat";
+    font-size: 24px;
+    align-self: center;
+    cursor: pointer;
+}
+
+.navbar .MuiTab-root {
+    color: white;
+}
+
+.navbar .Mui-selected {
+    color: black !important;
+}
+
+.navbar .css-1uoxeia-MuiTabs-indicator {
+    background-color: black;
+}
