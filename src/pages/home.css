@@ -1,6 +1,7 @@
 .home .landing {
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh + 71.68px);
+  background-color: darkgrey;
 }
 
 .curriculum {
@@ -46,17 +47,21 @@
 .home .marquee .content {
   font-size: 250px;
   color: white;
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: "Fira Sans Condensed", sans-serif;
 }
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .about {
   background-color: white;
-  padding: 200px 0 200px 0;
+  height: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,4 +91,52 @@
 
 .home .about .MuiButtonBase-root:hover {
   background-color: #333;
+}
+
+.home .landing .waves {
+  position: absolute;
+  transform: scaleY(0.2);
+  bottom: -215px;
+  left: 0;
+}
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves {
+    height: 40px;
+    min-height: 40px;
+  }
+  .content {
+    height: 30vh;
+  }
+  h1 {
+    font-size: 24px;
+  }
 }
