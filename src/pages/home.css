@@ -4,7 +4,7 @@
   background-color: darkgrey;
   background-image: url(../assets/images/imgLanding.png);
   background-repeat: no-repeat;
-  background-position: center top;
+  background-position: center center;
 }
 
 .curriculum {
@@ -21,6 +21,11 @@
   justify-content: flex-start;
   padding-left: 30px;
   background-color: black;
+}
+
+.curriculum .MuiButtonBase-root a {
+  text-decoration: none;
+  color: white;
 }
 
 .curriculum .MuiButtonBase-root .MuiButton-endIcon svg {
@@ -161,13 +166,18 @@
 }
 
 .home .works .content {
-  padding: 100px 50px 100px 50px;
+  padding: 50px 50px 50px 50px;
   color: #555;
-  font-size: 24px;
+  font-size: 64px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: padding ease-out 0.8s;
+}
+
+.home .works .content .text {
+  color: black;
+  font-weight: 300;
 }
 
 .home .works .content .info {
@@ -176,7 +186,7 @@
 }
 
 .home .works .content:hover {
-  padding: 100px 10px 100px 10px;
+  padding: 50px 10px 50px 10px;
   transition: padding ease-out 0.4s;
 }
 
@@ -220,13 +230,114 @@
 .home .works-grid .row .work {
   width: 100%;
   background-color: #eee;
-  height: 330px;
+  height: 30vh;
   margin: 0 25px;
 }
 
 .home .contact {
   background-color: #333;
   height: calc(100vh - 10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.home .contact .container {
+  margin: 0 15%;
+}
+
+.home .contact .container>.title {
+  color: white;
+  margin-top: 20vh;
+  margin-bottom: 100px;
+}
+
+.home .contact .container>.title h2 > div {
+  display: flex;
+  font-weight: normal;
+  font-size: 100px;
+  align-items: center;
+}
+
+.home .contact hr {
   width: 100%;
-  padding: 0 10%;
+  opacity: 0.1;
+  margin: 0;
+}
+
+.home .contact .contact-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.home .contact .contact-btn .float-btn {
+  position: absolute;
+  transform: translateY(-50%) translateX(-100px);
+}
+
+.home .contact .contact-btn .float-btn .elementBtn {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.home .contact .infos {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  display: flex;
+  gap: 30px;
+}
+
+.home .contact .infos .MuiButtonBase-root {
+  color: #ddd;
+  border-color: #555;
+  height: 80px;
+  border-radius: 40px;
+  padding: 0 30px;
+}
+
+.home .contact .infos .MuiButtonBase-root:hover {
+  background-color: #444;
+}
+
+.home .contact .footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  margin: 0 40px;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.home .contact .footer .socials {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.home .contact .footer .socials a {
+  color: #eee;
+  margin-left: 10px;
+  text-decoration: none;
+  transition: all ease 0.3s;
+  padding: 5px;
+  border-radius: 2px;
+}
+
+.home .contact .footer .socials a:first-of-type {
+  margin-left: 0 !important;
+}
+
+.home .contact .footer .socials .title {
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.home .contact .footer .socials .links {
+  margin-top: 5px;
+}
+
+.home .contact .footer .socials a:hover {
+  background-color: #444;
 }
