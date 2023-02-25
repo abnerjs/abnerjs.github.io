@@ -1,28 +1,20 @@
 import { Tab, Tabs } from '@mui/material';
 import React from 'react';
+import MagneticButton from '../MagneticButton/MagneticButton';
 import './Navbar.css'
 
 const Navbar = () => {
-    const [value, setValue] = React.useState('home');
-
-    const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-        setValue(newValue);
-    };
 
     return (
         <div className="navbar">
-            <div className="title" onClick={(e) => {
-                handleChange(e, 'home');
-            }}>Abner<b>Silva</b></div>
+            <div className="title">
+                <MagneticButton variant='text'>Abner<b>Silva</b></MagneticButton>
+            </div>
 
-            <Tabs
-                value={value}
-                onChange={handleChange}
-                aria-label="tabs"
-            >
-                <Tab value="works" label="Trabalhos" />
-                <Tab value="contact" label="Contato" />
-            </Tabs>
+            <div className="options">
+                <MagneticButton variant='text'>Trabalhos</MagneticButton>
+                <MagneticButton variant='text'>Contato</MagneticButton>
+            </div>
         </div>
     );
 }

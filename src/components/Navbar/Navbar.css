@@ -7,21 +7,42 @@
     color: white;
 }
 
-.navbar .title {
+.navbar .title .MuiButton-root {
     font-family: "Montserrat";
+    color: white;
     font-size: 24px;
     align-self: center;
     cursor: pointer;
+    text-transform: none;
 }
 
-.navbar .MuiTab-root {
+.navbar .title .MuiButton-root:hover {
+    background-color: transparent;
+}
+
+.navbar .options {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar .options .MuiButton-root {
     color: white;
+    text-transform: none;
+    font-size: 16px;
 }
 
-.navbar .Mui-selected {
-    color: black !important;
+.navbar .options .MuiButton-root:hover {
+    background-color: transparent;
 }
 
-.navbar .css-1uoxeia-MuiTabs-indicator {
-    background-color: black;
+.navbar .options .MuiButton-root:hover:before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    background: white;
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    left:calc(50% - 8px);
+    transition: all ease 0.8s;
 }

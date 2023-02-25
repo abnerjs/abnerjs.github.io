@@ -87,6 +87,7 @@ const Home = () => {
                         <div className="type">React + .NET</div>
                         <div className="dev">Design & Desenvolvimento</div>
                     </div>
+                    <div className="container"></div>
                 </div>
                 <hr />
                 <div className="content">
@@ -132,7 +133,7 @@ const Home = () => {
                     <div className="work"></div>
                     <div className="work"></div>
                 </div>
-                <div className="row">
+                <div className="row reverse">
                     <div className="work"></div>
                     <div className="work"></div>
                     <div className="work"></div>

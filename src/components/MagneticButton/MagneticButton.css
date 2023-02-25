@@ -1,7 +1,7 @@
 .follows-btn {
-  transition: all ease 0.3s;
+  transition: all ease 0.3s !important;
 }
 
 .follows-btn:hover {
-  transition: all ease 0.2s;
+  transition: all ease 0.2s !important;
 }

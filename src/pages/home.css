@@ -73,20 +73,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 40px;
 }
 
 .about .paragraph {
-  font-size: 24px;
+  font-size: 28px;
   text-align: left;
   max-width: 800px;
+  line-height:48px;
 }
 
 .home .about .about-btn {
   width: 280px;
 }
 
+.home .about br {
+  margin: 10px;
+}
+
 .home .about .about-btn .text {
   margin-bottom: 40px;
+  font-size: 20px;
 }
 
 .home .about .MuiButtonBase-root {
@@ -173,6 +180,7 @@
   justify-content: space-between;
   align-items: center;
   transition: padding ease-out 0.8s;
+  cursor: pointer;
 }
 
 .home .works .content .text {
@@ -193,6 +201,13 @@
 .home .works .content .dev {
   color: #AAA;
   font-size: 14px;
+}
+
+.home .works .container {
+  position: absolute;
+  width: 300px;
+  height: 178px;
+  background-color: transparent;
 }
 
 .home .works .more-work {
@@ -227,12 +242,17 @@
   margin-bottom: 50px;
 }
 
+.home .works-grid .row.reverse {
+  transform: translateX(-20%);
+}
+
 .home .works-grid .row .work {
   width: 100%;
   background-color: #eee;
   height: 30vh;
   margin: 0 25px;
 }
+
 
 .home .contact {
   background-color: #333;
