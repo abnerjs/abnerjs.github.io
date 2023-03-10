@@ -98,7 +98,7 @@
   .home .works-grid .row .work {
     width: 100%;
     background-color: #eee;
-    height: 30vh;
+    height: 40vh;
     margin: 0 25px;
   }
 
@@ -126,6 +126,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 5;
 }
 .react-tooltip__clickable_KtSkBq {
   pointer-events: auto;

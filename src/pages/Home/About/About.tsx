@@ -12,16 +12,22 @@ const About = () => {
         easing: 'easeOutQuad',
         translateY: [50, -25],
     });
+    const parallaxTxt2 = useParallax<HTMLDivElement>({
+        easing: 'easeOutQuad',
+        translateY: [50, -25],
+    });
 
 
     return (
         <div className="about">
             <div className="paragraph" ref={parallaxTxt.ref}>
+                Olá, me chamo Abner!
+                <br />
                 Desenvolvedor React pronto pra ajudar a projetar e/ou desenvolver o software que você precisa.
                 <br />
-                Possui experiência em desenvolvimento web (Full-Stack) e UI/UX.
+                Possuo experiência em desenvolvimento web (Full-Stack) e UI/UX.
             </div>
-            <div className="about-btn" ref={parallaxTxt.ref}>
+            <div className="about-btn" ref={parallaxTxt2.ref}>
                 <div className="text">
                     A combinação da minha paixão por design, código e interações.
                 </div>

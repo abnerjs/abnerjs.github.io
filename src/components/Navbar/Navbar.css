@@ -46,3 +46,27 @@
     left:calc(50% - 8px);
     transition: all ease 0.8s;
 }
+
+.ham {
+    position: fixed;
+    right: 30px;
+    top: 30px;
+    transition: all ease .4s;
+}
+
+.scrolledNav {
+    width: 90px;
+    height: 90px;
+    border-radius: 50% !important;
+    z-index: 8;
+    background-color: #1e1e1e !important;
+}
+
+.scrolledNav:hover {
+    background-color: #444 !important;
+    transform: scale(0.2);
+}
+
+.scrolledNav svg {
+    font-size: 32px;
+}

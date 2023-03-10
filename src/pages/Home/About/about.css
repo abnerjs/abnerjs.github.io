@@ -32,9 +32,9 @@
     height: 200px;
     border-radius: 100px;
     font-size: 24px;
-    background-color: black;
+    background-color: #1e1e1e;
   }
   
   .home .about .MuiButtonBase-root:hover {
-    background-color: #333;
+    background-color: #444;
   }
