@@ -1,0 +1,106 @@
+.home .contact {
+  background-color: #333;
+  height: calc(100vh - 10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.home .contact .container {
+  margin: 0 15%;
+}
+
+.home .contact .container > .title {
+  color: white;
+  margin-bottom: 10vh;
+}
+
+.home .contact .container > .title h2 > div {
+  display: flex;
+  font-weight: normal;
+  font-size: 10vh;
+  align-items: center;
+}
+
+.home .contact hr {
+  width: 100%;
+  opacity: 0.1;
+  margin: 0;
+}
+
+.home .contact .contact-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.home .contact .contact-btn .float-btn {
+  position: absolute;
+  transform: translateY(-50%) translateX(-100px);
+}
+
+.home .contact .contact-btn .float-btn .elementBtn {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.home .contact .infos {
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  display: flex;
+  gap: 30px;
+}
+
+.home .contact .infos .MuiButtonBase-root {
+  color: #ddd;
+  border-color: #555;
+  height: 80px;
+  border-radius: 40px;
+  padding: 0 30px;
+}
+
+.home .contact .infos .MuiButtonBase-root:hover {
+  background-color: #444;
+}
+
+.home .contact .footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  margin: 0 40px;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.home .contact .footer .socials {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.home .contact .footer .socials a {
+  color: #eee;
+  margin-left: 10px;
+  text-decoration: none;
+  transition: all ease 0.3s;
+  padding: 5px;
+  border-radius: 2px;
+}
+
+.home .contact .footer .socials a:first-of-type {
+  margin-left: 0 !important;
+}
+
+.home .contact .footer .socials .title {
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.home .contact .footer .socials .links {
+  margin-top: 5px;
+}
+
+.home .contact .footer .socials a:hover {
+  background-color: #444;
+}

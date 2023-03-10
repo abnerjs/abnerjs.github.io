@@ -1,20 +1,23 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 const App: React.FC = (props: any) => {
   return (
     <div className="App">
-      <Router>
-        <Routes>
-          <Route path="/contact" element={<Contact/>}/>
-          <Route path="/" element={<Home/>}/>
-          <Route path="*" element={<NotFound/>}/>
-        </Routes>
-      </Router>
+      <ParallaxProvider>
+        <Router>
+          <Routes>
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Router>
+      </ParallaxProvider>
     </div>
   );
 }

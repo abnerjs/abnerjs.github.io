@@ -1,0 +1,40 @@
+.about {
+    background-color: white;
+    height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  .about .paragraph {
+    font-size: 28px;
+    text-align: left;
+    max-width: 800px;
+    line-height:48px;
+  }
+  
+  .home .about .about-btn {
+    width: 280px;
+  }
+  
+  .home .about br {
+    margin: 10px;
+  }
+  
+  .home .about .about-btn .text {
+    margin-bottom: 40px;
+    font-size: 20px;
+  }
+  
+  .home .about .MuiButtonBase-root {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    font-size: 24px;
+    background-color: black;
+  }
+  
+  .home .about .MuiButtonBase-root:hover {
+    background-color: #333;
+  }

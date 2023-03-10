@@ -1,0 +1,153 @@
+.home .works {
+    text-align: left;
+    padding: 0 10% 0 10%;
+    font-weight: 600;
+  }
+  
+  .home .works .title {
+    color: #555;
+    padding: 50px;
+  }
+  
+  .home .works hr {
+    opacity: 0.5;
+    margin: 0;
+    cursor: pointer;
+  }
+  
+  .home .works .content {
+    padding: 50px 50px 50px 50px;
+    color: #555;
+    font-size: 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: padding ease-out 0.8s;
+    cursor: pointer;
+    overflow-x: hidden;
+    white-space: nowrap;
+  }
+  
+  .home .works .content .text {
+    color: black;
+    font-weight: 500;
+  }
+  
+  .home .works .content .info {
+    text-align: right;
+    font-size: 16px;
+  }
+  
+  .home .works .content:hover {
+    padding: 50px 10px 50px 10px;
+    transition: padding ease-out 0.4s;
+  }
+  
+  .home .works .content .dev {
+    color: #AAA;
+    font-size: 14px;
+  }
+  
+  .home .works .container {
+    position: absolute;
+    width: 300px;
+    height: 178px;
+    background-color: transparent;
+  }
+  
+  .home .works .more-work {
+    display: flex;
+    justify-content: center;
+    padding: 100px 0 280px 0;
+  }
+  
+  .home .works .more-work .moreWork {
+    width: 230px;
+    height: 100px;
+    border-radius: 50px;
+    color: black;
+    font-weight: 600;
+    border-color: #aaa;
+  }
+  
+  .home .works .more-work .moreWork:hover {
+    background-color: #F8F8F8;
+  }
+  
+  .home .works-grid {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 200px;
+  }
+  
+  .home .works-grid>div {
+    display: block !important;
+  }
+  
+  .home .works-grid .row {
+    width: 125%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 50px;
+  }
+  
+  .home .works-grid .row.reverse {
+    margin-left: -25%;
+  }
+  
+  .home .works-grid .row .work {
+    width: 100%;
+    background-color: #eee;
+    height: 30vh;
+    margin: 0 25px;
+  }
+
+  .home .works .hover-box {
+    width: 400px;
+    height: 400px;
+    background-color: #555;
+    z-index: 999;
+  }
+
+
+
+  /* tooltip */
+
+.react-tooltip__tooltip_KtSkBq {
+  visibility: hidden;
+  width: max-content;
+  pointer-events: none;
+  will-change: visibility, scale;
+  border-radius: 3px;
+  padding: 8px 16px;
+  font-size: 90%;
+  transform: scale(0);
+  transition: transform .3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.react-tooltip__clickable_KtSkBq {
+  pointer-events: auto;
+}
+.react-tooltip__show_KtSkBq {
+  visibility: visible;
+  transform: scale(1);
+}
+
+.hover-panel {
+  display: flex;
+  justify-content: center;
+}
+
+.hover-panel .access {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: #23ACE6;
+  top: 150px;
+  bottom: 60px;
+  z-index: 1000;
+  border-radius: 50%;
+  top: 200px;
+}
