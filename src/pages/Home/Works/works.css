@@ -117,7 +117,7 @@
   visibility: hidden;
   width: max-content;
   pointer-events: none;
-  will-change: visibility, scale;
+  will-change: visibility, transform;
   border-radius: 3px;
   padding: 8px 16px;
   font-size: 90%;

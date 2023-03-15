@@ -23,7 +23,7 @@ const HoverPanel = (props: any) => {
                     width: '100%',
                     height: '400%',
                     transform: `translateY(-${25 * props.hoverIndex}%)`,
-                    transition: 'all ease 0.4s'
+                    transition: 'all ease 0.4s',
                 }}
             >
                 <div className="subPanel"

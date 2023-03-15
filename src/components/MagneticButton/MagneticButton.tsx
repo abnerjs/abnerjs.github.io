@@ -8,6 +8,8 @@ interface Props {
     endIcon?: any;
     children?: any;
     variant?: 'contained' | 'outlined' | 'text' | undefined;
+    style?: any;
+    disableRipple?: boolean;
 }
 
 const MagneticButton = (props: Props) => {
@@ -32,9 +34,11 @@ const MagneticButton = (props: Props) => {
             disableElevation
             onClick={props.onClick}
             endIcon={props.endIcon}
+            disableRipple={props.disableRipple}
             onMouseMove={(e) => handleMouseMove(e)}
             style={{
-                transform: translate
+                ...props.style,
+                transform: translate,
             }}
             onMouseLeave={handleMouseLeave}
         >

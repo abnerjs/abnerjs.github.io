@@ -1,19 +1,17 @@
 import { Icon } from '@iconify/react';
-import { Portal, Tab, Tabs } from '@mui/material';
+import { Drawer, Portal, Tab, Tabs } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import MagneticButton from '../MagneticButton/MagneticButton';
 import './Navbar.css'
 
 const Navbar = () => {
     const [show, setShow] = useState(false);
+    const [expand, setExpand] = useState(false);
 
     const controlNavbar = () => {
         if (typeof window !== 'undefined') {
-            if (window.scrollY > 300) {
-                setShow(false);
-            } else {
-                setShow(true);
-            }
+            setShow(window.scrollY > 300);
         }
     };
 
@@ -35,18 +33,84 @@ const Navbar = () => {
             </div>
 
             <div className="options">
-                <MagneticButton variant='text'>Trabalhos</MagneticButton>
-                <MagneticButton variant='text'>Contato</MagneticButton>
+                <MagneticButton disableRipple variant='text'>Trabalhos</MagneticButton>
+                <MagneticButton disableRipple variant='text'>Sobre</MagneticButton>
+                <MagneticButton disableRipple variant='text'>Contato</MagneticButton>
             </div>
 
             <Portal>
-                <div className="ham"
+                <div className='btnController'
                     style={{
-                        transform: `scale(${!show ? '1' : '0'})`
+                        transform: `scale(${show ? '1' : '0'})`
                     }}
                 >
-                    <MagneticButton className='scrolledNav'><Icon icon="ci:menu-duo-lg" /></MagneticButton>
+                    <MagneticButton className={`scrolledNavBtn${expand ? ' active' : ''}`}
+                        onClick={() => setExpand(!expand)}
+                    >
+                        <div className={`nav-icon${expand ? ' active' : ''}`}>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </MagneticButton>
                 </div>
+                <Drawer
+                    anchor='right'
+                    open={expand}
+                    onClose={() => { setExpand(false) }}
+                    PaperProps={{
+                        style: {
+                            width: 'calc(35% - 160px)',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            padding: '0 80px',
+                            backgroundColor: '#1e1e1e',
+                        }
+                    }}
+                    slotProps={{
+                        backdrop: {
+                            style: {
+                                backdropFilter: 'blur(8px)'
+                            }
+                        }
+                    }}
+                >
+                    <div className="title">NAVEGAÇÃO</div>
+                    <div className="stripe"></div>
+                    <div className="options">
+                        <MagneticButton variant='text'>Início</MagneticButton>
+                        <MagneticButton variant='text'>Trabalhos</MagneticButton>
+                        <MagneticButton variant='text'>Sobre</MagneticButton>
+                        <MagneticButton variant='text'>Contato</MagneticButton>
+                    </div>
+
+                    <div className="socials">
+                        <div className="title">REDES SOCIAIS</div>
+                        <div className="links">
+                            <Link to={{ pathname: 'https://wa.me/5518988189353' }} target="_blank">
+                                <MagneticButton variant='text'>
+                                    <Icon icon="akar-icons:whatsapp-fill" />
+                                </MagneticButton>
+                            </Link>
+                            <Link to={{ pathname: 'https://www.instagram.com/eae.abner/' }} target="_blank">
+                                <MagneticButton variant='text'>
+                                    <Icon icon="mdi:instagram" />
+                                </MagneticButton>
+                            </Link>
+                            <Link to={{ pathname: 'https://www.linkedin.com/in/abner-j-silva/' }} target="_blank">
+                                <MagneticButton variant='text'>
+                                    <Icon icon="ri:linkedin-fill" />
+                                </MagneticButton>
+                            </Link>
+                            <Link to={{ pathname: 'https://www.behance.net/abnerjsilva' }} target="_blank">
+                                <MagneticButton variant='text'>
+                                    <Icon icon="ri:behance-fill" />
+                                </MagneticButton>
+                            </Link>
+                        </div>
+                    </div>
+                </Drawer>
             </Portal>
         </div>
     );

@@ -25,7 +25,7 @@ const About = () => {
                 <br />
                 Desenvolvedor React pronto pra ajudar a projetar e/ou desenvolver o software que você precisa.
                 <br />
-                Possuo experiência em desenvolvimento web (Full-Stack) e UI/UX.
+                Pronto para criar a sua experiência digital e do seu cliente!
             </div>
             <div className="about-btn" ref={parallaxTxt2.ref}>
                 <div className="text">
