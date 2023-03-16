@@ -34,6 +34,7 @@ const MagneticButton = (props: Props) => {
             disableElevation
             onClick={props.onClick}
             endIcon={props.endIcon}
+            disableFocusRipple
             disableRipple={props.disableRipple}
             onMouseMove={(e) => handleMouseMove(e)}
             style={{

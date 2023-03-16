@@ -3,6 +3,7 @@ import { Drawer, Portal, Tab, Tabs } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import MagneticButton from '../MagneticButton/MagneticButton';
+import Stripe from '../Stripe/Stripe';
 import './Navbar.css'
 
 const Navbar = () => {
@@ -29,13 +30,13 @@ const Navbar = () => {
     return (
         <div className="navbar">
             <div className="title">
-                <MagneticButton variant='text'>Abner<b>Silva</b></MagneticButton>
+                <MagneticButton variant='text'><Link to='/'>Abner<b>Silva</b></Link></MagneticButton>
             </div>
 
             <div className="options">
-                <MagneticButton disableRipple variant='text'>Trabalhos</MagneticButton>
-                <MagneticButton disableRipple variant='text'>Sobre</MagneticButton>
-                <MagneticButton disableRipple variant='text'>Contato</MagneticButton>
+                <MagneticButton disableRipple variant='text'><Link to='/works'>Trabalhos</Link></MagneticButton>
+                <MagneticButton disableRipple variant='text'><Link to='/about'>Sobre</Link></MagneticButton>
+                <MagneticButton disableRipple variant='text'><Link to='/contact'>Contato</Link></MagneticButton>
             </div>
 
             <Portal>
@@ -77,7 +78,7 @@ const Navbar = () => {
                     }}
                 >
                     <div className="title">NAVEGAÇÃO</div>
-                    <div className="stripe"></div>
+                    <Stripe />
                     <div className="options">
                         <MagneticButton variant='text'>Início</MagneticButton>
                         <MagneticButton variant='text'>Trabalhos</MagneticButton>

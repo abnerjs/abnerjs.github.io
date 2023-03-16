@@ -2,16 +2,15 @@
   width: 100vw;
   height: calc(100vh + 71.68px);
   background-color: darkgrey;
-  background-image: url(src/assets/images/imgLanding.png);
   background-repeat: no-repeat;
   background-position: center center;
 }
 .home .landing .waves {
     position: absolute;
-    transform: scaleY(0.2);
-    bottom: -215px;
     left: 0;
-  }
+    transform: scaleY(0.2) translateY(-300%);
+    margin-top: calc(100vh + 71.68px);
+}
   
   .parallax > use {
     animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
@@ -45,11 +44,5 @@
     .waves {
       height: 40px;
       min-height: 40px;
-    }
-    .content {
-      height: 30vh;
-    }
-    h1 {
-      font-size: 24px;
     }
   }

@@ -5,6 +5,7 @@
   position: absolute;
   width: calc(100% - 144px);
   color: white;
+  height: 54px;
 }
 
 .navbar .title .MuiButton-root {
@@ -14,6 +15,11 @@
   align-self: center;
   cursor: pointer;
   text-transform: none;
+}
+
+.navbar .title .MuiButton-root a {
+  color: white;
+  text-decoration: none;
 }
 
 .navbar .title .MuiButton-root:hover {
@@ -30,6 +36,12 @@
   text-transform: none;
   font-size: 16px;
   border-radius: 4px;
+}
+
+.navbar .options a {
+  color: white;
+  text-transform: none;
+  text-decoration: none;
 }
 
 .navbar .options .MuiButton-root:hover {
@@ -66,6 +78,11 @@
   z-index: 1201;
   background-color: #1e1e1e !important;
   background-position: 0 -100%;
+  -webkit-box-shadow: 0 0 8px -3px #fff !important;
+  -moz-box-shadow: 0 0 8px -3px #fff !important;
+  -ms-box-shadow: 0 0 8px -3px #fff !important;
+  -o-box-shadow: 0 0 8px -3px #fff !important;
+  box-shadow: 0 0 8px -3px #fff !important;
 }
 
 .scrolledNavBtn:hover {
@@ -133,59 +150,51 @@
 }
 
 .MuiDrawer-root .MuiPaper-root {
-    color: white;
-    overflow: hidden;
+  color: white;
+  overflow: hidden;
 }
 
 .MuiDrawer-root .MuiPaper-root .title {
-    font-size: 12px;
-    color: #aaa;
-    font-weight: 600;
-}
-
-.MuiDrawer-root .MuiPaper-root .stripe {
-    width: 100%;
-    margin: 32px 0;
-    height: 1px;
-    opacity: 0.5;
-    background-color: #aaa;
+  font-size: 12px;
+  color: #aaa;
+  font-weight: 600;
 }
 
 .MuiDrawer-root .MuiPaper-root .options {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
 }
 
 .MuiDrawer-root .MuiPaper-root .socials {
-    margin-top: 30vh;
+  margin-top: 30vh;
 }
 
 .MuiDrawer-root .MuiPaper-root .title {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .MuiDrawer-root .MuiPaper-root .socials .links {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .MuiDrawer-root .MuiPaper-root .options .MuiButton-root {
-    font-size: 4vh;
-    width: fit-content;
-    background-color: transparent;
-    color: white;
+  font-size: 4vh;
+  width: fit-content;
+  background-color: transparent;
+  color: white;
 }
 
 .MuiDrawer-root .MuiPaper-root .options .MuiButton-root:hover:before {
-    content: "";
-    position: absolute;
-    left: -20px;
-    background: white;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    bottom: calc(50% - 4vhpx);
-    transition: all ease 0.8s;
-  }
+  content: "";
+  position: absolute;
+  left: -20px;
+  background: white;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  bottom: calc(50% - 4vhpx);
+  transition: all ease 0.8s;
+}

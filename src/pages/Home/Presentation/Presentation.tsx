@@ -21,7 +21,7 @@ const Presentation = () => {
 
             <div className="marquee">
                 <div className="track">
-                    <div className="content">&nbsp;Abner José da Silva • Abner José da Silva • Abner José da Silva • Abner José da Silva • </div>
+                    <div className="content">Abner José da Silva • Abner José da Silva • Abner José da Silva • Abner José da Silva • Abner José da Silva • Abner José da Silva • Abner José da Silva • Abner José da Silva • </div>
                 </div>
             </div>
 
