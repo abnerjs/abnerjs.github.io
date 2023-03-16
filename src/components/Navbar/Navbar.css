@@ -48,7 +48,7 @@
   background-color: transparent;
 }
 
-.navbar .options .MuiButton-root:hover:before {
+.navbar .options .MuiButton-root:before {
   content: "";
   position: absolute;
   bottom: -2px;
@@ -57,7 +57,12 @@
   height: 8px;
   border-radius: 50%;
   left: calc(50% - 8px);
-  transition: all ease 0.8s;
+  transition: all ease 0.4s;
+  transform: scale(0);
+}
+
+.navbar .options .MuiButton-root:hover:before {
+  transform: scale(1);
 }
 
 .btnController {
@@ -180,6 +185,17 @@
   justify-content: space-between;
 }
 
+.MuiDrawer-root .MuiPaper-root .socials .MuiButton-root {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.MuiDrawer-root .MuiPaper-root .socials .MuiButton-root svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+
 .MuiDrawer-root .MuiPaper-root .options .MuiButton-root {
   font-size: 4vh;
   width: fit-content;
@@ -187,7 +203,11 @@
   color: white;
 }
 
-.MuiDrawer-root .MuiPaper-root .options .MuiButton-root:hover:before {
+.MuiDrawer-root .MuiPaper-root .options .MuiButton-root a {
+  color: white;
+}
+
+.MuiDrawer-root .MuiPaper-root .options .MuiButton-root:before {
   content: "";
   position: absolute;
   left: -20px;
@@ -196,5 +216,10 @@
   height: 8px;
   border-radius: 50%;
   bottom: calc(50% - 4vhpx);
-  transition: all ease 0.8s;
+  transition: all ease 0.4s;
+  transform: scale(0);
+}
+
+.MuiDrawer-root .MuiPaper-root .options .MuiButton-root:hover:before {
+  transform: scale(1);
 }

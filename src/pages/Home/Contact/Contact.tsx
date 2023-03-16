@@ -3,7 +3,7 @@ import './contact.css';
 import { Link } from 'react-router-dom';
 import MagneticButton from 'src/components/MagneticButton/MagneticButton';
 import { Avatar } from '@mui/material';
-import photo from 'src/assets/images/imgLanding.png';
+import photo from 'src/assets/images/abnerig.jpg';
 import Footer from 'src/components/Footer/Footer';
 
 const Contact = () => {

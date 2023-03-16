@@ -4,6 +4,11 @@
   text-align: left;
   margin: 50px 0 0 20px;
   user-select: none;
+  transition: all ease .3s;
+}
+
+.field .filled {
+  color: #777;
 }
 
 .field .MuiTextField-root {

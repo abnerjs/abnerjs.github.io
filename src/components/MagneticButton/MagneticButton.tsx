@@ -10,6 +10,7 @@ interface Props {
     variant?: 'contained' | 'outlined' | 'text' | undefined;
     style?: any;
     disableRipple?: boolean;
+    disabled?: boolean;
 }
 
 const MagneticButton = (props: Props) => {
@@ -35,6 +36,7 @@ const MagneticButton = (props: Props) => {
             onClick={props.onClick}
             endIcon={props.endIcon}
             disableFocusRipple
+            disabled={props.disabled}
             disableRipple={props.disableRipple}
             onMouseMove={(e) => handleMouseMove(e)}
             style={{

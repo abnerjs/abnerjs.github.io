@@ -37,6 +37,26 @@
   margin-top: 5px;
 }
 
-.footer .socials a:hover {
-  background-color: #444;
+.footer .socials a:before {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  background: white;
+  width: 70%;
+  height: 1px;
+  border-radius: 2px;
+  transition: all ease 0.4s;
+  transform: scale(0);
+}
+
+.footer .socials .MuiButton-root {
+  text-transform: none !important;
+}
+
+.footer .socials .MuiButton-root:hover {
+  background-color: transparent;
+}
+
+.footer .socials a:hover::before {
+  transform: scale(1);
 }

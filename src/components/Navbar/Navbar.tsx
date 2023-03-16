@@ -80,10 +80,10 @@ const Navbar = () => {
                     <div className="title">NAVEGAÇÃO</div>
                     <Stripe />
                     <div className="options">
-                        <MagneticButton variant='text'>Início</MagneticButton>
-                        <MagneticButton variant='text'>Trabalhos</MagneticButton>
-                        <MagneticButton variant='text'>Sobre</MagneticButton>
-                        <MagneticButton variant='text'>Contato</MagneticButton>
+                        <MagneticButton disableRipple variant='text'><Link to='/'>Início</Link></MagneticButton>
+                        <MagneticButton disableRipple variant='text'><Link to='/works'>Trabalhos</Link></MagneticButton>
+                        <MagneticButton disableRipple variant='text'><Link to='/about'>Sobre</Link></MagneticButton>
+                        <MagneticButton disableRipple variant='text'><Link to='/contact'>Contato</Link></MagneticButton>
                     </div>
 
                     <div className="socials">

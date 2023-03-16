@@ -6,6 +6,7 @@ import { Avatar, TextField } from '@mui/material';
 import Stripe from 'src/components/Stripe/Stripe';
 import Field from 'src/components/Field/Field';
 import MagneticButton from 'src/components/MagneticButton/MagneticButton';
+import photo from 'src/assets/images/abnerig.jpg';
 
 const Contact = () => {
     return (
@@ -20,9 +21,7 @@ const Contact = () => {
                         um projeto juntos?
                     </div>
                     <div className="avatar">
-                        <Avatar>
-                            asd
-                        </Avatar>
+                        <Avatar src={photo} />
                     </div>
                 </div>
 
@@ -47,8 +46,9 @@ const Contact = () => {
                         </div>
                         <div className="section">
                             <div className="title">DETALHES</div>
-                            <MagneticButton variant='text'>Presidente Epitácio</MagneticButton>
-                            <MagneticButton variant='text'>Brasil</MagneticButton>
+                            <MagneticButton disabled variant='text'>Presidente Epitácio</MagneticButton>
+                            <MagneticButton disabled variant='text'>São Paulo</MagneticButton>
+                            <MagneticButton disabled variant='text'>Brasil</MagneticButton>
                         </div>
                         <div className="section">
                             <div className="title">REDES SOCIAIS</div>

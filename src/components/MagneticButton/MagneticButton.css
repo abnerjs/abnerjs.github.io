@@ -9,4 +9,5 @@
 
 .follows-btn a {
   outline: none;
+  text-decoration: none;
 }

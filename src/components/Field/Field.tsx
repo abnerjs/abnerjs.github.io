@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './field.css';
 import { TextField } from '@mui/material';
 
@@ -9,9 +9,11 @@ interface Props {
 }
 
 const Field = (props: Props) => {
+    const [filled, setFilled] = useState(false);
+
     return (
         <div className="field">
-            <div className="label">{props.label}</div>
+            <div className={`label${filled?' filled':''}`}>{props.label}</div>
             <TextField
                 variant="filled"
                 fullWidth
@@ -21,6 +23,9 @@ const Field = (props: Props) => {
                 }}
                 multiline={props.multiline}
                 rows={8}
+                onChange={(e) => {
+                    setFilled(e.target.value !== null && e.target.value !== undefined && e.target.value !== '');
+                }}
             />
         </div>
     );

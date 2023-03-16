@@ -6,6 +6,7 @@ import MagneticButton from 'src/components/MagneticButton/MagneticButton';
 import { Tooltip } from 'react-tooltip';
 import integra from 'src/assets/images/integra.png';
 import ponto from 'src/assets/images/ponto.png';
+import swingmd from 'src/assets/images/swingmd.gif';
 
 const HoverPanel = (props: any) => {
 
@@ -50,7 +51,7 @@ const HoverPanel = (props: any) => {
                         backgroundColor: '#D4B492',
                     }}
                 >
-                    <img src={integra} style={{
+                    <img src={swingmd} style={{
                         width: '80%'
                     }} />
                 </div>
@@ -104,10 +105,10 @@ const WorksContent = (props: any) => {
             <div className="content"
                 onMouseEnter={() => props.setHoverIndex(1)}
             >
-                <div className="text">iWorkOff</div>
+                <div className="text">Material Design</div>
                 <div className="info">
-                    <div className="type">React</div>
-                    <div className="dev">Design & Desenvolvimento</div>
+                    <div className="type">Java Swing</div>
+                    <div className="dev">Desenvolvimento de Componentes</div>
                 </div>
             </div>
             <hr />
