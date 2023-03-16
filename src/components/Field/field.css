@@ -28,6 +28,16 @@
   padding: 0;
 }
 
+.field .MuiTextField-root .MuiInputBase-input:-webkit-autofill,
+.field .MuiTextField-root .MuiInputBase-input:-webkit-autofill:focus,
+.field .MuiTextField-root .MuiInputBase-input:-internal-autofill-selected:focus,
+.field .MuiTextField-root .MuiInputBase-input:-internal-autofill-selected {
+  color: white !important;
+  background-color: #1e1e1e !important;
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0 50px #1e1e1e inset;
+}
+
 .field .MuiTextField-root textarea {
     scrollbar-color: #333;
     scrollbar-width: 10px;
