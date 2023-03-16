@@ -1,0 +1,28 @@
+.about .header {
+    margin: 25vh 15vw -40px 15vw;
+    font-size: calc(clamp(3.25em, 7vw, 8em) * .875);
+    display: flex;
+    flex-direction: column;
+}
+
+.about .header .title {
+    margin-bottom: 120px;
+}
+
+.about .header .lottie-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #673AB7;
+    align-self: flex-end;
+    transform: translate(-150px, -50%);
+    overflow: hidden;
+}
+
+.about .header .lottie-container > svg {
+    transform: scale(1.8) translate(20px, 20px) !important;
+}
+
+.about .content {
+    margin: 0 15vw 0 15vw;
+}

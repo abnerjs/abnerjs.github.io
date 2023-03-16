@@ -6,7 +6,11 @@ import MagneticButton from '../MagneticButton/MagneticButton';
 import Stripe from '../Stripe/Stripe';
 import './Navbar.css'
 
-const Navbar = () => {
+interface Props {
+    black?: boolean;
+}
+
+const Navbar = (props: Props) => {
     const [show, setShow] = useState(false);
     const [expand, setExpand] = useState(false);
 
@@ -29,11 +33,11 @@ const Navbar = () => {
 
     return (
         <div className="navbar">
-            <div className="title">
+            <div className={`title${props.black ? ' black':''}`}>
                 <MagneticButton variant='text'><Link to='/'>Abner<b>Silva</b></Link></MagneticButton>
             </div>
 
-            <div className="options">
+            <div className={`options${props.black ? ' black':''}`}>
                 <MagneticButton disableRipple variant='text'><Link to='/works'>Trabalhos</Link></MagneticButton>
                 <MagneticButton disableRipple variant='text'><Link to='/about'>Sobre</Link></MagneticButton>
                 <MagneticButton disableRipple variant='text'><Link to='/contact'>Contato</Link></MagneticButton>
@@ -45,10 +49,10 @@ const Navbar = () => {
                         transform: `scale(${show ? '1' : '0'})`
                     }}
                 >
-                    <MagneticButton className={`scrolledNavBtn${expand ? ' active' : ''}`}
+                    <MagneticButton className={`scrolledNavBtn${expand ? ' active':''}`}
                         onClick={() => setExpand(!expand)}
                     >
-                        <div className={`nav-icon${expand ? ' active' : ''}`}>
+                        <div className={`nav-icon${expand ? ' active':''}`}>
                             <span></span>
                             <span></span>
                             <span></span>

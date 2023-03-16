@@ -1,9 +1,9 @@
 import React from 'react';
-import './about.css';
+import './about-home.css';
 import MagneticButton from 'src/components/MagneticButton/MagneticButton';
 import { useParallax } from 'react-scroll-parallax';
 
-const About = () => {
+const AboutHome = () => {
     const parallax = useParallax<HTMLDivElement>({
         easing: 'easeOutQuad',
         translateY: [50, -25],
@@ -19,7 +19,7 @@ const About = () => {
 
 
     return (
-        <div className="about">
+        <div className="about-home">
             <div className="paragraph" ref={parallaxTxt.ref}>
                 Olá, me chamo Abner!
                 <br />
@@ -37,4 +37,4 @@ const About = () => {
     );
 }
 
-export default About;
+export default AboutHome;

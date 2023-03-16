@@ -1,4 +1,4 @@
-.about {
+.about-home {
     background-color: white;
     height: 800px;
     display: flex;
@@ -7,27 +7,27 @@
     gap: 40px;
   }
   
-  .about .paragraph {
+  .about-home .paragraph {
     font-size: 28px;
     text-align: left;
     max-width: 800px;
     line-height:48px;
   }
   
-  .home .about .about-btn {
+  .home .about-home .about-btn {
     width: 280px;
   }
   
-  .home .about br {
+  .home .about-home br {
     margin: 10px;
   }
   
-  .home .about .about-btn .text {
+  .home .about-home .about-btn .text {
     margin-bottom: 40px;
     font-size: 20px;
   }
   
-  .home .about .MuiButtonBase-root {
+  .home .about-home .MuiButtonBase-root {
     width: 200px;
     height: 200px;
     border-radius: 100px;
@@ -35,6 +35,6 @@
     background-color: #1e1e1e;
   }
   
-  .home .about .MuiButtonBase-root:hover {
+  .home .about-home .MuiButtonBase-root:hover {
     background-color: #444;
   }

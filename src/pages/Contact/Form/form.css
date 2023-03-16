@@ -7,7 +7,7 @@
 
 .contact .form .sendMailController {
   align-self: flex-end;
-  transform: translate(-20px, -50%);
+  transform: translateY(-50%);
 }
 
 .contact .form .sendMail {
@@ -15,4 +15,9 @@
   height: 200px;
   border-radius: 50%;
   font-size: 20px;
+  background-color: var(--primary);
+}
+
+.contact .form .sendMail:hover {
+  background-color: var(--primaryHover);
 }

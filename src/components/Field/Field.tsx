@@ -13,7 +13,7 @@ const Field = (props: Props) => {
 
     return (
         <div className="field">
-            <div className={`label${filled?' filled':''}`}>{props.label}</div>
+            <div className={`label${filled ? ' filled':''}`}>{props.label}</div>
             <TextField
                 variant="filled"
                 fullWidth
