@@ -1,28 +1,51 @@
-.about .header {
-    margin: 25vh 15vw -40px 15vw;
-    font-size: calc(clamp(3.25em, 7vw, 8em) * .875);
-    display: flex;
-    flex-direction: column;
+.works-with {
+  margin: 300px 10vw 300px 10vw;
 }
 
-.about .header .title {
-    margin-bottom: 120px;
+.works-with .title {
+  font-size: 6vh;
+  margin-bottom: 75px;
 }
 
-.about .header .lottie-container {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background-color: #673AB7;
-    align-self: flex-end;
-    transform: translate(-150px, -50%);
-    overflow: hidden;
+.works-with .title:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  -webkit-animation: ellipsis2 steps(4, end) 1400ms infinite;
+  animation: ellipsis2 steps(4, end) 1400ms infinite;
+  content: "\2026";
+  width: 0px;
 }
 
-.about .header .lottie-container > svg {
-    transform: scale(1.8) translate(20px, 20px) !important;
+@keyframes ellipsis2 {
+  to {
+    width: 0.8em;
+  }
 }
 
-.about .content {
-    margin: 0 15vw 0 15vw;
+@-webkit-keyframes ellipsis2 {
+  to {
+    width: 0.8em;
+  }
+}
+
+.works-with .row {
+  display: flex;
+  gap: 100px;
+}
+
+.works-with .row .section .number {
+  font-weight: 600;
+  color: #ccc;
+  margin-bottom: 5px;
+}
+
+.works-with .row .section .titleSkill {
+  margin: 30px 0;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.works-with .row .section .skillText {
+  text-align: justify;
 }

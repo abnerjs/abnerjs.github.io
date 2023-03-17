@@ -1,0 +1,49 @@
+.about .content {
+    margin: 0 15vw 0 15vw;
+    display: flex;
+  }
+  
+  .about .content .text {
+    font-size: 22px;
+    width: 25%;
+  }
+  
+  .about .content .text .points {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary);
+    margin-top: 50px;
+  }
+  
+  .about .content .text .points:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    -webkit-animation: ellipsis steps(4, end) 1400ms infinite;
+    animation: ellipsis steps(4, end) 1400ms infinite;
+    content: "\2026";
+    width: 0px;
+  }
+  
+  @keyframes ellipsis {
+    to {
+      width: 1em;
+    }
+  }
+  
+  @-webkit-keyframes ellipsis {
+    to {
+      width: 1em;
+    }
+  }
+  
+  .about .content .parallaxImg {
+    width: 70% !important;
+    height: 800px;
+    margin-left: 100px;
+  }
+  
+  .about .content .imgLayer {
+    width: 500px !important;
+  }
+  

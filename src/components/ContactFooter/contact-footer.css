@@ -1,4 +1,4 @@
-.home .contact {
+.contact-footer {
   background-color: #333;
   height: calc(100vh - 10px);
   display: flex;
@@ -6,16 +6,16 @@
   justify-content: flex-end;
 }
 
-.home .contact .container {
+.contact-footer .container {
   margin: 0 15%;
 }
 
-.home .contact .container > .title {
+.contact-footer .container > .title {
   color: white;
   margin-bottom: 10vh;
 }
 
-.home .contact .container > .title h2 > div {
+.contact-footer .container > .title h2 > div {
   display: flex;
   font-weight: normal;
   font-size: 10vh;
@@ -23,41 +23,41 @@
   font-weight: 500;
 }
 
-.home .contact hr {
+.contact-footer hr {
   width: 100%;
   opacity: 0.1;
   margin: 0;
 }
 
-.home .contact .contact-btn {
+.contact-footer .contact-btn {
   display: flex;
   justify-content: flex-end;
 }
 
-.home .contact .contact-btn .float-btn {
+.contact-footer .contact-btn .float-btn {
   position: absolute;
   transform: translateY(-50%) translateX(-100px);
 }
 
-.home .contact .contact-btn .float-btn .elementBtn {
+.contact-footer .contact-btn .float-btn .elementBtn {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   background-color: var(--primary);
 }
 
-.home .contact .contact-btn .float-btn .elementBtn:hover {
+.contact-footer .contact-btn .float-btn .elementBtn:hover {
   background-color: var(--primaryHover);
 }
 
-.home .contact .infos {
+.contact-footer .infos {
   margin-top: 10vh;
   margin-bottom: 10vh;
   display: flex;
   gap: 30px;
 }
 
-.home .contact .infos .MuiButtonBase-root {
+.contact-footer .infos .MuiButtonBase-root {
   color: #ddd;
   border-color: #555;
   height: 80px;
@@ -65,6 +65,6 @@
   padding: 0 30px;
 }
 
-.home .contact .infos .MuiButtonBase-root:hover {
+.contact-footer .infos .MuiButtonBase-root:hover {
   background-color: #444;
 }

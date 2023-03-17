@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from 'src/components/Navbar/Navbar';
 import './home.css';
-import Contact from './Contact/Contact';
+import ContactFooter from '../../components/ContactFooter/ContactFooter';
 import Works from './Works/Works';
 import Presentation from './Presentation/Presentation';
 import AboutHome from './About/AboutHome';
@@ -17,7 +17,7 @@ const Home = () => {
 
             <Works />
 
-            <Contact />
+            <ContactFooter />
         </div>
     );
 }

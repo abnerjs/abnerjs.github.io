@@ -1,14 +1,14 @@
 import React from 'react';
-import './contact.css';
+import './contact-footer.css';
 import { Link } from 'react-router-dom';
 import MagneticButton from 'src/components/MagneticButton/MagneticButton';
 import { Avatar } from '@mui/material';
 import photo from 'src/assets/images/abnerig.jpg';
 import Footer from 'src/components/Footer/Footer';
 
-const Contact = () => {
+const ContactFooter = () => {
     return (
-        <div className="contact">
+        <div className="contact-footer">
             <div className="container">
                 <div className="title">
                     <h2>
@@ -43,4 +43,4 @@ const Contact = () => {
     );
 }
 
-export default Contact;
+export default ContactFooter;
