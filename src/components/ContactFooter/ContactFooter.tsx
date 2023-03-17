@@ -30,7 +30,7 @@ const ContactFooter = () => {
                 <hr />
                 <div className="contact-btn">
                     <div className="float-btn">
-                        <MagneticButton className='elementBtn'>Sobre mim</MagneticButton>
+                        <MagneticButton className='elementBtn'><Link to='/contact'>Contate-me</Link></MagneticButton>
                     </div>
                 </div>
                 <div className="infos">

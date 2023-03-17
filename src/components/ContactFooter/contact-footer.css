@@ -50,6 +50,10 @@
   background-color: var(--primaryHover);
 }
 
+.contact-footer .contact-btn .float-btn .elementBtn a {
+  color: white;
+}
+
 .contact-footer .infos {
   margin-top: 10vh;
   margin-bottom: 10vh;
