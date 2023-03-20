@@ -1,15 +1,15 @@
 .App {
-    width: 100%;
-    overflow-x: hidden;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .title {
-    font-family: 'Roboto Condensed';
+  font-family: "Roboto Condensed";
 }
 
 :root {
-    --primary: #673AB7;
-    --primaryHover: #512DA8;
-    --secondary: #9575CD;
-    --secondary_3: rgba(149, 117, 205, 0.3);
+  --primary: #673ab7;
+  --primaryHover: #512da8;
+  --secondary: #9575cd;
+  --secondary_3: rgba(149, 117, 205, 0.3);
 }

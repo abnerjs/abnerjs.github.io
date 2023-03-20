@@ -18,7 +18,7 @@
 .contact > .form .title {
   display: flex;
   font-weight: normal;
-  font-size: calc(clamp(3.25em, 7vw, 8em) * .875);
+  font-size: calc(clamp(3.25em, 7vw, 8em) * 0.875);
   font-weight: 500;
   text-align: left;
   width: 78%;

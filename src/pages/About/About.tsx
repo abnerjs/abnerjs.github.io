@@ -1,25 +1,25 @@
-import React from 'react';
-import './about.css';
-import Navbar from 'src/components/Navbar/Navbar';
-import Header from './Header/Header';
-import Content from './Content/Content';
-import ContactFooter from 'src/components/ContactFooter/ContactFooter';
-import WorksWith from './Content/WorksWith/WorksWith';
+import React from "react";
+import "./about.css";
+import Navbar from "src/components/Navbar/Navbar";
+import Header from "./Header/Header";
+import Content from "./Content/Content";
+import ContactFooter from "src/components/ContactFooter/ContactFooter";
+import WorksWith from "./Content/WorksWith/WorksWith";
 
 const About = () => {
-    return (
-        <div className="about">
-            <Navbar black />
+  return (
+    <div className="about">
+      <Navbar black />
 
-            <Header />
+      <Header />
 
-            <Content />
+      <Content />
 
-            <WorksWith />
+      <WorksWith />
 
-            <ContactFooter />
-        </div>
-    );
-}
+      <ContactFooter />
+    </div>
+  );
+};
 
 export default About;

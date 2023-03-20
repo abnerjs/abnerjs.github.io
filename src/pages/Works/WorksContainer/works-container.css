@@ -1,0 +1,7 @@
+.works .works-container {
+  margin: 100px 7vw 400px 7vw;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 100px;
+  row-gap: 200px;
+}

@@ -1,51 +1,51 @@
 .works-with {
-    margin: 300px 10vw 300px 10vw;
+  margin: 300px 10vw 300px 10vw;
+}
+
+.works-with .title {
+  font-size: 6vh;
+  margin-bottom: 75px;
+}
+
+.works-with .title:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  -webkit-animation: ellipsis2 steps(4, end) 1400ms infinite;
+  animation: ellipsis2 steps(4, end) 1400ms infinite;
+  content: "\2026";
+  width: 0px;
+}
+
+@keyframes ellipsis2 {
+  to {
+    width: 0.8em;
   }
-  
-  .works-with .title {
-    font-size: 6vh;
-    margin-bottom: 75px;
+}
+
+@-webkit-keyframes ellipsis2 {
+  to {
+    width: 0.8em;
   }
-  
-  .works-with .title:after {
-    overflow: hidden;
-    display: inline-block;
-    vertical-align: bottom;
-    -webkit-animation: ellipsis2 steps(4, end) 1400ms infinite;
-    animation: ellipsis2 steps(4, end) 1400ms infinite;
-    content: "\2026";
-    width: 0px;
-  }
-  
-  @keyframes ellipsis2 {
-    to {
-      width: 0.8em;
-    }
-  }
-  
-  @-webkit-keyframes ellipsis2 {
-    to {
-      width: 0.8em;
-    }
-  }
-  
-  .works-with .row {
-    display: flex;
-    gap: 100px;
-  }
-  
-  .works-with .row .section .number {
-    font-weight: 600;
-    color: #ccc;
-    margin-bottom: 5px;
-  }
-  
-  .works-with .row .section .titleSkill {
-    margin: 30px 0;
-    font-size: 30px;
-    font-weight: 500;
-  }
-  
-  .works-with .row .section .skillText {
-    text-align: justify;
-  }
+}
+
+.works-with .row {
+  display: flex;
+  gap: 100px;
+}
+
+.works-with .row .section .number {
+  font-weight: 600;
+  color: #ccc;
+  margin-bottom: 5px;
+}
+
+.works-with .row .section .titleSkill {
+  margin: 30px 0;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.works-with .row .section .skillText {
+  text-align: justify;
+}

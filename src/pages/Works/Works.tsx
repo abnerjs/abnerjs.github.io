@@ -1,19 +1,23 @@
-import React from 'react';
-import './works.css';
-import Navbar from 'src/components/Navbar/Navbar';
+import React from "react";
+import "./works.css";
+import Navbar from "src/components/Navbar/Navbar";
+import Stripe from "src/components/Stripe/Stripe";
+import ContactFooter from "src/components/ContactFooter/ContactFooter";
+import Header from "./Header/Header";
+import WorksContainer from "./WorksContainer/WorksContainer";
 
 const Works = () => {
-    return (
-        <div className="works">
-            <Navbar black />
+  return (
+    <div className="works">
+      <Navbar black />
 
-            <div className="header">
-                <div className="title">
-                    Criando produtos digitais<br />fora da caixa
-                </div>
-            </div>
-        </div>
-    );
-}
+      <Header />
+
+      <WorksContainer />
+
+      <ContactFooter />
+    </div>
+  );
+};
 
 export default Works;

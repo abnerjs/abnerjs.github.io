@@ -1,6 +1,0 @@
-.works .header {
-    margin: 25vh 15vw 40px 15vw;
-    font-size: calc(clamp(3.25em, 7vw, 8em) * 0.875);
-    display: flex;
-    flex-direction: column;
-}

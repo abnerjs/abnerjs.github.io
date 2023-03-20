@@ -1,19 +1,18 @@
 import React from "react";
 import "./header.css";
-import Lottie from "lottie-react";
 import Stripe from "src/components/Stripe/Stripe";
-import animation from "src/assets/developer.json";
+import Lottie from "lottie-react";
+import animation from "src/assets/webdesign.json";
 
 const Header = () => {
   return (
     <div className="header">
       <div className="title">
-        Ajudando você a prosperar
+        Criando produtos digitais
         <br />
-        no mundo digital.
+        fora da caixa
       </div>
       <Stripe />
-
       <Lottie className="lottie-container" animationData={animation} />
     </div>
   );

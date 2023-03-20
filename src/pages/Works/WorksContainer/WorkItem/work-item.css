@@ -1,0 +1,23 @@
+.works .works-container .work-item {
+  width: calc(50% - 50px);
+}
+
+.works .works-container .work-item .panel {
+  height: 36vw;
+  background-color: red;
+  margin-bottom: 50px;
+}
+
+.works .works-container .work-item .title {
+  font-size: calc(clamp(3.25em, 7vw, 8em) * 0.4);
+}
+
+.works .works-container .work-item .description {
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+}
+
+.works .works-container .work-item .description span {
+  color: #777;
+}
