@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import { Parallax } from "react-scroll-parallax";
 import MagneticButton from "src/components/MagneticButton/MagneticButton";
 import { Tooltip } from "react-tooltip";
-import integra from "src/assets/images/integra.png";
+import integra from "src/assets/images/integra30.png";
 import ponto from "src/assets/images/ponto.png";
 import swingmd from "src/assets/images/swingmd.gif";
 

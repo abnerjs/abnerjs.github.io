@@ -195,6 +195,7 @@
   flex-direction: column;
   justify-content: flex-start;
   gap: 10px;
+  padding-top: 20px;
 }
 
 .MuiDrawer-root .MuiPaper-root .socials {

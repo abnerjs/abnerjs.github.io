@@ -1,11 +1,28 @@
 .works .works-container .work-item {
   width: calc(50% - 50px);
+  cursor: pointer;
 }
 
 .works .works-container .work-item .panel {
   height: 36vw;
-  background-color: red;
+  background-color: #EDDBC7;
   margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.works .works-container .work-item .panel .img {
+  width: 90%;
+  height: 90%;
+  transition: all ease .7s;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.works .works-container .work-item:hover .panel .img {
+  transform: scale(1.03);
 }
 
 .works .works-container .work-item .title {

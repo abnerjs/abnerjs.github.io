@@ -12,7 +12,10 @@ const Footer = () => {
         <div className="links">
           <MagneticButton variant="text">
             <Link
-              to={{ pathname: "https://wa.me/5518988189353" }}
+              to={{
+                pathname:
+                  "https://wa.me/5518997361645?text=Ol%C3%A1%2C%20Abner.%20Venho%20por%20meio%20do%20seu%20portfolio%20e%20gostaria%20de%20falar%20contigo!",
+              }}
               target="_blank"
             >
               WhatsApp
@@ -24,6 +27,14 @@ const Footer = () => {
               target="_blank"
             >
               Instagram
+            </Link>
+          </MagneticButton>
+          <MagneticButton variant="text">
+            <Link
+              to={{ pathname: "https://gitHub.com/abnerjs" }}
+              target="_blank"
+            >
+              GitHub
             </Link>
           </MagneticButton>
           <MagneticButton variant="text">

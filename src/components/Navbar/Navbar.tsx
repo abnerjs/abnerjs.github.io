@@ -115,7 +115,10 @@ const Navbar = (props: Props) => {
             <div className="title">REDES SOCIAIS</div>
             <div className="links">
               <Link
-                to={{ pathname: "https://wa.me/5518988189353" }}
+                to={{
+                  pathname:
+                    "https://wa.me/5518997361645?text=Ol%C3%A1%2C%20Abner.%20Venho%20por%20meio%20do%20seu%20portfolio%20e%20gostaria%20de%20falar%20contigo!",
+                }}
                 target="_blank"
               >
                 <MagneticButton variant="text">
@@ -128,6 +131,14 @@ const Navbar = (props: Props) => {
               >
                 <MagneticButton variant="text">
                   <Icon icon="mdi:instagram" />
+                </MagneticButton>
+              </Link>
+              <Link
+                to={{ pathname: "https://gitHub.com/abnerjs" }}
+                target="_blank"
+              >
+                <MagneticButton variant="text">
+                  <Icon icon="mdi:github" />
                 </MagneticButton>
               </Link>
               <Link

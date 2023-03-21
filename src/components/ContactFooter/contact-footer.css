@@ -69,6 +69,10 @@
   padding: 0 30px;
 }
 
+.contact-footer .infos .MuiButtonBase-root a {
+  color: #ddd;
+}
+
 .contact-footer .infos .MuiButtonBase-root:hover {
   background-color: #444;
 }
