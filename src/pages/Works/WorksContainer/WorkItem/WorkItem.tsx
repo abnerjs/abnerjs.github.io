@@ -7,29 +7,20 @@ interface Props {
   description: string;
   dev: string;
   year: string;
-  i: number;
+  setScale: Function;
   panel?: any;
 }
 
-const colours = [
-  '#EDDBC7',
-  '#A7727D',
-  '#FFDCA9',
-  '#E8F3D6',
-  '#B08BBB',
-  '#BDCDD6',
-  '#E5E3C9',
-  '#AC7D88',
-];
-
 const WorkItem = (props: Props) => {
   return (
-    <div className="work-item">
-      <div className="panel"
-      style={{
-        backgroundColor: colours[props.i % 8],
-      }}>
-        <div className="img"
+    <div className="work-item"
+      onMouseEnter={() => props.setScale(1)}
+      onMouseOver={() => props.setScale(1)}
+      onMouseLeave={() => props.setScale(0)}
+    >
+      <div className="panel">
+        <div
+          className="img"
           style={{
             backgroundImage: `url(${props.panel})`,
           }}

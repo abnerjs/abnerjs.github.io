@@ -5,11 +5,42 @@
 
 .works .works-container .work-item .panel {
   height: 36vw;
-  background-color: #EDDBC7;
   margin-bottom: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.works .works-container .work-item:nth-child(8n+1) .panel {
+  background-color: #EDDBC7;
+}
+
+.works .works-container .work-item:nth-child(8n+2) .panel {
+  background-color: #E5E3C9;
+}
+
+.works .works-container .work-item:nth-child(8n+3) .panel {
+  background-color: #E8F3D6;
+}
+
+.works .works-container .work-item:nth-child(8n+4) .panel {
+  background-color: #f1d6ad;
+}
+
+.works .works-container .work-item:nth-child(8n+5) .panel {
+  background-color: #f8e2ff;
+}
+
+.works .works-container .work-item:nth-child(8n+6) .panel {
+  background-color: #BDCDD6;
+}
+
+.works .works-container .work-item:nth-child(8n+7) .panel {
+  background-color: #f1c2cc;
+}
+
+.works .works-container .work-item:nth-child(8n) .panel {
+  background-color: #AC7D88;
 }
 
 .works .works-container .work-item .panel .img {

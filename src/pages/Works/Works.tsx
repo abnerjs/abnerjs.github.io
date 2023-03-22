@@ -1,21 +1,26 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./works.css";
 import Navbar from "src/components/Navbar/Navbar";
 import Stripe from "src/components/Stripe/Stripe";
 import ContactFooter from "src/components/ContactFooter/ContactFooter";
 import Header from "./Header/Header";
 import WorksContainer from "./WorksContainer/WorksContainer";
+import CustomCursorManager from "src/components/CustomCursor/Context/Manager";
 
 const Works = () => {
   return (
     <div className="works">
-      <Navbar black />
+      <CustomCursorManager>
+        <div className="page-wrapper">
+          <Navbar black />
 
-      <Header />
+          <Header />
 
-      <WorksContainer />
+          <WorksContainer />
 
-      <ContactFooter />
+          <ContactFooter />
+        </div>
+      </CustomCursorManager>
     </div>
   );
 };

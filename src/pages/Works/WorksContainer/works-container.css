@@ -5,3 +5,19 @@
   gap: 100px;
   row-gap: 200px;
 }
+
+.btn-hover-view {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-hover-view .text {
+  font-weight: 600;
+  color: white;
+  font-size: 16px;
+}

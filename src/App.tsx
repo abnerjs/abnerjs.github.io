@@ -7,7 +7,7 @@ import Works from "./pages/Works/Works";
 import NotFound from "./pages/NotFound";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ParallaxProvider } from "react-scroll-parallax";
-import ScrollToTop from "./ScrollToTop/ScrollToTop";
+import ScrollToTop from "./utils/ScrollToTop/ScrollToTop";
 
 const App: React.FC = (props: any) => {
   return (

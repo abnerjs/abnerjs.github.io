@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import "./works-container.css";
 import Stripe from "src/components/Stripe/Stripe";
 import WorkItem from "./WorkItem/WorkItem";
 import integra from "src/assets/images/integra30.png";
+import CustomCursor from "src/components/CustomCursor/CustomCursor";
 
 const WorksContainer = () => {
+  const [scale, setScale] = useState(0);
+
   return (
     <div className="works-container">
+      <CustomCursor scale={scale}>
+        <div className="btn-hover-view">
+          <div className="text">Ver</div>
+        </div>
+      </CustomCursor>
       <WorkItem
         title="Portal de Relatórios"
         description="Design & Desenvolvimento"
         dev="React"
         year="2022"
         panel={undefined}
-        i={0}
+        setScale={setScale}
       />
       <WorkItem
         title="iWorkOff"
@@ -21,7 +29,7 @@ const WorksContainer = () => {
         dev="React"
         year="2021"
         panel={undefined}
-        i={1}
+        setScale={setScale}
       />
       <WorkItem
         title="Material Design"
@@ -29,7 +37,7 @@ const WorksContainer = () => {
         dev="Java Swing"
         year="2019"
         panel={undefined}
-        i={2}
+        setScale={setScale}
       />
       <WorkItem
         title="SIGAM"
@@ -37,7 +45,7 @@ const WorksContainer = () => {
         dev="Java Swing"
         year="2019"
         panel={undefined}
-        i={3}
+        setScale={setScale}
       />
       <WorkItem
         title="Sistema de Ponto"
@@ -45,7 +53,7 @@ const WorksContainer = () => {
         dev="Figma"
         year="2022"
         panel={undefined}
-        i={4}
+        setScale={setScale}
       />
       <WorkItem
         title="Identidade Visual"
@@ -53,11 +61,8 @@ const WorksContainer = () => {
         dev="Photoshop"
         year="2020"
         panel={integra}
-        i={5}
+        setScale={setScale}
       />
-      <div className="hover-button">
-        
-      </div>
     </div>
   );
 };
