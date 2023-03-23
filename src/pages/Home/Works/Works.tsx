@@ -8,6 +8,7 @@ import integra from "src/assets/images/integra30.png";
 import ponto from "src/assets/images/ponto.png";
 import swingmd from "src/assets/images/swingmd.gif";
 import CustomCursor from "src/components/CustomCursor/CustomCursor";
+import { Link } from "react-router-dom";
 
 const HoverPanel = (props: any) => {
   return (
@@ -196,7 +197,7 @@ const Works = () => {
             variant="outlined"
             endIcon={<Icon icon="fluent:arrow-right-48-regular" />}
           >
-            Mais trabalhos
+            <Link to='/works'>Mais trabalhos</Link>
           </MagneticButton>
         </div>
       </div>

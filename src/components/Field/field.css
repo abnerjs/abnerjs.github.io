@@ -61,3 +61,21 @@
 .field .MuiTextField-root textarea::-webkit-scrollbar-thumb:hover {
   background: #777;
 }
+
+.field .MuiTextField-root .MuiFormHelperText-root {
+  color: #e23c3c;
+  user-select: none;
+  position: absolute;
+  bottom: 20px;
+}
+
+.field .MuiTextField-root .MuiFormHelperText-root::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background-color: #e23c3c;
+  left: -15px;
+  transform: translateY(150%);
+  position: absolute;
+  border-radius: 50%;
+}

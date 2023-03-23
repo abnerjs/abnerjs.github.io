@@ -70,6 +70,10 @@
   border-color: #aaa;
 }
 
+.home .works .more-work .moreWork a {
+  color: black;
+}
+
 .home .works .more-work .moreWork:hover {
   background-color: #f8f8f8;
 }
