@@ -3,6 +3,10 @@
   overflow-x: hidden;
 }
 
+.App>div {
+  overflow: hidden;
+}
+
 .title {
   font-family: "Roboto Condensed";
 }

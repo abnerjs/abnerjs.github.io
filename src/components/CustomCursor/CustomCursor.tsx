@@ -3,15 +3,15 @@ import "./custom-cursor.css";
 import CustomCursorContext from "./Context/CustomCursorContext";
 
 interface Props {
-  scale: number;
+  scale?: number;
   children?: ReactNode;
 }
 
 const CustomCursor = ({children, ...props}: Props) => {
   const { type } = useContext(CustomCursorContext);
-  const secondaryCursor = React.useRef<HTMLDivElement>(null);
+  const secondaryCursor = useRef<HTMLDivElement>(null);
   
-  const positionRef = React.useRef({
+  const positionRef = useRef({
     mouseX: 0,
     mouseY: 0,
     destinationX: 0,
@@ -21,7 +21,7 @@ const CustomCursor = ({children, ...props}: Props) => {
     key: -1,
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.addEventListener("mousemove", (event) => {
       const { clientX, clientY } = event;
 
@@ -42,7 +42,7 @@ const CustomCursor = ({children, ...props}: Props) => {
     return () => {};
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const followMouse = () => {
       positionRef.current.key = requestAnimationFrame(followMouse);
 
@@ -83,7 +83,7 @@ const CustomCursor = ({children, ...props}: Props) => {
       <div className="secondary-cursor" ref={secondaryCursor}>
         <div className="cursor-background"
           style={{
-            transform: `scale(${props.scale})`
+            transform: `scale(${props.scale ?? 1})`
           }}
         >{children}</div>
       </div>

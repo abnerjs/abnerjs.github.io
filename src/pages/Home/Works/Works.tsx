@@ -7,6 +7,7 @@ import { Tooltip } from "react-tooltip";
 import integra from "src/assets/images/integra30.png";
 import ponto from "src/assets/images/ponto.png";
 import swingmd from "src/assets/images/swingmd.gif";
+import CustomCursor from "src/components/CustomCursor/CustomCursor";
 
 const HoverPanel = (props: any) => {
   return (
@@ -108,7 +109,14 @@ const HoverPanel = (props: any) => {
 const WorksContent = (props: any) => {
   return (
     <>
-      <div className="content" onMouseEnter={() => props.setHoverIndex(0)}>
+      <div
+        className="content"
+        onMouseEnter={() => {
+          props.setHoverIndex(0);
+          props.setScale(1);
+        }}
+        onMouseLeave={() => props.setScale(0)}
+      >
         <div className="text">Portal de Relatórios</div>
         <div className="info">
           <div className="type">React + .NET</div>
@@ -117,7 +125,14 @@ const WorksContent = (props: any) => {
         <div className="container"></div>
       </div>
       <hr />
-      <div className="content" onMouseEnter={() => props.setHoverIndex(1)}>
+      <div
+        className="content"
+        onMouseEnter={() => {
+          props.setHoverIndex(1);
+          props.setScale(1);
+        }}
+        onMouseLeave={() => props.setScale(0)}
+      >
         <div className="text">Material Design</div>
         <div className="info">
           <div className="type">Java Swing</div>
@@ -125,7 +140,14 @@ const WorksContent = (props: any) => {
         </div>
       </div>
       <hr />
-      <div className="content" onMouseEnter={() => props.setHoverIndex(2)}>
+      <div
+        className="content"
+        onMouseEnter={() => {
+          props.setHoverIndex(2);
+          props.setScale(1);
+        }}
+        onMouseLeave={() => props.setScale(0)}
+      >
         <div className="text">Sistema de Ponto</div>
         <div className="info">
           <div className="type">Figma</div>
@@ -133,7 +155,14 @@ const WorksContent = (props: any) => {
         </div>
       </div>
       <hr />
-      <div className="content" onMouseEnter={() => props.setHoverIndex(3)}>
+      <div
+        className="content"
+        onMouseEnter={() => {
+          props.setHoverIndex(3);
+          props.setScale(1);
+        }}
+        onMouseLeave={() => props.setScale(0)}
+      >
         <div className="text">Identidade Visual</div>
         <div className="info">
           <div className="type">Photoshop</div>
@@ -146,6 +175,7 @@ const WorksContent = (props: any) => {
 };
 
 const Works = () => {
+  const [scale, setScale] = useState(0);
   const [hoverIndex, setHoverIndex] = useState(0);
 
   return (
@@ -154,13 +184,11 @@ const Works = () => {
         <div className="title">Principais trabalhos</div>
         <hr />
 
-        <a id="works-hoverable" data-tooltip-offset={-250}>
-          <WorksContent setHoverIndex={setHoverIndex} />
-        </a>
-
-        <Tooltip anchorSelect="#works-hoverable" float>
+        <CustomCursor scale={scale}>
           <HoverPanel hoverIndex={hoverIndex} />
-        </Tooltip>
+        </CustomCursor>
+
+        <WorksContent setScale={setScale} setHoverIndex={setHoverIndex} />
 
         <div className="more-work">
           <MagneticButton

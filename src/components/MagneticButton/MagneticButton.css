@@ -1,6 +1,7 @@
 .follows-btn {
   transition: all ease 0.3s !important;
   outline: none;
+  position: fixed;
 }
 
 .follows-btn:hover {
