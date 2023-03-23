@@ -1,7 +1,6 @@
 .home .landing {
   width: 100vw;
   height: calc(100vh + 71.68px);
-  background-color: darkgrey;
   background-repeat: no-repeat;
   background-position: center center;
 }

@@ -7,6 +7,7 @@
   width: calc(100% - 144px);
   color: white;
   height: 54px;
+  z-index: 1;
 }
 
 .navbar .title .MuiButton-root {

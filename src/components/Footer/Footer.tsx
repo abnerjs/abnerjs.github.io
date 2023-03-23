@@ -2,10 +2,12 @@ import React from "react";
 import "./footer.css";
 import { Link } from "react-router-dom";
 import MagneticButton from "../MagneticButton/MagneticButton";
+import signal from 'src/assets/images/navbar/sigWhite.png';
 
 const Footer = () => {
   return (
     <div className="footer">
+      <img src={signal} className='img-footer' />
       <div className="copy">© 2023 - Desenvolvido por Abner J. Silva</div>
       <div className="socials">
         <div className="title">REDES SOCIAIS</div>

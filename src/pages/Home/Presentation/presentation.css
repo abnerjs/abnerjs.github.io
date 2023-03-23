@@ -65,3 +65,56 @@
     transform: translateX(-50%);
   }
 }
+
+.home .presentation .balls {
+  position: relative;
+}
+
+.home .presentation .ball {
+  position: absolute;
+  width: 50vw;
+  height: 50vw;
+  filter: blur(12px);
+}
+
+.home .presentation .ball.red {
+  transform: translate3d(-30%, -50%, 0);
+}
+
+.home .presentation .ball.blue {
+  right: 0;
+  transform: translate3d(20%, 50%, 0);
+}
+
+.home .presentation .ball.purple {
+  transform: translate3d(0%, 40%, 0);
+}
+
+.home .presentation .ball.orange {
+  right: 0;
+  transform: translate3d(-35%, -60%, 0);
+}
+
+.home .presentation .eu {
+  height: calc(100vh + 71.68px);
+  overflow: hidden;
+  width: 100%;
+}
+
+.home .presentation .eu .img-eu {
+  position: relative;
+}
+
+.home .presentation .eu .img-eu img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.home .presentation .backdrop {
+  background-color: #ccc;
+  width: 100vw;
+  height: calc(100vh + 71.68px);
+  opacity: .7;
+  overflow: hidden;
+}

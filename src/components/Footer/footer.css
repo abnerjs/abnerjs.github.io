@@ -8,6 +8,19 @@
   font-size: 14px;
 }
 
+.footer .img-footer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 40px;
+  opacity: .1;
+  transition: all ease 1s;
+}
+
+.footer .img-footer:hover {
+  opacity: .4;
+}
+
 .footer .socials {
   display: flex;
   flex-direction: column;

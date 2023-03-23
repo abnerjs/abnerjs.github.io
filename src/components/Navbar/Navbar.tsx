@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import MagneticButton from "../MagneticButton/MagneticButton";
 import Stripe from "../Stripe/Stripe";
 import "./Navbar.css";
+import nameblack from 'src/assets/images/navbar/nameblack.png';
+import name from 'src/assets/images/navbar/namewhite.png';
 
 interface Props {
   black?: boolean;
@@ -35,7 +37,7 @@ const Navbar = (props: Props) => {
       <div className={`title${props.black ? " black" : ""}`}>
         <MagneticButton variant="text">
           <Link to="/">
-            Abner<b>Silva</b>
+            <img src={props.black ? nameblack : name} height={55} />
           </Link>
         </MagneticButton>
       </div>

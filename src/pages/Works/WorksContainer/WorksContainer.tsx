@@ -63,6 +63,14 @@ const WorksContainer = () => {
         panel={integra}
         setScale={setScale}
       />
+      <WorkItem
+        title="Insumos"
+        description="Design & Interação"
+        dev="Figma"
+        year="2022"
+        panel={undefined}
+        setScale={setScale}
+      />
     </div>
   );
 };
