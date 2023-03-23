@@ -77,7 +77,7 @@
 .home .works-grid {
   width: 100%;
   overflow: hidden;
-  margin-bottom: 200px;
+  padding-bottom: 200px;
 }
 
 .home .works-grid > div {
