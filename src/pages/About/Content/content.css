@@ -43,6 +43,52 @@
   margin-left: 100px;
 }
 
-.about .content .imgLayer {
-  width: 500px !important;
+.about .content .imgLayer img {
+  width: 150% !important;
+  transform: translate(-17%, -17%);
+}
+@media (max-width: 1365px) {
+  .about .content {
+    margin: 0 4vw 0 4vw;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .about .content .text {
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .about .content .text .points {
+    margin-top: 30px;
+  }
+
+  .about .content .parallaxImg {
+    width: 100% !important;
+    height: 500px;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .about .content {
+    margin: 0 4vw 0 4vw;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .about .content .text {
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .about .content .text .points {
+    margin-top: 30px;
+  }
+
+  .about .content .parallaxImg {
+    width: 100% !important;
+    height: 500px;
+    margin-left: 0;
+  }
 }

@@ -49,3 +49,14 @@
 .works-with .row .section .skillText {
   text-align: justify;
 }
+
+@media (max-width: 768px) {
+  .works-with {
+    margin: 100px 4vw 200px 4vw;
+  }
+
+  .works-with .row {
+    flex-direction: column;
+    gap: 100px;
+  }
+}

@@ -17,7 +17,7 @@ const Content = () => {
       <ParallaxBanner className="parallaxImg">
         <ParallaxBannerLayer
           expanded={false}
-          speed={-30}
+          speed={-20}
           opacity={[0.9, 1]}
           className="imgLayer"
         >
