@@ -60,16 +60,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 80px;
+    margin-top: 0;
     width: 100%;
   }
 
   .home .about-home .about-btn .text {
     align-self: flex-start;
+    font-size: 16px;
     width: 65%;
+    margin: 0;
   }
 
   .home .about-home .about-btn .div {
     align-self: flex-end;
+  }
+
+  .about-home {
+    height: 700px;
   }
 }

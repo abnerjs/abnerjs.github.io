@@ -21,3 +21,15 @@
   color: white;
   font-size: 16px;
 }
+
+@media (max-width: 768px) {
+  .works .works-container {
+    margin: 100px 4vw 200px 4vw;
+    display: flex;
+    row-gap: 50px;
+  }
+
+  .btn-hover-view {
+    display: none;
+  }
+}

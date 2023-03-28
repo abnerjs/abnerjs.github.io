@@ -1,6 +1,7 @@
 .works .works-container .work-item {
   width: calc(50% - 50px);
   cursor: pointer;
+  user-select: none;
 }
 
 .works .works-container .work-item .panel {
@@ -68,4 +69,26 @@
 
 .works .works-container .work-item .description span {
   color: #777;
+}
+
+@media (max-width: 768px) {
+  .works .works-container .work-item {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .works .works-container .work-item .panel {
+    height: 300px;
+    margin-bottom: 25px;
+  }
+
+  .works .works-container .work-item:hover .panel .img {
+    transform: scale(1);
+  }
+
+  .works .works-container .work-item .description {
+    flex-direction: column;
+    gap: 10px;
+    font-size: 14px;
+  }
 }

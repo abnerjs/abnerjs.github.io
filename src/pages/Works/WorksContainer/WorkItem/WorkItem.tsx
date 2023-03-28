@@ -13,7 +13,8 @@ interface Props {
 
 const WorkItem = (props: Props) => {
   return (
-    <div className="work-item"
+    <div
+      className="work-item"
       onMouseEnter={() => props.setScale(1)}
       onMouseOver={() => props.setScale(1)}
       onMouseLeave={() => props.setScale(0)}

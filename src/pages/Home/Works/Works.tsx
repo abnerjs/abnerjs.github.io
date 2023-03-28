@@ -145,7 +145,7 @@ const WorksContent = (props: any) => {
       </div>
       <hr />
       <div
-        className="content"
+        className="content mobile"
         onMouseEnter={() => {
           props.setHoverIndex(2);
           props.setScale(1);
@@ -158,9 +158,9 @@ const WorksContent = (props: any) => {
           <div className="dev">Design & Interação</div>
         </div>
       </div>
-      <hr />
+      <hr className="mobile" />
       <div
-        className="content"
+        className="content mobile"
         onMouseEnter={() => {
           props.setHoverIndex(3);
           props.setScale(1);
@@ -173,7 +173,7 @@ const WorksContent = (props: any) => {
           <div className="dev">Design</div>
         </div>
       </div>
-      <hr />
+      <hr className="mobile" />
     </>
   );
 };

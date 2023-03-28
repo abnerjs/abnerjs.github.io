@@ -2,8 +2,10 @@ import React from "react";
 import "./about-home.css";
 import MagneticButton from "src/components/MagneticButton/MagneticButton";
 import { useParallax } from "react-scroll-parallax";
+import { useNavigate } from "react-router";
 
 const AboutHome = () => {
+  const navigate = useNavigate();
   const parallax = useParallax<HTMLDivElement>({
     easing: "easeOutQuad",
     translateY: [50, -25],
@@ -32,7 +34,9 @@ const AboutHome = () => {
           A combinação da minha paixão por design, código e interações.
         </div>
         <div className="div" ref={parallax.ref}>
-          <MagneticButton>Sobre mim</MagneticButton>
+          <MagneticButton onClick={() => navigate("/about")}>
+            Sobre mim
+          </MagneticButton>
         </div>
       </div>
     </div>

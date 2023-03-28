@@ -16,7 +16,7 @@ const ContactFooter = () => {
         className="parallaxDivider"
         style={{
           height: `${200 * (1 - progress)}px`,
-          marginBottom: `calc(100vh - ${200 * (1 - progress) + 10}px)`,
+          marginBottom: `calc(100vh - ${200 * (1 - progress) + 9}px)`,
           borderRadius: `50%/0 0 ${200 * (1 - progress)}px ${
             200 * (1 - progress)
           }px`,

@@ -16,7 +16,7 @@
 }
 
 .home .works .content {
-  padding: 50px 50px 50px 50px;
+  padding: 50px;
   color: #555;
   font-size: 72px;
   display: flex;
@@ -39,7 +39,7 @@
 }
 
 .home .works .content:hover {
-  padding: 50px 10px 50px 10px;
+  padding: 50px 10px;
   transition: padding ease-out 0.4s;
 }
 
@@ -175,12 +175,29 @@
     align-items: flex-start;
   }
 
+  .home .works .content.mobile {
+    display: none;
+  }
+
+  .home .works hr.mobile {
+    display: none;
+  }
+
   .home .works .content .info {
     align-self: flex-end;
     margin-top: 15px;
   }
 
   .home .works-grid {
+    display: none;
+  }
+
+  .home .works .content:hover {
+    padding: 50px 20px;
+    transition: padding ease-out 0.4s;
+  }
+
+  .home .hover-panel {
     display: none;
   }
 }

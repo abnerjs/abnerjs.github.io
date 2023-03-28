@@ -7,6 +7,13 @@ import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
 import eu from "src/assets/images/eu.png";
 
 const Presentation = () => {
+  const onDownload = () => {
+    const link = document.createElement("a");
+    link.download = `AbnerCurriculumVitae.pdf`;
+    link.href = './AbnerCurriculumVitae.pdf';
+    link.click();
+  };
+
   return (
     <div className="presentation">
       <ParallaxBanner style={{ aspectRatio: "1 / 1" }}>
@@ -96,17 +103,12 @@ const Presentation = () => {
         <Button
           variant="contained"
           disableElevation
+          onClick={onDownload}
           endIcon={<Icon icon="fluent:arrow-download-16-filled" />}
         >
-          <a
-            href="src/assets/AbnerCurriculumVitae.pdf"
-            target="_blank"
-            download
-          >
-            BAIXAR
-            <br />
-            CURRÍCULO
-          </a>
+          BAIXAR
+          <br />
+          CURRÍCULO
         </Button>
       </div>
 

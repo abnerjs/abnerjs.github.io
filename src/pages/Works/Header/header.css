@@ -22,3 +22,23 @@
 .works .header .lottie-container > svg {
   transform: scale(1.2) translate(20px, 20px) !important;
 }
+
+@media (max-width: 768px) {
+  .works .header {
+    margin: 20vh 4vw 40px 4vw;
+  }
+
+  .works .header .title {
+    margin-bottom: 60px;
+  }
+
+  .works .header .lottie-container {
+    width: 100px;
+    height: 100px;
+    transform: translate(-50px, -50%);
+  }
+
+  .works .header .lottie-container > svg {
+    transform: scale(1.4) translate(0px, 15px) !important;
+  }
+}
