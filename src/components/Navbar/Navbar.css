@@ -41,6 +41,10 @@
   gap: 20px;
 }
 
+.navbar .options.mobile {
+  display: none;
+}
+
 .navbar .options .MuiButton-root {
   color: white;
   text-transform: none;
@@ -54,7 +58,7 @@
   text-decoration: none;
 }
 
-.navbar .options .MuiButton-root {
+.navbar .options.black .MuiButton-root {
   color: black;
 }
 
@@ -183,6 +187,11 @@
 .MuiDrawer-root .MuiPaper-root {
   color: white;
   overflow: hidden;
+  width: calc(35% - 160px);
+  display: flex;
+  justify-content: center;
+  padding: 0 80px;
+  background-color: #1e1e1e;
 }
 
 .MuiDrawer-root .MuiPaper-root .title {
@@ -254,4 +263,24 @@
 
 .MuiDrawer-root .MuiPaper-root .options .MuiButton-root:hover:before {
   transform: scale(1);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    margin: 24px 10px;
+    width: calc(100% - 20px);
+  }
+
+  .navbar .options {
+    display: none;
+  }
+  
+  .navbar .options.mobile {
+    display: flex;
+  }
+
+  .MuiDrawer-root .MuiPaper-root {
+    width: calc(100% - 40px);
+    padding: 0 20px;
+  }
 }

@@ -7,11 +7,16 @@
   overflow: hidden;
 }
 
+.contact-footer .MuiAvatar-root {
+  width: 100px;
+  height: 100px;
+}
+
 .contact-footer .parallaxDivider {
   width: 100%;
   background-color: white;
   position: absolute;
-  transform: scaleX(1.2);
+  transform: scaleX(1);
   z-index: 1;
   display: flex;
   justify-content: center;
@@ -28,8 +33,7 @@
 
 .contact-footer .container > .title h2 > div {
   display: flex;
-  font-weight: normal;
-  font-size: 10vh;
+  font-size: calc(clamp(3.25em, 7vw, 8em) * 0.675);
   align-items: center;
   font-weight: 500;
 }
@@ -47,7 +51,7 @@
 
 .contact-footer .contact-btn .float-btn {
   position: absolute;
-  transform: translateY(-50%) translateX(-100px);
+  transform: translate(-100px, -50%);
 }
 
 .contact-footer .contact-btn .float-btn .elementBtn {
@@ -86,4 +90,36 @@
 
 .contact-footer .infos .MuiButtonBase-root:hover {
   background-color: #444;
+}
+
+@media (max-width: 768px) {
+  .contact-footer .container {
+    margin: 0 5%;
+  }
+
+  .contact-footer .container > .title {
+    margin-bottom: 5vh;
+    width: 80%;
+  }
+
+  .contact-footer .contact-btn .float-btn .elementBtn {
+    width: 150px;
+    height: 150px;
+  }
+
+  .contact-footer .infos {
+    margin-top: 14vh;
+    margin-bottom: 5vh;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .contact-footer .contact-btn .float-btn {
+    transform: translate(-10px, -50%);
+  }
+
+  .contact-footer .MuiAvatar-root {
+    width: 70px;
+    height: 70px;
+  }
 }

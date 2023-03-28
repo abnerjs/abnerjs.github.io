@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import MagneticButton from "../MagneticButton/MagneticButton";
 import Stripe from "../Stripe/Stripe";
 import "./Navbar.css";
-import nameblack from 'src/assets/images/navbar/nameblack.png';
-import name from 'src/assets/images/navbar/namewhite.png';
+import nameblack from "src/assets/images/navbar/nameblack.png";
+import name from "src/assets/images/navbar/namewhite.png";
 
 interface Props {
   black?: boolean;
@@ -37,7 +37,7 @@ const Navbar = (props: Props) => {
       <div className={`title${props.black ? " black" : ""}`}>
         <MagneticButton variant="text">
           <Link to="/">
-            <img src={props.black ? nameblack : name} height={55} />
+            <img src={props.black ? nameblack : name} height={45} />
           </Link>
         </MagneticButton>
       </div>
@@ -54,11 +54,21 @@ const Navbar = (props: Props) => {
         </MagneticButton>
       </div>
 
+      <div className={`options mobile${props.black ? " black" : ""}`}>
+        <MagneticButton
+          onClick={() => setExpand(!expand)}
+          disableRipple
+          variant="text"
+        >
+          Menu
+        </MagneticButton>
+      </div>
+
       <Portal>
         <div
           className="btnController"
           style={{
-            transform: `scale(${show ? "1" : "0"})`,
+            transform: `scale(${show || expand ? "1" : "0"})`,
           }}
         >
           <MagneticButton
@@ -79,15 +89,6 @@ const Navbar = (props: Props) => {
           onClose={() => {
             setExpand(false);
           }}
-          PaperProps={{
-            style: {
-              width: "calc(35% - 160px)",
-              display: "flex",
-              justifyContent: "center",
-              padding: "0 80px",
-              backgroundColor: "#1e1e1e",
-            },
-          }}
           slotProps={{
             backdrop: {
               style: {
@@ -99,16 +100,32 @@ const Navbar = (props: Props) => {
           <div className="title">NAVEGAÇÃO</div>
           <Stripe />
           <div className="options">
-            <MagneticButton disableRipple variant="text">
+            <MagneticButton
+              onClick={() => setExpand(false)}
+              disableRipple
+              variant="text"
+            >
               <Link to="/">Início</Link>
             </MagneticButton>
-            <MagneticButton disableRipple variant="text">
+            <MagneticButton
+              onClick={() => setExpand(false)}
+              disableRipple
+              variant="text"
+            >
               <Link to="/works">Trabalhos</Link>
             </MagneticButton>
-            <MagneticButton disableRipple variant="text">
+            <MagneticButton
+              onClick={() => setExpand(false)}
+              disableRipple
+              variant="text"
+            >
               <Link to="/about">Sobre</Link>
             </MagneticButton>
-            <MagneticButton disableRipple variant="text">
+            <MagneticButton
+              onClick={() => setExpand(false)}
+              disableRipple
+              variant="text"
+            >
               <Link to="/contact">Contato</Link>
             </MagneticButton>
           </div>

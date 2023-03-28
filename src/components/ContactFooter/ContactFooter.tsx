@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./contact-footer.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MagneticButton from "src/components/MagneticButton/MagneticButton";
 import { Avatar } from "@mui/material";
 import photo from "src/assets/images/abnerig.jpg";
@@ -9,6 +9,7 @@ import { Parallax } from "react-scroll-parallax";
 
 const ContactFooter = () => {
   const [progress, setProgress] = useState(0);
+  const navigate = useNavigate();
   return (
     <div className="contact-footer">
       <div
@@ -22,7 +23,7 @@ const ContactFooter = () => {
         }}
       ></div>
       <Parallax
-        onProgressChange={(progress) => setProgress(progress * 2.2)}
+        onProgressChange={(progress) => setProgress(progress * 2.7)}
         speed={-20}
       >
         <div className="container">
@@ -34,8 +35,6 @@ const ContactFooter = () => {
                   src={photo}
                   sx={{
                     bgcolor: "darkgrey",
-                    width: 100,
-                    height: 100,
                     marginRight: 4,
                   }}
                 />
@@ -47,33 +46,34 @@ const ContactFooter = () => {
           <hr />
           <div className="contact-btn">
             <div className="float-btn">
-              <MagneticButton className="elementBtn">
-                <Link to="/contact">Contate-me</Link>
+              <MagneticButton
+                onClick={() => navigate("/contact")}
+                className="elementBtn"
+              >
+                Contate-me
               </MagneticButton>
             </div>
           </div>
           <div className="infos">
-            <MagneticButton variant="outlined">
-              <Link
-                to="#"
-                onClick={(e: any) => {
-                  window.location.href = "mailto:abner.js05@gmail.com";
-                  e.preventDefault();
-                }}
-              >
-                abner.js05@gmail.com
-              </Link>
+            <MagneticButton
+              onClick={(e: any) => {
+                window.location.href = "mailto:abner.js05@gmail.com";
+                e.preventDefault();
+              }}
+              variant="outlined"
+            >
+              abner.js05@gmail.com
             </MagneticButton>
-            <MagneticButton variant="outlined">
-              <Link
-                to={{
-                  pathname:
-                    "https://wa.me/5518997361645?text=Ol%C3%A1%2C%20Abner.%20Venho%20por%20meio%20do%20seu%20portfolio%20e%20gostaria%20de%20falar%20contigo!",
-                }}
-                target="_blank"
-              >
-                +55 18 99736-1645
-              </Link>
+            <MagneticButton
+              onClick={(e: any) => {
+                navigate(
+                  "https://wa.me/5518997361645?text=Ol%C3%A1%2C%20Abner.%20Venho%20por%20meio%20do%20seu%20portfolio%20e%20gostaria%20de%20falar%20contigo!"
+                );
+                e.preventDefault();
+              }}
+              variant="outlined"
+            >
+              +55 18 99736-1645
             </MagneticButton>
           </div>
         </div>

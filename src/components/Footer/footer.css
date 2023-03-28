@@ -13,12 +13,12 @@
   left: 50%;
   transform: translateX(-50%);
   height: 40px;
-  opacity: .1;
+  opacity: 0.1;
   transition: all ease 1s;
 }
 
 .footer .img-footer:hover {
-  opacity: .4;
+  opacity: 0.4;
 }
 
 .footer .socials {
@@ -44,7 +44,7 @@
 .footer .socials .title {
   font-weight: 800;
   font-size: 12px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
 }
 
 .footer .socials .links {
@@ -73,4 +73,36 @@
 
 .footer .socials a:hover::before {
   transform: scale(1);
+}
+
+@media (max-width: 768px) {
+  .footer {
+    height: fit-content;
+    margin: 0 10px;
+  }
+
+  .footer .copy {
+    display: none;
+  }
+
+  .footer .socials {
+    width: 100%;
+  }
+
+  .footer .socials a {
+    margin-left: 0;
+    padding: 0;
+    font-size: 12px;
+  }
+
+  .footer .socials .links {
+    margin-bottom: 80px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .footer .socials .links .MuiButton-root:first-child {
+    display: none;
+  }
 }

@@ -4,11 +4,14 @@ import { Icon } from "@iconify/react";
 import { Parallax } from "react-scroll-parallax";
 import MagneticButton from "src/components/MagneticButton/MagneticButton";
 import { Tooltip } from "react-tooltip";
-import integra from "src/assets/images/integra30.png";
-import ponto from "src/assets/images/ponto.png";
-import swingmd from "src/assets/images/swingmd.gif";
 import CustomCursor from "src/components/CustomCursor/CustomCursor";
 import { Link } from "react-router-dom";
+import integra from "src/assets/images/works/integra30.png";
+import ponto from "src/assets/images/works/ponto.png";
+import swingmd from "src/assets/images/works/swingmd.gif";
+import insumos from "src/assets/images/works/insumos.png";
+import iworkoff from "src/assets/images/works/iworkoff.gif";
+import portalRelat from "src/assets/images/works/portalRelat.gif";
 
 const HoverPanel = (props: any) => {
   return (
@@ -42,7 +45,7 @@ const HoverPanel = (props: any) => {
           }}
         >
           <img
-            src={integra}
+            src={portalRelat}
             style={{
               width: "80%",
             }}
@@ -197,7 +200,7 @@ const Works = () => {
             variant="outlined"
             endIcon={<Icon icon="fluent:arrow-right-48-regular" />}
           >
-            <Link to='/works'>Mais trabalhos</Link>
+            <Link to="/works">Mais trabalhos</Link>
           </MagneticButton>
         </div>
       </div>
@@ -206,7 +209,9 @@ const Works = () => {
         <Parallax translateX={["0%", "-20%"]}>
           <div className="row">
             <div className="work"></div>
-            <div className="work"></div>
+            <div className="work">
+              <img src={insumos} />
+            </div>
             <div className="work"></div>
             <div className="work"></div>
           </div>
@@ -215,7 +220,9 @@ const Works = () => {
           <div className="row reverse">
             <div className="work"></div>
             <div className="work"></div>
-            <div className="work"></div>
+            <div className="work">
+            <img src={iworkoff} />
+            </div>
             <div className="work"></div>
           </div>
         </Parallax>

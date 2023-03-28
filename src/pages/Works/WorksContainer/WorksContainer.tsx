@@ -3,10 +3,12 @@ import "./works-container.css";
 import Stripe from "src/components/Stripe/Stripe";
 import CustomCursor from "src/components/CustomCursor/CustomCursor";
 import WorkItem from "./WorkItem/WorkItem";
-import integra from "src/assets/images/integra30.png";
-import insumos from "src/assets/images/insumos.png";
-import ponto from "src/assets/images/ponto.png";
-import swingmd from "src/assets/images/swingmd.gif";
+import integra from "src/assets/images/works/integra30.png";
+import insumos from "src/assets/images/works/insumos.png";
+import ponto from "src/assets/images/works/ponto.png";
+import swingmd from "src/assets/images/works/swingmd.gif";
+import iworkoff from "src/assets/images/works/iworkoff.gif";
+import portalRelat from "src/assets/images/works/portalRelat.gif";
 
 const WorksContainer = () => {
   const [scale, setScale] = useState(0);
@@ -23,7 +25,7 @@ const WorksContainer = () => {
         description="Design & Desenvolvimento"
         dev="React"
         year="2022"
-        panel={undefined}
+        panel={portalRelat}
         setScale={setScale}
       />
       <WorkItem
@@ -31,7 +33,7 @@ const WorksContainer = () => {
         description="Design & Desenvolvimento"
         dev="React"
         year="2021"
-        panel={undefined}
+        panel={iworkoff}
         setScale={setScale}
       />
       <WorkItem

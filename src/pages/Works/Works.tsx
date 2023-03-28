@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "./works.css";
 import Navbar from "src/components/Navbar/Navbar";
-import Stripe from "src/components/Stripe/Stripe";
 import ContactFooter from "src/components/ContactFooter/ContactFooter";
 import Header from "./Header/Header";
 import WorksContainer from "./WorksContainer/WorksContainer";
