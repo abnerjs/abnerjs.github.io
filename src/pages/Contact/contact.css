@@ -33,3 +33,30 @@
   display: flex;
   gap: 1.33em;
 }
+
+@media (max-width: 768px) {
+  .contact .form .header {
+    flex-direction: column;
+    padding-top: 20vh;
+    margin-bottom: 10vh;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .contact .form {
+    margin: 0 4vw 50px 4vw;
+  }
+
+  .contact > .form .title {
+    width: 100%;
+  }
+
+  .contact .form .header .avatar {
+    display: none;
+  }
+
+  .contact .form .row {
+    flex-direction: column;
+    gap: 0;
+  }
+}

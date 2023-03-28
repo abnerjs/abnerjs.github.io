@@ -49,3 +49,13 @@
 .contact .form .side-info .MuiButton-root:hover:before {
   transform: scale(1);
 }
+
+@media (max-width: 768px) {
+  .contact .form .side-info {
+    width: 100%;
+  }
+
+  .contact .form .side-info .socials {
+    display: none;
+  }
+}

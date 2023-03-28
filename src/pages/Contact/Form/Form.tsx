@@ -121,7 +121,7 @@ const Form = () => {
       />
       <Stripe margin={0} />
       <Parallax
-        translateX={["-120px", "100px"]}
+        translateX={["-120px", "80px"]}
         style={{
           alignSelf: "flex-end",
         }}

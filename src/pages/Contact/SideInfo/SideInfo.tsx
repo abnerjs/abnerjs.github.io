@@ -43,7 +43,7 @@ const SideInfo = () => {
           Brasil
         </MagneticButton>
       </div>
-      <div className="section">
+      <div className="section socials">
         <div className="title">REDES SOCIAIS</div>
         <MagneticButton variant="text">
           <Link

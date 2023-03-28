@@ -26,3 +26,9 @@
 .contact .form .sendMail:hover {
   background-color: var(--primaryHover);
 }
+
+@media (max-width: 768px) {
+  .contact .form .content {
+    width: 100%;
+  }
+}
