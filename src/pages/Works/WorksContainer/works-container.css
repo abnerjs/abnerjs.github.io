@@ -33,3 +33,9 @@
     display: none;
   }
 }
+
+@media screen and (max-height: 768px) and (orientation: landscape) {
+  .btn-hover-view {
+    display: none;
+  }
+}

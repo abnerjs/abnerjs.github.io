@@ -43,9 +43,9 @@ const MagneticButton = (props: Props) => {
       beta: e.beta || 0,
       gamma: e.gamma || 0,
     });
-    props.devOrientationX && setTranslate(`translate(${e.gamma! * 0.4}px, 0)`);
-    props.devOrientationY && setTranslate(`translate(0, ${e.beta! * 0.5}px)`);
-    props.devOrientation && setTranslate(`translate(${e.gamma! * 0.4}px, ${e.beta! * 0.5}px)`);
+    props.devOrientationX && setTranslate(`translate(${-e.gamma! * 0.4}px, 0)`);
+    props.devOrientationY && setTranslate(`translate(0, ${-e.beta! * 0.5}px)`);
+    props.devOrientation && setTranslate(`translate(${-e.gamma! * 0.4}px, ${-e.beta! * 0.5}px)`);
   };
 
   useEffect(() => {

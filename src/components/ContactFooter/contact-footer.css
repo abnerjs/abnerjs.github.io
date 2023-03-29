@@ -123,3 +123,34 @@
     height: 70px;
   }
 }
+
+@media (max-height: 768px) and (orientation: landscape) {
+  .contact-footer .container {
+    margin: 0 5%;
+  }
+
+  .contact-footer .container > .title {
+    margin-bottom: 5vh;
+    width: 80%;
+  }
+
+  .contact-footer .contact-btn .float-btn .elementBtn {
+    width: 150px;
+    height: 150px;
+  }
+
+  .contact-footer .infos {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    gap: 10px;
+  }
+
+  .contact-footer .contact-btn .float-btn {
+    transform: translate(-10px, -50%);
+  }
+
+  .contact-footer .MuiAvatar-root {
+    width: 70px;
+    height: 70px;
+  }
+}

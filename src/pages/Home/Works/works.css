@@ -201,3 +201,31 @@
     display: none;
   }
 }
+
+@media (max-height: 768px) and (orientation: landscape) {
+  .home .works {
+    padding: 0;
+  }
+
+  .home .works .content {
+    padding: 50px 20px;
+    font-size: 30px;
+    align-items: flex-start;
+  }
+
+  .home .works .more-work {
+    padding: 100px 0 80px 0;
+  }
+
+  .home .hover-panel {
+    display: none;
+  }
+
+  .home .works .content.mobile {
+    display: none;
+  }
+
+  .home .works hr.mobile {
+    display: none;
+  }
+}

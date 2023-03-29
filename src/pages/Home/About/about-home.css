@@ -79,3 +79,12 @@
     height: 700px;
   }
 }
+
+@media screen and (max-height: 768px) and (orientation: landscape) {
+  .about-home {
+    flex-direction: column;
+    gap: 0;
+    height: 600px;
+    margin: 0;
+  }
+}
