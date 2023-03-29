@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./MagneticButton.css";
 
 interface Props {
@@ -14,8 +14,42 @@ interface Props {
   type?: any;
 }
 
+interface devOrientation {
+  absolute: boolean;
+  alpha: number;
+  beta: number;
+  gamma: number;
+}
+
+const defaultOrientation: devOrientation = {
+  alpha: 0,
+  beta: 0,
+  gamma: 0,
+  absolute: false,
+};
+
 const MagneticButton = (props: Props) => {
   const [translate, setTranslate] = useState("translate(0,0)");
+  const [orientation, setOrientation] =
+    useState<devOrientation>(defaultOrientation);
+
+  const handleDeviceOrientation = (e: DeviceOrientationEvent) => {
+    setOrientation({
+      absolute: e.absolute,
+      alpha: e.alpha || 0,
+      beta: e.beta || 0,
+      gamma: e.gamma || 0,
+    });
+    setTranslate(`translate(${e.gamma! * 0.3}px, ${e.beta! * 0.1}px)`);
+  };
+
+  useEffect(() => {
+    window.addEventListener("deviceorientation", handleDeviceOrientation, true);
+
+    return () => {
+      window.removeEventListener("deviceorientation", handleDeviceOrientation);
+    };
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
     const btn = e.target as HTMLElement;
