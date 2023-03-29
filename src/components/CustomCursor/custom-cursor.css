@@ -2,13 +2,60 @@
   position: absolute;
 }
 
-.secondary-cursor {
+.secondary-cursor, .main-cursor {
   z-index: 10000;
-  pointer-events: none;
   transform: translate3d(0, 0, 0);
   position: fixed;
   top: -14px;
   left: 0;
+}
+
+.secondary-cursor {
+  pointer-events: none;
+}
+
+.main-cursor {
+  z-index: 10001;
+  transition: opacity 1s cubic-bezier(0.77, 0, 0.175, 1);
+  animation: fadeIn 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+  top: -20px;
+}
+
+.main-cursor-background {
+  width: calc(100vh * 2.3);
+  height: calc(100vh * 2.3);
+  background-color: black;
+  border-radius: calc(100vh * 1.15);
+  transition: all 1s ease;
+}
+
+.main-cursor-background-text {
+  color: white;
+  font-size: 8vw;
+  pointer-events: none;
+  position: relative;
+  z-index: 10002;
+  opacity: 0;
+  transition: all .8s ease;
+}
+
+.main-cursor-background-text .text {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+@media screen and (orientation: landscape) {
+  .main-cursor-background {
+    width: calc(100vw * 2.3);
+    height: calc(100vw * 2.3);
+    border-radius: calc(100vw * 1.15);
+  }
+  .main-cursor-background-text {
+    font-size: 10vh;
+  }
 }
 
 .secondary-cursor {

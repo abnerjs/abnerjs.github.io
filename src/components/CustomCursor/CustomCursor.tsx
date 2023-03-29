@@ -3,14 +3,18 @@ import "./custom-cursor.css";
 import CustomCursorContext from "./Context/CustomCursorContext";
 
 interface Props {
+  primary?: boolean;
+  primaryScale?: number;
   scale?: number;
   children?: ReactNode;
+  transitionLabel?: string;
 }
 
-const CustomCursor = ({children, ...props}: Props) => {
+const CustomCursor = ({ children, ...props }: Props) => {
   const { type } = useContext(CustomCursorContext);
+  const mainCursorTransition = useRef<HTMLDivElement>(null);
   const secondaryCursor = useRef<HTMLDivElement>(null);
-  
+
   const positionRef = useRef({
     mouseX: 0,
     mouseY: 0,
@@ -32,10 +36,15 @@ const CustomCursor = ({children, ...props}: Props) => {
         positionRef.current.mouseX =
           mouseX - secondaryCursor.current.clientWidth / 2;
       }
-
       if (positionRef.current && secondaryCursor.current) {
         positionRef.current.mouseY =
           mouseY - secondaryCursor.current.clientHeight / 2;
+      }
+
+      if (mainCursorTransition.current !== null) {
+        mainCursorTransition.current.style.transform = `translate3d(${
+          mouseX - mainCursorTransition.current.clientWidth / 2
+        }px, ${mouseY - mainCursorTransition.current.clientHeight / 2}px, 0)`;
       }
     });
 
@@ -80,13 +89,47 @@ const CustomCursor = ({children, ...props}: Props) => {
   }, []);
   return (
     <div className={`cursor-wrapper ${type}`}>
-      <div className="secondary-cursor" ref={secondaryCursor}>
-        <div className="cursor-background"
-          style={{
-            transform: `scale(${props.scale ?? 1})`
-          }}
-        >{children}</div>
-      </div>
+      {props.primary && (
+        <>
+          <div
+            className="main-cursor"
+            style={{
+              pointerEvents:
+                props.primaryScale && props.primaryScale === 1
+                  ? "auto"
+                  : "none",
+            }}
+            ref={mainCursorTransition}
+          >
+            <div
+              className="main-cursor-background"
+              style={{
+                transform: `scale(${props.primaryScale ?? 1})`,
+              }}
+            ></div>
+          </div>
+          <div
+            className="main-cursor-background-text"
+            style={{
+              opacity: props.primaryScale && props.primaryScale === 1 ? 1 : 0,
+            }}
+          >
+            <div className="text">{props.transitionLabel}</div>
+          </div>
+        </>
+      )}
+      {!props.primary && (
+        <div className="secondary-cursor" ref={secondaryCursor}>
+          <div
+            className="cursor-background"
+            style={{
+              transform: `scale(${props.scale ?? 1})`,
+            }}
+          >
+            {children}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

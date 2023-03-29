@@ -1,18 +1,23 @@
 import { Icon } from "@iconify/react";
 import { Drawer, Portal, Tab, Tabs } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import MagneticButton from "../MagneticButton/MagneticButton";
 import Stripe from "../Stripe/Stripe";
 import "./Navbar.css";
 import nameblack from "src/assets/images/navbar/nameblack.png";
 import name from "src/assets/images/navbar/namewhite.png";
+import useTransitionStore from "src/store/storeConfig";
 
 interface Props {
   black?: boolean;
 }
 
 const Navbar = (props: Props) => {
+  const changeTransition = useTransitionStore((state) => state.change);
+  const changeLabel = useTransitionStore((state) => state.changeLabel);
+  const navigate = useNavigate();
+  const location = useLocation();
   const [show, setShow] = useState(false);
   const [expand, setExpand] = useState(false);
 
@@ -20,6 +25,19 @@ const Navbar = (props: Props) => {
     if (typeof window !== "undefined") {
       setShow(window.scrollY > 300);
     }
+  };
+
+  const handlerGoTo = (url: string, label: string) => {
+    if(location.pathname === url) return;
+    changeTransition(1);
+    changeLabel(`• ${label} •`);
+
+    const timer = setTimeout(() => {
+      navigate(url);
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+    };
   };
 
   useEffect(() => {
@@ -35,22 +53,35 @@ const Navbar = (props: Props) => {
   return (
     <div className="navbar">
       <div className={`title${props.black ? " black" : ""}`}>
-        <MagneticButton variant="text">
-          <Link to="/">
-            <img src={props.black ? nameblack : name} height={45} />
-          </Link>
+        <MagneticButton
+          onClick={() => handlerGoTo("/", "INÍCIO")}
+          variant="text"
+        >
+          <img src={props.black ? nameblack : name} height={45} />
         </MagneticButton>
       </div>
 
       <div className={`options${props.black ? " black" : ""}`}>
-        <MagneticButton disableRipple variant="text">
-          <Link to="/works">Trabalhos</Link>
+        <MagneticButton
+          onClick={() => handlerGoTo("/works", "TRABALHOS")}
+          disableRipple
+          variant="text"
+        >
+          Trabalhos
         </MagneticButton>
-        <MagneticButton disableRipple variant="text">
-          <Link to="/about">Sobre</Link>
+        <MagneticButton
+          onClick={() => handlerGoTo("/about", "SOBRE")}
+          disableRipple
+          variant="text"
+        >
+          Sobre
         </MagneticButton>
-        <MagneticButton disableRipple variant="text">
-          <Link to="/contact">Contato</Link>
+        <MagneticButton
+          onClick={() => handlerGoTo("/contact", "CONTATO")}
+          disableRipple
+          variant="text"
+        >
+          Contato
         </MagneticButton>
       </div>
 
@@ -86,6 +117,7 @@ const Navbar = (props: Props) => {
         <Drawer
           anchor="right"
           open={expand}
+          transitionDuration={500}
           onClose={() => {
             setExpand(false);
           }}
@@ -101,32 +133,44 @@ const Navbar = (props: Props) => {
           <Stripe />
           <div className="options">
             <MagneticButton
-              onClick={() => setExpand(false)}
+              onClick={() => {
+                setExpand(false);
+                handlerGoTo("/", "INÍCIO");
+              }}
               disableRipple
               variant="text"
             >
-              <Link to="/">Início</Link>
+              Início
             </MagneticButton>
             <MagneticButton
-              onClick={() => setExpand(false)}
+              onClick={() => {
+                setExpand(false);
+                handlerGoTo("/works", "TRABALHOS");
+              }}
               disableRipple
               variant="text"
             >
-              <Link to="/works">Trabalhos</Link>
+              Trabalhos
             </MagneticButton>
             <MagneticButton
-              onClick={() => setExpand(false)}
+              onClick={() => {
+                setExpand(false);
+                handlerGoTo("/about", "SOBRE");
+              }}
               disableRipple
               variant="text"
             >
-              <Link to="/about">Sobre</Link>
+              Sobre
             </MagneticButton>
             <MagneticButton
-              onClick={() => setExpand(false)}
+              onClick={() => {
+                setExpand(false);
+                handlerGoTo("/contact", "CONTATO");
+              }}
               disableRipple
               variant="text"
             >
-              <Link to="/contact">Contato</Link>
+              Contato
             </MagneticButton>
           </div>
 

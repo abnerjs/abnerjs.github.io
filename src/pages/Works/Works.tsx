@@ -5,8 +5,20 @@ import ContactFooter from "src/components/ContactFooter/ContactFooter";
 import Header from "./Header/Header";
 import WorksContainer from "./WorksContainer/WorksContainer";
 import CustomCursorManager from "src/components/CustomCursor/Context/Manager";
+import useTransitionStore from "src/store/storeConfig";
 
 const Works = () => {
+  const changeTransition = useTransitionStore((state) => state.change);
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      changeTransition(0);
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
     <div className="works">
       <CustomCursorManager>

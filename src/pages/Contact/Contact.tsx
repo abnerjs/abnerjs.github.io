@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./contact.css";
 import Navbar from "src/components/Navbar/Navbar";
 import Footer from "src/components/Footer/Footer";
@@ -6,8 +6,20 @@ import { Avatar } from "@mui/material";
 import photo from "src/assets/images/abnerig.jpg";
 import SideInfo from "./SideInfo/SideInfo";
 import Form from "./Form/Form";
+import useTransitionStore from "src/store/storeConfig";
 
 const Contact = () => {
+  const changeTransition = useTransitionStore((state) => state.change);
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      changeTransition(0);
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
     <div className="contact">
       <Navbar />

@@ -3,15 +3,15 @@ import "./works.css";
 import { Icon } from "@iconify/react";
 import { Parallax } from "react-scroll-parallax";
 import MagneticButton from "src/components/MagneticButton/MagneticButton";
-import { Tooltip } from "react-tooltip";
 import CustomCursor from "src/components/CustomCursor/CustomCursor";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import integra from "src/assets/images/works/integra30.png";
 import ponto from "src/assets/images/works/ponto.png";
 import swingmd from "src/assets/images/works/swingmd.gif";
 import insumos from "src/assets/images/works/insumos.png";
 import iworkoff from "src/assets/images/works/iworkoff.gif";
 import portalRelat from "src/assets/images/works/portalRelat.gif";
+import useTransitionStore from "src/store/storeConfig";
 
 const HoverPanel = (props: any) => {
   return (
@@ -179,8 +179,23 @@ const WorksContent = (props: any) => {
 };
 
 const Works = () => {
+  const changeTransition = useTransitionStore((state) => state.change);
+  const changeLabel = useTransitionStore((state) => state.changeLabel);
+  const navigate = useNavigate();
   const [scale, setScale] = useState(0);
   const [hoverIndex, setHoverIndex] = useState(0);
+
+  const handlerGoToWorks = () => {
+    changeTransition(1);
+    changeLabel("• TRABALHOS •");
+
+    const timer = setTimeout(() => {
+      navigate("/works");
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+    };
+  };
 
   return (
     <>
@@ -199,8 +214,9 @@ const Works = () => {
             className="moreWork"
             variant="outlined"
             endIcon={<Icon icon="fluent:arrow-right-48-regular" />}
+            onClick={handlerGoToWorks}
           >
-            <Link to="/works">Mais trabalhos</Link>
+            Mais trabalhos
           </MagneticButton>
         </div>
       </div>

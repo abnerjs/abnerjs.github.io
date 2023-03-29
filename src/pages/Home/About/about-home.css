@@ -41,6 +41,19 @@
   background-color: #444;
 }
 
+.close-panel {
+  position: fixed;
+  width: 100vw;
+  height: 180vh;
+  background-color: #1e1e1e;
+  top: 0;
+  right: 0;
+  z-index: 20000;
+  border-radius: 50vw / 20vw;
+  transition: all ease .4s;
+  transform: translateY(100vh)
+}
+
 @media (max-width: 768px) {
   .about-home {
     flex-direction: column;
@@ -73,6 +86,7 @@
 
   .home .about-home .about-btn .div {
     align-self: flex-end;
+    margin-top: 50px;
   }
 
   .about-home {

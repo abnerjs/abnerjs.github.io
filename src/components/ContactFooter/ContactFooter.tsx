@@ -6,10 +6,25 @@ import { Avatar } from "@mui/material";
 import photo from "src/assets/images/abnerig.jpg";
 import Footer from "src/components/Footer/Footer";
 import { Parallax } from "react-scroll-parallax";
+import useTransitionStore from "src/store/storeConfig";
 
 const ContactFooter = () => {
+  const changeTransition = useTransitionStore((state) => state.change);
+  const changeLabel = useTransitionStore((state) => state.changeLabel);
   const [progress, setProgress] = useState(0);
   const navigate = useNavigate();
+
+  const handlerGoToContact = () => {
+    changeTransition(1);
+    changeLabel("• CONTATO •");
+
+    const timer = setTimeout(() => {
+      navigate("/contact");
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+    };
+  };
 
   return (
     <div className="contact-footer">
@@ -51,7 +66,7 @@ const ContactFooter = () => {
                 translateX={[-50, 0]}
               >
                 <MagneticButton
-                  onClick={() => navigate("/contact")}
+                  onClick={handlerGoToContact}
                   className="elementBtn"
                   devOrientationX
                 >
