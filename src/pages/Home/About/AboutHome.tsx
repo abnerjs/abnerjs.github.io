@@ -34,7 +34,7 @@ const AboutHome = () => {
           A combinação da minha paixão por design, código e interações.
         </div>
         <div className="div" ref={parallax.ref}>
-          <MagneticButton onClick={() => navigate("/about")}>
+          <MagneticButton devOrientation onClick={() => navigate("/about")}>
             Sobre mim
           </MagneticButton>
         </div>

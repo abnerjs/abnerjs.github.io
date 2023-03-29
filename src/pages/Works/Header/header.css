@@ -9,17 +9,19 @@
   margin-bottom: 100px;
 }
 
-.works .header .lottie-container {
+.works .header .parallax-lottie {
+  align-self: flex-end;
+}
+
+.works .header .parallax-lottie .lottie-container {
+  background-color: #673ab7 !important;
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-color: #673ab7;
-  align-self: flex-end;
-  transform: translate(-150px, -50%);
   overflow: hidden;
 }
 
-.works .header .lottie-container > svg {
+.works .header .lottie-container .lottie-comp > svg {
   transform: scale(1.2) translate(20px, 20px) !important;
 }
 
@@ -32,13 +34,18 @@
     margin-bottom: 60px;
   }
 
-  .works .header .lottie-container {
+  .works .header .parallax-lottie {
     width: 100px;
     height: 100px;
     transform: translate(-50px, -50%);
   }
 
-  .works .header .lottie-container > svg {
+  .works .header .parallax-lottie .lottie-container {
+    width: 100px;
+    height: 100px;
+  }
+
+  .works .header .lottie-container .lottie-comp > svg {
     transform: scale(1.4) translate(0px, 15px) !important;
   }
 }

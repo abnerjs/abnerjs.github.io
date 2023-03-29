@@ -131,7 +131,7 @@ const Form = () => {
             formStateSubmit === "success" ? " success" : ""
           }`}
         >
-          <MagneticButton type="submit" className="sendMail">
+          <MagneticButton devOrientationX type="submit" className="sendMail">
             Enviar
           </MagneticButton>
         </div>

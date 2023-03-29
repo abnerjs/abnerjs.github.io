@@ -3,6 +3,8 @@ import "./header.css";
 import Stripe from "src/components/Stripe/Stripe";
 import Lottie from "lottie-react";
 import animation from "src/assets/webdesign.json";
+import MagneticButton from "src/components/MagneticButton/MagneticButton";
+import { Parallax } from "react-scroll-parallax";
 
 const Header = () => {
   return (
@@ -13,7 +15,19 @@ const Header = () => {
         fora da caixa
       </div>
       <Stripe />
-      <Lottie className="lottie-container" animationData={animation} />
+      <Parallax translateX={[-100, -50]}
+        translateY={[-50, -50]}
+        className="parallax-lottie"
+      >
+        <MagneticButton
+          onClick={(e: any) => e.preventDefault()}
+          className="lottie-container"
+          devOrientationX
+          disabled
+        >
+          <Lottie className="lottie-comp" animationData={animation} />
+        </MagneticButton>
+      </Parallax>
     </div>
   );
 };

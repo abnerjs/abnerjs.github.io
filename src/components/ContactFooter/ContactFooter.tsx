@@ -10,6 +10,7 @@ import { Parallax } from "react-scroll-parallax";
 const ContactFooter = () => {
   const [progress, setProgress] = useState(0);
   const navigate = useNavigate();
+
   return (
     <div className="contact-footer">
       <div
@@ -46,12 +47,17 @@ const ContactFooter = () => {
           <hr />
           <div className="contact-btn">
             <div className="float-btn">
-              <MagneticButton
-                onClick={() => navigate("/contact")}
-                className="elementBtn"
+              <Parallax
+                translateX={[-50, 0]}
               >
-                Contate-me
-              </MagneticButton>
+                <MagneticButton
+                  onClick={() => navigate("/contact")}
+                  className="elementBtn"
+                  devOrientationX
+                >
+                  Contate-me
+                </MagneticButton>
+              </Parallax>
             </div>
           </div>
           <div className="infos">

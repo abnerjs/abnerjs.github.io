@@ -9,17 +9,19 @@
   margin-bottom: 120px;
 }
 
-.about .header .lottie-container {
+.about .header .parallax-lottie {
+  align-self: flex-end;
+}
+
+.about .header .parallax-lottie .lottie-container {
+  background-color: #673ab7 !important;
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-color: #673ab7;
-  align-self: flex-end;
-  transform: translate(-150px, -50%);
   overflow: hidden;
 }
 
-.about .header .lottie-container > svg {
+.about .header .lottie-container .lottie-comp > svg {
   transform: scale(1.8) translate(20px, 20px) !important;
 }
 
@@ -32,13 +34,12 @@
     margin-bottom: 60px;
   }
 
-  .about .header .lottie-container {
+  .about .header .parallax-lottie .lottie-container {
     width: 100px;
     height: 100px;
-    transform: translate(-50px, -50%);
   }
 
-  .about .header .lottie-container > svg {
-    transform: scale(1.8) translate(10px, 10px) !important;
+  .about .header .lottie-container .lottie-comp > svg {
+    transform: scale(2.5) translate(10px, 7px) !important;
   }
 }
