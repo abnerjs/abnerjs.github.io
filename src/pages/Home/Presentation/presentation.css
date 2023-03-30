@@ -68,35 +68,6 @@
   }
 }
 
-.home .presentation .balls {
-  position: relative;
-}
-
-.home .presentation .ball {
-  position: absolute;
-  width: 50vw;
-  height: 50vw;
-  filter: blur(4px);
-}
-
-.home .presentation .ball.red {
-  transform: translate3d(-30%, -50%, 0);
-}
-
-.home .presentation .ball.blue {
-  right: 0;
-  transform: translate3d(20%, 50%, 0);
-}
-
-.home .presentation .ball.purple {
-  transform: translate3d(0%, 40%, 0);
-}
-
-.home .presentation .ball.orange {
-  right: 0;
-  transform: translate3d(-35%, -60%, 0);
-}
-
 .home .presentation .eu {
   height: calc(100vh + 71.68px);
   overflow: hidden;
@@ -105,21 +76,77 @@
 
 .home .presentation .eu .img-eu {
   position: relative;
+  height: calc(100vh + 71.68px);
 }
 
 .home .presentation .eu .img-eu img {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-42%);
+  height: calc(100vh + 71.68px);
 }
 
 .home .presentation .backdrop {
   background-color: #ccc;
   width: 100vw;
   height: calc(100vh + 71.68px);
-  opacity: .7;
+  opacity: .3;
   overflow: hidden;
 }
+
+.home .presentation .containerBlobs {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-evenly;
+  overflow: hidden;
+  position: relative;
+}
+
+.home .presentation .containerBlobs:before,
+.home .presentation .containerBlobs:after {
+  content: "";
+  width: 70vmax;
+  height: 70vmax;
+  position: absolute;
+  background: var(--secondary_3);
+  left: -20vmin;
+  top: -20vmin;
+  animation: morph 15s linear infinite alternate, spin 20s linear infinite;
+  z-index: 1;
+  will-change: border-radius, transform;
+  transform-origin: 55% 55%;
+  pointer-events: none;
+}
+
+.home .presentation .containerBlobs:after {
+  width: 70vmin;
+  height: 70vmin;
+  left: auto;
+  right: -10vmin;
+  top: auto;
+  bottom: 0;
+  animation: morph 10s linear infinite alternate,
+    spin 26s linear infinite reverse;
+  transform-origin: 20% 20%;
+}
+
+@keyframes morph {
+  0% {
+    border-radius: 40% 60% 60% 40%/70% 30%;
+  }
+  to {
+    border-radius: 40% 60%;
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
 
 @media (max-width: 768px) {
   .presentation {
@@ -159,5 +186,9 @@
     max-width: 100%;
     height: 25vh;
     overflow-x: hidden;
+  }
+
+  .home .presentation .eu .img-eu img {
+    transform: translateX(-38%);
   }
 }
