@@ -212,6 +212,11 @@
     font-size: 30px;
     align-items: flex-start;
   }
+  
+  .home .works .content:hover {
+    padding: 50px 20px;
+    transition: padding ease-out 0.4s;
+  }
 
   .home .works .more-work {
     padding: 100px 0 80px 0;

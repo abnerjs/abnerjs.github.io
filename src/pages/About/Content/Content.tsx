@@ -7,11 +7,10 @@ const Content = () => {
   return (
     <div className="content">
       <div className="text">
-        No mundo da programação desde 2015, sou apaixonado pelo o que faço!
+        No mundo da programação desde 2015, sou apaixonado pelo que faço!
         <br />
-        <br />
-        Para cada projeto eu coloco meu trabalho em novos horizontes, sempre
-        prezando pela qualidade.
+        <br />A cada projeto, busco expandir meus horizontes e aprimorar meu
+        trabalho, mantendo sempre o foco na qualidade.
         <div className="points">Sempre explorando&nbsp;</div>
       </div>
       <ParallaxBanner className="parallaxImg">
