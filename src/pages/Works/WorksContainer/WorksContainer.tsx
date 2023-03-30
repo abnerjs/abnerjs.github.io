@@ -42,6 +42,7 @@ const WorksContainer = () => {
         year="2019"
         panel={swingmd}
         setScale={setScale}
+        onClick={() => window.open("https://github.com/abnerjs/SwingMaterialDesign")}
       />
       <WorkItem
         title="SIGAM"
@@ -66,6 +67,7 @@ const WorksContainer = () => {
         year="2020"
         panel={integra}
         setScale={setScale}
+        onClick={() => window.open("https://www.behance.net/gallery/95516641/Integra-party-corona")}
       />
       <WorkItem
         title="Insumos"

@@ -9,6 +9,7 @@ interface Props {
   year: string;
   setScale: Function;
   panel?: any;
+  onClick?: Function;
 }
 
 const WorkItem = (props: Props) => {
@@ -18,6 +19,7 @@ const WorkItem = (props: Props) => {
       onMouseEnter={() => props.setScale(1)}
       onMouseOver={() => props.setScale(1)}
       onMouseLeave={() => props.setScale(0)}
+      onClick={() => props.onClick && props.onClick()}
     >
       <div className="panel">
         <div

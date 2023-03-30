@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import "./about.css";
 import Navbar from "src/components/Navbar/Navbar";
-import Header from "./Header/Header";
 import Content from "./Content/Content";
 import ContactFooter from "src/components/ContactFooter/ContactFooter";
 import WorksWith from "./Content/WorksWith/WorksWith";
 import useTransitionStore from "src/store/storeConfig";
+import animation from "src/assets/developer.json";
+import Header from "src/components/Header/Header";
 
 const About = () => {
   const changeTransition = useTransitionStore((state) => state.change);
@@ -24,7 +25,7 @@ const About = () => {
     <div className="about">
       <Navbar black />
 
-      <Header />
+      <Header title="Ajudando você a prosperar" secondLine="no mundo digital." animation={animation} />
 
       <Content />
 

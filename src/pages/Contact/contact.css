@@ -7,7 +7,7 @@
   margin: 0 16vw 200px 16vw;
 }
 
-.contact .form .header {
+.contact .form .header-contact {
   display: flex;
   padding-top: 25vh;
   margin-bottom: 20vh;
@@ -24,7 +24,7 @@
   width: 78%;
 }
 
-.contact .form .header .avatar .MuiAvatar-root {
+.contact .form .header-contact .avatar .MuiAvatar-root {
   height: 12vh;
   width: 12vh;
 }
@@ -35,7 +35,7 @@
 }
 
 @media (max-width: 768px) {
-  .contact .form .header {
+  .contact .form .header-contact {
     flex-direction: column;
     padding-top: 20vh;
     margin-bottom: 10vh;
@@ -51,7 +51,7 @@
     width: 100%;
   }
 
-  .contact .form .header .avatar {
+  .contact .form .header-contact .avatar {
     display: none;
   }
 
@@ -62,7 +62,7 @@
 }
 
 @media screen and (max-height: 768px) and (orientation: landscape) {
-  .contact .form .header{
+  .contact .form .header-contact{
     margin: 0 12vw 100px 12vw;
     justify-content: flex-start;
   }
@@ -78,5 +78,11 @@
     font-weight: 500;
     text-align: left;
     width: 64%;
+  }
+}
+
+@media (max-height: 400px) and (orientation: landscape) {
+  .contact .form .header-contact {
+    margin: 15vh 0vw 40px 0vw;
   }
 }

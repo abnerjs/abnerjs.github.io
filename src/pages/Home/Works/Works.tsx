@@ -140,6 +140,7 @@ const WorksContent = (props: any) => {
           props.setScale(1);
         }}
         onMouseLeave={() => props.setScale(0)}
+        onClick={() => window.open("https://github.com/abnerjs/SwingMaterialDesign")}
       >
         <div className="text">Material Design</div>
         <div className="info">
@@ -170,6 +171,7 @@ const WorksContent = (props: any) => {
           props.setScale(1);
         }}
         onMouseLeave={() => props.setScale(0)}
+        onClick={() => window.open("https://www.behance.net/gallery/95516641/Integra-party-corona")}
       >
         <div className="text">Identidade Visual</div>
         <div className="info">

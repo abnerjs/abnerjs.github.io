@@ -26,7 +26,7 @@ const Contact = () => {
       <Navbar />
 
       <div className="form">
-        <div className="header">
+        <div className="header-contact">
           <div className="title">
             Vamos começar
             <br />
