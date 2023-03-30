@@ -10,7 +10,7 @@ const Presentation = () => {
   const onDownload = () => {
     const link = document.createElement("a");
     link.download = `AbnerCurriculumVitae.pdf`;
-    link.href = './AbnerCurriculumVitae.pdf';
+    link.href = "./AbnerCurriculumVitae.pdf";
     link.click();
   };
 
@@ -18,13 +18,10 @@ const Presentation = () => {
     <div className="presentation">
       <ParallaxBanner style={{ aspectRatio: "1 / 1" }}>
         <ParallaxBannerLayer>
-          <div className="containerBlobs">
-            
-          </div>
+          <div className="backdrop"></div>
         </ParallaxBannerLayer>
         <ParallaxBannerLayer>
-          <div className="backdrop">
-          </div>
+          <div className="containerBlobs"></div>
         </ParallaxBannerLayer>
         <ParallaxBannerLayer>
           <div className="eu">
