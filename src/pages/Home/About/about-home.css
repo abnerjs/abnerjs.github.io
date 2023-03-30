@@ -99,6 +99,6 @@
     flex-direction: column;
     gap: 0;
     height: 600px;
-    margin: 0;
+    margin: 0 50px;
   }
 }

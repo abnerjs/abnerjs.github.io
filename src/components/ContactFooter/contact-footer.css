@@ -154,3 +154,17 @@
     height: 70px;
   }
 }
+
+@media (max-height: 400px) and (orientation: landscape) {
+  .contact-footer .infos {
+    margin-top: 5vh;
+    margin-bottom: 15vh;
+    gap: 10px;
+    flex-direction: row;
+  }
+
+  .contact-footer .infos .MuiButtonBase-root {
+    height: 40px !important;
+    width: max-content;
+  }
+}
