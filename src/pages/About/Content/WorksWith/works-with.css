@@ -64,6 +64,10 @@
   .works-with {
     margin: 100px 4vw 200px 4vw;
   }
+  
+}
+
+@media (max-height: 400px) and (orientation: landscape) {
   .works-with .row {
     flex-direction: column;
     gap: 50px;

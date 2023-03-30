@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import "./works.css";
 import Navbar from "src/components/Navbar/Navbar";
 import ContactFooter from "src/components/ContactFooter/ContactFooter";
@@ -17,6 +17,7 @@ const Works = () => {
     return () => {
       clearTimeout(timer);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

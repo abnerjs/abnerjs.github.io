@@ -33,16 +33,9 @@ const defaultOrientation: devOrientation = {
 
 const MagneticButton = (props: Props) => {
   const [translate, setTranslate] = useState("translate(0,0)");
-  const [orientation, setOrientation] =
     useState<devOrientation>(defaultOrientation);
 
   const handleDeviceOrientation = (e: DeviceOrientationEvent) => {
-    setOrientation({
-      absolute: e.absolute,
-      alpha: e.alpha || 0,
-      beta: e.beta || 0,
-      gamma: e.gamma || 0,
-    });
     props.devOrientationX && setTranslate(`translate(${-e.gamma! * 0.4}px, 0)`);
     props.devOrientationY && setTranslate(`translate(0, ${-e.beta! * 0.5}px)`);
     props.devOrientation && setTranslate(`translate(${-e.gamma! * 0.4}px, ${-e.beta! * 0.5}px)`);
@@ -54,6 +47,7 @@ const MagneticButton = (props: Props) => {
     return () => {
       window.removeEventListener("deviceorientation", handleDeviceOrientation);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {

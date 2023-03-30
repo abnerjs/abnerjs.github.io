@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./works.css";
 import { Icon } from "@iconify/react";
 import { Parallax } from "react-scroll-parallax";
 import MagneticButton from "src/components/MagneticButton/MagneticButton";
 import CustomCursor from "src/components/CustomCursor/CustomCursor";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import integra from "src/assets/images/works/integra30.png";
 import ponto from "src/assets/images/works/ponto.png";
 import swingmd from "src/assets/images/works/swingmd.gif";
@@ -49,6 +49,7 @@ const HoverPanel = (props: any) => {
             style={{
               width: "80%",
             }}
+            alt="Portal de Relatórios"
           />
         </div>
         <div
@@ -67,6 +68,7 @@ const HoverPanel = (props: any) => {
             style={{
               width: "80%",
             }}
+            alt="Java Swing Material Design"
           />
         </div>
         <div
@@ -85,6 +87,7 @@ const HoverPanel = (props: any) => {
             style={{
               width: "80%",
             }}
+            alt="Plataforma de Ponto"
           />
         </div>
         <div
@@ -103,6 +106,7 @@ const HoverPanel = (props: any) => {
             style={{
               width: "80%",
             }}
+            alt="Integra"
           />
         </div>
       </div>
@@ -226,7 +230,7 @@ const Works = () => {
           <div className="row">
             <div className="work"></div>
             <div className="work">
-              <img src={insumos} />
+              <img src={insumos} alt="Insumos" />
             </div>
             <div className="work"></div>
             <div className="work"></div>
@@ -237,7 +241,7 @@ const Works = () => {
             <div className="work"></div>
             <div className="work"></div>
             <div className="work">
-            <img src={iworkoff} />
+            <img src={iworkoff} alt="iWorkOff" />
             </div>
             <div className="work"></div>
           </div>

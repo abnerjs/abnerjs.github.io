@@ -1,9 +1,7 @@
-import React, { useState } from "react";
 import "./about-home.css";
 import MagneticButton from "src/components/MagneticButton/MagneticButton";
 import { useParallax } from "react-scroll-parallax";
 import { useNavigate } from "react-router";
-import { Portal } from "@mui/material";
 import useTransitionStore from "src/store/storeConfig";
 
 const AboutHome = () => {

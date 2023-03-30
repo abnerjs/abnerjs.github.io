@@ -286,12 +286,14 @@
 }
 
 @media screen and (max-height: 768px) and (orientation: landscape) {
+  .MuiDrawer-root .MuiPaper-root .socials {
+    margin-top: 10vh;
+  }
+}
+
+@media (max-height: 400px) and (orientation: landscape) {
   .MuiDrawer-root .MuiPaper-root {
     width: calc(50% - 40px);
     padding: 0 20px;
-  }
-  
-  .MuiDrawer-root .MuiPaper-root .socials {
-    margin-top: 10vh;
   }
 }

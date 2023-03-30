@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./contact-footer.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import MagneticButton from "src/components/MagneticButton/MagneticButton";
 import { Avatar } from "@mui/material";
 import photo from "src/assets/images/abnerig.jpg";

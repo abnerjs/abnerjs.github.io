@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React from "react";
 import Home from "./pages/Home/Home";
 import Contact from "./pages/Contact/Contact";
 import About from "./pages/About/About";
@@ -11,7 +11,7 @@ import ScrollToTop from "./utils/ScrollToTop/ScrollToTop";
 import CustomCursor from "./components/CustomCursor/CustomCursor";
 import useTransitionStore from "./store/storeConfig";
 
-const App: React.FC = (props: any) => {
+const App: React.FC = () => {
   const transition = useTransitionStore((state) => state.transition);
   const transitionLabel = useTransitionStore((state) => state.transitionLabel);
   

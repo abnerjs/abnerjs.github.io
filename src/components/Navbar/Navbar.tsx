@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
-import { Drawer, Portal, Tab, Tabs } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { Drawer, Portal } from "@mui/material";
+import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import MagneticButton from "../MagneticButton/MagneticButton";
 import Stripe from "../Stripe/Stripe";
@@ -57,7 +57,7 @@ const Navbar = (props: Props) => {
           onClick={() => handlerGoTo("/", "INÍCIO")}
           variant="text"
         >
-          <img src={props.black ? nameblack : name} height={45} />
+          <img src={props.black ? nameblack : name} height={45} alt="" />
         </MagneticButton>
       </div>
 

@@ -1,14 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import "./form.css";
 import Field from "src/components/Field/Field";
 import MagneticButton from "src/components/MagneticButton/MagneticButton";
 import Stripe from "src/components/Stripe/Stripe";
 import { Parallax } from "react-scroll-parallax";
-import { SubmitHandler, Controller, useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import axios from "axios";
-import MailCredencials from "src/utils/MailCredencials/MailCredencials";
 import emailjs from "@emailjs/browser";
 
 interface FormProps {
@@ -36,7 +34,7 @@ const schema = Yup.object({
 
 const Form = () => {
   const [formStateSubmit, setFormStateSubmit] = useState("submit");
-  const { handleSubmit, clearErrors, reset, control, formState } = useForm({
+  const { handleSubmit, clearErrors, reset, control } = useForm({
     resolver: yupResolver(schema),
     defaultValues: defaultValues,
   });
@@ -71,6 +69,7 @@ const Form = () => {
         clearTimeout(timer);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formStateSubmit]);
 
   return (

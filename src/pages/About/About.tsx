@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./about.css";
 import Navbar from "src/components/Navbar/Navbar";
 import Header from "./Header/Header";
@@ -17,6 +17,7 @@ const About = () => {
     return () => {
       clearTimeout(timer);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

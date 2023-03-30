@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./works-container.css";
-import Stripe from "src/components/Stripe/Stripe";
 import CustomCursor from "src/components/CustomCursor/CustomCursor";
 import WorkItem from "./WorkItem/WorkItem";
 import integra from "src/assets/images/works/integra30.png";
