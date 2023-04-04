@@ -7,7 +7,7 @@ import insumos from "src/assets/images/works/insumos.png";
 import ponto from "src/assets/images/works/ponto.png";
 import swingmd from "src/assets/images/works/swingmd.gif";
 import iworkoff from "src/assets/images/works/iworkoff.gif";
-import portalRelat from "src/assets/images/works/portalRelat.gif";
+import portalRelat from "src/assets/images/works/portal.png";
 
 const WorksContainer = () => {
   const [scale, setScale] = useState(0);

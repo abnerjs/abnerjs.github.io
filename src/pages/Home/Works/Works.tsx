@@ -10,7 +10,7 @@ import ponto from "src/assets/images/works/ponto.png";
 import swingmd from "src/assets/images/works/swingmd.gif";
 import insumos from "src/assets/images/works/insumos.png";
 import iworkoff from "src/assets/images/works/iworkoff.gif";
-import portalRelat from "src/assets/images/works/portalRelat.gif";
+import portalRelat from "src/assets/images/works/portal.png";
 import useTransitionStore from "src/store/storeConfig";
 
 const HoverPanel = (props: any) => {

@@ -3,9 +3,9 @@ import Navbar from "src/components/Navbar/Navbar";
 import "./home.css";
 import ContactFooter from "../../components/ContactFooter/ContactFooter";
 import Works from "./Works/Works";
-import Presentation from "./Presentation/Presentation";
 import AboutHome from "./About/AboutHome";
 import useTransitionStore from "src/store/storeConfig";
+import Base from "./Presentation/Base";
 
 const Home = () => {
   const changeTransition = useTransitionStore((state) => state.change);
@@ -24,7 +24,7 @@ const Home = () => {
     <div className="home">
       <Navbar />
 
-      <Presentation />
+      <Base />
 
       <AboutHome />
 

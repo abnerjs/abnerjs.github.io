@@ -1,0 +1,85 @@
+.banner-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.banner-container .background {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-color: #1e1e1e;
+}
+
+.banner-container .title {
+  display: flex;
+  align-items: center;
+}
+
+.banner-container .title .text {
+  font-size: 120vh;
+  font-family: "Highrush Condensed", sans-serif;
+  white-space: nowrap;
+  user-select: none;
+  animation: marquee 64s linear infinite;
+  background: linear-gradient(#1e1e1e, 60%, #333, #333);
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+
+.banner-container .title .text:hover {
+  background-color: red;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.banner-container .me {
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  background-size: contain !important;
+}
+
+.base .btn-controller {
+  position: absolute;
+  bottom: 15vh;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.base .btn-curriculum {
+  width: 300px;
+  height: 100px;
+  border-radius: 50px;
+  background-color: #1e1e1edd;
+}
+
+.base .btn-curriculum:hover {
+  background-color: #1e1e1e;
+}
+
+.base .text-banner {
+  width: calc(100% - 20vw);
+  height: 100%;
+  display: flex;
+  padding: 0 10vw;
+  align-items: center;
+  color: white;
+  pointer-events: none;
+}
+
+.base .text-banner div {
+  font-size: 6vh;
+  font-weight: 500;
+  z-index: 3;
+}
