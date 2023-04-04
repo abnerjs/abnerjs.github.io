@@ -18,21 +18,18 @@
 
 .banner-container .title .text {
   font-size: 120vh;
+  line-height: 100vh;
   font-family: "Highrush Condensed", sans-serif;
   white-space: nowrap;
   user-select: none;
   animation: marquee 64s linear infinite;
-  background: linear-gradient(#1e1e1e, 60%, #333, #333);
+  background: linear-gradient(#1e1e1e, 25%, #333, #333);
   background-size: 100%;
   background-repeat: repeat;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
-}
-
-.banner-container .title .text:hover {
-  background-color: red;
 }
 
 @keyframes marquee {
@@ -45,9 +42,10 @@
 }
 
 .banner-container .me {
-  background-origin: border-box;
   background-repeat: no-repeat;
-  background-size: contain !important;
+  background-position: 50% 50% !important;
+  width: 100vw;
+  background-size: auto 80% !important;
 }
 
 .base .btn-controller {
@@ -83,3 +81,39 @@
   font-weight: 500;
   z-index: 3;
 }
+
+@media screen and (max-width: 768px) {
+  .banner-container .me {
+    background-position: 50% 90% !important;
+  }
+  .base .btn-curriculum {
+    width: 250px;
+    height: 75px;
+    border-radius: 50px;
+  }
+}
+
+@media screen and (max-width: 768px) and (orientation: portrait) {
+  .base .text-banner div {
+    font-size: 3vh;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .base .text-banner {
+    display: none;
+  }
+}
+
+@media screen and (max-height: 768px) and (orientation: landscape) {
+  .banner-container .me {
+    background-position: 50% 120% !important;
+  }
+}
+
+@media screen and (max-width: 1400px) and (orientation: landscape) {
+  .base .text-banner div {
+    font-size: 3vh;
+  }
+}
+

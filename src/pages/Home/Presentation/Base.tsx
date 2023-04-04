@@ -15,9 +15,7 @@ const Base = () => {
           </div>
         </ParallaxBannerLayer>
         <ParallaxBannerLayer
-          translateX={[5, 5]}
           translateY={[0, 30]}
-          scale={[0.8, 0.8]}
           image={me}
           className="me"
         ></ParallaxBannerLayer>
