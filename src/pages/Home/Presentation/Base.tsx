@@ -5,6 +5,12 @@ import MagneticButton from "src/components/MagneticButton/MagneticButton";
 import { Icon } from "@iconify/react";
 
 const Base = () => {
+  const onDownload = () => {
+    const link = document.createElement("a");
+    link.download = `AbnerCurriculum.pdf`;
+    link.href = "./AbnerCurriculumVitae.pdf";
+    link.click();
+  };
   return (
     <div className="base">
       <ParallaxBanner className="banner-container">
@@ -31,6 +37,7 @@ const Base = () => {
         <ParallaxBannerLayer>
           <div className="btn-controller">
             <MagneticButton
+            onClick={onDownload}
               endIcon={<Icon width={30} icon="bi:download" />}
               className="btn-curriculum"
             >
