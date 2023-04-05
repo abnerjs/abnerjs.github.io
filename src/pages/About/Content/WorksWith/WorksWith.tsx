@@ -34,7 +34,7 @@ const WorksWith = () => {
           <div className="titleSkill">O pacote completo</div>
           <div className="skillText">
             Ofereço a criação de um site completo, desde o conceito até a
-            implementação. Com meu grande senso de design e habilidades de
+            implementação. Com meu senso de design e habilidades de
             desenvolvimento, sou capaz de criar projetos que se encaixam
             perfeitamente no contexto da sua necessidade.
           </div>

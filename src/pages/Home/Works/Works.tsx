@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./works.css";
 import { Icon } from "@iconify/react";
 import { Parallax } from "react-scroll-parallax";
@@ -12,6 +12,7 @@ import insumos from "src/assets/images/works/insumos.png";
 import iworkoff from "src/assets/images/works/iworkoff.gif";
 import portalRelat from "src/assets/images/works/portal.png";
 import useTransitionStore from "src/store/storeConfig";
+import MenuContext from "src/components/MenuContext/MenuContext";
 
 const HoverPanel = (props: any) => {
   return (
@@ -115,16 +116,44 @@ const HoverPanel = (props: any) => {
 };
 
 const WorksContent = (props: any) => {
+  const el1 = useRef<HTMLDivElement>(null);
+  const el2 = useRef<HTMLDivElement>(null);
+  const el3 = useRef<HTMLDivElement>(null);
+  const el4 = useRef<HTMLDivElement>(null);
   return (
     <>
       <div
+        ref={el1}
         className="content"
         onMouseEnter={() => {
           props.setHoverIndex(0);
           props.setScale(1);
         }}
         onMouseLeave={() => props.setScale(0)}
+        onClick={() => {
+          window.open("https://github.com/abnerjs/PortalRelatorios");
+          window.open(
+            "https://www.figma.com/file/3AVOpouhDNUlUjsqSJcFdv/Portal-de-Relat%C3%B3rios?node-id=0%3A1&t=tLE4Z9AefrNkrbHo-1",
+            "blank"
+          );
+        }}
+        onMouseDown={(e) => {
+          if (e.button === 1) {
+            window.open("https://github.com/abnerjs/PortalRelatorios", "blank");
+            window.open(
+              "https://www.figma.com/file/3AVOpouhDNUlUjsqSJcFdv/Portal-de-Relat%C3%B3rios?node-id=0%3A1&t=tLE4Z9AefrNkrbHo-1",
+              "blank"
+            );
+          }
+        }}
       >
+        <MenuContext
+          targetId={el1.current!}
+          link={"https://github.com/abnerjs/PortalRelatorios"}
+          link2={
+            "https://www.figma.com/file/3AVOpouhDNUlUjsqSJcFdv/Portal-de-Relat%C3%B3rios?node-id=0%3A1&t=tLE4Z9AefrNkrbHo-1"
+          }
+        />
         <div className="text">Portal de Relatórios</div>
         <div className="info">
           <div className="type">React + .NET</div>
@@ -132,53 +161,123 @@ const WorksContent = (props: any) => {
         </div>
         <div className="container"></div>
       </div>
+
       <hr />
+
       <div
+        ref={el2}
         className="content"
         onMouseEnter={() => {
           props.setHoverIndex(1);
           props.setScale(1);
         }}
         onMouseLeave={() => props.setScale(0)}
-        onClick={() => window.open("https://github.com/abnerjs/SwingMaterialDesign")}
+        onClick={() =>
+          window.open("https://github.com/abnerjs/SwingMaterialDesign")
+        }
+        onMouseDown={(e) => {
+          if (e.button === 1) {
+            window.open(
+              "https://github.com/abnerjs/SwingMaterialDesign",
+              "blank"
+            );
+          }
+        }}
       >
+        <MenuContext
+          targetId={el2.current!}
+          link={"https://github.com/abnerjs/SwingMaterialDesign"}
+        />
         <div className="text">Material Design</div>
         <div className="info">
           <div className="type">Java Swing</div>
           <div className="dev">Desenvolvimento de Componentes</div>
         </div>
       </div>
+
       <hr />
+
       <div
+        ref={el3}
         className="content mobile"
         onMouseEnter={() => {
           props.setHoverIndex(2);
           props.setScale(1);
         }}
         onMouseLeave={() => props.setScale(0)}
+        onClick={() => {
+          window.open(
+            "https://www.figma.com/file/QkJJWaMoIeOkxN9UcDMWkc/Sistema-de-Ponto?node-id=0%3A1&t=DfzvDMfDG6r6y8yf-1"
+          );
+          window.open(
+            "https://www.figma.com/file/PUN3JlrbyJfbcJg6Pll1FZ/Plataforma-de-Ponto?node-id=0%3A1&t=dBuqpKSyFkH2JWJY-1",
+            "blank"
+          );
+        }}
+        onMouseDown={(e) => {
+          if (e.button === 1) {
+            window.open(
+              "https://www.figma.com/file/QkJJWaMoIeOkxN9UcDMWkc/Sistema-de-Ponto?node-id=0%3A1&t=DfzvDMfDG6r6y8yf-1",
+              "blank"
+            );
+            window.open(
+              "https://www.figma.com/file/PUN3JlrbyJfbcJg6Pll1FZ/Plataforma-de-Ponto?node-id=0%3A1&t=dBuqpKSyFkH2JWJY-1",
+              "blank"
+            );
+          }
+        }}
       >
+        <MenuContext
+          targetId={el3.current!}
+          link={
+            "https://www.figma.com/file/QkJJWaMoIeOkxN9UcDMWkc/Sistema-de-Ponto?node-id=0%3A1&t=DfzvDMfDG6r6y8yf-1"
+          }
+          link2={
+            "https://www.figma.com/file/PUN3JlrbyJfbcJg6Pll1FZ/Plataforma-de-Ponto?node-id=0%3A1&t=dBuqpKSyFkH2JWJY-1"
+          }
+        />
         <div className="text">Sistema de Ponto</div>
         <div className="info">
           <div className="type">Figma</div>
           <div className="dev">Design & Interação</div>
         </div>
       </div>
+
       <hr className="mobile" />
+
       <div
+        ref={el4}
         className="content mobile"
         onMouseEnter={() => {
           props.setHoverIndex(3);
           props.setScale(1);
         }}
         onMouseLeave={() => props.setScale(0)}
-        onClick={() => window.open("https://www.behance.net/gallery/95516641/Integra-party-corona")}
+        onClick={() =>
+          window.open(
+            "https://www.behance.net/gallery/95516641/Integra-party-corona"
+          )
+        }
+        onMouseDown={(e) => {
+          if (e.button === 1) {
+            window.open(
+              "https://www.behance.net/gallery/95516641/Integra-party-corona",
+              "blank"
+            );
+          }
+        }}
       >
+        <MenuContext
+          targetId={el4.current!}
+          link={"https://www.behance.net/gallery/95516641/Integra-party-corona"}
+        />
         <div className="text">Identidade Visual</div>
         <div className="info">
           <div className="type">Photoshop</div>
           <div className="dev">Design</div>
         </div>
       </div>
+
       <hr className="mobile" />
     </>
   );
@@ -243,7 +342,7 @@ const Works = () => {
             <div className="work"></div>
             <div className="work"></div>
             <div className="work">
-            <img src={iworkoff} alt="iWorkOff" />
+              <img src={iworkoff} alt="iWorkOff" />
             </div>
             <div className="work"></div>
           </div>

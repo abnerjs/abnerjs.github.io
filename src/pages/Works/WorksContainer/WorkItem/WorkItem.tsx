@@ -10,12 +10,12 @@ interface Props {
   year: string;
   setScale: Function;
   panel?: any;
-  onClick?: Function;
   link?: string;
+  link2?: string;
 }
 
 const WorkItem = (props: Props) => {
-  const el = useRef<HTMLDivElement>(null)
+  const el = useRef<HTMLDivElement>(null);
   return (
     <div
       ref={el}
@@ -24,16 +24,20 @@ const WorkItem = (props: Props) => {
       onMouseOver={() => props.setScale(1)}
       onMouseLeave={() => props.setScale(0)}
       onClick={() => {
-        props.onClick ? props.onClick() : props.link && window.open(props.link);
+        props.link && window.open(props.link, "_blank");
+        props.link2 && window.open(props.link2, "_blank");
       }}
       onMouseDown={(e) => {
-        if (e.button === 1) props.link && window.open(props.link, "_blank");
+        if (e.button === 1) {
+          props.link && window.open(props.link, "_blank");
+          props.link2 && window.open(props.link2, "_blank");
+        }
       }}
     >
       <MenuContext
         targetId={el.current!}
-        open={props.onClick}
         link={props.link}
+        link2={props.link2}
       />
       <div className="panel">
         <div

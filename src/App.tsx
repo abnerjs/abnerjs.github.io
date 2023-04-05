@@ -10,8 +10,6 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import ScrollToTop from "./utils/ScrollToTop/ScrollToTop";
 import CustomCursor from "./components/CustomCursor/CustomCursor";
 import useTransitionStore from "./store/storeConfig";
-import PortalRelat from "./pages/Works/PresentationPages/PortalRelat";
-import Insumos from "./pages/Works/PresentationPages/Insumos";
 
 const App: React.FC = () => {
   const transition = useTransitionStore((state) => state.transition);
@@ -30,8 +28,6 @@ const App: React.FC = () => {
             <Route path="/works/ponto" element={<Works />} />
             <Route path="/works/sigam" element={<Works />} />
             <Route path="/works/iworkoff" element={<Works />} />
-            <Route path="/works/portal-relat" element={<PortalRelat />} />
-            <Route path="/works/insumos" element={<Insumos />} />
             <Route path="/" element={<Home />} />
             <Route path="*" element={<Home />} />
           </Routes>

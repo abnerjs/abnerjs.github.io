@@ -46,6 +46,8 @@ const WorksContainer = () => {
         year="2022"
         panel={portalRelat}
         setScale={setScale}
+        link="https://github.com/abnerjs/PortalRelatorios"
+        link2="https://www.figma.com/file/3AVOpouhDNUlUjsqSJcFdv/Portal-de-Relat%C3%B3rios?node-id=0%3A1&t=tLE4Z9AefrNkrbHo-1"
       />
       <WorkItem
         title="iWorkOff"
@@ -54,6 +56,8 @@ const WorksContainer = () => {
         year="2021"
         panel={iworkoff}
         setScale={setScale}
+        link="https://github.com/abnerjs/iworkoff"
+        link2="https://www.figma.com/file/2TfY45k5qHg3uvEfy3P7dQ/iWorkOff?node-id=0%3A1&t=vnb6fSMXurPUZAQJ-1"
       />
       <WorkItem
         title="Material Design"
@@ -65,20 +69,14 @@ const WorksContainer = () => {
         link="https://github.com/abnerjs/SwingMaterialDesign"
       />
       <WorkItem
-        title="SIGAM"
-        description="Design & Desenvolvimento de interface"
-        dev="Java Swing"
-        year="2019"
-        panel={undefined}
-        setScale={setScale}
-      />
-      <WorkItem
         title="Sistema de Ponto"
         description="Design & Interação"
         dev="Figma"
         year="2022"
         panel={ponto}
         setScale={setScale}
+        link="https://www.figma.com/file/QkJJWaMoIeOkxN9UcDMWkc/Sistema-de-Ponto?node-id=0%3A1&t=DfzvDMfDG6r6y8yf-1"
+        link2="https://www.figma.com/file/PUN3JlrbyJfbcJg6Pll1FZ/Plataforma-de-Ponto?node-id=0%3A1&t=dBuqpKSyFkH2JWJY-1"
       />
       <WorkItem
         title="Identidade Visual"
@@ -96,8 +94,7 @@ const WorksContainer = () => {
         year="2022"
         panel={insumos}
         setScale={setScale}
-        link="/works/insumos"
-        onClick={() => handlerGoTo("/works/insumos", "INSUMOS")}
+        link="https://www.figma.com/file/EiV65w3Y2q1hC4HoilnL2m/Insumos?node-id=0%3A1&t=RLXFk325dwOK6C88-1"
       />
     </div>
   );

@@ -4,8 +4,8 @@ import copy from "copy-to-clipboard";
 
 interface Props {
   targetId: HTMLDivElement;
-  open?: Function;
   link?: string;
+  link2?: string;
 }
 
 const MenuContext = (props: Props) => {
@@ -73,7 +73,9 @@ const MenuContext = (props: Props) => {
       <div
         className="menu-item"
         onClick={(e) => {
-          props.open && props.open();
+          props.link && window.open(props.link);
+          props.link2 && window.open(props.link2, "_blank");
+          setContextData({ ...contextData, visible: false });
           e.stopPropagation();
         }}
       >
@@ -83,6 +85,8 @@ const MenuContext = (props: Props) => {
         className="menu-item"
         onClick={(e) => {
           props.link && window.open(props.link, "_blank");
+          props.link2 && window.open(props.link2, "_blank");
+          setContextData({ ...contextData, visible: false });
           e.stopPropagation();
         }}
       >
@@ -95,6 +99,7 @@ const MenuContext = (props: Props) => {
             (props.link.startsWith("/")
               ? copy("https://abnerjs.vercel.app" + props.link)
               : copy(props.link));
+          setContextData({ ...contextData, visible: false });
           e.stopPropagation();
         }}
       >
