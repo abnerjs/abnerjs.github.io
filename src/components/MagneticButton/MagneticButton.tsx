@@ -4,6 +4,7 @@ import "./MagneticButton.css";
 
 interface Props {
   onClick?: any;
+  link?: string;
   className?: string;
   endIcon?: any;
   children?: any;
@@ -33,12 +34,13 @@ const defaultOrientation: devOrientation = {
 
 const MagneticButton = (props: Props) => {
   const [translate, setTranslate] = useState("translate(0,0)");
-    useState<devOrientation>(defaultOrientation);
+  useState<devOrientation>(defaultOrientation);
 
   const handleDeviceOrientation = (e: DeviceOrientationEvent) => {
     props.devOrientationX && setTranslate(`translate(${-e.gamma! * 0.4}px, 0)`);
     props.devOrientationY && setTranslate(`translate(0, ${-e.beta! * 0.5}px)`);
-    props.devOrientation && setTranslate(`translate(${-e.gamma! * 0.4}px, ${-e.beta! * 0.5}px)`);
+    props.devOrientation &&
+      setTranslate(`translate(${-e.gamma! * 0.4}px, ${-e.beta! * 0.5}px)`);
   };
 
   useEffect(() => {
@@ -67,7 +69,12 @@ const MagneticButton = (props: Props) => {
       className={props.className + " follows-btn"}
       variant={props.variant || "contained"}
       disableElevation
-      onClick={props.onClick}
+      onClick={() => {
+        props.onClick ? props.onClick() : props.link && window.open(props.link);
+      }}
+      onMouseDown={(e) => {
+        if (e.button === 1) props.link && window.open(props.link, "_blank");
+      }}
       endIcon={props.endIcon}
       disableFocusRipple
       type={props.type}

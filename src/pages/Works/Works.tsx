@@ -14,7 +14,7 @@ const Works = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       changeTransition(0);
-    }, 1000);
+    }, 500);
     return () => {
       clearTimeout(timer);
     };

@@ -1,0 +1,42 @@
+.menu-context {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 30000;
+  background-color: #1e1e1ecc;
+  backdrop-filter: blur(5px);
+  -moz-backdrop-filter: blur(5px);
+  color: white;
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  margin: 2px 0 0;
+  font-size: 16px;
+  text-align: left;
+}
+
+.menu-context .menu-item {
+  padding: 12px 25px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color .2s ease;
+}
+
+.menu-context .menu-item:hover {
+  background-color: #ffffff11;
+}
+
+.menu-context .signal {
+  background-image: url(src/assets/images/navbar/sigWhite.png);
+  width: 100%;
+  height: 50px;
+  background-size: auto 45%;
+  padding: 0 0 6px 0;
+  background-position: 50% 30%;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  transition: opacity .5s ease;
+}
+
+.menu-context .signal:hover {
+  opacity: .6;
+}

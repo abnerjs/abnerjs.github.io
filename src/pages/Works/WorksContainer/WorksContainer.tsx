@@ -2,15 +2,35 @@ import { useState } from "react";
 import "./works-container.css";
 import CustomCursor from "src/components/CustomCursor/CustomCursor";
 import WorkItem from "./WorkItem/WorkItem";
+import { useLocation, useNavigate } from "react-router-dom";
 import integra from "src/assets/images/works/integra30.png";
 import insumos from "src/assets/images/works/insumos.png";
 import ponto from "src/assets/images/works/ponto.png";
 import swingmd from "src/assets/images/works/swingmd.gif";
 import iworkoff from "src/assets/images/works/iworkoff.gif";
 import portalRelat from "src/assets/images/works/portal.png";
+import useTransitionStore from "src/store/storeConfig";
+import MenuContext from "src/components/MenuContext/MenuContext";
 
 const WorksContainer = () => {
+  const changeTransition = useTransitionStore((state) => state.change);
+  const changeLabel = useTransitionStore((state) => state.changeLabel);
   const [scale, setScale] = useState(0);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handlerGoTo = (url: string, label: string) => {
+    if (location.pathname === url) return;
+    changeTransition(1);
+    changeLabel(`• ${label} •`);
+
+    const timer = setTimeout(() => {
+      navigate(url);
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+    };
+  };
 
   return (
     <div className="works-container">
@@ -42,7 +62,7 @@ const WorksContainer = () => {
         year="2019"
         panel={swingmd}
         setScale={setScale}
-        onClick={() => window.open("https://github.com/abnerjs/SwingMaterialDesign")}
+        link="https://github.com/abnerjs/SwingMaterialDesign"
       />
       <WorkItem
         title="SIGAM"
@@ -67,7 +87,7 @@ const WorksContainer = () => {
         year="2020"
         panel={integra}
         setScale={setScale}
-        onClick={() => window.open("https://www.behance.net/gallery/95516641/Integra-party-corona")}
+        link="https://www.behance.net/gallery/95516641/Integra-party-corona"
       />
       <WorkItem
         title="Insumos"
@@ -76,6 +96,8 @@ const WorksContainer = () => {
         year="2022"
         panel={insumos}
         setScale={setScale}
+        link="/works/insumos"
+        onClick={() => handlerGoTo("/works/insumos", "INSUMOS")}
       />
     </div>
   );
