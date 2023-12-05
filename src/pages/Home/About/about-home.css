@@ -50,8 +50,8 @@
   right: 0;
   z-index: 20000;
   border-radius: 50vw / 20vw;
-  transition: all ease .4s;
-  transform: translateY(100vh)
+  transition: all ease 0.4s;
+  transform: translateY(100vh);
 }
 
 @media (max-width: 768px) {
@@ -96,9 +96,10 @@
 
 @media screen and (max-height: 768px) and (orientation: landscape) {
   .about-home {
-    flex-direction: column;
-    gap: 0;
+    flex-direction: row;
+    gap: 20px;
     height: 600px;
     margin: 0 50px;
+    transform: scale(0.8);
   }
 }

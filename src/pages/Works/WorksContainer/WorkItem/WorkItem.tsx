@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import "./work-item.css";
 import Stripe from "src/components/Stripe/Stripe";
 import MenuContext from "src/components/MenuContext/MenuContext";

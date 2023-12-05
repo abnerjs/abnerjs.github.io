@@ -10,7 +10,6 @@ import swingmd from "src/assets/images/works/swingmd.gif";
 import iworkoff from "src/assets/images/works/iworkoff.gif";
 import portalRelat from "src/assets/images/works/portal.png";
 import useTransitionStore from "src/store/storeConfig";
-import MenuContext from "src/components/MenuContext/MenuContext";
 
 const WorksContainer = () => {
   const changeTransition = useTransitionStore((state) => state.change);
@@ -19,6 +18,8 @@ const WorksContainer = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // use in future: page for each work
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handlerGoTo = (url: string, label: string) => {
     if (location.pathname === url) return;
     changeTransition(1);

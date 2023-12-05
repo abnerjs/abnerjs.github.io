@@ -34,7 +34,7 @@
   }
 }
 
-@media screen and (max-height: 768px) and (orientation: landscape) {
+@media screen and (max-height: 768px) and (max-width: 1100px) and (orientation: landscape) {
   .btn-hover-view {
     display: none;
   }
