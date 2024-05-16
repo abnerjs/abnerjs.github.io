@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <img src={signal} className='img-footer' alt="Ajs" />
-      <div className="copy">© 2023 - Desenvolvido por Abner J. Silva</div>
+      <div className="copy">© 2023 - Code by Abner J. Silva | Design by Dennis Snellenberg</div>
       <div className="socials">
         <div className="title">REDES SOCIAIS</div>
         <div className="links">
