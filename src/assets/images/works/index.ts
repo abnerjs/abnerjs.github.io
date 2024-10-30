@@ -26,6 +26,9 @@ import IworkoffLogin from 'src/assets/images/works/iworkoff/login.png'
 import PortalRelatoriosDashboard from 'src/assets/images/works/portal-relatorios/dashboard.png'
 import PortalRelatoriosUsers from 'src/assets/images/works/portal-relatorios/users.png'
 
+import ConselhoDashboard from 'src/assets/images/works/conselho/dashboard.png'
+import ConselhoUsers from 'src/assets/images/works/conselho/users.png'
+
 export const ReactCourseAssets = [summaryReactCourse, createGoalReactCourse]
 export const InsumosAssets = [
   InsumosAppointments,
@@ -42,3 +45,4 @@ export const PortalRelatoriosAssets = [
   PortalRelatoriosUsers,
   PortalRelatoriosDashboard,
 ]
+export const ConselhoAssets = [ConselhoDashboard, ConselhoUsers]

@@ -8,16 +8,61 @@ import { useNavigate } from 'react-router-dom'
 import useTransitionStore from 'src/store/storeConfig'
 import MenuContext from 'src/components/MenuContext/MenuContext'
 import {
-  InsumosAssets,
-  IntegraAssets,
-  IworkoffAssets,
-  PontoAssets,
   PortalRelatoriosAssets,
   SwingmdAssets,
   TasksAssets,
   ViacepAssets,
+  InsumosAssets,
+  IntegraAssets,
+  IworkoffAssets,
+  PontoAssets,
+  ReactCourseAssets,
+  ConselhoAssets,
 } from 'src/assets/images/works'
 import ImageStack from 'src/components/ImageStack/ImageStack'
+
+interface IWorksGrid {
+  images: any[]
+  type: 'desktop' | 'mobile' | 'both'
+}
+
+const upperWorks: IWorksGrid[] = [
+  {
+    images: InsumosAssets,
+    type: 'mobile',
+  },
+  {
+    images: ViacepAssets,
+    type: 'mobile',
+  },
+  {
+    images: IworkoffAssets,
+    type: 'desktop',
+  },
+  {
+    images: TasksAssets,
+    type: 'mobile',
+  },
+]
+
+const lowerWorks: IWorksGrid[] = [
+  {
+    images: IworkoffAssets,
+    type: 'desktop',
+  },
+  {
+    images: TasksAssets,
+    type: 'mobile',
+  },
+  {
+    images: ReactCourseAssets,
+    type: 'desktop',
+  },
+  {
+    images: ConselhoAssets,
+    type: 'desktop',
+  },
+]
 
 interface IHoverPanel {
   bgColor: string
@@ -207,38 +252,26 @@ const Works = () => {
       <div className='works-grid'>
         <Parallax translateX={['0%', '-20%']}>
           <div className='row'>
-            <div className='work'></div>
-            <div className='work'>
-              <ImageStack
-                images={InsumosAssets}
-                type='mobile'
-              />
-            </div>
-            <div className='work'>
-              <ImageStack
-                images={ViacepAssets}
-                type='mobile'
-              />
-            </div>
-            <div className='work'></div>
+            {upperWorks.map((work) => (
+              <div className='work'>
+                <ImageStack
+                  images={work.images}
+                  type={work.type}
+                />
+              </div>
+            ))}
           </div>
         </Parallax>
         <Parallax translateX={['0%', '20%']}>
           <div className='row reverse'>
-            <div className='work'></div>
-            <div className='work'></div>
-            <div className='work'>
-              <ImageStack
-                images={IworkoffAssets}
-                type='desktop'
-              />
-            </div>
-            <div className='work'>
-              <ImageStack
-                images={TasksAssets}
-                type='mobile'
-              />
-            </div>
+            {lowerWorks.map((work) => (
+              <div className='work'>
+                <ImageStack
+                  images={work.images}
+                  type={work.type}
+                />
+              </div>
+            ))}
           </div>
         </Parallax>
       </div>
