@@ -29,6 +29,12 @@ import PortalRelatoriosUsers from 'src/assets/images/works/portal-relatorios/use
 import ConselhoDashboard from 'src/assets/images/works/conselho/dashboard.png'
 import ConselhoUsers from 'src/assets/images/works/conselho/users.png'
 
+import ShoppingDashboard from 'src/assets/images/works/shopping/dashboard.png'
+import ShoppingCart from 'src/assets/images/works/shopping/cart.png'
+
+import QuestionarioJSFDashboard from 'src/assets/images/works/questionario-jsf/dashboard.png'
+import QuestionarioJSFForm from 'src/assets/images/works/questionario-jsf/form.png'
+
 export const ReactCourseAssets = [summaryReactCourse, createGoalReactCourse]
 export const InsumosAssets = [
   InsumosAppointments,
@@ -46,3 +52,8 @@ export const PortalRelatoriosAssets = [
   PortalRelatoriosDashboard,
 ]
 export const ConselhoAssets = [ConselhoDashboard, ConselhoUsers]
+export const ShoppingAssets = [ShoppingDashboard, ShoppingCart]
+export const QuestionarioJSFAssets = [
+  QuestionarioJSFDashboard,
+  QuestionarioJSFForm,
+]

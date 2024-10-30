@@ -18,6 +18,8 @@ import {
   PontoAssets,
   ReactCourseAssets,
   ConselhoAssets,
+  ShoppingAssets,
+  QuestionarioJSFAssets,
 } from 'src/assets/images/works'
 import ImageStack from 'src/components/ImageStack/ImageStack'
 
@@ -40,14 +42,14 @@ const upperWorks: IWorksGrid[] = [
     type: 'desktop',
   },
   {
-    images: TasksAssets,
-    type: 'mobile',
+    images: QuestionarioJSFAssets,
+    type: 'desktop',
   },
 ]
 
 const lowerWorks: IWorksGrid[] = [
   {
-    images: IworkoffAssets,
+    images: ShoppingAssets,
     type: 'desktop',
   },
   {
