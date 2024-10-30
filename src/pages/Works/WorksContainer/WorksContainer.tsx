@@ -61,7 +61,7 @@ const works: WorkItems[] = [
   {
     title: 'Material Design',
     description: 'Design & Desenvolvimento',
-    dev: 'Java Swing',
+    dev: 'Java',
     year: dayjs('2019-10').toDate(),
     panel: SwingmdAssets,
     type: 'desktop',
