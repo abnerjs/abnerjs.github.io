@@ -4,7 +4,6 @@ import CustomCursor from 'src/components/CustomCursor/CustomCursor'
 import WorkItem from './WorkItem/WorkItem'
 import { useLocation, useNavigate } from 'react-router-dom'
 import integra from 'src/assets/images/works/integra30.png'
-import insumos from 'src/assets/images/works/insumos.png'
 import ponto from 'src/assets/images/works/ponto.png'
 import swingmd from 'src/assets/images/works/swingmd.gif'
 import iworkoff from 'src/assets/images/works/iworkoff.gif'
@@ -12,8 +11,7 @@ import bcTasksDio from 'src/assets/images/works/bcTasksDio.gif'
 import portalRelat from 'src/assets/images/works/portal.png'
 import viacepflutter from 'src/assets/images/works/viacepflutter.png'
 import useTransitionStore from 'src/store/storeConfig'
-import summaryReactCourse from 'src/assets/images/works/react-course/summary.png'
-import createGoalReactCourse from 'src/assets/images/works/react-course/create-goal.png'
+import { ReactCourseAssets, InsumosAssets } from 'src/assets/images/works'
 
 const WorksContainer = () => {
   const changeTransition = useTransitionStore((state) => state.change)
@@ -121,7 +119,7 @@ const WorksContainer = () => {
         description='Design & Interação'
         dev='Figma'
         year='2022'
-        panel={[insumos]}
+        panel={InsumosAssets}
         type='mobile'
         setScale={setScale}
         link='https://www.figma.com/file/EiV65w3Y2q1hC4HoilnL2m/Insumos?node-id=0%3A1&t=RLXFk325dwOK6C88-1'
@@ -131,7 +129,7 @@ const WorksContainer = () => {
         description='Design & Desenvolvimento'
         dev='React'
         year='2024'
-        panel={[summaryReactCourse, createGoalReactCourse]}
+        panel={ReactCourseAssets}
         type='desktop'
         setScale={setScale}
         link='https://github.com/abnerjs/reactcourse-sec-2024'
