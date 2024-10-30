@@ -5,9 +5,40 @@ import InsumosAppointments from 'src/assets/images/works/insumos/appointments.pn
 import InsumosFichas from 'src/assets/images/works/insumos/fichas.png'
 import InsumosMachines from 'src/assets/images/works/insumos/machines.png'
 
+import TasksMenu from 'src/assets/images/works/tasks/menu.png'
+import TasksProfile from 'src/assets/images/works/tasks/profile.png'
+import TasksHome from 'src/assets/images/works/tasks/home.gif'
+
+import Integra from 'src/assets/images/works/integra/integra.png'
+
+import PontoMobile from 'src/assets/images/works/ponto/mobile.png'
+import PontoDesktop from 'src/assets/images/works/ponto/desktop.png'
+
+import Swingmd from 'src/assets/images/works/swingmd/swingmd.gif'
+
+import ViacepMain from 'src/assets/images/works/viacep/main.png'
+import ViacepForm from 'src/assets/images/works/viacep/form.png'
+import ViacepList from 'src/assets/images/works/viacep/list.png'
+
+import IworkoffDashboard from 'src/assets/images/works/iworkoff/dashboard.gif'
+import IworkoffLogin from 'src/assets/images/works/iworkoff/login.png'
+
+import PortalRelatoriosDashboard from 'src/assets/images/works/portal-relatorios/dashboard.png'
+import PortalRelatoriosUsers from 'src/assets/images/works/portal-relatorios/users.png'
+
 export const ReactCourseAssets = [summaryReactCourse, createGoalReactCourse]
 export const InsumosAssets = [
   InsumosAppointments,
   InsumosMachines,
   InsumosFichas,
+]
+export const TasksAssets = [TasksHome, TasksMenu, TasksProfile]
+export const IntegraAssets = [Integra]
+export const PontoAssets = [PontoMobile, PontoDesktop]
+export const SwingmdAssets = [Swingmd]
+export const ViacepAssets = [ViacepMain, ViacepForm, ViacepList]
+export const IworkoffAssets = [IworkoffDashboard, IworkoffLogin]
+export const PortalRelatoriosAssets = [
+  PortalRelatoriosUsers,
+  PortalRelatoriosDashboard,
 ]

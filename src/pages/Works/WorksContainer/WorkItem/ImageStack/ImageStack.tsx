@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-
 interface Props {
   images: string[]
   type: 'desktop' | 'mobile' | 'both'
@@ -7,7 +5,7 @@ interface Props {
 
 const ImageStack = (props: Props) => {
   return (
-    <div className='img relative'>
+    <div className='img relative !h-5/6'>
       {props.images.map((img, index) => {
         let transformArgs = ''
         let transformOrigin = 'origin-center'
@@ -53,12 +51,25 @@ const ImageStack = (props: Props) => {
               transformOrigin = 'origin-left'
               zIndex = 'z-10'
               transformArgs = 'transform scale-[0.7]'
-              bgPosition = 'bg-[center_left_3rem]'
+              bgPosition = 'bg-[center_left_4rem]'
             } else {
               transformOrigin = 'origin-right'
               zIndex = 'z-1'
               transformArgs = 'transform scale-[0.7]'
-              bgPosition = 'bg-[center_right_3rem]'
+              bgPosition = 'bg-[center_right_4rem]'
+            }
+          }
+        } else if (props.type === 'both') {
+          if (props.images.length === 2) {
+            if (index === 0) {
+              transformArgs = 'transform scale-[0.85]'
+              transformOrigin = 'origin-bottom-right'
+              zIndex = 'z-10'
+              bgPosition = 'bg-[center_right_6rem]'
+            } else {
+              bgPosition = 'bg-top'
+              transformOrigin = 'origin-top'
+              zIndex = 'z-1'
             }
           }
         }

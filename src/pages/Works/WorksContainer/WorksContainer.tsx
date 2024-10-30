@@ -3,15 +3,18 @@ import './works-container.css'
 import CustomCursor from 'src/components/CustomCursor/CustomCursor'
 import WorkItem from './WorkItem/WorkItem'
 import { useLocation, useNavigate } from 'react-router-dom'
-import integra from 'src/assets/images/works/integra30.png'
-import ponto from 'src/assets/images/works/ponto.png'
-import swingmd from 'src/assets/images/works/swingmd.gif'
-import iworkoff from 'src/assets/images/works/iworkoff.gif'
-import bcTasksDio from 'src/assets/images/works/bcTasksDio.gif'
-import portalRelat from 'src/assets/images/works/portal.png'
-import viacepflutter from 'src/assets/images/works/viacepflutter.png'
 import useTransitionStore from 'src/store/storeConfig'
-import { ReactCourseAssets, InsumosAssets } from 'src/assets/images/works'
+import {
+  ReactCourseAssets,
+  InsumosAssets,
+  TasksAssets,
+  IntegraAssets,
+  PontoAssets,
+  SwingmdAssets,
+  ViacepAssets,
+  IworkoffAssets,
+  PortalRelatoriosAssets,
+} from 'src/assets/images/works'
 
 const WorksContainer = () => {
   const changeTransition = useTransitionStore((state) => state.change)
@@ -47,29 +50,27 @@ const WorksContainer = () => {
         description='Design & Desenvolvimento'
         dev='React'
         year='2022'
-        panel={[portalRelat]}
+        panel={PortalRelatoriosAssets}
         type='both'
         setScale={setScale}
         link='https://github.com/abnerjs/PortalRelatorios'
-        link2='https://www.figma.com/file/3AVOpouhDNUlUjsqSJcFdv/Portal-de-Relat%C3%B3rios?node-id=0%3A1&t=tLE4Z9AefrNkrbHo-1'
       />
       <WorkItem
         title='iWorkOff'
         description='Design & Desenvolvimento'
         dev='React'
         year='2021'
-        panel={[iworkoff]}
+        panel={IworkoffAssets}
         type='desktop'
         setScale={setScale}
         link='https://github.com/abnerjs/iworkoff'
-        link2='https://www.figma.com/file/2TfY45k5qHg3uvEfy3P7dQ/iWorkOff?node-id=0%3A1&t=vnb6fSMXurPUZAQJ-1'
       />
       <WorkItem
         title='ViaCep Flutter'
         description='Design & Desenvolvimento'
         dev='Flutter'
         year='2023'
-        panel={[viacepflutter]}
+        panel={ViacepAssets}
         type='mobile'
         setScale={setScale}
         link='https://github.com/abnerjs/viacep'
@@ -79,7 +80,7 @@ const WorksContainer = () => {
         description='Design & Desenvolvimento'
         dev='Java Swing'
         year='2019'
-        panel={[swingmd]}
+        panel={SwingmdAssets}
         type='desktop'
         setScale={setScale}
         link='https://github.com/abnerjs/SwingMaterialDesign'
@@ -89,17 +90,17 @@ const WorksContainer = () => {
         description='Design & Interação'
         dev='Figma'
         year='2022'
-        panel={[ponto]}
+        panel={PontoAssets}
         type='both'
         setScale={setScale}
-        link='https://www.figma.com/file/QkJJWaMoIeOkxN9UcDMWkc/Sistema-de-Ponto?node-id=0%3A1&t=DfzvDMfDG6r6y8yf-1'
+        link='https://www.figma.com/design/QkJJWaMoIeOkxN9UcDMWkc/Sistema-de-Ponto?node-id=1942-10750&t=HCxRfooLW5r5Ohwi-1'
       />
       <WorkItem
         title='Tasks Flutter'
         description='Design & Desenvolvimento'
         dev='Flutter'
         year='2023'
-        panel={[bcTasksDio]}
+        panel={TasksAssets}
         type='mobile'
         setScale={setScale}
         link='https://github.com/abnerjs/bc-flutter-app'
@@ -109,7 +110,7 @@ const WorksContainer = () => {
         description='Design'
         dev='Photoshop'
         year='2020'
-        panel={[integra]}
+        panel={IntegraAssets}
         type='desktop'
         setScale={setScale}
         link='https://www.behance.net/gallery/95516641/Integra-party-corona'
