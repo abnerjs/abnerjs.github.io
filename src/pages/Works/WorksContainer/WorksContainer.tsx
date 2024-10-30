@@ -12,6 +12,8 @@ import bcTasksDio from 'src/assets/images/works/bcTasksDio.gif'
 import portalRelat from 'src/assets/images/works/portal.png'
 import viacepflutter from 'src/assets/images/works/viacepflutter.png'
 import useTransitionStore from 'src/store/storeConfig'
+import summaryReactCourse from 'src/assets/images/works/react-course/summary.png'
+import createGoalReactCourse from 'src/assets/images/works/react-course/create-goal.png'
 
 const WorksContainer = () => {
   const changeTransition = useTransitionStore((state) => state.change)
@@ -47,7 +49,8 @@ const WorksContainer = () => {
         description='Design & Desenvolvimento'
         dev='React'
         year='2022'
-        panel={portalRelat}
+        panel={[portalRelat]}
+        type='both'
         setScale={setScale}
         link='https://github.com/abnerjs/PortalRelatorios'
         link2='https://www.figma.com/file/3AVOpouhDNUlUjsqSJcFdv/Portal-de-Relat%C3%B3rios?node-id=0%3A1&t=tLE4Z9AefrNkrbHo-1'
@@ -57,7 +60,8 @@ const WorksContainer = () => {
         description='Design & Desenvolvimento'
         dev='React'
         year='2021'
-        panel={iworkoff}
+        panel={[iworkoff]}
+        type='desktop'
         setScale={setScale}
         link='https://github.com/abnerjs/iworkoff'
         link2='https://www.figma.com/file/2TfY45k5qHg3uvEfy3P7dQ/iWorkOff?node-id=0%3A1&t=vnb6fSMXurPUZAQJ-1'
@@ -67,7 +71,8 @@ const WorksContainer = () => {
         description='Design & Desenvolvimento'
         dev='Flutter'
         year='2023'
-        panel={viacepflutter}
+        panel={[viacepflutter]}
+        type='mobile'
         setScale={setScale}
         link='https://github.com/abnerjs/viacep'
       />
@@ -76,7 +81,8 @@ const WorksContainer = () => {
         description='Design & Desenvolvimento'
         dev='Java Swing'
         year='2019'
-        panel={swingmd}
+        panel={[swingmd]}
+        type='desktop'
         setScale={setScale}
         link='https://github.com/abnerjs/SwingMaterialDesign'
       />
@@ -85,7 +91,8 @@ const WorksContainer = () => {
         description='Design & Interação'
         dev='Figma'
         year='2022'
-        panel={ponto}
+        panel={[ponto]}
+        type='both'
         setScale={setScale}
         link='https://www.figma.com/file/QkJJWaMoIeOkxN9UcDMWkc/Sistema-de-Ponto?node-id=0%3A1&t=DfzvDMfDG6r6y8yf-1'
       />
@@ -94,7 +101,8 @@ const WorksContainer = () => {
         description='Design & Desenvolvimento'
         dev='Flutter'
         year='2023'
-        panel={bcTasksDio}
+        panel={[bcTasksDio]}
+        type='mobile'
         setScale={setScale}
         link='https://github.com/abnerjs/bc-flutter-app'
       />
@@ -103,7 +111,8 @@ const WorksContainer = () => {
         description='Design'
         dev='Photoshop'
         year='2020'
-        panel={integra}
+        panel={[integra]}
+        type='desktop'
         setScale={setScale}
         link='https://www.behance.net/gallery/95516641/Integra-party-corona'
       />
@@ -112,9 +121,20 @@ const WorksContainer = () => {
         description='Design & Interação'
         dev='Figma'
         year='2022'
-        panel={insumos}
+        panel={[insumos]}
+        type='mobile'
         setScale={setScale}
         link='https://www.figma.com/file/EiV65w3Y2q1hC4HoilnL2m/Insumos?node-id=0%3A1&t=RLXFk325dwOK6C88-1'
+      />
+      <WorkItem
+        title='React Course - SNCT'
+        description='Design & Desenvolvimento'
+        dev='React'
+        year='2024'
+        panel={[summaryReactCourse, createGoalReactCourse]}
+        type='desktop'
+        setScale={setScale}
+        link='https://github.com/abnerjs/reactcourse-sec-2024'
       />
     </div>
   )
