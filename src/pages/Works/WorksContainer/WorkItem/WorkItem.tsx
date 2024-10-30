@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import './work-item.css'
 import Stripe from 'src/components/Stripe/Stripe'
 import MenuContext from 'src/components/MenuContext/MenuContext'
-import ImageStack from './ImageStack/ImageStack'
+import ImageStack from 'src/components/ImageStack/ImageStack'
 
 interface Props {
   title: string

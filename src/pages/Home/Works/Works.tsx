@@ -5,16 +5,19 @@ import { Parallax } from 'react-scroll-parallax'
 import MagneticButton from 'src/components/MagneticButton/MagneticButton'
 import CustomCursor from 'src/components/CustomCursor/CustomCursor'
 import { useNavigate } from 'react-router-dom'
-import integra from 'src/assets/images/works/integra30.png'
-import ponto from 'src/assets/images/works/ponto.png'
-import swingmd from 'src/assets/images/works/swingmd.gif'
-import insumos from 'src/assets/images/works/insumos.png'
-import iworkoff from 'src/assets/images/works/iworkoff.gif'
-import viacepflutter from 'src/assets/images/works/viacepflutter.png'
-import portalRelat from 'src/assets/images/works/portal.png'
-import bcTasksDio from 'src/assets/images/works/bcTasksDio.gif'
 import useTransitionStore from 'src/store/storeConfig'
 import MenuContext from 'src/components/MenuContext/MenuContext'
+import {
+  InsumosAssets,
+  IntegraAssets,
+  IworkoffAssets,
+  PontoAssets,
+  PortalRelatoriosAssets,
+  SwingmdAssets,
+  TasksAssets,
+  ViacepAssets,
+} from 'src/assets/images/works'
+import ImageStack from 'src/components/ImageStack/ImageStack'
 
 const HoverPanel = (props: any) => {
   return (
@@ -47,12 +50,9 @@ const HoverPanel = (props: any) => {
             backgroundColor: '#C3CCE1',
           }}
         >
-          <img
-            src={portalRelat}
-            style={{
-              width: '80%',
-            }}
-            alt='Portal de Relatórios'
+          <ImageStack
+            images={PortalRelatoriosAssets}
+            type='desktop'
           />
         </div>
         <div
@@ -66,12 +66,9 @@ const HoverPanel = (props: any) => {
             backgroundColor: '#D4B492',
           }}
         >
-          <img
-            src={swingmd}
-            style={{
-              width: '80%',
-            }}
-            alt='Java Swing Material Design'
+          <ImageStack
+            images={SwingmdAssets}
+            type='desktop'
           />
         </div>
         <div
@@ -85,12 +82,9 @@ const HoverPanel = (props: any) => {
             backgroundColor: '#D4CAC6',
           }}
         >
-          <img
-            src={ponto}
-            style={{
-              width: '80%',
-            }}
-            alt='Plataforma de Ponto'
+          <ImageStack
+            images={PontoAssets}
+            type='both'
           />
         </div>
         <div
@@ -104,12 +98,9 @@ const HoverPanel = (props: any) => {
             backgroundColor: '#57A6A2',
           }}
         >
-          <img
-            src={integra}
-            style={{
-              width: '80%',
-            }}
-            alt='Integra'
+          <ImageStack
+            images={IntegraAssets}
+            type='desktop'
           />
         </div>
       </div>
@@ -209,21 +200,17 @@ const WorksContent = (props: any) => {
         onMouseLeave={() => props.setScale(0)}
         onClick={() => {
           window.open(
-            'https://www.figma.com/file/QkJJWaMoIeOkxN9UcDMWkc/Sistema-de-Ponto?node-id=0%3A1&t=DfzvDMfDG6r6y8yf-1'
-          )
-          window.open(
-            'https://www.figma.com/file/PUN3JlrbyJfbcJg6Pll1FZ/Plataforma-de-Ponto?node-id=0%3A1&t=dBuqpKSyFkH2JWJY-1',
-            'blank'
+            'https://www.figma.com/design/QkJJWaMoIeOkxN9UcDMWkc/Sistema-de-Ponto?node-id=1942-10750&t=5vr7MhWFxPzpHoHU-1'
           )
         }}
         onMouseDown={(e) => {
           if (e.button === 1) {
             window.open(
-              'https://www.figma.com/file/QkJJWaMoIeOkxN9UcDMWkc/Sistema-de-Ponto?node-id=0%3A1&t=DfzvDMfDG6r6y8yf-1',
+              'https://www.figma.com/design/QkJJWaMoIeOkxN9UcDMWkc/Sistema-de-Ponto?node-id=1942-10750&t=5vr7MhWFxPzpHoHU-1',
               'blank'
             )
             window.open(
-              'https://www.figma.com/file/PUN3JlrbyJfbcJg6Pll1FZ/Plataforma-de-Ponto?node-id=0%3A1&t=dBuqpKSyFkH2JWJY-1',
+              'https://www.figma.com/design/QkJJWaMoIeOkxN9UcDMWkc/Sistema-de-Ponto?node-id=1942-10750&t=5vr7MhWFxPzpHoHU-1',
               'blank'
             )
           }
@@ -232,10 +219,7 @@ const WorksContent = (props: any) => {
         <MenuContext
           targetId={elemPonto.current!}
           link={
-            'https://www.figma.com/file/QkJJWaMoIeOkxN9UcDMWkc/Sistema-de-Ponto?node-id=0%3A1&t=DfzvDMfDG6r6y8yf-1'
-          }
-          link2={
-            'https://www.figma.com/file/PUN3JlrbyJfbcJg6Pll1FZ/Plataforma-de-Ponto?node-id=0%3A1&t=dBuqpKSyFkH2JWJY-1'
+            'https://www.figma.com/design/QkJJWaMoIeOkxN9UcDMWkc/Sistema-de-Ponto?node-id=1942-10750&t=5vr7MhWFxPzpHoHU-1'
           }
         />
         <div className='text'>Sistema de Ponto</div>
@@ -314,7 +298,10 @@ const Works = () => {
           <HoverPanel hoverIndex={hoverIndex} />
         </CustomCursor>
 
-        <WorksContent setScale={setScale} setHoverIndex={setHoverIndex} />
+        <WorksContent
+          setScale={setScale}
+          setHoverIndex={setHoverIndex}
+        />
 
         <div className='more-work'>
           <MagneticButton
@@ -333,10 +320,16 @@ const Works = () => {
           <div className='row'>
             <div className='work'></div>
             <div className='work'>
-              <img src={insumos} alt='Insumos' />
+              <ImageStack
+                images={InsumosAssets}
+                type='mobile'
+              />
             </div>
             <div className='work'>
-              <img src={viacepflutter} alt='ViaCEP Flutter' />
+              <ImageStack
+                images={ViacepAssets}
+                type='mobile'
+              />
             </div>
             <div className='work'></div>
           </div>
@@ -346,10 +339,16 @@ const Works = () => {
             <div className='work'></div>
             <div className='work'></div>
             <div className='work'>
-              <img src={iworkoff} alt='iWorkOff' />
+              <ImageStack
+                images={IworkoffAssets}
+                type='desktop'
+              />
             </div>
             <div className='work'>
-              <img src={bcTasksDio} alt='BCTasksDio' />
+              <ImageStack
+                images={TasksAssets}
+                type='mobile'
+              />
             </div>
           </div>
         </Parallax>

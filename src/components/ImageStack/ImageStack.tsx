@@ -5,7 +5,7 @@ interface Props {
 
 const ImageStack = (props: Props) => {
   return (
-    <div className='img relative !h-5/6'>
+    <div className='img relative w-5/6 !h-5/6'>
       {props.images.map((img, index) => {
         let transformArgs = ''
         let transformOrigin = 'origin-center'
