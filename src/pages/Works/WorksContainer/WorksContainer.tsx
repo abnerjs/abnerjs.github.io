@@ -170,18 +170,21 @@ const WorksContainer = () => {
           <div className='text'>Ver</div>
         </div>
       </CustomCursor>
-      {works.map((work, index) => (
-        <WorkItem
-          title={work.title}
-          description={work.description}
-          dev={work.dev}
-          year={dayjs(work.year).format('YYYY')}
-          panel={work.panel}
-          type={work.type}
-          setScale={setScale}
-          link={work.link}
-        />
-      ))}
+      {works
+        .sort((a, b) => b.year.getTime() - a.year.getTime())
+        .map((work, index) => (
+          <WorkItem
+            key={index}
+            title={work.title}
+            description={work.description}
+            dev={work.dev}
+            year={dayjs(work.year).format('YYYY')}
+            panel={work.panel}
+            type={work.type}
+            setScale={setScale}
+            link={work.link}
+          />
+        ))}
     </div>
   )
 }
