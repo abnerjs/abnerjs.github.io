@@ -17,6 +17,8 @@ import {
   ShoppingAssets,
   QuestionarioJSFAssets,
   ConselhoAssets,
+  MarketFlaskAssets,
+  ReactCourse2025Assets
 } from 'src/assets/images/works'
 import dayjs from 'dayjs'
 
@@ -139,6 +141,24 @@ const works: WorkItems[] = [
     type: 'desktop',
     link: 'https://github.com/Fabrica-de-Software-Academica-IFSP-PEP/2024-2-ConselhoDeliberativo',
   },
+  {
+    title: 'React Course 2025',
+    description: 'Design & Desenvolvimento',
+    dev: 'React',
+    year: dayjs('2025-05').toDate(),
+    panel: ReactCourse2025Assets,
+    type: 'desktop',
+    link: 'https://github.com/abnerjs/reactcourse-sec-2025',
+  },
+  {
+    title: 'Market Flask',
+    description: 'Design & Desenvolvimento',
+    dev: 'Flask',
+    year: dayjs('2025-06').toDate(),
+    panel: MarketFlaskAssets,
+    type: 'desktop',
+    link: 'https://github.com/ProjetosIFSP/market-flask',
+  }
 ]
 
 const WorksContainer = () => {

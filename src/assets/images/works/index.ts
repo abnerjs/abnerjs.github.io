@@ -35,6 +35,11 @@ import ShoppingCart from 'src/assets/images/works/shopping/cart.png'
 import QuestionarioJSFDashboard from 'src/assets/images/works/questionario-jsf/dashboard.png'
 import QuestionarioJSFForm from 'src/assets/images/works/questionario-jsf/form.png'
 
+import MarketFlaskMain from 'src/assets/images/works/market-flask/dash.png'
+import MarketFlaskList from 'src/assets/images/works/market-flask/list.png'
+
+import ReactCourse2025Main from 'src/assets/images/works/react-course-2025/list.png'
+
 export const ReactCourseAssets = [summaryReactCourse, createGoalReactCourse]
 export const InsumosAssets = [
   InsumosAppointments,
@@ -57,3 +62,5 @@ export const QuestionarioJSFAssets = [
   QuestionarioJSFDashboard,
   QuestionarioJSFForm,
 ]
+export const MarketFlaskAssets = [MarketFlaskMain, MarketFlaskList]
+export const ReactCourse2025Assets = [ReactCourse2025Main]
