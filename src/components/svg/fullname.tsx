@@ -1,10 +1,16 @@
-export function Fullname({ className }: React.SVGProps<SVGSVGElement>) {
+import { cn } from "@/lib/utils";
+
+export function Fullname({
+  className,
+  ...props
+}: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 4538 2630"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={cn("pointer-events-none", className)}
+      {...props}
     >
       <title>Abner José da Silva</title>
       <path

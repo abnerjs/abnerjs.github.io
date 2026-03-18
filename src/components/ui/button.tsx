@@ -15,7 +15,7 @@ const overlayVariants = cva(
         outline: "bg-zinc-300 dark:bg-zinc-600",
         destructive: "bg-destructive",
         secondary: "bg-secondary-foreground",
-        ghost: "bg-muted",
+        ghost: "bg-accent",
         link: "",
       },
     },
@@ -39,7 +39,7 @@ const buttonVariants = cva(
         secondary:
           "relative bg-secondary text-secondary-foreground hover:text-background overflow-hidden rounded-full! px-6 py-3.5 tracking-tight",
         ghost:
-          "relative bg-transparent text-foreground hover:text-accent-foreground overflow-hidden rounded-full! px-6 py-3.5 tracking-tight",
+          "relative bg-transparent! text-foreground hover:text-accent-foreground overflow-hidden rounded-full! px-6 py-3.5 tracking-tight",
         link: "relative text-primary",
       },
       size: {
@@ -69,14 +69,12 @@ function Button({
   children,
   inverse = false,
   overlayClassName,
-  overlayClassname,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
     inverse?: boolean;
     overlayClassName?: string;
-    overlayClassname?: string;
   }) {
   const buttonRef = React.useRef<HTMLButtonElement>(null);
   const flairRef = React.useRef<HTMLSpanElement>(null);
@@ -138,14 +136,8 @@ function Button({
 
     const xSet = gsap.quickSetter(flair, "xPercent");
     const ySet = gsap.quickSetter(flair, "yPercent");
-    const xTo = gsap.quickTo(flair, "xPercent", {
-      duration: 0.18,
-      ease: "power1.out",
-    });
-    const yTo = gsap.quickTo(flair, "yPercent", {
-      duration: 0.18,
-      ease: "power1.out",
-    });
+    let xTo: ((value: number) => void) | null = null;
+    let yTo: ((value: number) => void) | null = null;
 
     let rect = buttonEl.getBoundingClientRect();
     const clampPercent = gsap.utils.clamp(0, 100);
@@ -176,8 +168,8 @@ function Button({
       const next = getXYFromClient(nextClientX, nextClientY);
       nextX = next.x;
       nextY = next.y;
-      xTo(nextX);
-      yTo(nextY);
+      xTo?.(nextX);
+      yTo?.(nextY);
       rafId = null;
     }
 
@@ -186,6 +178,15 @@ function Button({
     }
 
     function onMouseEnter(e: MouseEvent) {
+      xTo = gsap.quickTo(flair, "xPercent", {
+        duration: 0.18,
+        ease: "power1.out",
+      });
+      yTo = gsap.quickTo(flair, "yPercent", {
+        duration: 0.18,
+        ease: "power1.out",
+      });
+
       refreshMetrics();
       const pos = getXY(e);
       if (!pos) return;
@@ -206,6 +207,8 @@ function Button({
       const { x, y } = pos;
 
       gsap.killTweensOf(flair);
+      xTo = null;
+      yTo = null;
 
       gsap.to(flair, {
         xPercent: x > 90 ? x + 20 : x < 10 ? x - 20 : x,
@@ -278,8 +281,6 @@ function Button({
     }
   }, [inverse, variant]);
 
-  const resolvedOverlayClassName = overlayClassName ?? overlayClassname;
-
   return (
     <button
       ref={buttonRef}
@@ -302,7 +303,7 @@ function Button({
             className={cn(
               overlayVariants({ variant }),
               inverseStyles.overlay,
-              resolvedOverlayClassName,
+              overlayClassName,
             )}
           />
         </span>

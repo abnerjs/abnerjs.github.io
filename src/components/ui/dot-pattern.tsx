@@ -1,209 +1,264 @@
 "use client";
 
 import gsap from "gsap";
-import type { CSSProperties, SVGProps } from "react";
-import { useEffect, useId, useRef, useState } from "react";
+import { InertiaPlugin } from "gsap/InertiaPlugin";
+import type { HTMLAttributes } from "react";
+import { useEffect, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-/**
- *  DotPattern Component Props
- *
- * @param {number} [width=16] - The horizontal spacing between dots
- * @param {number} [height=16] - The vertical spacing between dots
- * @param {number} [x=0] - The x-offset of the entire pattern
- * @param {number} [y=0] - The y-offset of the entire pattern
- * @param {number} [cx=1] - The x-offset of individual dots
- * @param {number} [cy=1] - The y-offset of individual dots
- * @param {number} [cr=1] - The radius of each dot
- * @param {string} [className] - Additional CSS classes to apply to the SVG container
- * @param {boolean} [glow=false] - Whether dots should have a glowing animation effect
- */
-interface DotPatternProps extends SVGProps<SVGSVGElement> {
-  width?: number;
-  height?: number;
-  x?: number;
-  y?: number;
-  cx?: number;
-  cy?: number;
-  cr?: number;
-  className?: string;
-  glow?: boolean;
+gsap.registerPlugin(InertiaPlugin);
+
+type DotEntry = {
+  el: HTMLDivElement;
+  x: number;
+  y: number;
+};
+
+interface DotPatternProps extends HTMLAttributes<HTMLDivElement> {
   followMouse?: boolean;
-  [key: string]: unknown;
+  baseColor?: string;
+  activeColor?: string;
+  threshold?: number;
+  speedThreshold?: number;
+  shockRadius?: number;
+  shockPower?: number;
+  maxSpeed?: number;
+  dotSize?: number;
+  gap?: number;
 }
 
-/**
- * DotPattern Component
- *
- * A React component that creates an animated or static dot pattern background using SVG.
- * The pattern automatically adjusts to fill its container and can optionally display glowing dots.
- *
- * @component
- *
- * @see DotPatternProps for the props interface.
- *
- * @example
- * // Basic usage
- * <DotPattern />
- *
- * // With glowing effect and custom spacing
- * <DotPattern
- *   width={20}
- *   height={20}
- *   glow={true}
- *   className="opacity-50"
- * />
- *
- * @notes
- * - The component is client-side only ("use client")
- * - Automatically responds to container size changes
- * - When glow is enabled, dots will animate with random delays and durations
- * - Uses GSAP for animations
- * - Dots color can be controlled via the text color utility classes
- */
-
 export function DotPattern({
-  width = 16,
-  height = 16,
-  x = 0,
-  y = 0,
-  cx = 1,
-  cy = 1,
-  cr = 1,
   className,
-  glow = false,
-  style,
   followMouse = false,
+  baseColor = "#c8c8c8ff",
+  activeColor = "#ffffffff",
+  threshold = 200,
+  speedThreshold = 100,
+  shockRadius = 325,
+  shockPower = 5,
+  maxSpeed = 5000,
+  dotSize = 16,
+  gap = 32,
   ...props
 }: DotPatternProps) {
-  const id = useId();
-  const containerRef = useRef<SVGSVGElement>(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const dotsRef = useRef<HTMLDivElement[]>([]);
+  const dotCentersRef = useRef<DotEntry[]>([]);
 
   useEffect(() => {
-    const updateDimensions = () => {
-      if (containerRef.current) {
-        const { width, height } = containerRef.current.getBoundingClientRect();
-        setDimensions({ width, height });
+    const container = containerRef.current;
+    if (!container) {
+      return;
+    }
+
+    let rafCenters = 0;
+
+    const buildGrid = () => {
+      if (rafCenters) {
+        window.cancelAnimationFrame(rafCenters);
       }
+
+      container.innerHTML = "";
+      dotsRef.current = [];
+      dotCentersRef.current = [];
+
+      const contW = container.clientWidth;
+      const contH = container.clientHeight;
+      if (contW <= 0 || contH <= 0) {
+        return;
+      }
+
+      const cols = Math.floor((contW + gap) / (dotSize + gap));
+      const rows = Math.floor((contH + gap) / (dotSize + gap));
+      const total = cols * rows;
+
+      if (cols <= 0 || rows <= 0 || total <= 0) {
+        return;
+      }
+
+      for (let i = 0; i < total; i += 1) {
+        const dot = document.createElement("div");
+        dot.className = "dot-pattern-dot";
+        dot.style.width = `${dotSize}px`;
+        dot.style.height = `${dotSize}px`;
+        dot.style.borderRadius = "9999px";
+        dot.style.backgroundColor = baseColor;
+        dot.style.transform = "translate(0px, 0px)";
+        dot.style.willChange = "transform, background-color";
+        dot.style.transformOrigin = "center";
+
+        dot.dataset.inertiaApplied = "false";
+        gsap.set(dot, { x: 0, y: 0, backgroundColor: baseColor });
+
+        container.appendChild(dot);
+        dotsRef.current.push(dot);
+      }
+
+      rafCenters = window.requestAnimationFrame(() => {
+        dotsRef.current.forEach((dot) => {
+          dot.style.visibility = "visible";
+        });
+
+        dotCentersRef.current = dotsRef.current.flatMap((dot) => {
+          const rect = dot.getBoundingClientRect();
+          const x = rect.left + rect.width / 2;
+          const y = rect.top + rect.height / 2;
+          return [{ el: dot, x, y }];
+        });
+      });
     };
 
-    updateDimensions();
-    window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
-  }, []);
-
-  const dots = Array.from(
-    {
-      length:
-        Math.ceil(dimensions.width / width) *
-        Math.ceil(dimensions.height / height),
-    },
-    (_, i) => {
-      const col = i % Math.ceil(dimensions.width / width);
-      const row = Math.floor(i / Math.ceil(dimensions.width / width));
-      return {
-        x: col * width + cx + x,
-        y: row * height + cy + y,
-        delay: Math.random() * 5,
-        duration: Math.random() * 3 + 2,
-      };
-    },
-  );
-  const dotCount = dots.length;
-
-  useEffect(() => {
-    if (!glow || !containerRef.current || dotCount === 0) {
-      return;
-    }
-
-    const ctx = gsap.context(() => {
-      const circles = gsap.utils.toArray<SVGCircleElement>(
-        "circle[data-dot-pattern='true']",
-      );
-
-      gsap.fromTo(
-        circles,
-        { opacity: 0.4, scale: 1, transformOrigin: "center center" },
-        {
-          opacity: 1,
-          scale: 1.5,
-          duration: (_, target) => Number(target.dataset.duration) || 3,
-          delay: (_, target) => Number(target.dataset.delay) || 0,
-          ease: "sine.inOut",
-          repeat: -1,
-          yoyo: true,
-        },
-      );
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, [dotCount, glow]);
-
-  useEffect(() => {
-    if (!containerRef.current) {
-      return;
-    }
-
-    const svg = containerRef.current;
-    svg.style.setProperty("--dot-mask-x", "50%");
-    svg.style.setProperty("--dot-mask-y", "50%");
-
-    const updateMaskPosition = (event: MouseEvent) => {
-      const rect = svg.getBoundingClientRect();
-      const x = Math.min(Math.max(event.clientX - rect.left, 0), rect.width);
-      const y = Math.min(Math.max(event.clientY - rect.top, 0), rect.height);
-
-      svg.style.setProperty("--dot-mask-x", `${x}px`);
-      svg.style.setProperty("--dot-mask-y", `${y}px`);
-    };
-
-    window.addEventListener("mousemove", updateMaskPosition);
+    const resizeObserver = new ResizeObserver(buildGrid);
+    resizeObserver.observe(container);
+    window.addEventListener("scroll", buildGrid, true);
+    buildGrid();
 
     return () => {
-      window.removeEventListener("mousemove", updateMaskPosition);
+      if (rafCenters) {
+        window.cancelAnimationFrame(rafCenters);
+      }
+      resizeObserver.disconnect();
+      window.removeEventListener("scroll", buildGrid, true);
+      dotsRef.current.forEach((dot) => {
+        gsap.killTweensOf(dot);
+      });
+      dotsRef.current = [];
+      dotCentersRef.current = [];
     };
-  }, []);
+  }, [baseColor, dotSize, gap]);
 
-  const maskImage =
-    "radial-gradient(500px circle at var(--dot-mask-x) var(--dot-mask-y), white, transparent)";
-  const svgStyle: CSSProperties = {
-    ...style,
-    WebkitMaskImage: maskImage,
-    maskImage,
-  };
+  useEffect(() => {
+    if (!followMouse) {
+      return;
+    }
+
+    let raf = 0;
+    let lastTime = 0;
+    let lastX = 0;
+    let lastY = 0;
+
+    const resetDot = (el: HTMLDivElement) => {
+      gsap.to(el, {
+        x: 0,
+        y: 0,
+        duration: 1.5,
+        ease: "elastic.out(1,0.75)",
+        onComplete: () => {
+          el.dataset.inertiaApplied = "false";
+        },
+      });
+    };
+
+    const onMouseMove = (event: MouseEvent) => {
+      const now = performance.now();
+      const dt = now - lastTime || 16;
+      const dx = event.pageX - lastX;
+      const dy = event.pageY - lastY;
+      let vx = (dx / dt) * 1000;
+      let vy = (dy / dt) * 1000;
+      let speed = Math.hypot(vx, vy);
+
+      if (speed > maxSpeed) {
+        const scale = maxSpeed / speed;
+        vx *= scale;
+        vy *= scale;
+        speed = maxSpeed;
+      }
+
+      lastTime = now;
+      lastX = event.pageX;
+      lastY = event.pageY;
+
+      if (raf) {
+        window.cancelAnimationFrame(raf);
+      }
+
+      raf = window.requestAnimationFrame(() => {
+        dotCentersRef.current.forEach(({ el, x, y }) => {
+          const dist = Math.hypot(x - event.pageX, y - event.pageY);
+          const t = Math.max(0, 1 - dist / threshold);
+          const color = gsap.utils.interpolate(baseColor, activeColor, t);
+          gsap.set(el, { backgroundColor: color });
+
+          const inertiaApplied = el.dataset.inertiaApplied === "true";
+          if (speed > speedThreshold && dist < threshold && !inertiaApplied) {
+            el.dataset.inertiaApplied = "true";
+
+            const pushX = x - event.pageX + vx * 0.005;
+            const pushY = y - event.pageY + vy * 0.005;
+
+            gsap.to(el, {
+              inertia: {
+                x: pushX,
+                y: pushY,
+                resistance: 750,
+              },
+              onComplete: () => {
+                resetDot(el);
+              },
+            } as gsap.TweenVars);
+          }
+        });
+      });
+    };
+
+    const onClick = (event: MouseEvent) => {
+      dotCentersRef.current.forEach(({ el, x, y }) => {
+        const dist = Math.hypot(x - event.pageX, y - event.pageY);
+        const inertiaApplied = el.dataset.inertiaApplied === "true";
+
+        if (dist < shockRadius && !inertiaApplied) {
+          el.dataset.inertiaApplied = "true";
+          const falloff = Math.max(0, 1 - dist / shockRadius);
+          const pushX = (x - event.pageX) * shockPower * falloff;
+          const pushY = (y - event.pageY) * shockPower * falloff;
+
+          gsap.to(el, {
+            inertia: {
+              x: pushX,
+              y: pushY,
+              resistance: 750,
+            },
+            onComplete: () => {
+              resetDot(el);
+            },
+          } as gsap.TweenVars);
+        }
+      });
+    };
+
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
+    window.addEventListener("click", onClick, { passive: true });
+
+    return () => {
+      if (raf) {
+        window.cancelAnimationFrame(raf);
+      }
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("click", onClick);
+    };
+  }, [
+    activeColor,
+    baseColor,
+    followMouse,
+    maxSpeed,
+    shockPower,
+    shockRadius,
+    speedThreshold,
+    threshold,
+  ]);
 
   return (
-    <svg
+    <div
       ref={containerRef}
       aria-hidden="true"
-      style={followMouse ? { ...svgStyle, cursor: "none" } : undefined}
       className={cn(
-        "pointer-events-none absolute inset-0 h-full w-full text-neutral-400/80",
+        "pointer-events-none absolute inset-0 flex flex-wrap items-center justify-center overflow-hidden",
         className,
       )}
+      style={{ gap: `${gap}px` }}
       {...props}
-    >
-      <defs>
-        <radialGradient id={`${id}-gradient`}>
-          <stop offset="0%" stopColor="currentColor" stopOpacity="1" />
-          <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
-        </radialGradient>
-      </defs>
-      {dots.map((dot) => (
-        <circle
-          key={`${dot.x}-${dot.y}`}
-          cx={dot.x}
-          cy={dot.y}
-          r={cr}
-          fill={glow ? `url(#${id}-gradient)` : "currentColor"}
-          opacity={glow ? 0.4 : 1}
-          data-dot-pattern="true"
-          data-delay={dot.delay}
-          data-duration={dot.duration}
-        />
-      ))}
-    </svg>
+    />
   );
 }
