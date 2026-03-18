@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Figtree, JetBrains_Mono, Oi } from "next/font/google";
 import "./globals.css";
+import { AppScrollSmoother } from "@/components/ui/scroll-smoother";
 import { cn } from "@/lib/utils";
 
 export const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" });
@@ -15,6 +16,13 @@ export const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: { media: "(prefers-color-scheme: light)", color: "white" },
+};
 
 export const metadata: Metadata = {
   title: "Abner J. Silva • Dev",
@@ -59,11 +67,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={cn("font-sans", figtree.variable)}>
+    <html
+      lang="pt-BR"
+      className={cn("font-sans no-scrollbar", figtree.variable)}
+    >
       <body
-        className={`${figtree.variable} ${jetBrainsMono.variable} antialiased`}
+        className={`${figtree.variable} ${jetBrainsMono.variable} ${oi.variable} antialiased`}
       >
-        {children}
+        <div id="smooth-wrapper">
+          <div id="smooth-content">{children}</div>
+        </div>
+        <AppScrollSmoother />
       </body>
     </html>
   );

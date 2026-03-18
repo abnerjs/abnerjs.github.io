@@ -1,6 +1,6 @@
 "use client";
 
-import gsap from "gsap";
+import { useAnimate } from "motion/react";
 import type React from "react";
 import { useCallback, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
@@ -28,19 +28,23 @@ const MagneticWrapper = ({
 }: MagneticWrapperProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const magneticRef = useRef<HTMLDivElement>(null);
+  const [, animate] = useAnimate();
 
   const animateBackWithBounce = useCallback(() => {
     if (!magneticRef.current) {
       return;
     }
 
-    gsap.to(magneticRef.current, {
-      x: 0,
-      y: 0,
-      duration: bounceDuration,
-      ease: "elastic.out(1, 0.55)",
-    });
-  }, [bounceDuration]);
+    animate(
+      magneticRef.current,
+      { x: 0, y: 0 },
+      {
+        type: "spring",
+        duration: bounceDuration,
+        bounce: 0.45,
+      },
+    );
+  }, [animate, bounceDuration]);
 
   useEffect(() => {
     const magneticEl = magneticRef.current;
@@ -48,31 +52,36 @@ const MagneticWrapper = ({
       return;
     }
 
-    const xTo = gsap.quickTo(magneticEl, "x", {
-      duration: 0.25,
-      ease: "power3.out",
-    });
-    const yTo = gsap.quickTo(magneticEl, "y", {
-      duration: 0.25,
-      ease: "power3.out",
-    });
-
     const handleDeviceOrientation = (event: DeviceOrientationEvent) => {
       const gamma = event.gamma ?? 0;
       const beta = event.beta ?? 0;
 
+      const x = -gamma * strengthX;
+      const y = -beta * strengthY;
+
       if (devOrientation) {
-        xTo(-gamma * strengthX);
-        yTo(-beta * strengthY);
+        animate(
+          magneticEl,
+          { x, y },
+          { duration: 0.25, ease: [0.22, 1, 0.36, 1] },
+        );
         return;
       }
 
       if (devOrientationX) {
-        xTo(-gamma * strengthX);
+        animate(
+          magneticEl,
+          { x },
+          { duration: 0.25, ease: [0.22, 1, 0.36, 1] },
+        );
       }
 
       if (devOrientationY) {
-        yTo(-beta * strengthY);
+        animate(
+          magneticEl,
+          { y },
+          { duration: 0.25, ease: [0.22, 1, 0.36, 1] },
+        );
       }
     };
 
@@ -85,7 +94,14 @@ const MagneticWrapper = ({
         true,
       );
     };
-  }, [devOrientation, devOrientationX, devOrientationY, strengthX, strengthY]);
+  }, [
+    animate,
+    devOrientation,
+    devOrientationX,
+    devOrientationY,
+    strengthX,
+    strengthY,
+  ]);
 
   useEffect(() => {
     const containerEl = containerRef.current;
@@ -100,13 +116,17 @@ const MagneticWrapper = ({
       const x = event.clientX - rect.left - rect.width / 2;
       const y = event.clientY - rect.top - rect.height / 2;
 
-      gsap.to(magneticEl, {
-        x: x * strengthX,
-        y: y * strengthY,
-        duration: 0.2,
-        ease: "power3.out",
-        overwrite: true,
-      });
+      animate(
+        magneticEl,
+        {
+          x: x * strengthX,
+          y: y * strengthY,
+        },
+        {
+          duration: 0.2,
+          ease: [0.22, 1, 0.36, 1],
+        },
+      );
     };
 
     const handleMouseLeave = () => {
@@ -126,7 +146,7 @@ const MagneticWrapper = ({
       containerEl.removeEventListener("mouseleave", handleMouseLeave);
       containerEl.removeEventListener("pointerup", handlePointerUp);
     };
-  }, [strengthX, strengthY, animateBackWithBounce]);
+  }, [animate, strengthX, strengthY, animateBackWithBounce]);
 
   return (
     <div ref={containerRef} className={cn("inline-block", className)} {...rest}>
