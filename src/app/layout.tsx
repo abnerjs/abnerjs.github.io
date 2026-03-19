@@ -1,20 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Figtree, JetBrains_Mono, Oi } from "next/font/google";
+import { Anton, Lexend } from "next/font/google";
 import "./globals.css";
 import { AppScrollSmoother } from "@/components/ui/scroll-smoother";
 import { cn } from "@/lib/utils";
 
-export const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" });
+export const lexend = Lexend({ subsets: ["latin"], variable: "--font-sans" });
 
-export const oi = Oi({
-  variable: "--font-oi",
-  subsets: ["latin"],
+export const anton = Anton({
   weight: "400",
-});
-
-export const jetBrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  variable: "--font-display",
 });
 
 export const viewport: Viewport = {
@@ -69,10 +64,10 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={cn("font-sans no-scrollbar", figtree.variable)}
+      className={cn("font-sans no-scrollbar", lexend.variable)}
     >
       <body
-        className={`${figtree.variable} ${jetBrainsMono.variable} ${oi.variable} antialiased`}
+        className={`${lexend.variable} ${anton.variable} font- antialiased`}
       >
         <div id="smooth-wrapper">
           <div id="smooth-content">{children}</div>
