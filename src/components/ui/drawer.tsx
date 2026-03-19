@@ -5,7 +5,8 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/pt-br";
 import { X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -87,6 +88,12 @@ export function Drawer({
   removeDefaultCloseButton,
   children,
 }: DrawerProps) {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   // Close on Escape
   useEffect(() => {
     if (!open) return;
@@ -109,7 +116,11 @@ export function Drawer({
     };
   }, [open]);
 
-  return (
+  if (!isMounted) {
+    return null;
+  }
+
+  return createPortal(
     <AnimatePresence>
       {open && (
         <>
@@ -138,7 +149,7 @@ export function Drawer({
              * leaks during open or close animations.
              */}
             <motion.div
-              className="relative h-full overflow-hidden md:rounded-tl-2xl md:rounded-bl-2xl"
+              className="relative h-dvh overflow-hidden md:rounded-tl-2xl md:rounded-bl-2xl"
               initial={{ x: "101%" }}
               animate={{ x: 0 }}
               exit={{ x: "101%" }}
@@ -208,6 +219,7 @@ export function Drawer({
           </div>
         </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   );
 }
