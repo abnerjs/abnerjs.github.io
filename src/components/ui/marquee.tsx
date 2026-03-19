@@ -24,6 +24,7 @@ type MarqueeProps = {
   railClassName?: string;
   scrollContainerRef?: RefObject<HTMLElement | null>;
   speed?: number;
+  dontStopOnHover?: boolean;
 };
 
 function wrap(min: number, max: number, value: number) {
@@ -69,6 +70,7 @@ export function Marquee({
   railClassName,
   scrollContainerRef,
   speed = 1,
+  dontStopOnHover = false,
 }: MarqueeProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -173,11 +175,15 @@ export function Marquee({
     };
 
     const onPointerEnter = () => {
-      state.hoverMultiplier = 0;
+      if (!dontStopOnHover) {
+        state.hoverMultiplier = 0;
+      }
     };
 
     const onPointerLeave = () => {
-      state.hoverMultiplier = 1;
+      if (!dontStopOnHover) {
+        state.hoverMultiplier = 1;
+      }
     };
 
     const scrollTarget = scrollContainerRef?.current ?? window;
@@ -193,7 +199,7 @@ export function Marquee({
       root.removeEventListener("pointerenter", onPointerEnter);
       root.removeEventListener("pointerleave", onPointerLeave);
     };
-  }, [copyWidth, direction, scrollContainerRef, speed]);
+  }, [copyWidth, direction, scrollContainerRef, speed, dontStopOnHover]);
 
   useAnimationFrame((timeMs, deltaMs) => {
     const scroller = scrollerRef.current;

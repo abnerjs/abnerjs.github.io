@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "lenis/dist/lenis.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -62,8 +63,8 @@
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(0.491 0.27 292.581);
-  --primary-foreground: oklch(0.969 0.016 293.756);
+  --primary: rgb(234, 255, 0);
+  --primary-foreground: #000000;
   --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: oklch(0.21 0.006 285.885);
   --muted: oklch(0.967 0.001 286.375);
@@ -128,17 +129,8 @@
   * {
     @apply border-border outline-ring/50;
   }
-  #smooth-wrapper {
-    overflow: hidden;
-    min-height: 100vh;
-  }
-  #smooth-content {
-    will-change: transform;
-  }
   body {
     @apply bg-background text-foreground;
-    /* biome-ignore lint/complexity/noImportantStyles: tailwind default */
-    overflow-y: visible !important;
   }
   html {
     @apply font-sans;

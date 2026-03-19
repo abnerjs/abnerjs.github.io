@@ -69,9 +69,7 @@ export default function RootLayout({
       <body
         className={`${lexend.variable} ${anton.variable} font- antialiased`}
       >
-        <div id="smooth-wrapper">
-          <div id="smooth-content">{children}</div>
-        </div>
+        {children}
         <AppScrollSmoother />
       </body>
     </html>

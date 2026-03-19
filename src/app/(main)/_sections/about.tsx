@@ -1,46 +1,4 @@
-"use client";
-
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import React from "react";
-
 export function About() {
-  const skillsRef = React.useRef<HTMLDivElement | null>(null);
-  const skillsTitleRef = React.useRef<HTMLHeadingElement | null>(null);
-
-  React.useLayoutEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const media = gsap.matchMedia();
-
-    media.add("(min-width: 768px)", () => {
-      if (!skillsRef.current || !skillsTitleRef.current) {
-        return;
-      }
-
-      const titlePin = ScrollTrigger.create({
-        trigger: skillsRef.current,
-        start: "top top+=112",
-        end: "bottom bottom-=96",
-        pin: skillsTitleRef.current,
-        pinSpacing: false,
-        anticipatePin: 1,
-      });
-
-      return () => {
-        titlePin.kill();
-      };
-    });
-
-    return () => {
-      media.revert();
-    };
-  }, []);
-
   return (
     <section
       id="about"
@@ -57,20 +15,14 @@ export function About() {
       </div>
 
       {/* Minhas habilidades */}
-      <div
-        ref={skillsRef}
-        className="grid items-start gap-10 md:grid-cols-[minmax(220px,0.8fr)_minmax(0,1.2fr)] md:gap-16"
-      >
-        <h3
-          ref={skillsTitleRef}
-          className="self-start text-6xl font-bold font-['anton'] uppercase leading-[0.95] md:text-8xl"
-        >
+      <div className="grid items-start gap-10 md:grid-cols-[minmax(220px,0.9fr)_minmax(0,1.1fr)] md:gap-16">
+        <h3 className="self-start text-6xl font-bold font-['anton'] uppercase leading-[0.95] md:sticky md:top-24 md:text-8xl">
           Minhas
           <br />
           habilidades
         </h3>
 
-        <div className="flex flex-col gap-6 *:min-h-lvh">
+        <div className="flex flex-col gap-6 md:*:min-h-[90vh]">
           <div className="flex flex-col gap-2 justify-center">
             <h3>Front-end avançado</h3>
             <p className="text-lg font-medium">

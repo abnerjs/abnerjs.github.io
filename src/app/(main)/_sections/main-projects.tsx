@@ -2,7 +2,6 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FlowingMenu from "@/components/ui/flowing-menu";
 import MagneticWrapper from "@/components/ui/magnetic-wrapper";
-import { Marquee } from "@/components/ui/marquee";
 
 const demoItems = [
   {
@@ -91,29 +90,6 @@ export function MainProjects() {
           <ArrowRight />
         </Button>
       </MagneticWrapper>
-
-      <div className="flex flex-col gap-4">
-        <Marquee>
-          <div className="flex gap-8">
-            {demoItems.map((item) => (
-              <div
-                key={item.index}
-                className="h-48 w-xs bg-zinc-700 rounded-4xl"
-              ></div>
-            ))}
-          </div>
-        </Marquee>
-        <Marquee direction="right">
-          <div className="flex gap-8">
-            {demoItems.map((item) => (
-              <div
-                key={item.index}
-                className="h-48 w-xs bg-zinc-700 rounded-4xl"
-              ></div>
-            ))}
-          </div>
-        </Marquee>
-      </div>
     </section>
   );
 }
