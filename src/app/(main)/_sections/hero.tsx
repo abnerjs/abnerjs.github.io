@@ -71,7 +71,7 @@ export function Hero() {
           <Button
             size="xl"
             inverse
-            className="flex items-center gap-2 uppercase"
+            className="flex items-center gap-2 uppercase text-white hover:text-black"
           >
             Currículo
             <Download className="size-5" />

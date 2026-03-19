@@ -6,6 +6,11 @@ import Lenis from "lenis";
 import { useLayoutEffect } from "react";
 
 let pluginsRegistered = false;
+let currentLenis: Lenis | null = null;
+
+export function getLenisInstance() {
+  return currentLenis;
+}
 
 export function AppScrollSmoother() {
   useLayoutEffect(() => {
@@ -27,6 +32,7 @@ export function AppScrollSmoother() {
       anchors: true,
       lerp: 0.2,
     });
+    currentLenis = lenis;
 
     lenis.on("scroll", ScrollTrigger.update);
 
@@ -55,6 +61,9 @@ export function AppScrollSmoother() {
       gsap.ticker.remove(ticker);
       heroAnchorTrigger?.kill();
       lenis.destroy();
+      if (currentLenis === lenis) {
+        currentLenis = null;
+      }
     };
   }, []);
 

@@ -68,7 +68,7 @@ const demoItems = [
 
 export function MainProjects() {
   return (
-    <section className="flex flex-col gap-8">
+    <section id="projects" className="flex flex-col gap-8">
       <h2 className="px-8 sm:px-16 md:px-32 transition-all font-semibold">
         Principais projetos
       </h2>
