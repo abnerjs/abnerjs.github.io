@@ -1,84 +1,137 @@
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import FlowingMenu from "@/components/ui/flowing-menu";
-import MagneticWrapper from "@/components/ui/magnetic-wrapper";
+"use client";
 
-const demoItems = [
+import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import type React from "react";
+import { useRef } from "react";
+import { Button } from "@/components/ui/button";
+import { useCursor } from "@/components/ui/cursor-provider";
+import MagneticWrapper from "@/components/ui/magnetic-wrapper";
+import { cn } from "@/lib/utils";
+
+const items = [
   {
     index: 0,
     link: "#",
-    content: (
-      <div className="flex items-center justify-between w-full px-8 sm:px-16 md:px-32 transition-all py-6">
-        <span>S2 Viagens</span>
-        <div className="flex flex-col text-base text-right">
-          <div className="text-zinc-950">Next.js</div>
-          <div className="text-zinc-600">Desenvolvimento</div>
-        </div>
-      </div>
-    ),
-    text: "S2 Viagens",
+    text: "Agência de Viagens",
+    projectName: "S2 Viagens",
+    stack: "Next.js",
+    description: "Desenvolvimento",
+    year: "2025",
     image: "https://picsum.photos/600/400?random=1",
+    containerClassName: "bg-blue-500",
   },
   {
     index: 1,
     link: "#",
-    content: (
-      <div className="flex items-center justify-between w-full px-8 sm:px-16 md:px-32 transition-all py-6">
-        <span>Access Control</span>
-        <div className="flex flex-col text-base text-right">
-          <div className="text-zinc-950">React.js & Node</div>
-          <div className="text-zinc-600">Design & Desenvolvimento</div>
-        </div>
-      </div>
-    ),
-    text: "Access Control",
+    stack: "React.js & Node.js",
+    description: "Design & Desenvolvimento",
+    text: "Controle de Acesso",
+    projectName: "Controle de Acesso",
+    year: "2026",
     image: "https://picsum.photos/600/400?random=2",
+    containerClassName: "bg-green-500",
   },
   {
     index: 2,
     link: "#",
-    content: (
-      <div className="flex items-center justify-between w-full px-8 sm:px-16 md:px-32 transition-all py-6">
-        <span>Monterey</span>
-        <div className="flex flex-col text-base text-right">
-          <div className="text-zinc-950">Next.js</div>
-          <div className="text-zinc-600">Desenvolvimento</div>
-        </div>
-      </div>
-    ),
-    text: "Monterey",
+    stack: "React.js & Node.js",
+    description: "Design & Desenvolvimento",
+    text: "Controle de Eventos",
+    projectName: "Curso de React | V SEC IFSP",
+    year: "2024",
     image: "https://picsum.photos/600/400?random=3",
+    containerClassName: "bg-purple-500",
   },
   {
     index: 3,
     link: "#",
-    content: (
-      <div className="flex items-center justify-between w-full px-8 sm:px-16 md:px-32 transition-all py-6">
-        <span>Sequoia</span>
-        <div className="flex flex-col text-base text-right">
-          <div className="text-zinc-950">Next.js</div>
-          <div className="text-zinc-600">Desenvolvimento</div>
-        </div>
-      </div>
-    ),
-    text: "Sequoia",
-    image: "https://picsum.photos/600/400?random=4",
+    stack: "React.js & Node.js",
+    description: "Design & Desenvolvimento",
+    text: "Gestão de Reuniões e Atas",
+    projectName: "Conselho Deliberativo",
+    year: "2024",
+    image: "https://picsum.photos/600/400?random=3",
+    containerClassName: "bg-purple-500",
   },
 ];
 
 export function MainProjects() {
+  const { setCursor, setDefaultCursor } = useCursor();
+  const listRef = useRef<HTMLDivElement>(null);
+
+  const createProjectsCursor = (activeIndex: number) => (
+    <div className="size-full overflow-hidden rounded-[inherit]">
+      <div
+        className="flex flex-col transition-transform duration-400 ease-[cubic-bezier(0.22,1,0.36,1)]"
+        style={{ transform: `translateY(-${activeIndex * 15}rem)` }}
+      >
+        {items.map((item) => (
+          <div
+            key={item.index}
+            className={cn(
+              "relative flex items-center justify-center size-60 overflow-hidden",
+              item.containerClassName,
+            )}
+          >
+            <div className="absolute inset-0 bg-black/50" />
+            <Image
+              src={item.image}
+              alt={item.text}
+              width={208}
+              height={160}
+              className="w-52 h-40 -mt-12 rounded-lg"
+            />
+
+            <span className="absolute flex flex-col top-46 left-4 pr-4 text-xs font-semibold uppercase tracking-wide text-white">
+              {item.projectName}
+            </span>
+            <span className="absolute bottom-4 right-4 text-xs font-bold text-zinc-300">
+              {item.year}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  const handleItemMouseEnter = (index: number) => {
+    setCursor(createProjectsCursor(index), "size-60");
+  };
+
+  const handleItemMouseLeave = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    const nextTarget = event.relatedTarget;
+    const isWithinList =
+      nextTarget instanceof Node && !!listRef.current?.contains(nextTarget);
+
+    if (!isWithinList) {
+      setDefaultCursor();
+    }
+  };
+
   return (
-    <section id="projects" className="flex flex-col gap-8">
+    <section id="projects" className="flex flex-col gap-8 pb-40">
       <h2 className="px-8 sm:px-16 md:px-32 transition-all font-semibold">
         Principais projetos
       </h2>
-      <FlowingMenu
-        items={demoItems}
-        speed={15}
-        className="bg-transparent text-black"
-        marqueeClassName="bg-white text-black"
-        itemClassName="border-b border-zinc-200 first:border-t"
-      />
+      <div ref={listRef} className="flex flex-col divide-y divide-zinc-200">
+        {items.map((item) => (
+          <Link
+            key={item.index}
+            href={item.link}
+            className="flex items-center justify-between w-full px-8 sm:px-16 md:px-32 transition-all py-6 hover:px-4 sm:hover:px-12 md:hover:px-28"
+            onMouseEnter={() => handleItemMouseEnter(item.index)}
+            onMouseLeave={handleItemMouseLeave}
+          >
+            <span className="text-xl md:text-4xl uppercase">{item.text}</span>
+            <div className="flex flex-col text-xs md:text-base text-right">
+              <div className="text-zinc-950">{item.stack}</div>
+              <div className="text-zinc-600">{item.description}</div>
+            </div>
+          </Link>
+        ))}
+      </div>
 
       <MagneticWrapper className="self-center my-20">
         <Button

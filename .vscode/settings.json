@@ -1,0 +1,8 @@
+{
+  "chat.tools.terminal.autoApprove": {
+    "/^cat src/app/\\(main\\)/_sections/about\\.tsx \\| grep -B 2 -A 5 \"const skills = \\\\\\\\\\[\"$/": {
+      "approve": true,
+      "matchCommandLine": true
+    }
+  }
+}

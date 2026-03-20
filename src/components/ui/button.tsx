@@ -5,6 +5,7 @@ import gsap from "gsap";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
+import { useCursor } from "./cursor-provider";
 
 const overlayVariants = cva(
   "pointer-events-none absolute left-0 top-0 block aspect-square w-[170%] -translate-x-1/2 -translate-y-1/2 rounded-full",
@@ -80,16 +81,18 @@ function Button({
   const buttonRef = React.useRef<HTMLButtonElement>(null);
   const flairRef = React.useRef<HTMLSpanElement>(null);
   const underlineRef = React.useRef<HTMLSpanElement>(null);
+  const { setCursor, setDefaultCursor } = useCursor();
 
   React.useEffect(() => {
     const button = buttonRef.current;
     if (!button) return;
     const buttonEl = button;
 
-    // Skip hover animation setup on devices that do not support hover.
+    // Skip hover animation setup on devices that do not support hover or are touch devices.
     if (typeof window !== "undefined") {
-      const supportsHover = window.matchMedia("(hover: hover)").matches;
-      if (!supportsHover) return;
+      const isTouchDescendant = window.matchMedia("(pointer: coarse)").matches;
+      const isHoverNone = window.matchMedia("(hover: none)").matches;
+      if (isTouchDescendant || isHoverNone) return;
     }
 
     if (variant === "link") {
@@ -288,6 +291,10 @@ function Button({
       data-slot="button"
       data-variant={variant}
       data-size={size}
+      onMouseEnter={() => {
+        setCursor(null, "hidden");
+      }}
+      onMouseLeave={() => setDefaultCursor()}
       className={cn(
         buttonVariants({ variant, size }),
         inverseStyles.button,

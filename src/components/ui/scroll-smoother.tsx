@@ -43,23 +43,8 @@ export function AppScrollSmoother() {
     gsap.ticker.add(ticker);
     gsap.ticker.lagSmoothing(0);
 
-    const heroSection = document.getElementById("hero");
-    const heroAnchorTrigger = heroSection
-      ? ScrollTrigger.create({
-          trigger: heroSection,
-          start: "top top",
-          end: () => `+=${heroSection.offsetHeight}`,
-          pin: true,
-          pinSpacing: true,
-          anticipatePin: 1,
-        })
-      : null;
-
-    ScrollTrigger.refresh();
-
     return () => {
       gsap.ticker.remove(ticker);
-      heroAnchorTrigger?.kill();
       lenis.destroy();
       if (currentLenis === lenis) {
         currentLenis = null;

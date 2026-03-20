@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Anton, Lexend } from "next/font/google";
 import "./globals.css";
+import { CursorProvider } from "@/components/ui/cursor-provider";
 import { AppScrollSmoother } from "@/components/ui/scroll-smoother";
 import { cn } from "@/lib/utils";
 
@@ -64,13 +65,15 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={cn("font-sans no-scrollbar", lexend.variable)}
+      className={cn("font-sans no-scrollbar overflow-x-clip", lexend.variable)}
     >
       <body
-        className={`${lexend.variable} ${anton.variable} font- antialiased`}
+        className={`${lexend.variable} ${anton.variable} overflow-x-clip antialiased`}
       >
-        {children}
-        <AppScrollSmoother />
+        <CursorProvider>
+          {children}
+          <AppScrollSmoother />
+        </CursorProvider>
       </body>
     </html>
   );

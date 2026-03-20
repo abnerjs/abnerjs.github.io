@@ -96,7 +96,7 @@ export const DrawerContent = ({ setClose }: DrawerContentProps) => {
                     numberRefs.current[idx] = el;
                   }}
                   aria-hidden="true"
-                  className="pointer-events-none translate-x- translate-y-2 select-none text-[18px] font-normal tracking-normal text-primary"
+                  className="pointer-events-none translate-y-2 select-none text-[18px] font-normal tracking-normal text-blue-700"
                 >
                   {String(idx + 1).padStart(2, "0")}
                 </span>

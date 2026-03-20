@@ -159,7 +159,7 @@ export function Drawer({
               <motion.div
                 className={cn(
                   "absolute inset-0",
-                  "bg-primary filter brightness-200 dark:brightness-50",
+                  "bg-primary/50",
                   layerClassName ? layerClassName.last : "",
                 )}
                 initial={{ x: "101%" }}

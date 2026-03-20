@@ -8,7 +8,6 @@ export default function RootLayout({
   return (
     <>
       {children}
-      <div className="h-40"></div>
       <Footer />
     </>
   );
