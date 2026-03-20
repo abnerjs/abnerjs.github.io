@@ -8,6 +8,7 @@ import { AbnerJSilva } from "@/components/svg/abnerjsilva";
 import { Button } from "@/components/ui/button";
 import CurvedLoop from "@/components/ui/curved-loop";
 import MagneticWrapper from "@/components/ui/magnetic-wrapper";
+import SplitTitle from "@/components/ui/split-title";
 import { MainDrawer } from "../_sections/main-drawer";
 import { FormSection } from "./_sections/form";
 
@@ -94,9 +95,10 @@ export default function Projects() {
 
       {/* Hero */}
       <section id="hero">
-        <h1 className="text-[calc(31.2vw)] w-full flex justify-center items-center text-center leading-none self-center font-['anton'] uppercase">
-          Contato
-        </h1>
+        <SplitTitle
+          text="Contato"
+          className="text-[calc(31.2vw)] w-full flex justify-center items-center text-center leading-none self-center font-['anton'] uppercase"
+        />
         <CurvedLoop
           speed={2}
           curveAmount={90}

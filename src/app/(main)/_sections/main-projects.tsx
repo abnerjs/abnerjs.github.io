@@ -43,7 +43,6 @@ export function MainProjects() {
               item.containerClassName,
             )}
           >
-            <div className="absolute inset-0 bg-black/50" />
             <Image
               src={item.image}
               alt={item.text}
@@ -52,10 +51,10 @@ export function MainProjects() {
               className="w-52 h-40 -mt-12 rounded-lg"
             />
 
-            <span className="absolute flex flex-col top-46 left-4 pr-4 text-xs font-semibold uppercase tracking-wide text-white">
+            <span className="absolute flex flex-col top-46 left-4 pr-4 text-xs font-semibold uppercase tracking-wide text-black">
               {item.projectName}
             </span>
-            <span className="absolute bottom-4 right-4 text-xs font-bold text-zinc-300">
+            <span className="absolute bottom-4 right-4 text-xs font-bold text-zinc-600">
               {item.year}
             </span>
           </div>
