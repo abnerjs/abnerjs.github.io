@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import CurvedLoop from "@/components/ui/curved-loop";
 import MagneticWrapper from "@/components/ui/magnetic-wrapper";
 import { MainDrawer } from "../_sections/main-drawer";
-import { ProjectsSection } from "./_sections/projects";
+import { FormSection } from "./_sections/form";
 
 export default function Projects() {
   const [showDrawerButton, setShowDrawerButton] = React.useState(false);
@@ -45,7 +45,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen font-sans overflow-x-clip pb-40">
+    <div className="flex flex-col min-h-screen font-sans overflow-x-clip bg-zinc-950 text-white">
       <MainDrawer showButton={showDrawerButton} />
 
       {/* navbar */}
@@ -54,9 +54,9 @@ export default function Projects() {
           <MagneticWrapper>
             <Link href="/">
               <Button
-                className="flex max-md:px-2 items-center gap-2 uppercase font-semibold xl:tracking-widest text-zinc-950"
+                className="flex max-md:px-2 items-center gap-2 uppercase font-semibold xl:tracking-widest text-white hover:text-white"
                 variant="ghost"
-                overlayClassName="bg-black/10"
+                overlayClassName="bg-white/10"
                 size="lg"
               >
                 Início
@@ -66,9 +66,9 @@ export default function Projects() {
           <MagneticWrapper>
             <Link href="/projects">
               <Button
-                className="flex max-md:px-2 items-center gap-2 uppercase font-semibold xl:tracking-widest text-zinc-950"
+                className="flex max-md:px-2 items-center gap-2 uppercase font-semibold xl:tracking-widest text-white hover:text-white"
                 variant="ghost"
-                overlayClassName="bg-black/10"
+                overlayClassName="bg-white/10"
                 size="lg"
               >
                 Projetos
@@ -78,9 +78,9 @@ export default function Projects() {
           <MagneticWrapper>
             <Link href="/contact">
               <Button
-                className="flex max-md:px-2 items-center gap-2 uppercase font-semibold xl:tracking-widest text-zinc-950"
+                className="flex max-md:px-2 items-center gap-2 uppercase font-semibold xl:tracking-widest text-white hover:text-white"
                 variant="ghost"
-                overlayClassName="bg-black/10"
+                overlayClassName="bg-white/10"
                 size="lg"
               >
                 Contato
@@ -94,29 +94,24 @@ export default function Projects() {
 
       {/* Hero */}
       <section id="hero">
-        <h1 className="text-[calc(27vw)] w-full flex justify-center items-center text-center leading-none self-center font-['anton'] uppercase">
-          Projetos
+        <h1 className="text-[calc(31.2vw)] w-full flex justify-center items-center text-center leading-none self-center font-['anton'] uppercase">
+          Contato
         </h1>
         <CurvedLoop
           speed={2}
           curveAmount={90}
           direction="right"
           interactive
-          className="fill-zinc-400"
+          className="fill-zinc-700"
         >
-          <tspan>pense</tspan>
-          <tspan className="fill-orange-500">✹</tspan>
-          <tspan>fora</tspan>
-          <tspan className="fill-orange-500">✹</tspan>
-          <tspan>da</tspan>
-          <tspan className="fill-orange-500">✹</tspan>
-          <tspan>caixa</tspan>
-          <tspan className="fill-orange-500">✹</tspan>
+          <tspan>vamos</tspan>
+          <tspan className="fill-lime-500">✹</tspan>
+          <tspan>conversar?</tspan>
+          <tspan className="fill-lime-500">✹</tspan>
         </CurvedLoop>
       </section>
 
-      {/* Projects */}
-      <ProjectsSection />
+      <FormSection />
     </div>
   );
 }

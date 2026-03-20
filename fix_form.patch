@@ -1,0 +1,64 @@
+--- src/app/(main)/contact/_sections/form.tsx
++++ src/app/(main)/contact/_sections/form.tsx
+@@ -39,11 +39,12 @@
+               {/* Nome */}
+               <div className="flex flex-col border-b border-gray-200 pb-8 mb-8 relative">
+-                <label className="text-xl lg:text-2xl font-medium mb-6">Qual o seu nome?</label>
++                <label htmlFor="name" className="text-xl lg:text-2xl font-medium mb-6">Qual o seu nome?</label>
+                 <Input
+                   {...form.register("name")}
++                  id="name"
+                   placeholder="Fulano da Silva *"
+                   className="bg-transparent border-0 px-0 shadow-none focus-visible:ring-0 text-lg lg:text-xl rounded-none h-auto p-0 placeholder:text-gray-400"
+                 />
+                 {form.formState.errors.name && (
+                   <div className="text-red-500 mt-4 flex items-center text-sm font-medium">
+@@ -55,11 +56,12 @@
+               {/* Email */}
+               <div className="flex flex-col border-b border-gray-200 pb-8 mb-8 relative">
+-                <label className="text-xl lg:text-2xl font-medium mb-6">Qual o seu email?</label>
++                <label htmlFor="email" className="text-xl lg:text-2xl font-medium mb-6">Qual o seu email?</label>
+                 <Input
+                   {...form.register("email")}
++                  id="email"
+                   placeholder="fulano@email.com *"
+                   className="bg-transparent border-0 px-0 shadow-none focus-visible:ring-0 text-lg lg:text-xl rounded-none h-auto p-0 placeholder:text-gray-400"
+                 />
+                 {form.formState.errors.email && (
+                   <div className="text-red-500 mt-4 flex items-center text-sm font-medium">
+@@ -71,12 +73,13 @@
+               {/* Mensagem */}
+               <div className="flex flex-col border-b border-gray-200 pb-8 relative">
+-                <label className="text-xl lg:text-2xl font-medium mb-6">Sua mensagem</label>
++                <label htmlFor="message" className="text-xl lg:text-2xl font-medium mb-6">Sua mensagem</label>
+                 <Textarea
+                   {...form.register("message")}
++                  id="message"
+                   placeholder="Olá, Abner. Vi seu portfólio e gostaria de... *"
+-                  className="bg-transparent border-0 px-0 shadow-none focus-visible:ring-0 text-lg lg:text-xl rounded-none h-auto min-h-[50px] p-0 resize-none placeholder:text-gray-400 field-sizing-content"
++                  className="bg-transparent border-0 px-0 shadow-none focus-visible:ring-0 text-lg lg:text-xl rounded-none h-auto min-h-12.5 p-0 resize-none placeholder:text-gray-400 field-sizing-content"
+                 />
+                 {form.formState.errors.message && (
+                   <div className="text-red-500 mt-4 flex items-center text-sm font-medium">
+@@ -87,7 +90,7 @@
+                 <div className="absolute right-0 bottom-0 translate-y-1/2 -mr-4 lg:-mr-10">
+                   <Button
+                     type="submit"
+-                    className="!w-32 !h-32 lg:!w-40 lg:!h-40 !p-0 !rounded-full bg-[#6c40a6] hover:bg-[#5b368c] text-white flex items-center justify-center text-sm lg:text-base font-semibold shadow-none uppercase tracking-wider"
++                    className="w-32! h-32! lg:w-40! lg:h-40! p-0! rounded-full! bg-[#6c40a6] hover:bg-[#5b368c] text-white flex items-center justify-center text-sm lg:text-base font-semibold shadow-none uppercase tracking-wider"
+                   >
+                     Enviar
+                   </Button>
+@@ -116,8 +119,8 @@
+             <div className="flex flex-col gap-2">
+               <a href="https://wa.me/5518997361645" target="_blank" rel="noreferrer" className="block text-black hover:underline font-medium">WHATSAPP</a>
+-              <a href="#" className="block text-black hover:underline font-medium">INSTAGRAM</a>
+-              <a href="#" className="block text-black hover:underline font-medium">GITHUB</a>
+-              <a href="#" className="block text-black hover:underline font-medium">LINKEDIN</a>
+-              <a href="#" className="block text-black hover:underline font-medium">BEHANCE</a>
++              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="block text-black hover:underline font-medium">INSTAGRAM</a>
++              <a href="https://github.com" target="_blank" rel="noreferrer" className="block text-black hover:underline font-medium">GITHUB</a>
++              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="block text-black hover:underline font-medium">LINKEDIN</a>
++              <a href="https://behance.net" target="_blank" rel="noreferrer" className="block text-black hover:underline font-medium">BEHANCE</a>
+             </div>
+           </div>

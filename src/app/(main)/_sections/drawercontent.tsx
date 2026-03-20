@@ -10,7 +10,6 @@ import MagneticWrapper from "@/components/ui/magnetic-wrapper";
 
 const MENU_ITEMS = [
   { label: "Início", ariaLabel: "Ir para Home", link: "/" },
-  { label: "Sobre", ariaLabel: "Ir para Sobre", link: "#about" },
   { label: "Projetos", ariaLabel: "Ir para Projetos", link: "/projects" },
   { label: "Contato", ariaLabel: "Ir para Contato", link: "/contact" },
 ];
@@ -70,15 +69,15 @@ export const DrawerContent = ({ setClose }: DrawerContentProps) => {
 
   return (
     <>
-      <nav className="px-6 pb-8" aria-label="Navegação principal do drawer">
-        <ul className="list-none m-0 p-0 flex flex-col gap-2">
+      <nav className="pb-8" aria-label="Navegação principal do drawer">
+        <ul className="list-none m-0 p-0 pt-12 flex flex-col">
           {MENU_ITEMS.map((item, idx) => (
             <li
               className="relative overflow-hidden leading-none"
               key={item.label}
             >
               <Link
-                className="relative flex items-start cursor-pointer pr-[1.4em] text-[clamp(2.2rem,8vw,4rem)] font-semibold leading-none tracking-[-2px] text-black uppercase no-underline transition-colors duration-150 ease-linear hover:text-primary"
+                className="relative flex items-start cursor-pointer px-6 py-3 text-[clamp(2.2rem,8vw,4rem)] font-semibold leading-none tracking-[-2px] text-black uppercase no-underline transition-colors duration-150 ease-linear hover:text-primary hover:bg-zinc-950"
                 href={item.link}
                 aria-label={item.ariaLabel}
                 onClick={setClose}
