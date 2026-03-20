@@ -1,0 +1,1 @@
+# Project Filters\n- Projects are extracted from `main` branch.\n- Technologies array serves as a dynamic filter using Framer Motion mimicking the original GSAP Flip functionality.\n- Stacks extracted: Flask, React, Angular, Java, Flutter, Figma, Photoshop.\n- Using Tailwind `peer-checked` for tag buttons.\n

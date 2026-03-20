@@ -8,54 +8,22 @@ import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { useCursor } from "@/components/ui/cursor-provider";
 import MagneticWrapper from "@/components/ui/magnetic-wrapper";
+import { projectsData } from "@/data/projects";
 import { cn } from "@/lib/utils";
 
-const items = [
-  {
-    index: 0,
-    link: "#",
-    text: "Agência de Viagens",
-    projectName: "S2 Viagens",
-    stack: "Next.js",
-    description: "Desenvolvimento",
-    year: "2025",
-    image: "https://picsum.photos/600/400?random=1",
-    containerClassName: "bg-blue-500",
-  },
-  {
-    index: 1,
-    link: "#",
-    stack: "React.js & Node.js",
-    description: "Design & Desenvolvimento",
-    text: "Controle de Acesso",
-    projectName: "Controle de Acesso",
-    year: "2026",
-    image: "https://picsum.photos/600/400?random=2",
-    containerClassName: "bg-green-500",
-  },
-  {
-    index: 2,
-    link: "#",
-    stack: "React.js & Node.js",
-    description: "Design & Desenvolvimento",
-    text: "Controle de Eventos",
-    projectName: "Curso de React | V SEC IFSP",
-    year: "2024",
-    image: "https://picsum.photos/600/400?random=3",
-    containerClassName: "bg-purple-500",
-  },
-  {
-    index: 3,
-    link: "#",
-    stack: "React.js & Node.js",
-    description: "Design & Desenvolvimento",
-    text: "Gestão de Reuniões e Atas",
-    projectName: "Conselho Deliberativo",
-    year: "2024",
-    image: "https://picsum.photos/600/400?random=3",
-    containerClassName: "bg-purple-500",
-  },
-];
+const items = projectsData
+  .filter((p) => p.starred)
+  .map((p, index) => ({
+    index,
+    link: `/projects#${p.name}`,
+    text: p.projectName,
+    projectName: p.projectName,
+    stack: p.stack.join(" & "),
+    description: p.roles.join(" & "),
+    year: p.year,
+    image: p.images[0] || "",
+    containerClassName: p.className,
+  }));
 
 export function MainProjects() {
   const { setCursor, setDefaultCursor } = useCursor();
@@ -134,14 +102,16 @@ export function MainProjects() {
       </div>
 
       <MagneticWrapper className="self-center my-20">
-        <Button
-          variant="outline"
-          size="xl"
-          className="uppercase flex items-center gap-2 font-semibold tracking-wide"
-        >
-          Mais trabalhos
-          <ArrowRight />
-        </Button>
+        <Link href="/projects">
+          <Button
+            variant="outline"
+            size="xl"
+            className="uppercase flex items-center gap-2 font-semibold tracking-wide"
+          >
+            Mais trabalhos
+            <ArrowRight />
+          </Button>
+        </Link>
       </MagneticWrapper>
     </section>
   );
