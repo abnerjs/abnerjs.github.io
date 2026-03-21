@@ -1,15 +1,157 @@
 "use client";
 
-import Image from "next/image";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { notFound } from "next/navigation";
 import React, { use } from "react";
 import CurvedLoop from "@/components/ui/curved-loop";
+import { Iphone } from "@/components/ui/iphone";
+import { Safari } from "@/components/ui/safari";
 import SplitTitle from "@/components/ui/split-title";
+import { TextHighlight } from "@/components/ui/text-highlight";
 import { projectsData } from "@/data/projects";
 import { useHeroScrollTrigger } from "@/hooks/use-hero-scroll-trigger";
 import { cn } from "@/lib/utils";
 import { Navbar } from "../../../../components/ui/navbar";
 import { MainDrawer } from "../../_sections/main-drawer";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
+}
+
+function ProjectMediaRow({
+  item,
+  index,
+  project,
+}: {
+  item: any;
+  index: number;
+  project: any;
+}) {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      if (!item.scrollable) return;
+
+      const img = containerRef.current?.querySelector(
+        "img, video",
+      ) as HTMLElement;
+      if (!img) return;
+
+      const setupTrigger = () => {
+        const wrapper = img.parentElement;
+        if (!wrapper) return;
+
+        gsap.set(img, { clearProps: "y" });
+        ScrollTrigger.refresh();
+
+        const getScrollDistance = () => {
+          const wrapperHeight = wrapper.getBoundingClientRect().height;
+          const imgHeight = img.getBoundingClientRect().height;
+          return imgHeight - wrapperHeight;
+        };
+
+        if (getScrollDistance() <= 0) return;
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: containerRef.current,
+            pin: true,
+            start: "center center",
+            end: () => `+=${getScrollDistance()}`,
+            scrub: 1,
+            invalidateOnRefresh: true,
+            pinSpacing: true,
+          },
+        });
+
+        tl.to(img, {
+          y: () => -getScrollDistance(),
+          ease: "none",
+        });
+      };
+
+      if (img instanceof HTMLImageElement) {
+        if (img.complete) {
+          setupTrigger();
+        } else {
+          img.addEventListener("load", setupTrigger);
+        }
+      } else {
+        if ((img as HTMLVideoElement).readyState >= 1) {
+          setupTrigger();
+        } else {
+          img.addEventListener("loadedmetadata", setupTrigger);
+        }
+      }
+    },
+    { scope: containerRef, dependencies: [item.src, item.scrollable] },
+  );
+
+  const containerMaxW =
+    item.type === "desktop" ? "max-w-5xl lg:flex-1" : "max-w-xs";
+
+  let layoutClass = "flex-col-reverse";
+  if (index > 0) {
+    layoutClass =
+      index % 2 === 0
+        ? "flex-col-reverse lg:flex-row"
+        : "flex-col-reverse lg:flex-row-reverse";
+  }
+
+  return (
+    <div className="w-full relative flex justify-center">
+      <div
+        ref={containerRef}
+        className={cn(
+          "flex items-center justify-center gap-8 lg:gap-16 w-full",
+          index === 0 ? "my-8" : "my-16",
+          layoutClass,
+        )}
+      >
+        <div
+          className={`relative w-full ${containerMaxW} flex items-center justify-center`}
+        >
+          {item.type === "desktop" ? (
+            <Safari
+              imageSrc={item.src}
+              url={project.sources[0]?.url}
+              theme={item.theme}
+              scrollable={item.scrollable}
+            />
+          ) : (
+            <Iphone
+              src={item.src}
+              theme={item.theme}
+              scrollable={item.scrollable}
+            />
+          )}
+        </div>
+        {item.text && (
+          <div
+            className={cn(
+              "flex flex-col gap-4 px-4 w-full items-start text-left",
+              index !== 0 && "lg:w-1/3",
+            )}
+          >
+            {item.text.title && (
+              <h3 className="text-3xl font-bold font-['anton'] uppercase tracking-widest text-zinc-800 dark:text-zinc-200">
+                {item.text.title}
+              </h3>
+            )}
+            {item.text.paragraph && (
+              <TextHighlight className="text-lg md:text-xl font-medium text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-lg">
+                {item.text.paragraph}
+              </TextHighlight>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default function ProjectDetailPage({
   params,
@@ -29,25 +171,19 @@ export default function ProjectDetailPage({
       if (!titleContainerRef.current) return;
       const el = titleContainerRef.current;
 
-      // Reset para um valor base (ex: 10px) para medir a proporção pura natural
       el.style.fontSize = "10px";
-      el.style.width = "max-content"; // garante que o flex nao será exprimido
+      el.style.width = "max-content";
 
       const naturalWidth = el.scrollWidth;
-      // Pega a largura exata da janela (sem contar a scrollbar)
       const targetWidth = document.documentElement.clientWidth;
 
-      // A razao entre o que temos de espaço tela e o que a fonte em 10px ocupa
       const ratio = targetWidth / naturalWidth;
 
-      // Ajuste o tamanho da fonte (multiplicado por 10 porque a base é 10px)
-      // Ajuste usando 0.98 para ter uma margem de seguranca de 1% de cada lado
       el.style.fontSize = `${10 * ratio * 0.98}px`;
       el.style.width = "auto";
     };
 
     resizeText();
-    // Re-calcula apos as fontes carregarem para garantir proporcao certa
     document.fonts?.ready.then(resizeText);
 
     window.addEventListener("resize", resizeText);
@@ -73,8 +209,10 @@ export default function ProjectDetailPage({
           className="flex justify-center items-center whitespace-nowrap"
         >
           <SplitTitle
-            text={project.projectName}
-            className="w-full pointer-events-none select-none flex justify-center flex-nowrap! items-center text-center leading-snug self-center font-['anton'] uppercase tracking-tight"
+            text={project.projectName
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "")}
+            className="w-full pointer-events-none select-none flex justify-center flex-nowrap! items-center text-center leading-none self-center font-['anton'] uppercase tracking-tight"
           />
         </div>
         <CurvedLoop
@@ -117,23 +255,19 @@ export default function ProjectDetailPage({
         </div>
 
         <div
-          className={`w-full rounded-2xl flex flex-col items-center justify-center p-8 sm:p-16 overflow-hidden ${project.className}`}
+          className={`flex w-full flex-col gap-32 items-center justify-center p-8 sm:p-16 overflow-visible`}
         >
-          {project.images.map((img, i) => (
-            <div
-              key={img}
-              className="relative w-full max-w-5xl aspect-video my-8 drop-shadow-2xl"
-            >
-              <Image
-                src={img}
-                alt={`${project.projectName} image ${i + 1}`}
-                fill
-                sizes="100vw"
-                quality={100}
-                className="object-contain"
+          {project.content.map((item, index) => {
+            if (!("src" in item)) return null;
+            return (
+              <ProjectMediaRow
+                key={item.src}
+                item={item}
+                index={index}
+                project={project}
               />
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
     </div>

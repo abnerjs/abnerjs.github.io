@@ -29,8 +29,14 @@ function TagButton({ label, checked, onChange }: TagButtonProps) {
   );
 }
 
+interface ImageDataProps {
+  src: string;
+  scrollable?: boolean;
+  type?: string;
+}
+
 interface ImageStackProps {
-  images: string[];
+  images: ImageDataProps[];
   type: "desktop" | "mobile" | "both" | string;
   projectName: string;
 }
@@ -38,7 +44,11 @@ interface ImageStackProps {
 const ImageStack = ({ images, type, projectName }: ImageStackProps) => {
   return (
     <div className="relative w-[90%] h-[90%] transition-transform duration-700 ease-in-out group-hover:scale-105">
-      {images.map((img, index) => {
+      {images.map((imgObj, index) => {
+        const imgSrc = imgObj.src;
+        const isScrollable = imgObj.scrollable;
+        const imgContentType = imgObj.type;
+
         let transformArgs = "";
         let transformOrigin = "origin-center";
         let zIndex = "z-0";
@@ -106,19 +116,46 @@ const ImageStack = ({ images, type, projectName }: ImageStackProps) => {
           }
         }
 
+        if (!isScrollable) {
+          return (
+            <div
+              key={`${projectName} ${index + 1}`}
+              className={`absolute inset-0 flex w-full h-full drop-shadow-xs ${transformArgs} ${transformOrigin} ${zIndex}`}
+            >
+              <Image
+                src={imgSrc}
+                alt={`${projectName} ${index + 1}`}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                quality={85}
+                className={`object-contain ${bgPosition}`}
+              />
+            </div>
+          );
+        }
+
         return (
           <div
             key={`${projectName} ${index + 1}`}
-            className={`absolute inset-0 flex w-full h-full drop-shadow-md ${transformArgs} ${transformOrigin} ${zIndex}`}
+            className={`absolute inset-0 flex items-center justify-center w-full h-full drop-shadow-lg ${transformArgs} ${transformOrigin} ${zIndex}`}
           >
-            <Image
-              src={img}
-              alt={`${projectName} ${index + 1}`}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              quality={85}
-              className={`object-contain ${bgPosition}`}
-            />
+            <div
+              className={cn(
+                "relative overflow-hidden",
+                imgContentType === "mobile"
+                  ? "aspect-9/16 h-full bg-black"
+                  : "aspect-video w-full bg-black/2 dark:bg-white/2",
+              )}
+            >
+              <Image
+                src={imgSrc}
+                alt={`${projectName} ${index + 1}`}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                quality={85}
+                className="object-cover object-top"
+              />
+            </div>
           </div>
         );
       })}
@@ -202,9 +239,15 @@ export function ProjectsSection() {
                 <div
                   className={`w-full aspect-4/3 mb-6 rounded-md flex items-center justify-center overflow-hidden transition-colors ${project.className}`}
                 >
-                  {project.images.length > 0 && (
+                  {project.content.filter((c) => "src" in c).length > 0 && (
                     <ImageStack
-                      images={project.images}
+                      images={project.content
+                        .filter((c) => "src" in c)
+                        .map((c) => ({
+                          src: c.src as string,
+                          scrollable: c.scrollable,
+                          type: c.type,
+                        }))}
                       type={project.type as "desktop" | "mobile" | "both"}
                       projectName={project.projectName}
                     />

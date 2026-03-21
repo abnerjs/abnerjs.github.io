@@ -2,11 +2,15 @@
 
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const pathRef = useRef<SVGPathElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
+    if (!pathname) return;
+
     // Animação de Entrada: quando a página carrega, tira o "pano" (swipe para cima)
     if (pathRef.current) {
       // Começamos do topo totalmente coberto e esvaziamos para cima
@@ -26,7 +30,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
         }, // Sobe e some
       );
     }
-  }, []);
+  }, [pathname]);
 
   return (
     <>

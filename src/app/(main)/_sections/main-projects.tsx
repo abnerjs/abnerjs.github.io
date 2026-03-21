@@ -85,17 +85,22 @@ function FastCursorLabel({
 
 const items = projectsData
   .filter((p) => p.starred)
-  .map((p, index) => ({
-    index,
-    link: `/projects/${p.name}`,
-    text: p.projectName,
-    projectName: p.projectName,
-    stack: p.stack.join(" & "),
-    description: p.roles.join(" & "),
-    year: p.year,
-    image: p.images[0] || "",
-    containerClassName: p.className,
-  }));
+  .map((p, index) => {
+    const mainContent = p.content.find((c) => "src" in c);
+    return {
+      index,
+      link: `/projects/${p.name}`,
+      text: p.projectName,
+      projectName: p.projectName,
+      stack: p.stack.join(" & "),
+      description: p.roles.join(" & "),
+      year: p.year,
+      image: mainContent?.src || "",
+      isScrollable: mainContent?.scrollable || false,
+      type: mainContent?.type || "desktop",
+      containerClassName: p.className,
+    };
+  });
 
 export function MainProjects() {
   const { setCursor, setDefaultCursor } = useCursor();
@@ -115,13 +120,27 @@ export function MainProjects() {
               item.containerClassName,
             )}
           >
-            <div className="flex relative w-72">
+            <div
+              className={cn(
+                "flex relative overflow-hidden",
+                item.isScrollable && item.type === "mobile"
+                  ? "aspect-9/16 h-64 shadow-lg bg-black"
+                  : item.isScrollable && item.type === "desktop"
+                    ? "aspect-video w-72 shadow-lg bg-black/2 dark:bg-white/2"
+                    : "w-72 h-65",
+              )}
+            >
               <Image
                 src={item.image}
                 alt={item.text}
                 width={408}
                 height={260}
-                className="size-full object-contain"
+                className={cn(
+                  "size-full",
+                  item.isScrollable
+                    ? "object-cover object-top"
+                    : "object-contain",
+                )}
               />
             </div>
           </div>

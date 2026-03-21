@@ -1,4 +1,5 @@
 import type { HTMLAttributes } from "react";
+import { cn } from "@/lib/utils";
 
 const PHONE_WIDTH = 433;
 const PHONE_HEIGHT = 882;
@@ -17,13 +18,17 @@ const RADIUS_H = (SCREEN_RADIUS / SCREEN_WIDTH) * 100;
 const RADIUS_V = (SCREEN_RADIUS / SCREEN_HEIGHT) * 100;
 
 export interface IphoneProps extends HTMLAttributes<HTMLDivElement> {
+  theme?: "light" | "dark";
   src?: string;
   videoSrc?: string;
+  scrollable?: boolean;
 }
 
 export function Iphone({
   src,
+  theme = "light",
   videoSrc,
+  scrollable = true,
   className,
   style,
   ...props
@@ -33,9 +38,12 @@ export function Iphone({
 
   return (
     <div
-      className={`relative inline-block w-full align-middle leading-none ${className}`}
+      className={`relative inline-block w-full align-middle leading-none ${
+        theme === "dark" ? "dark" : ""
+      } ${className}`}
       style={{
         aspectRatio: `${PHONE_WIDTH}/${PHONE_HEIGHT}`,
+        maxWidth: `calc(80vh * (${PHONE_WIDTH} / ${PHONE_HEIGHT}))`,
         ...style,
       }}
       {...props}
@@ -65,7 +73,12 @@ export function Iphone({
 
       {!hasVideo && src && (
         <div
-          className="pointer-events-none absolute z-0 overflow-hidden"
+          className={cn(
+            "absolute z-0",
+            scrollable
+              ? "overflow-hidden"
+              : "overflow-hidden pointer-events-none",
+          )}
           style={{
             left: `${LEFT_PCT}%`,
             top: `${TOP_PCT}%`,
@@ -77,7 +90,10 @@ export function Iphone({
           <img
             src={src}
             alt=""
-            className="block size-full object-cover object-top"
+            className={cn(
+              "block w-full",
+              scrollable ? "h-auto object-top" : "h-full object-contain",
+            )}
           />
         </div>
       )}
@@ -87,7 +103,7 @@ export function Iphone({
         viewBox={`0 0 ${PHONE_WIDTH} ${PHONE_HEIGHT}`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="absolute inset-0 size-full"
+        className="absolute inset-0 size-full pointer-events-none"
         style={{ transform: "translateZ(0)" }}
       >
         <g mask={hasMedia ? "url(#screenPunch)" : undefined}>
