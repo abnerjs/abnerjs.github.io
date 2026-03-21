@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useCallback, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { allStacks, projectsData } from "@/data/projects";
@@ -194,32 +195,37 @@ export function ProjectsSection() {
               key={project.name}
               className="group cursor-pointer flex flex-col mb-8 w-full"
             >
-              <div
-                className={`w-full aspect-4/3 mb-6 rounded-md flex items-center justify-center overflow-hidden transition-colors ${project.className}`}
+              <Link
+                href={`/projects/${project.name}`}
+                className="flex flex-col w-full h-full"
               >
-                {project.images.length > 0 && (
-                  <ImageStack
-                    images={project.images}
-                    type={project.type as "desktop" | "mobile" | "both"}
-                    projectName={project.projectName}
-                  />
-                )}
-              </div>
-              <div className="flex flex-col">
-                <h4 className="text-3xl md:text-4xl font-semibold text-foreground tracking-tight mb-4">
-                  {project.projectName}
-                </h4>
-                <div className="w-full h-px bg-foreground/10 mb-4" />
-                <div className="flex justify-between items-center text-base font-semibold text-foreground/80">
-                  <span className="opacity-90">
-                    {project.roles.join(" & ")}
-                  </span>
-                  <span>
-                    {project.stack[0]}{" "}
-                    <span className="opacity-50 ml-1">• {project.year}</span>
-                  </span>
+                <div
+                  className={`w-full aspect-4/3 mb-6 rounded-md flex items-center justify-center overflow-hidden transition-colors ${project.className}`}
+                >
+                  {project.images.length > 0 && (
+                    <ImageStack
+                      images={project.images}
+                      type={project.type as "desktop" | "mobile" | "both"}
+                      projectName={project.projectName}
+                    />
+                  )}
                 </div>
-              </div>
+                <div className="flex flex-col">
+                  <h4 className="text-3xl md:text-4xl font-semibold text-foreground tracking-tight mb-4">
+                    {project.projectName}
+                  </h4>
+                  <div className="w-full h-px bg-foreground/10 mb-4" />
+                  <div className="flex justify-between items-center text-base font-semibold text-foreground/80">
+                    <span className="opacity-90">
+                      {project.roles.join(" & ")}
+                    </span>
+                    <span>
+                      {project.stack[0]}{" "}
+                      <span className="opacity-50 ml-1">• {project.year}</span>
+                    </span>
+                  </div>
+                </div>
+              </Link>
             </motion.div>
           ))}
         </AnimatePresence>

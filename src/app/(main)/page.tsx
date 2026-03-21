@@ -42,7 +42,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex min-h-screen font-sans overflow-x-clip">
+    <div className="flex min-h-screen font-sans overflow-x-clip bg-white rounded-b-[3rem]">
       <MainDrawer showButton={showDrawerButton} />
       <main className="flex flex-col w-full">
         <Hero />

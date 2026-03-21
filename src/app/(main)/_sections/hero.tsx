@@ -3,7 +3,6 @@ import Link from "next/link";
 import { DownloadIcon } from "@/components/svg/download";
 import { Fullname } from "@/components/svg/fullname";
 import { Me } from "@/components/svg/me";
-import { DotPattern } from "@/components/ui/bg/dot-pattern";
 import { Button } from "@/components/ui/button";
 import MagneticWrapper from "@/components/ui/magnetic-wrapper";
 import { getLenisInstance } from "@/components/ui/scroll-smoother";

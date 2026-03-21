@@ -68,7 +68,7 @@ export default function RootLayout({
       className={cn("font-sans no-scrollbar overflow-x-clip", lexend.variable)}
     >
       <body
-        className={`${lexend.variable} ${anton.variable} overflow-x-clip antialiased`}
+        className={`${lexend.variable} ${anton.variable} overflow-x-clip antialiased bg-zinc-950`}
       >
         <CursorProvider>
           {children}

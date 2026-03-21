@@ -7,9 +7,11 @@ import { useEffect, useRef } from "react";
 export default function SplitTitle({
   text,
   className,
+  style,
 }: {
   text: string;
   className?: string;
+  style?: React.CSSProperties;
 }) {
   const containerRef = useRef<HTMLHeadingElement>(null);
 
@@ -37,6 +39,7 @@ export default function SplitTitle({
     <h1
       ref={containerRef}
       className={`overflow-hidden flex flex-wrap gap-[0.15em] ${className || ""}`}
+      style={style}
     >
       {text.split(" ").map((word, wIdx) => (
         <span key={wIdx} className="inline-flex overflow-hidden">

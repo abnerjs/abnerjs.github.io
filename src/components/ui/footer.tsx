@@ -124,8 +124,6 @@ export function Footer() {
       ref={footerRef}
       className="bg-zinc-950 text-zinc-950 overflow-clip -mt-px"
     >
-      <div className="rounded-b-4xl bg-white h-10 w-full relative z-10"></div>
-
       {/* content */}
       <div className="flex flex-col font-light gap-8 px-4 sm:px-8 md:px-16 transition-all">
         <div className="py-20 px-8 md:px-20 gap-12 flex flex-col md:flex-row justify-between">

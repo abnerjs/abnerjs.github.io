@@ -15,7 +15,7 @@ const items = projectsData
   .filter((p) => p.starred)
   .map((p, index) => ({
     index,
-    link: `/projects#${p.name}`,
+    link: `/projects/${p.name}`,
     text: p.projectName,
     projectName: p.projectName,
     stack: p.stack.join(" & "),

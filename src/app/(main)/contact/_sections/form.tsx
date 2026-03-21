@@ -54,7 +54,7 @@ export function FormSection() {
   }
 
   return (
-    <div className="w-full bg-white text-black rounded-t-4xl px-8 lg:px-20 py-20 pb-40 pt-20 mt-20">
+    <div className="w-full bg-white text-black rounded-[3rem] px-8 lg:px-20 py-20 pb-40 pt-20 mt-20">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 relative">
         {/* Left Column - Form */}
         <div className="flex-1 w-full relative">

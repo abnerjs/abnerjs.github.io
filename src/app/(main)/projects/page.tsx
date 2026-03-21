@@ -46,7 +46,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen font-sans overflow-x-clip pb-40">
+    <div className="flex flex-col min-h-screen font-sans overflow-x-clip pb-40 bg-white rounded-b-[3rem]">
       <MainDrawer showButton={showDrawerButton} />
 
       {/* navbar */}
