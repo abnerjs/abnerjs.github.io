@@ -39,7 +39,7 @@ export interface RotatingTextProps
   initial?: boolean | Target | VariantLabels;
   animate?: boolean | VariantLabels | TargetAndTransition;
   exit?: Target | VariantLabels;
-  animatePresenceMode?: "sync" | "wait";
+  animatePresenceMode?: "sync" | "wait" | "popLayout";
   animatePresenceInitial?: boolean;
   rotationInterval?: number;
   staggerDuration?: number;

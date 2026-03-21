@@ -30,16 +30,16 @@ export function Hero() {
       <div className="relative flex flex-col bg-zinc-900 w-full h-full rounded-xl overflow-hidden">
         <SplitTitle
           text="BEM-VINDO"
-          className="hidden text-[calc(23.6vw)] text-zinc-800 w-full md:flex justify-center items-center text-center leading-none self-center font-['anton'] uppercase"
+          className="hidden pointer-events-none select-none text-[calc(23.6vw)] text-zinc-800 w-full md:flex justify-center items-center text-center leading-none self-center font-['anton'] uppercase"
         />
         <div className="flex md:hidden flex-col">
           <SplitTitle
             text="BEM"
-            className="flex text-[calc(56.6vw)] text-zinc-800 w-full justify-center items-center text-center leading-none self-center font-['anton'] uppercase"
+            className="flex text-[calc(56.6vw)] pointer-events-none select-none text-zinc-800 w-full justify-center items-center text-center leading-none self-center font-['anton'] uppercase"
           />
           <SplitTitle
             text="VINDO"
-            className="flex text-[calc(41.6vw)] -mt-5 text-zinc-800 w-full justify-center items-center text-center leading-none self-center font-['anton'] uppercase"
+            className="flex text-[calc(41.6vw)] pointer-events-none select-none -mt-5 text-zinc-800 w-full justify-center items-center text-center leading-none self-center font-['anton'] uppercase"
           />
         </div>
         <div className="absolute md:hidden flex top-1/2 -translate-y-36 bg-zinc-700/50 text-zinc-400 p-2 px-4 rounded-full self-center justify-self-center">

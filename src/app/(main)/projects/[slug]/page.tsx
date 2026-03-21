@@ -1,19 +1,14 @@
 "use client";
 
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import React, { use } from "react";
-import { AbnerJSilva } from "@/components/svg/abnerjsilva";
-import { Button } from "@/components/ui/button";
 import CurvedLoop from "@/components/ui/curved-loop";
-import MagneticWrapper from "@/components/ui/magnetic-wrapper";
 import SplitTitle from "@/components/ui/split-title";
 import { projectsData } from "@/data/projects";
+import { useHeroScrollTrigger } from "@/hooks/use-hero-scroll-trigger";
 import { cn } from "@/lib/utils";
+import { Navbar } from "../../../../components/ui/navbar";
 import { MainDrawer } from "../../_sections/main-drawer";
 
 export default function ProjectDetailPage({
@@ -24,7 +19,7 @@ export default function ProjectDetailPage({
   const resolvedParams = use(params);
   const project = projectsData.find((p) => p.name === resolvedParams.slug);
 
-  const [showDrawerButton, setShowDrawerButton] = React.useState(false);
+  const showDrawerButton = useHeroScrollTrigger();
   const titleContainerRef = React.useRef<HTMLDivElement>(null);
 
   React.useLayoutEffect(() => {
@@ -59,36 +54,6 @@ export default function ProjectDetailPage({
     return () => window.removeEventListener("resize", resizeText);
   }, []);
 
-  React.useLayoutEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const heroSection = document.getElementById("hero");
-    if (!heroSection) {
-      return;
-    }
-
-    const heroOutOfViewTrigger = ScrollTrigger.create({
-      trigger: heroSection,
-      start: "bottom top",
-      end: "max",
-      onEnter: () => setShowDrawerButton(true),
-      onLeaveBack: () => setShowDrawerButton(false),
-    });
-
-    const syncInitialVisibility = requestAnimationFrame(() => {
-      setShowDrawerButton(window.scrollY >= heroOutOfViewTrigger.start);
-    });
-
-    return () => {
-      cancelAnimationFrame(syncInitialVisibility);
-      heroOutOfViewTrigger.kill();
-    };
-  }, []);
-
   if (!project) return notFound();
 
   return (
@@ -96,53 +61,7 @@ export default function ProjectDetailPage({
       <MainDrawer showButton={showDrawerButton} />
 
       {/* navbar */}
-      <nav className="flex relative items-center md:pt-4">
-        <div id="#nav-hero" className="flex md:gap-2 h-max">
-          <MagneticWrapper>
-            <Link href="/">
-              <Button
-                className="flex max-md:px-2 items-center gap-2 uppercase font-semibold xl:tracking-widest text-zinc-950"
-                variant="ghost"
-                overlayClassName="bg-black/10"
-                size="lg"
-              >
-                Início
-              </Button>
-            </Link>
-          </MagneticWrapper>
-          <MagneticWrapper>
-            <Link href="/projects">
-              <Button
-                className="flex max-md:px-2 items-center gap-2 uppercase font-semibold xl:tracking-widest text-zinc-950"
-                variant="ghost"
-                overlayClassName="bg-black/10"
-                size="lg"
-              >
-                Projetos
-              </Button>
-            </Link>
-          </MagneticWrapper>
-          <MagneticWrapper>
-            <Link href="/contact">
-              <Button
-                className="flex max-md:px-2 items-center gap-2 uppercase font-semibold xl:tracking-widest text-zinc-950"
-                variant="ghost"
-                overlayClassName="bg-black/10"
-                size="lg"
-              >
-                Contato
-              </Button>
-            </Link>
-          </MagneticWrapper>
-        </div>
-
-        <Link
-          href="/"
-          className="hidden md:block h-10 mt-2 absolute left-1/2 -translate-x-1/2 z-0"
-        >
-          <AbnerJSilva className="h-full" />
-        </Link>
-      </nav>
+      <Navbar theme="light" />
 
       {/* Hero */}
       <section
@@ -155,7 +74,7 @@ export default function ProjectDetailPage({
         >
           <SplitTitle
             text={project.projectName}
-            className="w-full flex justify-center flex-nowrap! items-center text-center leading-snug self-center font-['anton'] uppercase tracking-tight"
+            className="w-full pointer-events-none select-none flex justify-center flex-nowrap! items-center text-center leading-snug self-center font-['anton'] uppercase tracking-tight"
           />
         </div>
         <CurvedLoop

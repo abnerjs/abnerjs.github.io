@@ -87,11 +87,7 @@ export function About() {
 
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
-    const splitElements = splitTextRefs.current.filter(
-      (element): element is HTMLElement => element !== null,
-    );
-
-    if (splitElements.length === 0) {
+    if (splitTextRefs.current.length === 0) {
       return;
     }
 
@@ -103,28 +99,65 @@ export function About() {
         return;
       }
 
-      for (const element of splitElements) {
-        const split = SplitText.create(element, {
-          type: "words,lines",
-          mask: "lines",
-          linesClass: "about-line",
-          autoSplit: true,
-          onSplit: (instance) => {
-            return gsap.from(instance.lines, {
-              yPercent: 120,
-              stagger: 0.08,
-              ease: "none",
-              scrollTrigger: {
-                trigger: element,
-                scrub: true,
-                start: "clamp(top 82%)",
-                end: "clamp(bottom 45%)",
-              },
-            });
-          },
-        });
+      for (const [index, element] of splitTextRefs.current.entries()) {
+        if (!element) {
+          continue;
+        }
 
-        splitInstances.push(split);
+        if (index === 1) {
+          const split = SplitText.create(element, {
+            type: "words,lines",
+            mask: "lines",
+            linesClass: "about-line",
+            autoSplit: true,
+            onSplit: (instance) => {
+              return gsap.from(instance.lines, {
+                yPercent: 120,
+                stagger: 0.08,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: element,
+                  scrub: true,
+                  start: "clamp(top 82%)",
+                  end: "clamp(bottom 45%)",
+                },
+              });
+            },
+          });
+          splitInstances.push(split);
+        } else {
+          const split = SplitText.create(element, {
+            type: "lines",
+            autoSplit: true,
+            onSplit: (instance) => {
+              gsap.set(instance.lines, {
+                maskImage:
+                  "linear-gradient(to right, black 50%, rgba(0, 0, 0, 0.2) 50%)",
+                WebkitMaskImage:
+                  "linear-gradient(to right, black 50%, rgba(0, 0, 0, 0.2) 50%)",
+                maskSize: "200% 100%",
+                WebkitMaskSize: "200% 100%",
+                maskPosition: "100% 0%",
+                WebkitMaskPosition: "100% 0%",
+              });
+
+              for (const target of instance.lines) {
+                gsap.to(target, {
+                  maskPosition: "0% 0%",
+                  WebkitMaskPosition: "0% 0%",
+                  ease: "none",
+                  scrollTrigger: {
+                    trigger: target,
+                    scrub: 0.5,
+                    start: "top bottom",
+                    end: "bottom center",
+                  },
+                });
+              }
+            },
+          });
+          splitInstances.push(split);
+        }
       }
 
       ScrollTrigger.refresh();
@@ -199,9 +232,9 @@ export function About() {
                 texts={skills}
                 mainClassName="overflow-hidden"
                 staggerDuration={0.03}
-                staggerFrom="last"
-                rotationInterval={3000}
-                animatePresenceMode="wait"
+                staggerFrom="first"
+                rotationInterval={0}
+                animatePresenceMode="popLayout"
                 auto={false}
               />
             </span>
