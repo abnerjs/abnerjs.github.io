@@ -27,9 +27,46 @@ export interface Project {
   sources: Source[];
   stack: string[];
   starred?: boolean;
+  reverseStack?: boolean;
 }
 
 export const projectsData: Project[] = [
+  {
+    name: "access-control",
+    projectName: "Controle de Acesso IoT",
+    type: "both",
+    year: "2026",
+    reverseStack: true,
+    content: [
+      {
+        src: "/works/access-control/dash.png",
+        type: "mobile",
+        scrollable: false,
+        text: {
+          title: "Controle de Acesso",
+          paragraph:
+            "Sistema para gerenciar e controlar o acesso a salas e laboratórios de uma instituição.",
+        },
+      },
+      {
+        src: "/works/access-control/userform.mp4",
+        type: "desktop",
+        scrollable: false,
+        text: {
+          title: "Formulário de Usuário",
+          paragraph:
+            "Interface para cadastro e gerenciamento de usuários do sistema.",
+        },
+      },
+    ],
+    className: "bg-blue-100 dark:bg-blue-900/30",
+    roles: ["Design", "Desenvolvimento"],
+    sources: [
+      { url: "https://github.com/ProjetosIFSP/access-control", from: "GitHub" },
+    ],
+    stack: ["React", "Node.js", "PostgreSQL"],
+    starred: true,
+  },
   {
     name: "s2-viagens",
     projectName: "Agência de Viagens",

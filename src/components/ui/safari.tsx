@@ -22,7 +22,10 @@ export function Safari({
   style,
   ...props
 }: SafariProps) {
-  const hasVideo = !!videoSrc;
+  const hasVideo = !!videoSrc || imageSrc?.endsWith(".mp4");
+  const actualVideoSrc =
+    videoSrc || (imageSrc?.endsWith(".mp4") ? imageSrc : undefined);
+  const actualImageSrc = !hasVideo ? imageSrc : undefined;
 
   return (
     <div
@@ -138,7 +141,7 @@ export function Safari({
         {hasVideo && (
           <video
             className="w-full h-auto block object-top"
-            src={videoSrc}
+            src={actualVideoSrc}
             autoPlay
             loop
             muted
@@ -146,10 +149,10 @@ export function Safari({
             preload="metadata"
           />
         )}
-        {!hasVideo && imageSrc && (
+        {!hasVideo && actualImageSrc && (
           /* eslint-disable-next-line @next/next/no-img-element */
           <img
-            src={imageSrc}
+            src={actualImageSrc}
             alt=""
             className="w-full h-auto block object-top"
           />

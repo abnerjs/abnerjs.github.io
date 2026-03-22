@@ -122,14 +122,25 @@ const ImageStack = ({ images, type, projectName }: ImageStackProps) => {
               key={`${projectName} ${index + 1}`}
               className={`absolute inset-0 flex w-full h-full drop-shadow-xs ${transformArgs} ${transformOrigin} ${zIndex}`}
             >
-              <Image
-                src={imgSrc}
-                alt={`${projectName} ${index + 1}`}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                quality={85}
-                className={`object-contain ${bgPosition}`}
-              />
+              {imgSrc.endsWith(".mp4") ? (
+                <video
+                  src={imgSrc}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className={`object-contain ${bgPosition} w-full h-full`}
+                />
+              ) : (
+                <Image
+                  src={imgSrc}
+                  alt={`${projectName} ${index + 1}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  quality={85}
+                  className={`object-contain ${bgPosition}`}
+                />
+              )}
             </div>
           );
         }
@@ -147,14 +158,25 @@ const ImageStack = ({ images, type, projectName }: ImageStackProps) => {
                   : "aspect-video w-full bg-black/2 dark:bg-white/2",
               )}
             >
-              <Image
-                src={imgSrc}
-                alt={`${projectName} ${index + 1}`}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                quality={85}
-                className="object-cover object-top"
-              />
+              {imgSrc.endsWith(".mp4") ? (
+                <video
+                  src={imgSrc}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="object-cover object-top w-full h-full"
+                />
+              ) : (
+                <Image
+                  src={imgSrc}
+                  alt={`${projectName} ${index + 1}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  quality={85}
+                  className="object-cover object-top"
+                />
+              )}
             </div>
           </div>
         );
@@ -241,13 +263,16 @@ export function ProjectsSection() {
                 >
                   {project.content.filter((c) => "src" in c).length > 0 && (
                     <ImageStack
-                      images={project.content
-                        .filter((c) => "src" in c)
-                        .map((c) => ({
-                          src: c.src as string,
-                          scrollable: c.scrollable,
-                          type: c.type,
-                        }))}
+                      images={(() => {
+                        const imgs = project.content
+                          .filter((c) => "src" in c)
+                          .map((c) => ({
+                            src: c.src as string,
+                            scrollable: c.scrollable,
+                            type: c.type,
+                          }));
+                        return project.reverseStack ? imgs.reverse() : imgs;
+                      })()}
                       type={project.type as "desktop" | "mobile" | "both"}
                       projectName={project.projectName}
                     />

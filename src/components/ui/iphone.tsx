@@ -33,7 +33,9 @@ export function Iphone({
   style,
   ...props
 }: IphoneProps) {
-  const hasVideo = !!videoSrc;
+  const hasVideo = !!videoSrc || src?.endsWith(".mp4");
+  const actualVideoSrc = videoSrc || (src?.endsWith(".mp4") ? src : undefined);
+  const actualImageSrc = !hasVideo ? src : undefined;
   const hasMedia = hasVideo || !!src;
 
   return (
@@ -61,7 +63,7 @@ export function Iphone({
         >
           <video
             className="block size-full object-cover"
-            src={videoSrc}
+            src={actualVideoSrc}
             autoPlay
             loop
             muted
@@ -71,7 +73,7 @@ export function Iphone({
         </div>
       )}
 
-      {!hasVideo && src && (
+      {!hasVideo && actualImageSrc && (
         <div
           className={cn(
             "absolute z-0",
@@ -87,8 +89,9 @@ export function Iphone({
             borderRadius: `${RADIUS_H}% / ${RADIUS_V}%`,
           }}
         >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={src}
+            src={actualImageSrc}
             alt=""
             className={cn(
               "block w-full",
