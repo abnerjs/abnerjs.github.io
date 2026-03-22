@@ -284,7 +284,7 @@ export function About() {
               }}
               className="text-lg font-medium"
             >
-              Construo <span className="text-green-500">sites escaláveis</span>{" "}
+              Construo <span className="text-green-500">sites otimizados</span>{" "}
               a partir do zero, bem como adiciono novas funcionalidades em sites
               pré-existentes. Tenho habilidades para construir{" "}
               <span className="text-green-500">

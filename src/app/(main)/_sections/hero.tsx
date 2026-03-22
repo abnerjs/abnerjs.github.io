@@ -99,14 +99,19 @@ export function Hero() {
 
           {/* Curriculo */}
           <MagneticWrapper className="absolute left-1/2 -translate-x-1/2 group">
-            <Button
-              size="xl"
-              inverse
-              className="flex items-center gap-2 uppercase bg-primary md:bg-zinc-950 text-black md:text-white md:hover:text-black overflow-hidden"
+            <a
+              href="/resumes/AbnerJSCurriculo.pdf"
+              download="Abner_Silva_Curriculo.pdf"
             >
-              Currículo
-              <DownloadIcon className="size-6" />
-            </Button>
+              <Button
+                size="xl"
+                inverse
+                className="flex items-center gap-2 uppercase bg-primary md:bg-zinc-950 text-black md:text-white md:hover:text-black overflow-hidden"
+              >
+                Currículo
+                <DownloadIcon className="size-6" />
+              </Button>
+            </a>
           </MagneticWrapper>
 
           {/* Redes sociais */}
@@ -145,7 +150,7 @@ export function Hero() {
             </MagneticWrapper>
             <MagneticWrapper>
               <Link
-                href="https://wa.me/5518997261645"
+                href="https://wa.me/5518997361645"
                 target="_blank"
                 rel="noopener noreferrer"
               >

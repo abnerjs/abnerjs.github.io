@@ -170,7 +170,7 @@ export function Footer() {
             </Link>
             {/* Whatsapp */}
             <Link
-              href="https://wa.me/5518997261645"
+              href="https://wa.me/5518997361645"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Abrir WhatsApp de Abner"
@@ -220,11 +220,7 @@ export function Footer() {
             {/* contact me */}
             <div className="flex flex-col md:mt-8">
               <MagneticWrapper className="absolute -translate-1/2 self-end size-24 md:size-40">
-                <Link
-                  href="https://wa.me/5518997261645"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link href="/contact">
                   <Button
                     className="text-zinc-50 bg-zinc-950 uppercase text-xs md:text-base size-24 md:size-40"
                     overlayClassName="bg-purple-700"

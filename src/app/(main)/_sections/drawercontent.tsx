@@ -145,7 +145,7 @@ export const DrawerContent = ({ setClose }: DrawerContentProps) => {
             </MagneticWrapper>
             <MagneticWrapper>
               <Link
-                href="https://wa.me/5518997261645"
+                href="https://wa.me/5518997361645"
                 target="_blank"
                 rel="noopener noreferrer"
               >
