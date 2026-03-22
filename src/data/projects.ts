@@ -66,7 +66,7 @@ export const projectsData: Project[] = [
   },
   {
     name: "market-flask",
-    projectName: "Market Flask",
+    projectName: "Loja de Carros",
     type: "desktop",
     year: "2025",
     content: [
@@ -76,7 +76,7 @@ export const projectsData: Project[] = [
         scrollable: false,
         text: {
           title:
-            "Sistema em Flask para gerenciamento de compra e venda de carros.",
+            "Sistema em Flask para gerenciamento de compra e venda de carros",
           paragraph:
             "Construido com o intuito de desbravar outros horizontes, com o desenvolvimento web com Python.",
         },
@@ -87,8 +87,9 @@ export const projectsData: Project[] = [
         type: "desktop",
         scrollable: false,
         text: {
-          title: "Listagem",
-          paragraph: "Visualização e controle de todos os produtos do mercado.",
+          title: "Gestão de itens",
+          paragraph:
+            "Funcionalidades para manutenção de veículos, prestadores de serviços, serviços e clientes.",
         },
         theme: "dark",
       },
@@ -112,7 +113,8 @@ export const projectsData: Project[] = [
         scrollable: false,
         text: {
           title: "Listagem de Eventos",
-          paragraph: "Interface para gerenciar e listar eventos futuros.",
+          paragraph:
+            "Interface para gerenciar e listar eventos e participantes de uma instituição.",
         },
         theme: "dark",
       },
@@ -130,7 +132,7 @@ export const projectsData: Project[] = [
   },
   {
     name: "conselho",
-    projectName: "Conselho deliberativo",
+    projectName: "Gestão de reuniões",
     type: "desktop",
     year: "2024",
     content: [
@@ -141,7 +143,7 @@ export const projectsData: Project[] = [
         text: {
           title: "Visão Geral",
           paragraph:
-            "Dashboard de análise gerencial para visualizar status do conselho deliberativo.",
+            "Dashboard de análise gerencial para visualizar status de atas dos conselhos do IFSP-PEP.",
         },
       },
       {
@@ -151,7 +153,7 @@ export const projectsData: Project[] = [
         text: {
           title: "Usuários",
           paragraph:
-            "Página com o controle e gerenciamento de permissões de usuários.",
+            "Página com o controle e gerenciamento de usuários com importação de dados direto do Suap.",
         },
       },
     ],
@@ -159,8 +161,8 @@ export const projectsData: Project[] = [
     roles: ["Design", "Desenvolvimento"],
     sources: [
       {
-        url: "https://github.com/Fabrica-de-Software-Academica-IFSP-PEP/2024-2-ConselhoDeliberativo",
-        from: "GitHub",
+        url: "https://www.figma.com/design/FeCMj2bctDqeliwbiuLQSX/ConselhoDeliberativo?node-id=140-1506&t=LxI8A7OLFkoQNAOZ-1",
+        from: "Figma",
       },
     ],
     stack: ["Angular", "Node.js", "PostgreSQL"],
@@ -168,7 +170,7 @@ export const projectsData: Project[] = [
   },
   {
     name: "react-course-2024",
-    projectName: "React Course - SNCT",
+    projectName: "Controle de metas semanais",
     type: "desktop",
     year: "2024",
     content: [
@@ -177,8 +179,9 @@ export const projectsData: Project[] = [
         type: "desktop",
         scrollable: false,
         text: {
-          title: "Criação de Meta",
-          paragraph: "Tela para criação de metas e acompanhamento.",
+          title: "Gestão de metas semanais",
+          paragraph:
+            "Um ToDo list, só que permite que visualize suas metas semanalmente e em quantidades variáveis.",
         },
         theme: "dark",
       },
@@ -189,7 +192,7 @@ export const projectsData: Project[] = [
         text: {
           title: "Resumo",
           paragraph:
-            "Página principal com o resumo e métricas das metas cadastradas.",
+            "Página principal com o resumo e métricas das metas realizadas na semana.",
         },
         theme: "dark",
       },
@@ -248,8 +251,9 @@ export const projectsData: Project[] = [
         type: "mobile",
         scrollable: false,
         text: {
-          title: "Nova pesquisa",
-          paragraph: "Interface inicial de digitação do CEP.",
+          title: "Verifica o cep",
+          paragraph:
+            "Você digita seu cep e ele já aparece no mapa! Projeto criado a fim de desbravar Flutter com uso de APIs externas.",
         },
       },
       {
@@ -258,7 +262,7 @@ export const projectsData: Project[] = [
         scrollable: false,
         text: {
           title: "Histórico",
-          paragraph: "Página com todas as consultas armazenadas.",
+          paragraph: "Assim você consegue manter o histórico de consultas.",
         },
       },
       {
@@ -268,7 +272,7 @@ export const projectsData: Project[] = [
         text: {
           title: "Resultado",
           paragraph:
-            "Página com a visualização completa do endereço resultante.",
+            "Página com a visualização dos endereços buscados e salvos recentemente, ótimo para saber suas rotas ou algo do tipo.",
         },
       },
     ],
@@ -288,8 +292,9 @@ export const projectsData: Project[] = [
         type: "mobile",
         scrollable: false,
         text: {
-          title: "Home",
-          paragraph: "Navegação mostrando interações dentro das tarefas.",
+          title: "ToDo List",
+          paragraph:
+            "Um simples todo list, mas um estudo de frontend avançado com Flutter.",
         },
       },
       {
@@ -348,6 +353,10 @@ export const projectsData: Project[] = [
     roles: ["Design", "Desenvolvimento"],
     sources: [
       { url: "https://github.com/abnerjs/PortalRelatorios", from: "GitHub" },
+      {
+        url: "https://www.figma.com/design/3AVOpouhDNUlUjsqSJcFdv/Portal-de-Relat%C3%B3rios?node-id=0-1&t=eCof2y0IXLP119pj-1",
+        from: "Figma",
+      },
     ],
     stack: ["React"],
   },
@@ -362,8 +371,8 @@ export const projectsData: Project[] = [
         type: "desktop",
         scrollable: false,
         text: {
-          title: "Desktop",
-          paragraph: "Interface web de marcação do ponto para PC.",
+          title: "Análise de registros de ponto",
+          paragraph: "Gerenciamento de pontos de equipe de uma empresa.",
         },
       },
       {
@@ -389,17 +398,18 @@ export const projectsData: Project[] = [
   },
   {
     name: "insumos",
-    projectName: "Insumos",
+    projectName: "Controle de Insumos",
     type: "mobile",
     year: "2022",
     content: [
       {
-        src: "/works/insumos/appointments.png",
+        src: "/works/insumos/notation.png",
         type: "mobile",
         scrollable: false,
         text: {
-          title: "Agendamentos",
-          paragraph: "Controle e visão em lista de agendamentos e status.",
+          title: "Apontamentos",
+          paragraph:
+            "Uma aplicação mobile para registro e manutenção de apontamentos de trabalho.",
         },
       },
       {
@@ -407,8 +417,9 @@ export const projectsData: Project[] = [
         type: "mobile",
         scrollable: false,
         text: {
-          title: "Fichas",
-          paragraph: "Uma tela simplificada de fichas de manutenção.",
+          title: "Visualização",
+          paragraph:
+            "Listagem de registros com visualização simples e objetiva.",
         },
       },
       {
@@ -416,8 +427,9 @@ export const projectsData: Project[] = [
         type: "mobile",
         scrollable: false,
         text: {
-          title: "Equipamentos",
-          paragraph: "Registro das máquinas que serão inspecionadas.",
+          title: "Formulários",
+          paragraph:
+            "Um cadastro rápido, sem muita informação na tela para um preenchimento eficiente.",
         },
       },
     ],
@@ -433,7 +445,7 @@ export const projectsData: Project[] = [
   },
   {
     name: "iworkoff",
-    projectName: "iWorkOff",
+    projectName: "Monitor de atividades no trabalho",
     type: "desktop",
     year: "2021",
     content: [
@@ -442,9 +454,9 @@ export const projectsData: Project[] = [
         type: "desktop",
         scrollable: false,
         text: {
-          title: "Plataforma de Relatórios",
+          title: "Plataforma de Relatórios de Atividades",
           paragraph:
-            "Utilização do dashboard de relatórios onde os recursos em tempo real são demonstrados.",
+            "Monitora e esclarece as atividades realizadas no ambiente de trabalho, tempo ativo e inativo e softwares utilizados.",
         },
       },
       {
@@ -452,14 +464,21 @@ export const projectsData: Project[] = [
         type: "desktop",
         scrollable: false,
         text: {
-          title: "Login",
-          paragraph: "A tela inicial de acesso ao sistema.",
+          title: "Sistema de autenticação",
+          paragraph:
+            "A tela inicial de acesso ao sistema. Por meio disso, apenas o colaborador e seus superiores têm acesso aos dados registrados, garantindo a privacidade e segurança das informações.",
         },
       },
     ],
     className: "bg-fuchsia-100 dark:bg-fuchsia-900/30",
     roles: ["Design", "Desenvolvimento"],
-    sources: [{ url: "https://github.com/abnerjs/iworkoff", from: "GitHub" }],
+    sources: [
+      { url: "https://github.com/abnerjs/iworkoff", from: "GitHub" },
+      {
+        url: "https://www.figma.com/design/2TfY45k5qHg3uvEfy3P7dQ/iWorkOff?node-id=0-1&t=8OEjdKQkJlELjFVO-1",
+        from: "Figma",
+      },
+    ],
     stack: ["React"],
   },
 ];

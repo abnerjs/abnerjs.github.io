@@ -1,10 +1,12 @@
 "use client";
 
 import { useGSAP } from "@gsap/react";
+import { Icon } from "@iconify/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { notFound } from "next/navigation";
 import React, { use } from "react";
+import { Button } from "@/components/ui/button";
 import CurvedLoop from "@/components/ui/curved-loop";
 import { Iphone } from "@/components/ui/iphone";
 import { Safari } from "@/components/ui/safari";
@@ -233,7 +235,7 @@ export default function ProjectDetailPage({
 
       {/* Project Details */}
       <section className="mt-16 px-4 sm:px-8 md:px-16 lg:px-32 w-full flex flex-col gap-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-lg md:text-xl font-medium border-t border-b border-foreground/10 py-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-lg md:text-xl font-medium border-t border-b border-foreground/10 py-8">
           <div className="flex flex-col gap-2">
             <span className="text-zinc-500 uppercase text-sm font-bold tracking-widest">
               Serviços
@@ -252,6 +254,49 @@ export default function ProjectDetailPage({
             </span>
             <span>{project.year}</span>
           </div>
+          {(project.sources?.length ?? 0) > 0 && (
+            <div className="flex flex-col gap-2">
+              <span className="text-zinc-500 uppercase text-sm font-bold tracking-widest">
+                Links
+              </span>
+              <div className="flex flex-nowrap gap-4 items-start">
+                {project.sources.map(
+                  (source: { url: string; from: string }) => {
+                    const isFigma = source.from === "Figma";
+                    const isGitHub = source.from === "GitHub";
+
+                    const bgClass = isFigma
+                      ? "bg-[#2C2D33] hover:bg-[#2C2D33]/90 text-white"
+                      : isGitHub
+                        ? "bg-[#24292e] hover:bg-[#24292e]/90 text-white"
+                        : "bg-blue-600 hover:bg-blue-700 text-white";
+
+                    const iconName = isFigma
+                      ? "material-icon-theme:figma"
+                      : isGitHub
+                        ? "mynaui:github-solid"
+                        : "material-symbols-light:link";
+                    const label = isFigma
+                      ? "Protótipo"
+                      : isGitHub
+                        ? "Repo"
+                        : "Link";
+
+                    return (
+                      <Button
+                        key={source.url}
+                        className={cn("rounded-full px-6", bgClass)}
+                        onClick={() => window.open(source.url, "_blank")}
+                      >
+                        <Icon icon={iconName} className="w-5 h-5 mr-2" />
+                        <span className="max-md:hidden">{label}</span>
+                      </Button>
+                    );
+                  },
+                )}
+              </div>
+            </div>
+          )}
         </div>
 
         <div
