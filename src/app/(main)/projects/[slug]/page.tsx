@@ -42,52 +42,53 @@ function ProjectMediaRow({
       ) as HTMLElement;
       if (!img) return;
 
-      const setupTrigger = () => {
-        const wrapper = img.parentElement;
-        if (!wrapper) return;
+      const wrapper = img.parentElement;
+      if (!wrapper) return;
 
-        gsap.set(img, { clearProps: "y" });
+      gsap.set(img, { clearProps: "y" });
+
+      const getScrollDistance = () => {
+        const wrapperHeight = wrapper.getBoundingClientRect().height;
+        const imgHeight = img.getBoundingClientRect().height;
+        return Math.max(0, imgHeight - wrapperHeight);
+      };
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          pin: true,
+          start: "center center",
+          end: () => `+=${getScrollDistance()}`,
+          scrub: 1,
+          invalidateOnRefresh: true,
+          pinSpacing: true,
+        },
+      });
+
+      tl.to(img, {
+        y: () => -getScrollDistance(),
+        ease: "none",
+      });
+
+      const onMediaLoad = () => {
+        ScrollTrigger.sort();
         ScrollTrigger.refresh();
-
-        const getScrollDistance = () => {
-          const wrapperHeight = wrapper.getBoundingClientRect().height;
-          const imgHeight = img.getBoundingClientRect().height;
-          return imgHeight - wrapperHeight;
-        };
-
-        if (getScrollDistance() <= 0) return;
-
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: containerRef.current,
-            pin: true,
-            start: "center center",
-            end: () => `+=${getScrollDistance()}`,
-            scrub: 1,
-            invalidateOnRefresh: true,
-            pinSpacing: true,
-          },
-        });
-
-        tl.to(img, {
-          y: () => -getScrollDistance(),
-          ease: "none",
-        });
       };
 
       if (img instanceof HTMLImageElement) {
-        if (img.complete) {
-          setupTrigger();
-        } else {
-          img.addEventListener("load", setupTrigger);
+        if (!img.complete) {
+          img.addEventListener("load", onMediaLoad);
         }
-      } else {
-        if ((img as HTMLVideoElement).readyState >= 1) {
-          setupTrigger();
-        } else {
-          img.addEventListener("loadedmetadata", setupTrigger);
+      } else if (img instanceof HTMLVideoElement) {
+        if (img.readyState < 1) {
+          img.addEventListener("loadedmetadata", onMediaLoad);
         }
       }
+
+      return () => {
+        img.removeEventListener("load", onMediaLoad);
+        img.removeEventListener("loadedmetadata", onMediaLoad);
+      };
     },
     { scope: containerRef, dependencies: [item.src, item.scrollable] },
   );
