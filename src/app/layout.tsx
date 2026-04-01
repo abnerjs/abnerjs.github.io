@@ -25,18 +25,34 @@ export const metadata: Metadata = {
   description: "Vamos começar um projeto juntos?",
   openGraph: {
     url: "https://abnerjs.vercel.app/",
-    title: "Abner J. Silva • Dev",
-    description: "Vamos começar um projeto juntos?",
+    title: "Abner J. Silva • Full-Stack Developer",
+    description:
+      "Vamos começar um projeto juntos? Estou pronto para desenvolver o software que você ou seu cliente precisa!",
     siteName: "Abner J. Silva • Dev",
     type: "website",
     images: [
       {
-        url: "https://abnerjs.vercel.app/ogImage.png",
+        url: "https://abnerjs.vercel.app/og/banner.png",
         width: 1200,
         height: 630,
         alt: "Abner J. Silva • Dev",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Abner J. Silva • Full-Stack Developer",
+    description:
+      "Vamos começar um projeto juntos? Estou pronto para desenvolver o software que você ou seu cliente precisa!",
+    images: [
+      {
+        url: "https://abnerjs.vercel.app/og/banner.png",
+        width: 1200,
+        height: 630,
+        alt: "Abner J. Silva • Dev",
+      },
+    ],
+    site: "abnerjs.vercel.app",
   },
   icons: {
     icon: [
