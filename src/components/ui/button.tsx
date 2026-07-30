@@ -1,5 +1,6 @@
 "use client";
 
+import { Slot, Slottable } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import gsap from "gsap";
 import * as React from "react";
@@ -27,20 +28,20 @@ const overlayVariants = cva(
 );
 
 const buttonVariants = cva(
-  "cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-colors",
+  "cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 transition-colors",
   {
     variants: {
       variant: {
         default:
-          "relative bg-primary text-primary-foreground dark:hover:text-black overflow-hidden rounded-full! px-6 py-3.5 tracking-tight after:absolute after:inset-0 after:rounded-full after:pointer-events-none after:content-[''] ",
+          "relative bg-primary text-primary-foreground dark:hover:text-black dark:focus-visible:text-black dark:active:text-black overflow-hidden rounded-full! px-6 py-3.5 tracking-tight after:absolute after:inset-0 after:rounded-full after:pointer-events-none after:content-[''] ",
         outline:
           "relative overflow-hidden rounded-full bg-transparent text-foreground px-6 py-3.5 tracking-tight after:absolute after:inset-0 after:rounded-full after:border-1 after:border-zinc-300 dark:after:border-zinc-600 after:pointer-events-none after:content-[''] ",
         destructive:
-          "relative bg-destructive/10 dark:bg-destructive/20 text-destructive hover:text-background overflow-hidden rounded-full! px-6 py-3.5 tracking-tight",
+          "relative bg-destructive/10 dark:bg-destructive/20 text-destructive hover:text-background focus-visible:text-background active:text-background overflow-hidden rounded-full! px-6 py-3.5 tracking-tight",
         secondary:
-          "relative bg-secondary text-secondary-foreground hover:text-background overflow-hidden rounded-full! px-6 py-3.5 tracking-tight",
+          "relative bg-secondary text-secondary-foreground hover:text-background focus-visible:text-background active:text-background overflow-hidden rounded-full! px-6 py-3.5 tracking-tight",
         ghost:
-          "relative bg-transparent! text-foreground hover:text-accent-foreground overflow-hidden rounded-full! px-6 py-3.5 tracking-tight",
+          "relative bg-transparent! text-foreground hover:text-accent-foreground focus-visible:text-accent-foreground active:text-accent-foreground overflow-hidden rounded-full! px-6 py-3.5 tracking-tight",
         link: "relative text-primary",
       },
       size: {
@@ -87,6 +88,7 @@ function Button({
     const button = buttonRef.current;
     if (!button) return;
     const buttonEl = button;
+    const targetEl = (buttonEl.closest("a") as HTMLElement) || buttonEl;
 
     // Skip hover animation setup on devices that do not support hover or are touch devices.
     if (typeof window !== "undefined") {
@@ -100,7 +102,7 @@ function Button({
       if (!underline) return;
 
       const getXPercent = (e: MouseEvent) => {
-        const { left, width } = buttonEl.getBoundingClientRect();
+        const { left, width } = targetEl.getBoundingClientRect();
         return gsap.utils.clamp(0, 100, ((e.clientX - left) / width) * 100);
       };
 
@@ -125,12 +127,35 @@ function Button({
         });
       };
 
-      buttonEl.addEventListener("mouseenter", handleEnter);
-      buttonEl.addEventListener("mouseleave", handleLeave);
+      const handleFocus = () => {
+        gsap.killTweensOf(underline);
+        gsap.fromTo(
+          underline,
+          { scaleX: 0, transformOrigin: "50% center" },
+          { scaleX: 1, duration: 0.3, ease: "power2.out" },
+        );
+      };
+
+      const handleBlur = () => {
+        gsap.killTweensOf(underline);
+        gsap.to(underline, {
+          scaleX: 0,
+          transformOrigin: "50% center",
+          duration: 0.25,
+          ease: "power2.in",
+        });
+      };
+
+      targetEl.addEventListener("mouseenter", handleEnter);
+      targetEl.addEventListener("mouseleave", handleLeave);
+      targetEl.addEventListener("focusin", handleFocus);
+      targetEl.addEventListener("focusout", handleBlur);
 
       return () => {
-        buttonEl.removeEventListener("mouseenter", handleEnter);
-        buttonEl.removeEventListener("mouseleave", handleLeave);
+        targetEl.removeEventListener("mouseenter", handleEnter);
+        targetEl.removeEventListener("mouseleave", handleLeave);
+        targetEl.removeEventListener("focusin", handleFocus);
+        targetEl.removeEventListener("focusout", handleBlur);
         gsap.killTweensOf(underline);
       };
     }
@@ -143,11 +168,11 @@ function Button({
     let xTo: ((value: number) => void) | null = null;
     let yTo: ((value: number) => void) | null = null;
 
-    let rect = buttonEl.getBoundingClientRect();
+    let rect = targetEl.getBoundingClientRect();
     const clampPercent = gsap.utils.clamp(0, 100);
 
     function refreshMetrics() {
-      rect = buttonEl.getBoundingClientRect();
+      rect = targetEl.getBoundingClientRect();
     }
 
     function getXYFromClient(clientX: number, clientY: number) {
@@ -160,20 +185,15 @@ function Button({
       };
     }
 
-    let nextX = 0;
-    let nextY = 0;
     let nextClientX = 0;
     let nextClientY = 0;
     let rafId: number | null = null;
 
     function flushPointerFrame() {
-      // Keep hover position in sync when an ancestor applies transforms.
       refreshMetrics();
       const next = getXYFromClient(nextClientX, nextClientY);
-      nextX = next.x;
-      nextY = next.y;
-      xTo?.(nextX);
-      yTo?.(nextY);
+      xTo?.(next.x);
+      yTo?.(next.y);
       rafId = null;
     }
 
@@ -232,15 +252,45 @@ function Button({
       }
     }
 
-    buttonEl.addEventListener("mouseenter", onMouseEnter);
-    buttonEl.addEventListener("mouseleave", onMouseLeave);
-    buttonEl.addEventListener("mousemove", onMouseMove, { passive: true });
+    function onFocus() {
+      gsap.killTweensOf(flair);
+      xTo = null;
+      yTo = null;
+      xSet(50);
+      ySet(50);
+
+      gsap.to(flair, {
+        scale: 1,
+        duration: 0.28,
+        ease: "power1.out",
+      });
+    }
+
+    function onBlur() {
+      gsap.killTweensOf(flair);
+      xTo = null;
+      yTo = null;
+
+      gsap.to(flair, {
+        scale: 0,
+        duration: 0.22,
+        ease: "power1.out",
+      });
+    }
+
+    targetEl.addEventListener("mouseenter", onMouseEnter);
+    targetEl.addEventListener("mouseleave", onMouseLeave);
+    targetEl.addEventListener("mousemove", onMouseMove, { passive: true });
+    targetEl.addEventListener("focusin", onFocus);
+    targetEl.addEventListener("focusout", onBlur);
     window.addEventListener("resize", refreshMetrics);
 
     return () => {
-      buttonEl.removeEventListener("mouseenter", onMouseEnter);
-      buttonEl.removeEventListener("mouseleave", onMouseLeave);
-      buttonEl.removeEventListener("mousemove", onMouseMove);
+      targetEl.removeEventListener("mouseenter", onMouseEnter);
+      targetEl.removeEventListener("mouseleave", onMouseLeave);
+      targetEl.removeEventListener("mousemove", onMouseMove);
+      targetEl.removeEventListener("focusin", onFocus);
+      targetEl.removeEventListener("focusout", onBlur);
       window.removeEventListener("resize", refreshMetrics);
       if (rafId !== null) {
         window.cancelAnimationFrame(rafId);
@@ -285,8 +335,10 @@ function Button({
     }
   }, [inverse, variant]);
 
+  const Comp = asChild ? Slot : "button";
+
   return (
-    <button
+    <Comp
       ref={buttonRef}
       data-slot="button"
       data-variant={variant}
@@ -316,16 +368,18 @@ function Button({
           />
         </span>
       )}
-      <span className="relative z-10 flex items-center gap-2">
-        {children}
-        {variant === "link" && (
-          <span
-            ref={underlineRef}
-            className="absolute bottom-0 left-0 h-[1.5px] w-full scale-x-0 bg-current"
-          />
-        )}
-      </span>
-    </button>
+      <Slottable>
+        <span className="relative z-10 flex items-center justify-center gap-2 whitespace-nowrap">
+          {children}
+          {variant === "link" && (
+            <span
+              ref={underlineRef}
+              className="absolute bottom-0 left-0 h-[1.5px] w-full scale-x-0 bg-current"
+            />
+          )}
+        </span>
+      </Slottable>
+    </Comp>
   );
 }
 

@@ -16,15 +16,15 @@ export const anton = Anton({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
   themeColor: { media: "(prefers-color-scheme: light)", color: "white" },
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://abnerjs.dev"),
   title: "Abner J. Silva • Dev",
   description: "Vamos começar um projeto juntos?",
   openGraph: {
-    url: "https://abnerjs.vercel.app/",
+    url: "https://abnerjs.dev/",
     title: "Abner J. Silva • Full-Stack Developer",
     description:
       "Vamos começar um projeto juntos? Estou pronto para desenvolver o software que você ou seu cliente precisa!",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://abnerjs.vercel.app/og/banner.png",
+        url: "https://abnerjs.dev/og/banner.png",
         width: 1200,
         height: 630,
         alt: "Abner J. Silva • Dev",
@@ -46,13 +46,13 @@ export const metadata: Metadata = {
       "Vamos começar um projeto juntos? Estou pronto para desenvolver o software que você ou seu cliente precisa!",
     images: [
       {
-        url: "https://abnerjs.vercel.app/og/banner.png",
+        url: "https://abnerjs.dev/og/banner.png",
         width: 1200,
         height: 630,
         alt: "Abner J. Silva • Dev",
       },
     ],
-    site: "abnerjs.vercel.app",
+    site: "abnerjs.dev",
   },
   icons: {
     icon: [

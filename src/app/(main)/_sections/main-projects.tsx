@@ -197,10 +197,11 @@ export function MainProjects() {
           <Button
             variant="outline"
             size="xl"
-            className="uppercase flex items-center gap-2 font-semibold tracking-wide"
+            tabIndex={-1}
+            className="uppercase flex items-center gap-2 font-semibold tracking-wide whitespace-nowrap"
           >
             Mais trabalhos
-            <ArrowRight />
+            <ArrowRight className="shrink-0" />
           </Button>
         </Link>
       </MagneticWrapper>

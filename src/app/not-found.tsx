@@ -1,17 +1,17 @@
 "use client";
 
-import Link from "next/link";
-import { Icon } from "@iconify/react";
 import { useGSAP } from "@gsap/react";
+import { Icon } from "@iconify/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
+import { MainDrawer } from "@/app/(main)/_sections/main-drawer";
+import { Button } from "@/components/ui/button";
 import CurvedLoop from "@/components/ui/curved-loop";
+import { Footer } from "@/components/ui/footer";
+import { Navbar } from "@/components/ui/navbar";
 import SplitTitle from "@/components/ui/split-title";
 import { useHeroScrollTrigger } from "@/hooks/use-hero-scroll-trigger";
-import { Navbar } from "@/components/ui/navbar";
-import { MainDrawer } from "@/app/(main)/_sections/main-drawer";
-import { Footer } from "@/components/ui/footer";
-import { Button } from "@/components/ui/button";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -57,10 +57,13 @@ export default function NotFound() {
             movida.
           </p>
           <Link href="/">
-            <Button className="group h-12 px-8 rounded-full bg-zinc-900 hover:bg-zinc-800 text-white transition-all duration-300 flex items-center gap-2 text-base">
+            <Button
+              className="group h-12 px-8 rounded-full bg-zinc-900 hover:bg-zinc-800 text-white transition-all duration-300 flex items-center gap-2 text-base whitespace-nowrap"
+              tabIndex={-1}
+            >
               <Icon
                 icon="ph:arrow-left-bold"
-                className="w-5 h-5 group-hover:-translate-x-1 transition-transform"
+                className="w-5 h-5 group-hover:-translate-x-1 transition-transform shrink-0"
               />
               Voltar para o início
             </Button>

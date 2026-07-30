@@ -7,6 +7,7 @@ import { useLayoutEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { DrawerFooter } from "@/components/ui/drawer";
 import MagneticWrapper from "@/components/ui/magnetic-wrapper";
+import { SOCIAL_LINKS } from "@/config/social";
 
 const MENU_ITEMS = [
   { label: "Início", ariaLabel: "Ir para Home", link: "/" },
@@ -77,7 +78,7 @@ export const DrawerContent = ({ setClose }: DrawerContentProps) => {
               key={item.label}
             >
               <Link
-                className="relative flex items-start cursor-pointer px-6 py-3 text-[clamp(2.2rem,8vw,4rem)] font-semibold leading-none tracking-[-2px] text-black uppercase no-underline transition-colors duration-150 ease-linear hover:text-primary hover:bg-zinc-950"
+                className="relative flex items-start cursor-pointer px-6 py-3 text-[clamp(2.2rem,8vw,4rem)] font-semibold leading-none tracking-[-2px] text-black uppercase no-underline transition-colors duration-150 ease-linear hover:text-primary hover:bg-zinc-950 focus-visible:text-primary focus-visible:bg-zinc-950 focus:text-primary focus:bg-zinc-950 outline-none"
                 href={item.link}
                 aria-label={item.ariaLabel}
                 onClick={setClose}
@@ -113,12 +114,15 @@ export const DrawerContent = ({ setClose }: DrawerContentProps) => {
           <div className="flex gap-2">
             <MagneticWrapper>
               <Link
-                href="https://linkedin.com/in/abner-j-silva"
+                href={SOCIAL_LINKS.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Abrir LinkedIn de Abner J. Silva"
+                className="outline-none focus:outline-none focus-visible:outline-none rounded-full block"
               >
                 <Button
                   inverse
+                  tabIndex={-1}
                   className="flex items-center gap-2 uppercase text-white hover:text-white w-10"
                   overlayClassName="bg-[#0a66c2]"
                   size="icon-sm"
@@ -129,13 +133,16 @@ export const DrawerContent = ({ setClose }: DrawerContentProps) => {
             </MagneticWrapper>
             <MagneticWrapper>
               <Link
-                href="https://github.com/abnerjs"
+                href={SOCIAL_LINKS.github}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Abrir GitHub de Abner J. Silva"
+                className="outline-none focus:outline-none focus-visible:outline-none rounded-full block"
               >
                 <Button
                   className="flex items-center gap-2 uppercase text-white hover:text-white w-10"
                   inverse
+                  tabIndex={-1}
                   overlayClassName="bg-[#24292e]"
                   size="icon-sm"
                 >
@@ -145,13 +152,16 @@ export const DrawerContent = ({ setClose }: DrawerContentProps) => {
             </MagneticWrapper>
             <MagneticWrapper>
               <Link
-                href="https://wa.me/5518997361645"
+                href={SOCIAL_LINKS.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Abrir WhatsApp de Abner J. Silva"
+                className="outline-none focus:outline-none focus-visible:outline-none rounded-full block"
               >
                 <Button
                   className="flex items-center gap-2 uppercase text-white hover:text-white w-10"
                   inverse
+                  tabIndex={-1}
                   overlayClassName="bg-[#25D366]"
                   size="icon-sm"
                 >

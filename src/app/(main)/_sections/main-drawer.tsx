@@ -32,7 +32,7 @@ export function MainDrawer({ showButton = true }: { showButton?: boolean }) {
               <MagneticWrapper>
                 <Button
                   onClick={() => setDrawerOpened(!drawerOpened)}
-                  className="size-20 rounded bg-primary p-0 items-center justify-center text-black hover:text-white group"
+                  className="size-20 rounded bg-primary p-0 items-center justify-center text-black hover:text-white focus-visible:text-white group outline-none focus:outline-none focus-visible:outline-none"
                   aria-label={drawerOpened ? "Fechar menu" : "Abrir menu"}
                 >
                   <div className="flex flex-col gap-1.5">

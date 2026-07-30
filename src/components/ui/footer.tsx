@@ -8,6 +8,7 @@ import { ArrowUp } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLayoutEffect, useRef } from "react";
+import { SOCIAL_LINKS } from "@/config/social";
 import { Me } from "../svg/me";
 import { MeClosedEyes } from "../svg/me-closed-eyes";
 import { MeSmile } from "../svg/me-smile";
@@ -138,7 +139,7 @@ export function Footer() {
           >
             {/* LinkedIn */}
             <Link
-              href="https://linkedin.com/in/abner-j-silva"
+              href={SOCIAL_LINKS.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Abrir LinkedIn de Abner"
@@ -154,7 +155,7 @@ export function Footer() {
             </Link>
             {/* Github */}
             <Link
-              href="https://github.com/abnerjs"
+              href={SOCIAL_LINKS.github}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Abrir GitHub de Abner"
@@ -170,7 +171,7 @@ export function Footer() {
             </Link>
             {/* Whatsapp */}
             <Link
-              href="https://wa.me/5518997361645"
+              href={SOCIAL_LINKS.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Abrir WhatsApp de Abner"
@@ -185,10 +186,10 @@ export function Footer() {
               </div>
             </Link>
             <Link
-              href="https://instagram.com/abnerjs.dev"
+              href={SOCIAL_LINKS.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Abrir Instagram de Abner (@abnerjs.dev)"
+              aria-label="Abrir Instagram de Abner"
               className="social-link group relative bg-zinc-300 max-md:self-end md:mt-20 size-32 rounded-full cursor-pointer flex items-center justify-center"
             >
               <Me className="social-svg absolute size-20 z-10 top-0 md:group-hover:-translate-x-14 md:group-hover:-rotate-12 transition-all duration-200" />
@@ -220,10 +221,11 @@ export function Footer() {
             {/* contact me */}
             <div className="flex flex-col md:mt-8">
               <MagneticWrapper className="absolute -translate-1/2 self-end size-24 md:size-40">
-                <Link href="/contact">
+                <Link href="/contact" className="outline-none focus:outline-none focus-visible:outline-none rounded-full block">
                   <Button
                     className="text-zinc-50 bg-zinc-950 uppercase text-xs md:text-base size-24 md:size-40"
                     overlayClassName="bg-purple-700"
+                    tabIndex={-1}
                   >
                     Contate-me
                   </Button>
@@ -241,30 +243,33 @@ export function Footer() {
                   <div className="flex flex-1 flex-col gap-4 justify-between h-full">
                     <ul>
                       <li>
-                        <Link href="/">
+                        <Link href="/" className="outline-none focus:outline-none focus-visible:outline-none rounded">
                           <Button
                             variant="link"
                             className="text-black font-['lexend'] p-0 h-max"
+                            tabIndex={-1}
                           >
                             Início
                           </Button>
                         </Link>
                       </li>
                       <li>
-                        <Link href="/projects">
+                        <Link href="/projects" className="outline-none focus:outline-none focus-visible:outline-none rounded">
                           <Button
                             variant="link"
                             className="text-black font-['lexend'] p-0 h-max"
+                            tabIndex={-1}
                           >
                             Projetos
                           </Button>
                         </Link>
                       </li>
                       <li>
-                        <Link href="/contact">
+                        <Link href="/contact" className="outline-none focus:outline-none focus-visible:outline-none rounded">
                           <Button
                             variant="link"
                             className="text-black font-['lexend'] p-0 h-max"
+                            tabIndex={-1}
                           >
                             Contato
                           </Button>
@@ -284,10 +289,14 @@ export function Footer() {
                     </p>
                   </div>
                   <div className="self-end flex flex-col w-full items-end gap-1">
-                    <Link href="#" onClick={handleScrollToTop}>
-                      <Button size="xs" className="hover:text-white">
+                    <Link href="#" onClick={handleScrollToTop} className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
+                      <Button
+                        size="sm"
+                        className="hover:text-white focus-visible:text-white focus:text-white active:text-white min-h-[44px] px-4 whitespace-nowrap flex items-center gap-2"
+                        tabIndex={-1}
+                      >
                         Voltar ao topo
-                        <ArrowUp className="size-6" />
+                        <ArrowUp className="size-4 shrink-0" />
                       </Button>
                     </Link>
                   </div>

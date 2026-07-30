@@ -1,8 +1,8 @@
 "use client";
 
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const pathRef = useRef<SVGPathElement>(null);

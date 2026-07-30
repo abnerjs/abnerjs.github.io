@@ -19,8 +19,8 @@ function TagButton({ label, checked, onChange }: TagButtonProps) {
     <Button
       onClick={onChange}
       className={cn(
-        "rounded-full whitespace-nowrap bg-zinc-950 hover:text-black text-white after:border after:border-zinc-950",
-        !checked && "bg-transparent text-black hover:text-white",
+        "rounded-full whitespace-nowrap bg-zinc-950 hover:text-black focus-visible:text-black text-white after:border after:border-zinc-950",
+        !checked && "bg-transparent text-black hover:text-white focus-visible:text-white",
       )}
       overlayClassName={cn(checked && "bg-white")}
     >

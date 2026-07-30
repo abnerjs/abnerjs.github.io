@@ -225,10 +225,12 @@ export default function ProjectDetailPage({
           interactive
           className="fill-zinc-400 mt-12 -translate-y-4 mb-8"
         >
-          <tspan>{project.projectName.toLowerCase()}</tspan>
-          <tspan className={cn("fill-orange-500", project.className)}>✹</tspan>
-          <tspan>{project.type}</tspan>
-          <tspan className="fill-orange-500">✹</tspan>
+          {project.roles.map((role) => (
+            <React.Fragment key={role}>
+              <tspan>{role}</tspan>
+              <tspan className="fill-orange-500">✹</tspan>
+            </React.Fragment>
+          ))}
           <tspan>{project.year}</tspan>
           <tspan className="fill-orange-500">✹</tspan>
         </CurvedLoop>

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import MagneticWrapper from "@/components/ui/magnetic-wrapper";
 import { getLenisInstance } from "@/components/ui/scroll-smoother";
 import SplitTitle from "@/components/ui/split-title";
+import { SOCIAL_LINKS } from "@/config/social";
 
 export function Hero() {
   const handleScrollToAbout = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -55,41 +56,46 @@ export function Hero() {
 
         <div className="flex flex-col md:flex-row absolute left-0 w-full px-4 sm:px-8 md:px-16 transition-all bottom-20 items-center justify-between">
           {/* Nav */}
+          {/* Nav */}
+          {/* Nav */}
           <div
             id="#nav-hero"
             className="flex gap-0 md:gap-2 max-md:-translate-y-12"
           >
             <MagneticWrapper>
-              <Link href="#about" onClick={handleScrollToAbout}>
+              <Link href="#about" onClick={handleScrollToAbout} className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
                 <Button
                   className="max-md:px-2 flex items-center gap-2 uppercase font-semibold xl:tracking-widest text-white hover:text-white"
                   variant="ghost"
                   overlayClassName="bg-white/10"
                   size="lg"
+                  tabIndex={-1}
                 >
                   Início
                 </Button>
               </Link>
             </MagneticWrapper>
             <MagneticWrapper>
-              <Link href="/projects">
+              <Link href="/projects" className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
                 <Button
                   className="max-md:px-2 flex items-center gap-2 uppercase font-semibold xl:tracking-widest text-white hover:text-white"
                   variant="ghost"
                   overlayClassName="bg-white/10"
                   size="lg"
+                  tabIndex={-1}
                 >
                   Projetos
                 </Button>
               </Link>
             </MagneticWrapper>
             <MagneticWrapper>
-              <Link href="/contact">
+              <Link href="/contact" className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
                 <Button
                   className="max-md:px-2 flex items-center gap-2 uppercase font-semibold xl:tracking-widest text-white hover:text-white"
                   variant="ghost"
                   overlayClassName="bg-white/10"
                   size="lg"
+                  tabIndex={-1}
                 >
                   Contato
                 </Button>
@@ -100,16 +106,31 @@ export function Hero() {
           {/* Curriculo */}
           <MagneticWrapper className="absolute left-1/2 -translate-x-1/2 group">
             <a
-              href="/resumes/AbnerJSCurriculo.pdf"
-              download="Abner_Silva_Curriculo.pdf"
+              href={SOCIAL_LINKS.resume}
+              aria-label="Baixar currículo de Abner J. Silva"
+              className="outline-none focus:outline-none focus-visible:outline-none rounded-full block"
+              target={
+                SOCIAL_LINKS.resume.startsWith("http") ? "_blank" : undefined
+              }
+              rel={
+                SOCIAL_LINKS.resume.startsWith("http")
+                  ? "noopener noreferrer"
+                  : undefined
+              }
+              download={
+                SOCIAL_LINKS.resume.startsWith("http")
+                  ? undefined
+                  : "Abner_Silva_Curriculo.pdf"
+              }
             >
               <Button
                 size="xl"
                 inverse
-                className="flex items-center gap-2 uppercase bg-primary md:bg-zinc-950 text-black md:text-white md:hover:text-black overflow-hidden"
+                tabIndex={-1}
+                className="flex items-center gap-2 uppercase bg-primary md:bg-zinc-950 text-black md:text-white md:hover:text-black md:focus-visible:text-black md:focus:text-black md:active:text-black overflow-hidden whitespace-nowrap"
               >
                 Currículo
-                <DownloadIcon className="size-6" />
+                <DownloadIcon className="size-6 shrink-0" />
               </Button>
             </a>
           </MagneticWrapper>
@@ -118,12 +139,15 @@ export function Hero() {
           <div id="social-links" className="hidden md:flex gap-2">
             <MagneticWrapper>
               <Link
-                href="https://linkedin.com/in/abner-j-silva"
+                href={SOCIAL_LINKS.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Abrir LinkedIn de Abner J. Silva"
+                className="outline-none focus:outline-none focus-visible:outline-none rounded-full block"
               >
                 <Button
                   inverse
+                  tabIndex={-1}
                   className="flex items-center gap-2 uppercase text-white hover:text-white w-16"
                   overlayClassName="bg-[#0a66c2]"
                   size="icon-lg"
@@ -134,13 +158,16 @@ export function Hero() {
             </MagneticWrapper>
             <MagneticWrapper>
               <Link
-                href="https://github.com/abnerjs"
+                href={SOCIAL_LINKS.github}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Abrir GitHub de Abner J. Silva"
+                className="outline-none focus:outline-none focus-visible:outline-none rounded-full block"
               >
                 <Button
                   className="max-md:px-2 flex items-center gap-2 uppercase text-white hover:text-white w-16"
                   inverse
+                  tabIndex={-1}
                   overlayClassName="bg-[#24292e]"
                   size="icon-lg"
                 >
@@ -150,13 +177,16 @@ export function Hero() {
             </MagneticWrapper>
             <MagneticWrapper>
               <Link
-                href="https://wa.me/5518997361645"
+                href={SOCIAL_LINKS.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Abrir WhatsApp de Abner J. Silva"
+                className="outline-none focus:outline-none focus-visible:outline-none rounded-full block"
               >
                 <Button
                   className="flex items-center gap-2 uppercase text-white hover:text-white w-16"
                   inverse
+                  tabIndex={-1}
                   overlayClassName="bg-[#25D366]"
                   size="icon-lg"
                 >

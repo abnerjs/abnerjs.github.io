@@ -63,9 +63,9 @@ export function About() {
 
   const skills = ["Front-end", "Back-end", "Full-Stack"];
   const stickerClasses = [
-    "bg-amber-300 text-zinc-950 rotate-3",
-    "bg-lime-300 text-zinc-950 -rotate-1",
-    "bg-sky-300 text-zinc-950 rotate-2",
+    "bg-amber-300 text-black font-semibold rotate-3 shadow-xs",
+    "bg-lime-300 text-black font-semibold -rotate-1 shadow-xs",
+    "bg-sky-300 text-black font-semibold rotate-2 shadow-xs",
   ];
 
   useLayoutEffect(() => {

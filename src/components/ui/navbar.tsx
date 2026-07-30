@@ -18,36 +18,39 @@ export function Navbar({ theme = "light" }: NavbarProps) {
     <nav className="flex relative items-center md:pt-4">
       <div id="#nav-hero" className="flex md:gap-2 h-max">
         <MagneticWrapper>
-          <Link href="/">
+          <Link href="/" className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
             <Button
               className={btnClass}
               variant="ghost"
               overlayClassName={overlayClass}
               size="lg"
+              tabIndex={-1}
             >
               Início
             </Button>
           </Link>
         </MagneticWrapper>
         <MagneticWrapper>
-          <Link href="/projects">
+          <Link href="/projects" className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
             <Button
               className={btnClass}
               variant="ghost"
               overlayClassName={overlayClass}
               size="lg"
+              tabIndex={-1}
             >
               Projetos
             </Button>
           </Link>
         </MagneticWrapper>
         <MagneticWrapper>
-          <Link href="/contact">
+          <Link href="/contact" className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
             <Button
               className={btnClass}
               variant="ghost"
               overlayClassName={overlayClass}
               size="lg"
+              tabIndex={-1}
             >
               Contato
             </Button>
@@ -57,7 +60,8 @@ export function Navbar({ theme = "light" }: NavbarProps) {
 
       <Link
         href="/"
-        className="hidden md:block h-10 mt-2 absolute left-1/2 -translate-x-1/2 z-0"
+        aria-label="Página inicial Abner J. Silva"
+        className="hidden md:block h-10 mt-2 absolute left-1/2 -translate-x-1/2 z-0 outline-none focus:outline-none focus-visible:outline-none"
       >
         <AbnerJSilva className="h-full" />
       </Link>
