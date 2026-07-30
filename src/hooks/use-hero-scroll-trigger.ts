@@ -1,5 +1,3 @@
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React from "react";
 
 export function useHeroScrollTrigger() {
@@ -10,28 +8,27 @@ export function useHeroScrollTrigger() {
       return;
     }
 
-    gsap.registerPlugin(ScrollTrigger);
-
     const heroSection = document.getElementById("hero");
     if (!heroSection) {
       return;
     }
 
-    const heroOutOfViewTrigger = ScrollTrigger.create({
-      trigger: heroSection,
-      start: "bottom top",
-      end: "max",
-      onEnter: () => setShowDrawerButton(true),
-      onLeaveBack: () => setShowDrawerButton(false),
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowDrawerButton(!entry.isIntersecting);
+      },
+      { threshold: 0 },
+    );
+
+    observer.observe(heroSection);
 
     const syncInitialVisibility = requestAnimationFrame(() => {
-      setShowDrawerButton(window.scrollY >= heroOutOfViewTrigger.start);
+      setShowDrawerButton(heroSection.getBoundingClientRect().bottom <= 0);
     });
 
     return () => {
       cancelAnimationFrame(syncInitialVisibility);
-      heroOutOfViewTrigger.kill();
+      observer.disconnect();
     };
   }, []);
 

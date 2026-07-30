@@ -11,16 +11,6 @@ import MagneticWrapper from "@/components/ui/magnetic-wrapper";
 import { projectsData } from "@/data/projects";
 import { cn } from "@/lib/utils";
 
-let globalMouseX = 0;
-let globalMouseY = 0;
-
-if (typeof window !== "undefined") {
-  window.addEventListener("pointermove", (e) => {
-    globalMouseX = e.clientX;
-    globalMouseY = e.clientY;
-  });
-}
-
 function FastCursorLabel({
   children,
   className,
@@ -33,10 +23,11 @@ function FastCursorLabel({
   useEffect(() => {
     let raf = 0;
 
-    // Inicia os dois pontos na posição atual do mouse, evitando saltos iniciais
-    const targetPoint = { x: globalMouseX, y: globalMouseY };
-    const parentPoint = { x: globalMouseX, y: globalMouseY };
-    const innerPoint = { x: globalMouseX, y: globalMouseY };
+    const initialX = window.innerWidth / 2;
+    const initialY = window.innerHeight / 2;
+    const targetPoint = { x: initialX, y: initialY };
+    const parentPoint = { x: initialX, y: initialY };
+    const innerPoint = { x: initialX, y: initialY };
 
     const handlePointerMove = (e: PointerEvent) => {
       targetPoint.x = e.clientX;

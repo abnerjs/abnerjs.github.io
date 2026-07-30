@@ -142,9 +142,6 @@ export default function RootLayout({
       className={cn("font-sans no-scrollbar overflow-x-clip", lexend.variable)}
       data-scroll-behavior="smooth"
     >
-      <head>
-        <link rel="preconnect" href="https://api.iconify.design" crossOrigin="" />
-      </head>
       <body
         className={`${lexend.variable} ${anton.variable} overflow-x-clip antialiased bg-zinc-950`}
       >

@@ -1,8 +1,5 @@
 "use client";
 
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import RotatingText, {
   type RotatingTextRef,
@@ -23,38 +20,58 @@ export function About() {
       return;
     }
 
-    gsap.registerPlugin(ScrollTrigger);
-    const triggers: ScrollTrigger[] = [];
+    let mounted = true;
+    const triggers: Array<{ kill: () => void }> = [];
+    let rafId = 0;
 
-    // Aguarda um frame para garantir que outras animações (como SplitText)
-    // tenham alterado o layout, evitando posições de trigger erradas
-    requestAnimationFrame(() => {
-      descriptionRefs.current.forEach((description, index) => {
-        if (!description) {
+    void (async () => {
+      const [{ gsap }, { ScrollTrigger }] = await Promise.all([
+        import("gsap"),
+        import("gsap/ScrollTrigger"),
+      ]);
+
+      if (!mounted) {
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Aguarda um frame para garantir que outras animações (como SplitText)
+      // tenham alterado o layout, evitando posições de trigger erradas
+      rafId = requestAnimationFrame(() => {
+        if (!mounted) {
           return;
         }
 
-        const st = ScrollTrigger.create({
-          trigger: description,
-          start: "top 55%",
-          end: "bottom 45%",
-          onEnter: () => setActiveSkillIndex(index),
-          onEnterBack: () => setActiveSkillIndex(index),
-          onLeaveBack: () => {
-            if (index === 0) {
-              setActiveSkillIndex(0);
-            }
-          },
+        descriptionRefs.current.forEach((description, index) => {
+          if (!description) {
+            return;
+          }
+
+          const st = ScrollTrigger.create({
+            trigger: description,
+            start: "top 55%",
+            end: "bottom 45%",
+            onEnter: () => setActiveSkillIndex(index),
+            onEnterBack: () => setActiveSkillIndex(index),
+            onLeaveBack: () => {
+              if (index === 0) {
+                setActiveSkillIndex(0);
+              }
+            },
+          });
+
+          triggers.push(st);
         });
 
-        triggers.push(st);
+        // Refresh instantâneo para recalcular dimensões finais
+        ScrollTrigger.refresh();
       });
-
-      // Refresh instantâneo para recalcular dimensões finais
-      ScrollTrigger.refresh();
-    });
+    })();
 
     return () => {
+      mounted = false;
+      cancelAnimationFrame(rafId);
       for (const st of triggers) {
         st.kill();
       }
@@ -85,19 +102,34 @@ export function About() {
       return;
     }
 
-    gsap.registerPlugin(ScrollTrigger, SplitText);
+    if (!window.matchMedia("(min-width: 768px)").matches) {
+      return;
+    }
 
     if (splitTextRefs.current.length === 0) {
       return;
     }
 
-    const splitInstances: SplitText[] = [];
+    const splitInstances: Array<{ revert: () => void }> = [];
     let isUnmounted = false;
+    let cleanupCreatedSplits = () => {};
 
-    const createSplitAnimations = () => {
+    const createSplitAnimations = async () => {
       if (isUnmounted) {
         return;
       }
+
+      const [{ gsap }, { ScrollTrigger }, { SplitText }] = await Promise.all([
+        import("gsap"),
+        import("gsap/ScrollTrigger"),
+        import("gsap/SplitText"),
+      ]);
+
+      if (isUnmounted) {
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger, SplitText);
 
       for (const [index, element] of splitTextRefs.current.entries()) {
         if (!element) {
@@ -163,20 +195,23 @@ export function About() {
       }
 
       ScrollTrigger.refresh();
+
+      cleanupCreatedSplits = () => {
+        for (const splitInstance of splitInstances) {
+          splitInstance.revert();
+        }
+      };
     };
 
     if (document.fonts?.ready) {
-      document.fonts.ready.then(createSplitAnimations);
+      void document.fonts.ready.then(createSplitAnimations);
     } else {
-      createSplitAnimations();
+      void createSplitAnimations();
     }
 
     return () => {
       isUnmounted = true;
-
-      for (const splitInstance of splitInstances) {
-        splitInstance.revert();
-      }
+      cleanupCreatedSplits();
     };
   }, []);
 
