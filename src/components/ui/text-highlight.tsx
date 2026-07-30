@@ -42,6 +42,7 @@ export function TextHighlight({
       splitInstance = SplitText.create(textRef.current, {
         type: "lines",
         autoSplit: true,
+        aria: "none",
         onSplit: (instance) => {
           gsap.set(instance.lines, {
             maskImage:

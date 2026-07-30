@@ -110,6 +110,7 @@ export function About() {
             mask: "lines",
             linesClass: "about-line",
             autoSplit: true,
+            aria: "none",
             onSplit: (instance) => {
               return gsap.from(instance.lines, {
                 yPercent: 120,
@@ -129,6 +130,7 @@ export function About() {
           const split = SplitText.create(element, {
             type: "lines",
             autoSplit: true,
+            aria: "none",
             onSplit: (instance) => {
               gsap.set(instance.lines, {
                 maskImage:
