@@ -74,7 +74,7 @@ export const projectsData: Project[] = [
     year: "2026",
     content: [
       {
-        src: "/works/s2viagens/dashboard.png",
+        src: "/works/s2viagens/dashboard.webp",
         type: "desktop",
         scrollable: true,
         text: {
@@ -84,7 +84,7 @@ export const projectsData: Project[] = [
         },
       },
       {
-        src: "/works/s2viagens/room.png",
+        src: "/works/s2viagens/room.webp",
         type: "mobile",
         scrollable: true,
         text: {
@@ -108,7 +108,7 @@ export const projectsData: Project[] = [
     year: "2025",
     content: [
       {
-        src: "/works/market-flask/dash.png",
+        src: "/works/market-flask/dash.webp",
         type: "desktop",
         scrollable: false,
         text: {
@@ -284,7 +284,7 @@ export const projectsData: Project[] = [
     year: "2023",
     content: [
       {
-        src: "/works/viacep/form.png",
+        src: "/works/viacep/form.webp",
         type: "mobile",
         scrollable: false,
         text: {
@@ -303,7 +303,7 @@ export const projectsData: Project[] = [
         },
       },
       {
-        src: "/works/viacep/main.png",
+        src: "/works/viacep/main.webp",
         type: "mobile",
         scrollable: false,
         text: {
@@ -325,7 +325,7 @@ export const projectsData: Project[] = [
     year: "2023",
     content: [
       {
-        src: "/works/tasks/home.gif",
+        src: "/works/tasks/home.mp4",
         type: "mobile",
         scrollable: false,
         text: {
@@ -487,7 +487,7 @@ export const projectsData: Project[] = [
     year: "2021",
     content: [
       {
-        src: "/works/iworkoff/dashboard.gif",
+        src: "/works/iworkoff/dashboard.mp4",
         type: "desktop",
         scrollable: false,
         text: {
