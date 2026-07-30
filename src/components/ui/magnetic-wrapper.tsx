@@ -111,8 +111,19 @@ const MagneticWrapper = ({
       return;
     }
 
+    let rectCache: DOMRect | null = null;
+
+    const updateRect = () => {
+      rectCache = containerEl.getBoundingClientRect();
+    };
+
+    const handleMouseEnter = () => {
+      updateRect();
+    };
+
     const handleMouseMove = (event: MouseEvent) => {
-      const rect = containerEl.getBoundingClientRect();
+      if (!rectCache) updateRect();
+      const rect = rectCache!;
       const x = event.clientX - rect.left - rect.width / 2;
       const y = event.clientY - rect.top - rect.height / 2;
 
@@ -137,14 +148,20 @@ const MagneticWrapper = ({
       animateBackWithBounce();
     };
 
+    containerEl.addEventListener("mouseenter", handleMouseEnter);
     containerEl.addEventListener("mousemove", handleMouseMove);
     containerEl.addEventListener("mouseleave", handleMouseLeave);
     containerEl.addEventListener("pointerup", handlePointerUp);
+    window.addEventListener("resize", updateRect);
+    window.addEventListener("scroll", updateRect, true);
 
     return () => {
+      containerEl.removeEventListener("mouseenter", handleMouseEnter);
       containerEl.removeEventListener("mousemove", handleMouseMove);
       containerEl.removeEventListener("mouseleave", handleMouseLeave);
       containerEl.removeEventListener("pointerup", handlePointerUp);
+      window.removeEventListener("resize", updateRect);
+      window.removeEventListener("scroll", updateRect, true);
     };
   }, [animate, strengthX, strengthY, animateBackWithBounce]);
 

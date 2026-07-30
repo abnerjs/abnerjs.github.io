@@ -168,20 +168,23 @@ function Button({
     let xTo: ((value: number) => void) | null = null;
     let yTo: ((value: number) => void) | null = null;
 
-    let rect = targetEl.getBoundingClientRect();
+    let rect: DOMRect | null = null;
     const clampPercent = gsap.utils.clamp(0, 100);
 
-    function refreshMetrics() {
+    function updateRect() {
       rect = targetEl.getBoundingClientRect();
     }
 
     function getXYFromClient(clientX: number, clientY: number) {
-      const width = rect.width || 1;
-      const height = rect.height || 1;
+      if (!rect) updateRect();
+      const width = rect?.width || 1;
+      const height = rect?.height || 1;
+      const left = rect?.left || 0;
+      const top = rect?.top || 0;
 
       return {
-        x: clampPercent(((clientX - rect.left) / width) * 100),
-        y: clampPercent(((clientY - rect.top) / height) * 100),
+        x: clampPercent(((clientX - left) / width) * 100),
+        y: clampPercent(((clientY - top) / height) * 100),
       };
     }
 
@@ -190,7 +193,6 @@ function Button({
     let rafId: number | null = null;
 
     function flushPointerFrame() {
-      refreshMetrics();
       const next = getXYFromClient(nextClientX, nextClientY);
       xTo?.(next.x);
       yTo?.(next.y);
@@ -202,6 +204,7 @@ function Button({
     }
 
     function onMouseEnter(e: MouseEvent) {
+      updateRect();
       xTo = gsap.quickTo(flair, "xPercent", {
         duration: 0.18,
         ease: "power1.out",
@@ -211,7 +214,6 @@ function Button({
         ease: "power1.out",
       });
 
-      refreshMetrics();
       const pos = getXY(e);
       if (!pos) return;
       const { x, y } = pos;
@@ -283,7 +285,8 @@ function Button({
     targetEl.addEventListener("mousemove", onMouseMove, { passive: true });
     targetEl.addEventListener("focusin", onFocus);
     targetEl.addEventListener("focusout", onBlur);
-    window.addEventListener("resize", refreshMetrics);
+    window.addEventListener("resize", updateRect);
+    window.addEventListener("scroll", updateRect, true);
 
     return () => {
       targetEl.removeEventListener("mouseenter", onMouseEnter);
@@ -291,7 +294,8 @@ function Button({
       targetEl.removeEventListener("mousemove", onMouseMove);
       targetEl.removeEventListener("focusin", onFocus);
       targetEl.removeEventListener("focusout", onBlur);
-      window.removeEventListener("resize", refreshMetrics);
+      window.removeEventListener("resize", updateRect);
+      window.removeEventListener("scroll", updateRect, true);
       if (rafId !== null) {
         window.cancelAnimationFrame(rafId);
       }

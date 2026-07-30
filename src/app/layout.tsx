@@ -143,7 +143,7 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <head>
-        <link rel="preconnect" href="https://api.iconify.design" />
+        <link rel="preconnect" href="https://api.iconify.design" crossOrigin="" />
       </head>
       <body
         className={`${lexend.variable} ${anton.variable} overflow-x-clip antialiased bg-zinc-950`}
