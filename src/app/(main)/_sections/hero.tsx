@@ -64,136 +64,150 @@ export function Hero() {
             className="flex gap-0 md:gap-2 max-md:-translate-y-12"
           >
             <MagneticWrapper>
-              <Link href="#about" onClick={handleScrollToAbout} className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
-                <Button
-                  className="max-md:px-2 flex items-center gap-2 uppercase font-semibold xl:tracking-widest text-white hover:text-white"
-                  variant="ghost"
-                  overlayClassName="bg-white/10"
-                  size="lg"
-                  tabIndex={-1}
-                >
-                  Início
-                </Button>
-              </Link>
+              <Button
+                asChild
+                className="max-md:px-2 flex items-center gap-2 uppercase font-semibold xl:tracking-widest text-white hover:text-white"
+                variant="ghost"
+                overlayClassName="bg-white/10"
+                size="lg"
+              >
+                <Link href="#about" onClick={handleScrollToAbout} className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
+                  <span className="relative z-10 inline-flex items-center justify-center gap-2 whitespace-nowrap">
+                    Início
+                  </span>
+                </Link>
+              </Button>
             </MagneticWrapper>
             <MagneticWrapper>
-              <Link href="/projects" className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
-                <Button
-                  className="max-md:px-2 flex items-center gap-2 uppercase font-semibold xl:tracking-widest text-white hover:text-white"
-                  variant="ghost"
-                  overlayClassName="bg-white/10"
-                  size="lg"
-                  tabIndex={-1}
-                >
-                  Projetos
-                </Button>
-              </Link>
+              <Button
+                asChild
+                className="max-md:px-2 flex items-center gap-2 uppercase font-semibold xl:tracking-widest text-white hover:text-white"
+                variant="ghost"
+                overlayClassName="bg-white/10"
+                size="lg"
+              >
+                <Link href="/projects" className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
+                  <span className="relative z-10 inline-flex items-center justify-center gap-2 whitespace-nowrap">
+                    Projetos
+                  </span>
+                </Link>
+              </Button>
             </MagneticWrapper>
             <MagneticWrapper>
-              <Link href="/contact" className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
-                <Button
-                  className="max-md:px-2 flex items-center gap-2 uppercase font-semibold xl:tracking-widest text-white hover:text-white"
-                  variant="ghost"
-                  overlayClassName="bg-white/10"
-                  size="lg"
-                  tabIndex={-1}
-                >
-                  Contato
-                </Button>
-              </Link>
+              <Button
+                asChild
+                className="max-md:px-2 flex items-center gap-2 uppercase font-semibold xl:tracking-widest text-white hover:text-white"
+                variant="ghost"
+                overlayClassName="bg-white/10"
+                size="lg"
+              >
+                <Link href="/contact" className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
+                  <span className="relative z-10 inline-flex items-center justify-center gap-2 whitespace-nowrap">
+                    Contato
+                  </span>
+                </Link>
+              </Button>
             </MagneticWrapper>
           </div>
 
           {/* Curriculo */}
-          <MagneticWrapper className="absolute left-1/2 -translate-x-1/2 group">
-            <a
-              href={SOCIAL_LINKS.resume}
-              aria-label="Baixar currículo de Abner J. Silva"
-              className="outline-none focus:outline-none focus-visible:outline-none rounded-full block group/resume"
-              target={
-                SOCIAL_LINKS.resume.startsWith("http") ? "_blank" : undefined
-              }
-              rel={
-                SOCIAL_LINKS.resume.startsWith("http")
-                  ? "noopener noreferrer"
-                  : undefined
-              }
-              download={
-                SOCIAL_LINKS.resume.startsWith("http")
-                  ? undefined
-                  : "Abner_Silva_Curriculo.pdf"
-              }
+          <MagneticWrapper className="absolute left-1/2 -translate-x-1/2">
+            <Button
+              asChild
+              size="xl"
+              inverse
+              className="flex items-center gap-2 uppercase bg-primary md:bg-zinc-950 text-black md:text-white hover:md:text-black focus-visible:md:text-black overflow-hidden whitespace-nowrap"
             >
-              <Button
-                size="xl"
-                inverse
-                tabIndex={-1}
-                className="flex items-center gap-2 uppercase bg-primary md:bg-zinc-950 text-black md:text-white group-hover/resume:md:text-black group-focus-visible/resume:md:text-black overflow-hidden whitespace-nowrap"
+              <a
+                href={SOCIAL_LINKS.resume}
+                aria-label="Baixar currículo de Abner J. Silva"
+                className="outline-none focus:outline-none focus-visible:outline-none rounded-full"
+                target={
+                  SOCIAL_LINKS.resume.startsWith("http") ? "_blank" : undefined
+                }
+                rel={
+                  SOCIAL_LINKS.resume.startsWith("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+                download={
+                  SOCIAL_LINKS.resume.startsWith("http")
+                    ? undefined
+                    : "Abner_Silva_Curriculo.pdf"
+                }
               >
-                Currículo
-                <DownloadIcon className="size-6 shrink-0" />
-              </Button>
-            </a>
+                <span className="relative z-10 inline-flex items-center justify-center gap-2 whitespace-nowrap">
+                  Currículo
+                  <DownloadIcon className="size-6 shrink-0" />
+                </span>
+              </a>
+            </Button>
           </MagneticWrapper>
 
           {/* Redes sociais */}
           <div id="social-links" className="hidden md:flex gap-2">
             <MagneticWrapper>
-              <Link
-                href={SOCIAL_LINKS.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Abrir LinkedIn de Abner J. Silva"
-                className="outline-none focus:outline-none focus-visible:outline-none rounded-full block"
+              <Button
+                asChild
+                inverse
+                className="flex items-center gap-2 uppercase text-white hover:text-white w-16"
+                overlayClassName="bg-[#0a66c2]"
+                size="icon-lg"
               >
-                <Button
-                  inverse
-                  tabIndex={-1}
-                  className="flex items-center gap-2 uppercase text-white hover:text-white w-16"
-                  overlayClassName="bg-[#0a66c2]"
-                  size="icon-lg"
+                <Link
+                  href={SOCIAL_LINKS.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Abrir LinkedIn de Abner J. Silva"
+                  className="outline-none focus:outline-none focus-visible:outline-none rounded-full"
                 >
-                  <Icon icon="basil:linkedin-solid" className="size-6" />
-                </Button>
-              </Link>
+                  <span className="relative z-10 inline-flex items-center justify-center">
+                    <Icon icon="basil:linkedin-solid" className="size-6" />
+                  </span>
+                </Link>
+              </Button>
             </MagneticWrapper>
             <MagneticWrapper>
-              <Link
-                href={SOCIAL_LINKS.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Abrir GitHub de Abner J. Silva"
-                className="outline-none focus:outline-none focus-visible:outline-none rounded-full block"
+              <Button
+                asChild
+                className="max-md:px-2 flex items-center gap-2 uppercase text-white hover:text-white w-16"
+                inverse
+                overlayClassName="bg-[#24292e]"
+                size="icon-lg"
               >
-                <Button
-                  className="max-md:px-2 flex items-center gap-2 uppercase text-white hover:text-white w-16"
-                  inverse
-                  tabIndex={-1}
-                  overlayClassName="bg-[#24292e]"
-                  size="icon-lg"
+                <Link
+                  href={SOCIAL_LINKS.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Abrir GitHub de Abner J. Silva"
+                  className="outline-none focus:outline-none focus-visible:outline-none rounded-full"
                 >
-                  <Icon icon="mynaui:github-solid" className="size-6" />
-                </Button>
-              </Link>
+                  <span className="relative z-10 inline-flex items-center justify-center">
+                    <Icon icon="mynaui:github-solid" className="size-6" />
+                  </span>
+                </Link>
+              </Button>
             </MagneticWrapper>
             <MagneticWrapper>
-              <Link
-                href={SOCIAL_LINKS.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Abrir WhatsApp de Abner J. Silva"
-                className="outline-none focus:outline-none focus-visible:outline-none rounded-full block"
+              <Button
+                asChild
+                className="flex items-center gap-2 uppercase text-white hover:text-white w-16"
+                inverse
+                overlayClassName="bg-[#25D366]"
+                size="icon-lg"
               >
-                <Button
-                  className="flex items-center gap-2 uppercase text-white hover:text-white w-16"
-                  inverse
-                  tabIndex={-1}
-                  overlayClassName="bg-[#25D366]"
-                  size="icon-lg"
+                <Link
+                  href={SOCIAL_LINKS.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Abrir WhatsApp de Abner J. Silva"
+                  className="outline-none focus:outline-none focus-visible:outline-none rounded-full"
                 >
-                  <Icon icon="ri:whatsapp-fill" className="size-6" />
-                </Button>
-              </Link>
+                  <span className="relative z-10 inline-flex items-center justify-center">
+                    <Icon icon="ri:whatsapp-fill" className="size-6" />
+                  </span>
+                </Link>
+              </Button>
             </MagneticWrapper>
           </div>
         </div>

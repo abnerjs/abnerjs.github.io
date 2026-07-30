@@ -221,15 +221,17 @@ export function Footer() {
             {/* contact me */}
             <div className="flex flex-col md:mt-8">
               <MagneticWrapper className="absolute -translate-1/2 self-end size-24 md:size-40">
-                <Link href="/contact" className="outline-none focus:outline-none focus-visible:outline-none rounded-full block">
-                  <Button
-                    className="text-zinc-50 bg-zinc-950 uppercase text-xs md:text-base size-24 md:size-40"
-                    overlayClassName="bg-purple-700"
-                    tabIndex={-1}
-                  >
-                    Contate-me
-                  </Button>
-                </Link>
+                <Button
+                  asChild
+                  className="text-zinc-50 bg-zinc-950 uppercase text-xs md:text-base size-24 md:size-40"
+                  overlayClassName="bg-purple-700"
+                >
+                  <Link href="/contact" className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
+                    <span className="relative z-10 inline-flex items-center justify-center gap-2 whitespace-nowrap">
+                      Contate-me
+                    </span>
+                  </Link>
+                </Button>
               </MagneticWrapper>
 
               <Separator className="w-full h-px bg-zinc-700/20" />
@@ -243,37 +245,37 @@ export function Footer() {
                   <div className="flex flex-1 flex-col gap-4 justify-between h-full">
                     <ul>
                       <li>
-                        <Link href="/" className="outline-none focus:outline-none focus-visible:outline-none rounded">
-                          <Button
-                            variant="link"
-                            className="text-black font-['lexend'] p-0 h-max"
-                            tabIndex={-1}
-                          >
+                        <Button
+                          asChild
+                          variant="link"
+                          className="text-black font-['lexend'] p-0 h-max"
+                        >
+                          <Link href="/" className="outline-none focus:outline-none focus-visible:outline-none rounded">
                             Início
-                          </Button>
-                        </Link>
+                          </Link>
+                        </Button>
                       </li>
                       <li>
-                        <Link href="/projects" className="outline-none focus:outline-none focus-visible:outline-none rounded">
-                          <Button
-                            variant="link"
-                            className="text-black font-['lexend'] p-0 h-max"
-                            tabIndex={-1}
-                          >
+                        <Button
+                          asChild
+                          variant="link"
+                          className="text-black font-['lexend'] p-0 h-max"
+                        >
+                          <Link href="/projects" className="outline-none focus:outline-none focus-visible:outline-none rounded">
                             Projetos
-                          </Button>
-                        </Link>
+                          </Link>
+                        </Button>
                       </li>
                       <li>
-                        <Link href="/contact" className="outline-none focus:outline-none focus-visible:outline-none rounded">
-                          <Button
-                            variant="link"
-                            className="text-black font-['lexend'] p-0 h-max"
-                            tabIndex={-1}
-                          >
+                        <Button
+                          asChild
+                          variant="link"
+                          className="text-black font-['lexend'] p-0 h-max"
+                        >
+                          <Link href="/contact" className="outline-none focus:outline-none focus-visible:outline-none rounded">
                             Contato
-                          </Button>
-                        </Link>
+                          </Link>
+                        </Button>
                       </li>
                     </ul>
                     <p className="flex flex-col md:flex-row md:items-center md:gap-2 text-xs">
@@ -289,16 +291,18 @@ export function Footer() {
                     </p>
                   </div>
                   <div className="self-end flex flex-col w-full items-end gap-1">
-                    <Link href="#" onClick={handleScrollToTop} className="outline-none focus:outline-none focus-visible:outline-none rounded-full group/top">
-                      <Button
-                        size="sm"
-                        className="group-hover/top:text-white group-focus-visible/top:text-white min-h-[44px] px-4 whitespace-nowrap flex items-center gap-2"
-                        tabIndex={-1}
-                      >
-                        Voltar ao topo
-                        <ArrowUp className="size-4 shrink-0" />
-                      </Button>
-                    </Link>
+                    <Button
+                      asChild
+                      size="sm"
+                      className="hover:text-white focus-visible:text-white min-h-[44px] px-4 whitespace-nowrap flex items-center gap-2"
+                    >
+                      <Link href="#" onClick={handleScrollToTop} className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
+                        <span className="relative z-10 inline-flex items-center justify-center gap-2 whitespace-nowrap">
+                          Voltar ao topo
+                          <ArrowUp className="size-4 shrink-0" />
+                        </span>
+                      </Link>
+                    </Button>
                   </div>
                 </div>
               </div>

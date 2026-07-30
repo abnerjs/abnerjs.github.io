@@ -167,30 +167,30 @@ export function FormSection() {
             <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-6">
               Contato
             </h3>
-            <Link
-              href={`mailto:${SOCIAL_LINKS.email}`}
-              className="outline-none focus:outline-none focus-visible:outline-none rounded w-fit block"
+            <Button
+              asChild
+              variant="link"
+              className="block p-0 h-auto text-black mb-2 font-medium justify-start w-fit text-base uppercase outline-none focus:outline-none focus-visible:outline-none"
             >
-              <Button
-                variant="link"
-                className="block p-0 h-auto text-black mb-2 font-medium justify-start w-fit text-base uppercase outline-none focus:outline-none focus-visible:outline-none"
-                tabIndex={-1}
+              <Link
+                href={`mailto:${SOCIAL_LINKS.email}`}
+                className="outline-none focus:outline-none focus-visible:outline-none rounded w-fit"
               >
                 {SOCIAL_LINKS.email}
-              </Button>
-            </Link>
-            <Link
-              href={`tel:${SOCIAL_LINKS.phone.replace(/\s+/g, "")}`}
-              className="outline-none focus:outline-none focus-visible:outline-none rounded w-fit block"
+              </Link>
+            </Button>
+            <Button
+              asChild
+              variant="link"
+              className="block p-0 h-auto text-black font-medium justify-start w-fit text-base outline-none focus:outline-none focus-visible:outline-none"
             >
-              <Button
-                variant="link"
-                className="block p-0 h-auto text-black font-medium justify-start w-fit text-base outline-none focus:outline-none focus-visible:outline-none"
-                tabIndex={-1}
+              <Link
+                href={`tel:${SOCIAL_LINKS.phone.replace(/\s+/g, "")}`}
+                className="outline-none focus:outline-none focus-visible:outline-none rounded w-fit"
               >
                 {SOCIAL_LINKS.phone}
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
 
           <div>

@@ -56,20 +56,23 @@ export default function NotFound() {
             Parece que a página que você está procurando não existe ou foi
             movida.
           </p>
-          <Link href="/">
-            <Button
-              className="group h-12 px-8 rounded-full bg-zinc-900 hover:bg-zinc-800 text-white transition-all duration-300 flex items-center gap-2 text-base whitespace-nowrap"
-              tabIndex={-1}
-            >
-              <Icon
-                icon="ph:arrow-left-bold"
-                className="w-5 h-5 group-hover:-translate-x-1 transition-transform shrink-0"
-              />
-              Voltar para o início
-            </Button>
-          </Link>
+          <Button
+            asChild
+            className="group h-12 px-8 rounded-full bg-zinc-900 hover:bg-zinc-800 text-white transition-all duration-300 flex items-center gap-2 text-base whitespace-nowrap"
+          >
+            <Link href="/">
+              <span className="relative z-10 inline-flex items-center justify-center gap-2 whitespace-nowrap">
+                <Icon
+                  icon="ph:arrow-left-bold"
+                  className="w-5 h-5 group-hover:-translate-x-1 transition-transform shrink-0"
+                />
+                Voltar para o início
+              </span>
+            </Link>
+          </Button>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

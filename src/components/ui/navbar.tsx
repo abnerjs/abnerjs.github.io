@@ -18,43 +18,43 @@ export function Navbar({ theme = "light" }: NavbarProps) {
     <nav className="flex relative items-center md:pt-4">
       <div id="#nav-hero" className="flex md:gap-2 h-max">
         <MagneticWrapper>
-          <Link href="/" className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
-            <Button
-              className={btnClass}
-              variant="ghost"
-              overlayClassName={overlayClass}
-              size="lg"
-              tabIndex={-1}
-            >
+          <Button
+            asChild
+            className={btnClass}
+            variant="ghost"
+            overlayClassName={overlayClass}
+            size="lg"
+          >
+            <Link href="/" className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
               Início
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </MagneticWrapper>
         <MagneticWrapper>
-          <Link href="/projects" className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
-            <Button
-              className={btnClass}
-              variant="ghost"
-              overlayClassName={overlayClass}
-              size="lg"
-              tabIndex={-1}
-            >
+          <Button
+            asChild
+            className={btnClass}
+            variant="ghost"
+            overlayClassName={overlayClass}
+            size="lg"
+          >
+            <Link href="/projects" className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
               Projetos
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </MagneticWrapper>
         <MagneticWrapper>
-          <Link href="/contact" className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
-            <Button
-              className={btnClass}
-              variant="ghost"
-              overlayClassName={overlayClass}
-              size="lg"
-              tabIndex={-1}
-            >
+          <Button
+            asChild
+            className={btnClass}
+            variant="ghost"
+            overlayClassName={overlayClass}
+            size="lg"
+          >
+            <Link href="/contact" className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
               Contato
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </MagneticWrapper>
       </div>
 

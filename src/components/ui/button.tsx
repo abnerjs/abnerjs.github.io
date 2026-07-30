@@ -7,6 +7,7 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 import { useCursor } from "./cursor-provider";
+import { usePathname } from "next/navigation";
 
 const overlayVariants = cva(
   "pointer-events-none absolute left-0 top-0 block aspect-square w-[170%] -translate-x-1/2 -translate-y-1/2 rounded-full",
@@ -28,7 +29,7 @@ const overlayVariants = cva(
 );
 
 const buttonVariants = cva(
-  "cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 transition-colors",
+  "cursor-pointer isolate inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 transition-colors",
   {
     variants: {
       variant: {
@@ -40,8 +41,9 @@ const buttonVariants = cva(
           "relative bg-destructive/10 dark:bg-destructive/20 text-destructive hover:text-background focus-visible:text-background active:text-background overflow-hidden rounded-full! px-6 py-3.5 tracking-tight",
         secondary:
           "relative bg-secondary text-secondary-foreground hover:text-background focus-visible:text-background active:text-background overflow-hidden rounded-full! px-6 py-3.5 tracking-tight",
+        // ghost: NO text-color changes on hover/focus — overlay handles the visual feedback
         ghost:
-          "relative bg-transparent! text-foreground hover:text-accent-foreground focus-visible:text-accent-foreground active:text-accent-foreground overflow-hidden rounded-full! px-6 py-3.5 tracking-tight",
+          "relative bg-transparent! text-foreground overflow-hidden rounded-full! px-6 py-3.5 tracking-tight",
         link: "relative text-primary",
       },
       size: {
@@ -79,30 +81,31 @@ function Button({
     inverse?: boolean;
     overlayClassName?: string;
   }) {
-  const buttonRef = React.useRef<HTMLButtonElement>(null);
+  // Generic ref — points to the actual DOM element whether it's <button> or <a>
+  const elRef = React.useRef<HTMLElement>(null);
   const flairRef = React.useRef<HTMLSpanElement>(null);
   const underlineRef = React.useRef<HTMLSpanElement>(null);
   const { setCursor, setDefaultCursor } = useCursor();
+  const pathname = usePathname();
 
   React.useEffect(() => {
-    const button = buttonRef.current;
-    if (!button) return;
-    const buttonEl = button;
-    const targetEl = (buttonEl.closest("a") as HTMLElement) || buttonEl;
+    const el = elRef.current;
+    if (!el) return;
 
-    // Skip hover animation setup on devices that do not support hover or are touch devices.
+    // Skip on touch / coarse-pointer devices
     if (typeof window !== "undefined") {
       const isTouchDescendant = window.matchMedia("(pointer: coarse)").matches;
       const isHoverNone = window.matchMedia("(hover: none)").matches;
       if (isTouchDescendant || isHoverNone) return;
     }
 
+    // ── Link variant: animated underline ──────────────────────────────────────
     if (variant === "link") {
       const underline = underlineRef.current;
       if (!underline) return;
 
       const getXPercent = (e: MouseEvent) => {
-        const { left, width } = targetEl.getBoundingClientRect();
+        const { left, width } = el.getBoundingClientRect();
         return gsap.utils.clamp(0, 100, ((e.clientX - left) / width) * 100);
       };
 
@@ -146,20 +149,21 @@ function Button({
         });
       };
 
-      targetEl.addEventListener("mouseenter", handleEnter);
-      targetEl.addEventListener("mouseleave", handleLeave);
-      targetEl.addEventListener("focusin", handleFocus);
-      targetEl.addEventListener("focusout", handleBlur);
+      el.addEventListener("mouseenter", handleEnter);
+      el.addEventListener("mouseleave", handleLeave);
+      el.addEventListener("focusin", handleFocus);
+      el.addEventListener("focusout", handleBlur);
 
       return () => {
-        targetEl.removeEventListener("mouseenter", handleEnter);
-        targetEl.removeEventListener("mouseleave", handleLeave);
-        targetEl.removeEventListener("focusin", handleFocus);
-        targetEl.removeEventListener("focusout", handleBlur);
+        el.removeEventListener("mouseenter", handleEnter);
+        el.removeEventListener("mouseleave", handleLeave);
+        el.removeEventListener("focusin", handleFocus);
+        el.removeEventListener("focusout", handleBlur);
         gsap.killTweensOf(underline);
       };
     }
 
+    // ── All other variants: animated flair overlay ────────────────────────────
     const flair = flairRef.current;
     if (!flair) return;
 
@@ -172,7 +176,7 @@ function Button({
     const clampPercent = gsap.utils.clamp(0, 100);
 
     function updateRect() {
-      rect = targetEl.getBoundingClientRect();
+      rect = el!.getBoundingClientRect();
     }
 
     function getXYFromClient(clientX: number, clientY: number) {
@@ -280,28 +284,63 @@ function Button({
       });
     }
 
-    targetEl.addEventListener("mouseenter", onMouseEnter);
-    targetEl.addEventListener("mouseleave", onMouseLeave);
-    targetEl.addEventListener("mousemove", onMouseMove, { passive: true });
-    targetEl.addEventListener("focusin", onFocus);
-    targetEl.addEventListener("focusout", onBlur);
+    el.addEventListener("mouseenter", onMouseEnter);
+    el.addEventListener("mouseleave", onMouseLeave);
+    el.addEventListener("mousemove", onMouseMove, { passive: true });
+    el.addEventListener("focusin", onFocus);
+    el.addEventListener("focusout", onBlur);
     window.addEventListener("resize", updateRect);
     window.addEventListener("scroll", updateRect, true);
 
+    // After navigating (pathname changed), the effect re-runs but mouseenter
+    // won't fire because the cursor never left. Detect this and show the flair.
+    if (el.matches(":hover")) {
+      updateRect();
+      // Try to get the real cursor position from a one-shot pointermove,
+      // otherwise fall back to showing the flair centred.
+      const syncOnce = (e: PointerEvent) => {
+        window.removeEventListener("pointermove", syncOnce);
+        const { x, y } = getXYFromClient(e.clientX, e.clientY);
+        xSet(x);
+        ySet(y);
+        gsap.to(flair, { scale: 1, duration: 0.28, ease: "power1.out" });
+      };
+      window.addEventListener("pointermove", syncOnce, { passive: true });
+      // Safety fallback: if the pointer doesn't move within 200ms, show centred
+      const fallbackId = setTimeout(() => {
+        window.removeEventListener("pointermove", syncOnce);
+        if (el.matches(":hover")) {
+          xSet(50);
+          ySet(50);
+          gsap.to(flair, { scale: 1, duration: 0.28, ease: "power1.out" });
+        }
+      }, 200);
+      // Clear the fallback if syncOnce fires first
+      const syncOnceClear = (e: PointerEvent) => {
+        clearTimeout(fallbackId);
+        window.removeEventListener("pointermove", syncOnceClear);
+      };
+      window.addEventListener("pointermove", syncOnceClear, {
+        passive: true,
+        once: true,
+      });
+    }
+
     return () => {
-      targetEl.removeEventListener("mouseenter", onMouseEnter);
-      targetEl.removeEventListener("mouseleave", onMouseLeave);
-      targetEl.removeEventListener("mousemove", onMouseMove);
-      targetEl.removeEventListener("focusin", onFocus);
-      targetEl.removeEventListener("focusout", onBlur);
+      el.removeEventListener("mouseenter", onMouseEnter);
+      el.removeEventListener("mouseleave", onMouseLeave);
+      el.removeEventListener("mousemove", onMouseMove);
+      el.removeEventListener("focusin", onFocus);
+      el.removeEventListener("focusout", onBlur);
       window.removeEventListener("resize", updateRect);
       window.removeEventListener("scroll", updateRect, true);
       if (rafId !== null) {
         window.cancelAnimationFrame(rafId);
       }
       gsap.killTweensOf(flair);
+      gsap.set(flair, { scale: 0, clearProps: "xPercent,yPercent" });
     };
-  }, [variant]);
+  }, [variant, pathname]);
 
   const inverseStyles = React.useMemo(() => {
     if (!inverse || variant === "link") {
@@ -339,51 +378,75 @@ function Button({
     }
   }, [inverse, variant]);
 
-  const Comp = asChild ? Slot : "button";
+  const sharedClassName = cn(
+    buttonVariants({ variant, size }),
+    inverseStyles.button,
+    className,
+  );
+
+  const sharedHandlers = {
+    onMouseEnter: () => setCursor(null, "hidden"),
+    onMouseLeave: () => setDefaultCursor(),
+  };
+
+  const overlayEl =
+    variant !== "link" ? (
+      <span
+        ref={flairRef}
+        className="pointer-events-none absolute inset-0 z-0 origin-top-left scale-0 will-change-transform"
+      >
+        <span
+          className={cn(
+            overlayVariants({ variant }),
+            inverseStyles.overlay,
+            overlayClassName,
+          )}
+        />
+      </span>
+    ) : null;
+
+  const underlineEl =
+    variant === "link" ? (
+      <span
+        ref={underlineRef}
+        className="absolute bottom-0 left-0 h-[1.5px] w-full scale-x-0 bg-current z-20 pointer-events-none"
+      />
+    ) : null;
+
+  if (asChild) {
+    return (
+      <Slot
+        ref={elRef as React.Ref<HTMLButtonElement>}
+        data-slot="button"
+        data-variant={variant}
+        data-size={size}
+        className={sharedClassName}
+        {...sharedHandlers}
+        {...props}
+      >
+        {overlayEl}
+        <Slottable>{children}</Slottable>
+        {underlineEl}
+      </Slot>
+    );
+  }
 
   return (
-    <Comp
-      ref={buttonRef}
+    <button
+      ref={elRef as React.Ref<HTMLButtonElement>}
       data-slot="button"
       data-variant={variant}
       data-size={size}
-      onMouseEnter={() => {
-        setCursor(null, "hidden");
-      }}
-      onMouseLeave={() => setDefaultCursor()}
-      className={cn(
-        buttonVariants({ variant, size }),
-        inverseStyles.button,
-        className,
-      )}
-      {...props}
+      className={sharedClassName}
+      {...sharedHandlers}
+      {...(props as React.ComponentProps<"button">)}
     >
-      {variant !== "link" && (
-        <span
-          ref={flairRef}
-          className="pointer-events-none absolute inset-0 origin-top-left scale-0 will-change-transform"
-        >
-          <span
-            className={cn(
-              overlayVariants({ variant }),
-              inverseStyles.overlay,
-              overlayClassName,
-            )}
-          />
-        </span>
-      )}
-      <Slottable>
-        <span className="relative z-10 flex items-center justify-center gap-2 whitespace-nowrap">
-          {children}
-          {variant === "link" && (
-            <span
-              ref={underlineRef}
-              className="absolute bottom-0 left-0 h-[1.5px] w-full scale-x-0 bg-current"
-            />
-          )}
-        </span>
-      </Slottable>
-    </Comp>
+      {overlayEl}
+      <span className="relative z-10 inline-flex items-center justify-center gap-2 whitespace-nowrap">
+        {children}
+      </span>
+      {underlineEl}
+    </button>
   );
 }
 

@@ -113,61 +113,67 @@ export const DrawerContent = ({ setClose }: DrawerContentProps) => {
           </span>
           <div className="flex gap-2">
             <MagneticWrapper>
-              <Link
-                href={SOCIAL_LINKS.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Abrir LinkedIn de Abner J. Silva"
-                className="outline-none focus:outline-none focus-visible:outline-none rounded-full block"
+              <Button
+                asChild
+                inverse
+                className="flex items-center gap-2 uppercase text-white hover:text-white w-10"
+                overlayClassName="bg-[#0a66c2]"
+                size="icon-sm"
               >
-                <Button
-                  inverse
-                  tabIndex={-1}
-                  className="flex items-center gap-2 uppercase text-white hover:text-white w-10"
-                  overlayClassName="bg-[#0a66c2]"
-                  size="icon-sm"
+                <Link
+                  href={SOCIAL_LINKS.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Abrir LinkedIn de Abner J. Silva"
+                  className="outline-none focus:outline-none focus-visible:outline-none rounded-full"
                 >
-                  <Icon icon="basil:linkedin-solid" className="size-4" />
-                </Button>
-              </Link>
+                  <span className="relative z-10 inline-flex items-center justify-center">
+                    <Icon icon="basil:linkedin-solid" className="size-4" />
+                  </span>
+                </Link>
+              </Button>
             </MagneticWrapper>
             <MagneticWrapper>
-              <Link
-                href={SOCIAL_LINKS.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Abrir GitHub de Abner J. Silva"
-                className="outline-none focus:outline-none focus-visible:outline-none rounded-full block"
+              <Button
+                asChild
+                className="flex items-center gap-2 uppercase text-white hover:text-white w-10"
+                inverse
+                overlayClassName="bg-[#24292e]"
+                size="icon-sm"
               >
-                <Button
-                  className="flex items-center gap-2 uppercase text-white hover:text-white w-10"
-                  inverse
-                  tabIndex={-1}
-                  overlayClassName="bg-[#24292e]"
-                  size="icon-sm"
+                <Link
+                  href={SOCIAL_LINKS.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Abrir GitHub de Abner J. Silva"
+                  className="outline-none focus:outline-none focus-visible:outline-none rounded-full"
                 >
-                  <Icon icon="mynaui:github-solid" className="size-4" />
-                </Button>
-              </Link>
+                  <span className="relative z-10 inline-flex items-center justify-center">
+                    <Icon icon="mynaui:github-solid" className="size-4" />
+                  </span>
+                </Link>
+              </Button>
             </MagneticWrapper>
             <MagneticWrapper>
-              <Link
-                href={SOCIAL_LINKS.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Abrir WhatsApp de Abner J. Silva"
-                className="outline-none focus:outline-none focus-visible:outline-none rounded-full block"
+              <Button
+                asChild
+                className="flex items-center gap-2 uppercase text-white hover:text-white w-10"
+                inverse
+                overlayClassName="bg-[#25D366]"
+                size="icon-sm"
               >
-                <Button
-                  className="flex items-center gap-2 uppercase text-white hover:text-white w-10"
-                  inverse
-                  tabIndex={-1}
-                  overlayClassName="bg-[#25D366]"
-                  size="icon-sm"
+                <Link
+                  href={SOCIAL_LINKS.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Abrir WhatsApp de Abner J. Silva"
+                  className="outline-none focus:outline-none focus-visible:outline-none rounded-full"
                 >
-                  <Icon icon="ri:whatsapp-fill" className="size-4" />
-                </Button>
-              </Link>
+                  <span className="relative z-10 inline-flex items-center justify-center">
+                    <Icon icon="ri:whatsapp-fill" className="size-4" />
+                  </span>
+                </Link>
+              </Button>
             </MagneticWrapper>
           </div>
         </div>

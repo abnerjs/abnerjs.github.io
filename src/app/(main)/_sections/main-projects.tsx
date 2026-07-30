@@ -193,17 +193,19 @@ export function MainProjects() {
       </div>
 
       <MagneticWrapper className="self-center my-20">
-        <Link href="/projects" className="outline-none focus:outline-none focus-visible:outline-none rounded-full group/more">
-          <Button
-            variant="outline"
-            size="xl"
-            tabIndex={-1}
-            className="uppercase flex items-center gap-2 font-semibold tracking-wide whitespace-nowrap"
-          >
-            Mais trabalhos
-            <ArrowRight className="shrink-0" />
-          </Button>
-        </Link>
+        <Button
+          asChild
+          variant="outline"
+          size="xl"
+          className="uppercase flex items-center gap-2 font-semibold tracking-wide whitespace-nowrap"
+        >
+          <Link href="/projects" className="outline-none focus:outline-none focus-visible:outline-none rounded-full group/more">
+            <span className="relative z-10 inline-flex items-center justify-center gap-2 whitespace-nowrap">
+              Mais trabalhos
+              <ArrowRight className="shrink-0" />
+            </span>
+          </Link>
+        </Button>
       </MagneticWrapper>
     </section>
   );
