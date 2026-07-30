@@ -168,7 +168,7 @@ function GlobalCursor({
     <div
       ref={cursorRef}
       className={cn(
-        "pointer-events-none  rounded-2xl fixed left-0 top-0 z-999 flex items-center justify-center border border-zinc-950/70 transition-all duration-300 ease-out",
+        "pointer-events-none rounded-2xl fixed left-0 top-0 z-999 flex items-center justify-center border border-zinc-950/70 transition-all duration-300 ease-out",
         hasCustomCursor ? "size-40 bg-zinc-950/5 border-transparent" : "size-8",
         isVisible ? "opacity-100" : "opacity-0",
         containerClassName,

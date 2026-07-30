@@ -289,10 +289,10 @@ export function Footer() {
                     </p>
                   </div>
                   <div className="self-end flex flex-col w-full items-end gap-1">
-                    <Link href="#" onClick={handleScrollToTop} className="outline-none focus:outline-none focus-visible:outline-none rounded-full">
+                    <Link href="#" onClick={handleScrollToTop} className="outline-none focus:outline-none focus-visible:outline-none rounded-full group/top">
                       <Button
                         size="sm"
-                        className="hover:text-white focus-visible:text-white focus:text-white active:text-white min-h-[44px] px-4 whitespace-nowrap flex items-center gap-2"
+                        className="group-hover/top:text-white group-focus-visible/top:text-white min-h-[44px] px-4 whitespace-nowrap flex items-center gap-2"
                         tabIndex={-1}
                       >
                         Voltar ao topo

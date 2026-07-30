@@ -1,10 +1,12 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useCursor } from "@/components/ui/cursor-provider";
 import { allStacks, projectsData } from "@/data/projects";
 import { cn } from "@/lib/utils";
 
@@ -186,6 +188,7 @@ const ImageStack = ({ images, type, projectName }: ImageStackProps) => {
 };
 
 export function ProjectsSection() {
+  const { setCursor, setDefaultCursor } = useCursor();
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
   const isAllSelected = selectedTags.length === 0;
@@ -218,6 +221,19 @@ export function ProjectsSection() {
       p.stack.some((tag) => selectedTags.includes(tag)),
     );
   }, [selectedTags]);
+
+  const handleCardMouseEnter = useCallback(() => {
+    setCursor(
+      <div className="size-14 rounded-full bg-purple-600 text-white flex items-center justify-center shadow-lg pointer-events-none">
+        <ArrowUpRight className="size-6 text-white" />
+      </div>,
+      "size-14 rounded-full border-transparent bg-transparent overflow-hidden",
+    );
+  }, [setCursor]);
+
+  const handleCardMouseLeave = useCallback(() => {
+    setDefaultCursor();
+  }, [setDefaultCursor]);
 
   return (
     <div className="mt-32 px-4 sm:px-8 md:px-16 lg:px-32 transition-all flex flex-col items-center">
@@ -256,10 +272,12 @@ export function ProjectsSection() {
             >
               <Link
                 href={`/projects/${project.name}`}
-                className="flex flex-col w-full h-full"
+                className="flex flex-col w-full h-full outline-none focus:outline-none focus-visible:outline-none rounded-xl group/card"
+                onMouseEnter={handleCardMouseEnter}
+                onMouseLeave={handleCardMouseLeave}
               >
                 <div
-                  className={`w-full aspect-4/3 mb-6 rounded-md flex items-center justify-center overflow-hidden transition-colors ${project.className}`}
+                  className={`relative w-full aspect-4/3 mb-6 rounded-md flex items-center justify-center overflow-hidden transition-colors ${project.className}`}
                 >
                   {project.content.filter((c) => "src" in c).length > 0 && (
                     <ImageStack
@@ -277,6 +295,9 @@ export function ProjectsSection() {
                       projectName={project.projectName}
                     />
                   )}
+                  <div className="absolute right-4 bottom-4 z-20 size-12 md:size-14 rounded-full bg-purple-600 text-white flex items-center justify-center shadow-lg transition-all duration-300 ease-out scale-0 opacity-0 group-focus-visible/card:scale-100 group-focus-visible/card:opacity-100 pointer-events-none">
+                    <ArrowUpRight className="size-6 text-white" />
+                  </div>
                 </div>
                 <div className="flex flex-col">
                   <h4 className="text-3xl md:text-4xl font-semibold text-foreground tracking-tight mb-4">

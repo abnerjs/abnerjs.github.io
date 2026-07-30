@@ -140,6 +140,7 @@ export default function RootLayout({
     <html
       lang="pt-BR"
       className={cn("font-sans no-scrollbar overflow-x-clip", lexend.variable)}
+      data-scroll-behavior="smooth"
     >
       <body
         className={`${lexend.variable} ${anton.variable} overflow-x-clip antialiased bg-zinc-950`}

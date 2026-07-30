@@ -109,7 +109,7 @@ export function Hero() {
             <a
               href={SOCIAL_LINKS.resume}
               aria-label="Baixar currículo de Abner J. Silva"
-              className="outline-none focus:outline-none focus-visible:outline-none rounded-full block"
+              className="outline-none focus:outline-none focus-visible:outline-none rounded-full block group/resume"
               target={
                 SOCIAL_LINKS.resume.startsWith("http") ? "_blank" : undefined
               }
@@ -128,7 +128,7 @@ export function Hero() {
                 size="xl"
                 inverse
                 tabIndex={-1}
-                className="flex items-center gap-2 uppercase bg-primary md:bg-zinc-950 text-black md:text-white md:hover:text-black md:focus-visible:text-black md:focus:text-black md:active:text-black overflow-hidden whitespace-nowrap"
+                className="flex items-center gap-2 uppercase bg-primary md:bg-zinc-950 text-black md:text-white group-hover/resume:md:text-black group-focus-visible/resume:md:text-black overflow-hidden whitespace-nowrap"
               >
                 Currículo
                 <DownloadIcon className="size-6 shrink-0" />

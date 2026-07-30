@@ -193,7 +193,7 @@ export function MainProjects() {
       </div>
 
       <MagneticWrapper className="self-center my-20">
-        <Link href="/projects">
+        <Link href="/projects" className="outline-none focus:outline-none focus-visible:outline-none rounded-full group/more">
           <Button
             variant="outline"
             size="xl"
