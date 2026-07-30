@@ -28,6 +28,7 @@ export function Hero() {
       id="hero"
       className="flex min-h-svh p-4 w-full flex-col items-center overflow-hidden bg-white text-zinc-50"
     >
+      <h1 className="sr-only">Abner J. Silva — Desenvolvedor Full-Stack</h1>
       <div className="relative flex flex-col bg-zinc-900 w-full h-full rounded-xl overflow-hidden">
         <SplitTitle
           text="BEM-VINDO"

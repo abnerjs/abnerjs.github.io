@@ -19,6 +19,7 @@ export default function Projects() {
 
       {/* Hero */}
       <section id="hero">
+        <h1 className="sr-only">Projetos — Abner J. Silva</h1>
         <SplitTitle
           text="Projetos"
           className="text-[calc(27vw)] pointer-events-none select-none w-full flex justify-center items-center text-center leading-none self-center font-['anton'] uppercase"
