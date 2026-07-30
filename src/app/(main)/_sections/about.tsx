@@ -259,11 +259,11 @@ export function About() {
               className="text-lg font-medium"
             >
               Desenvolvo experiências web e sou apaixonado por criar{" "}
-              <span className="text-amber-500">
+              <span className="text-amber-700">
                 soluções inovadoras e eficientes
               </span>
               . Minha abordagem é sempre centrada no usuário, garantindo uma{" "}
-              <span className="text-amber-500">satisfação do usuário</span> em
+              <span className="text-amber-700">satisfação do usuário</span> em
               usar um sistema. Construo interfaces ricas, intuitivas,
               responsivas e otimizadas para SEO.
             </p>
@@ -284,10 +284,10 @@ export function About() {
               }}
               className="text-lg font-medium"
             >
-              Construo <span className="text-green-500">sites otimizados</span>{" "}
+              Construo <span className="text-green-700">sites otimizados</span>{" "}
               a partir do zero, bem como adiciono novas funcionalidades em sites
               pré-existentes. Tenho habilidades para construir{" "}
-              <span className="text-green-500">
+              <span className="text-green-700">
                 aplicações performáticas e escaláveis
               </span>{" "}
               com um backend robusto, utilizando as melhores práticas com
@@ -311,10 +311,10 @@ export function About() {
               className="text-lg font-medium"
             >
               Ofereço a criação de um{" "}
-              <span className="text-blue-500">projeto full-stack</span>, desde o
+              <span className="text-blue-700">projeto full-stack</span>, desde o
               conceito até a implementação. Com meu senso de design e
               habilidades de desenvolvimento, sou capaz de criar{" "}
-              <span className="text-blue-500">
+              <span className="text-blue-700">
                 projetos que se encaixam perfeitamente
               </span>{" "}
               no contexto da sua necessidade.
